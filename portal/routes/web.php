@@ -1,7 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\IndexController;
+use App\Http\Controllers\ProgramController;
+Auth::routes();
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,6 +16,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+
+
+Route::get('/admin', [AdminController::class, 'admin']);
+Route::post('/login', [AdminController::class, 'login']);
+
+Route::group(['middleware' =>['adminlogin']],function(){
+
+    Route::get('/logout',[AdminController::class, 'logout']);
+    Route::get('/dashboard', [IndexController::class, 'dashboard']);
+    Route::resource('Admins', AdminController::class);
+    Route::get('/program', [ProgramController::class, 'bblt']);
+    Route::match(['get', 'post'], '/bblt/store',[ProgramController::class, 'bbltstore']);
+   
 });
