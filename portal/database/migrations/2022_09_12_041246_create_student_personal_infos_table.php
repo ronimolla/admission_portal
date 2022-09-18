@@ -16,18 +16,21 @@ return new class extends Migration
         Schema::create('student_personal_infos', function (Blueprint $table) {
             $table->id();
             $table->string('student_id')->unique();
-            $table->string('full_name');
-            $table->string('gender');
-            $table->date('dob');
-            $table->string('nationality');
-            $table->string('father_name');
-            $table->string('mother_name');          
-            $table->string('guardian_name');
-            $table->string('guardian_relation');
-            $table->string('ethnicity');
-            $table->string('disability');
-            $table->integer('nid');         
-            $table->integer('birth_certificate');
+            $table->string('program_name')->unique();
+            $table->string('full_name')->nullable();
+            $table->string('gender')->nullable();
+            $table->date('dob')->nullable();
+            $table->string('nationality')->nullable();
+            $table->string('father_name')->nullable();
+            $table->string('mother_name')->nullable();          
+            $table->string('guardian_name')->nullable();
+            $table->string('guardian_relation')->nullable();
+            $table->string('ethnicity')->nullable();
+            $table->string('ethnicity_name')->nullable();
+            $table->string('disability')->nullable();
+            $table->string('disability_name')->nullable();
+            $table->integer('nid')->nullable();        
+            $table->integer('birth_certificate')->nullable();
             $table->timestamps();
         });
     }
