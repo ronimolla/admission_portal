@@ -16,6 +16,10 @@ return new class extends Migration
         Schema::create('student_marcom_infos', function (Blueprint $table) {
             $table->increments('student_id');
             $table->string('Knowing_media')->nullable();
+            $table->string('careerx_program')->nullable();
+            $table->string('careerx_bach_no')->nullable();
+            $table->string('bootcamp_program')->nullable();
+            $table->string('bootcamp_bach_no')->nullable();
             $table->string('campus_ambassador')->nullable();
             $table->string('university_name')->nullable();
             $table->string('quest_1')->nullable();

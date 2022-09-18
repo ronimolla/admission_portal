@@ -15,9 +15,9 @@ return new class extends Migration
     {
         Schema::create('student_contact_infos', function (Blueprint $table) {
             $table->increments('student_id');
-            $table->string('email_address');
-            $table->integer('personal_phone_no');
-            $table->integer('emergency_contact_no');
+            $table->string('email_address')->nullable();
+            $table->integer('personal_phone_no')->nullable();
+            $table->integer('emergency_contact_no')->nullable();
             $table->integer('guardian_phone_no')->nullable();
             $table->integer('guardian_phone_no2')->nullable();
             $table->string('guardian_email_address')->nullable();          

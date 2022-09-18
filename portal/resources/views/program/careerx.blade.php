@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>CareerX Form</title>
+	<link rel="icon" type="image/x-icon" href="{{asset('images/favicon.ico')}}">
+	<!-- Mobile Specific Metas -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<!-- Font-->
+	<link rel="stylesheet" type="text/css" href="{{asset('css/opensans-font.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{asset('css/roboto-font.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{asset('fonts/material-design-iconic-font/css/material-design-iconic-font.min.css')}}">
+	<!-- datepicker -->
+	<link rel="stylesheet" type="text/css" href="{{asset('css/jquery-ui.min.css')}}">
+	<!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+	<!-- Main Style CSS -->
+    <link rel="stylesheet" href="{{asset('css/style.css')}}">
+
+
+	<style>
+		div.sentence {
+		  font-size: 13px;
+		}		
+		div.subHeading {
+		  font-size: 16px;
+		}	
+		div.Heading {
+		  font-size: 18px;
+		}
+		.dropdown-menu {
+ 		  max-height: 150px;
+  		  overflow-y: scroll;
+		}
+		.f2:hover	{ border: 2px solid black; background-color: red; opacity:1.0;}
+	</style>
+</head>
+
+<body>
+	<div class="page-content" style="background: darkblue">
+		<div class="wizard-v4-content">
+			<div class="wizard-form">
+				<div class="wizard-header">
+					<img src="{{asset('images/bylc-logo.png')}}" alt="" width="280" height="50"> <br><br>
+					<div class="Heading" style="font-weight: bold ">CareerX Application Form</div>
+				</div>
+		      
+				<form class="form-register" method="post" action="{{url('/careerx/store')}}"  novalidate="novalidate">{{csrf_field()}}
+		        	<div id="form-total">
+
+		        		<!-------------------------------- GUIDELINES ----------------------------------->
+			            <h2>
+							<!-- form template -->
+			            </h2>
+						<input type="hidden" class="form-control" id="program_name"  name="program_name" value="CareerX" >
+			            <section>
+							<div class="container">
+										<div class="sentence" style="font-weight: bold ">About CareerX: </div>
+										<div class="sentence">CareerX is an extensive month-long professional development program designed to help graduates and young professionals get the best start possible with their professional lives. The program covers essential topics pertinent for the modern workplace, including communication, management, operations, intrapreneurship, and more. Video-based online modules are supplemented with instructor-led, in-person, and virtual sessions, as well as weekly capstone projects to ensure a truly meaningful learning experience.</div>
+										<br>
+                                        <div class="sentence" style="font-weight: bold ">CareerX classes include: </div>
+                                          <ul>
+                                            <li style="font-size: 13px;">session with industry experts </li>
+                                            <li style="font-size: 13px;">small group facilitation</li>
+                                            <li style="font-size: 13px;">peer-to-peer learning</li>
+                                            <li style="font-size: 13px;">preparation for placement </li>
+                                            <li style="font-size: 13px;">job placement with reputed national organizations</li>
+                                          </ul>
+										<div class="sentence" style="font-weight: bold ">Eligibility Criteria: </div>
+                                        <ul>
+                                            <li style="font-size: 13px;">3rd and 4th year undergraduate students</li>
+                                            <li style="font-size: 13px;">Postgraduate students</li>
+                                            <li style="font-size: 13px;">University graduates looking for job opportunities</li>
+                                        </ul>
+                                        <a style="font-weight: bold ; font-size: small">Program Duration: </a> <a style="font-size: small">October 10–November 04, 2022</a> 
+                                        <br><br>
+                                        <a style="font-weight: bold ; font-size: small">Class Schedule: </a> <a style="font-size: small">Instructor-led virtual and physical classes will be held on the following dates-</a><br>
+                                        <table class="table table-bordered border-primary">
+                                            <thead>
+                                                <tr>
+                                                    <th colspan="6" scope="col">CareerX 22</th>
+                                                </tr>
+                                            </thead>
+                                              <tbody>
+                                                <tr>
+                                                    <th style="font-size: 13px;">No. of class</th>
+                                                    <th style="font-size: 13px;">Day</th>
+                                                    <th style="font-size: 13px;">Date</th>
+                                                    <th style="font-size: 13px;">Platform</th>
+                                                    <th style="font-size: 13px;">Class time</th>
+                                                </tr>
+                                                <tr>
+                                                    <td style="font-size: 13px;">Class 1</td>
+                                                    <td style="font-size: 13px;">Monday</td>
+                                                    <td style="font-size: 13px;">October 10, 2022</td>
+                                                    <td style="font-size: 13px;">Online</td>
+                                                    <td style="font-size: 13px;">6:00 PM - 08:30 PM</td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="font-size: 13px;">Class 2</td>
+                                                    <td style="font-size: 13px;">Wednesday</td>
+                                                    <td style="font-size: 13px;">October 12, 2022</td>
+                                                    <td style="font-size: 13px;">Online</td>
+                                                    <td style="font-size: 13px;">6:00 PM - 08:30 PM</td>
+                                                </tr>
+                                              </tbody>
+                                        </table>
+
+                                        <br>
+                                        <a style="font-weight: bold ; font-size: small">Registration fees: </a> <a style="font-size: small">The registration fee is BDT 1,000</a> 
+                                        <br><br>
+                                        <a style="font-weight: bold ; font-size: small">Admission procedure: </a> <a style="font-size: small">All interested applicants must complete the application form. After the initial screening of the application forms (round 1), a phone interview (round 2) will be held. Please take your time and carefully fill out the following application in English.</a> 
+                                        <br><br>
+                                        <a style="font-weight: bold ; font-size: small">Application deadline: </a> <a style="font-size: small">Sunday, September 3, 2022</a> 
+                                        <br><br>    
+						    </div>
+			            </section>
+
+			            <!-------------------------------- PERSONAL INFORMATION ----------------------------------->
+			            <h2>
+							<!-- form template -->
+			            </h2>
+			            <section>
+			                <center>
+								<a style="font-size: medium ; color: darkblue; font-weight: bold">Personal Information</a><br>
+								<a style="font-size: medium ; color: darkblue; font-weight: bold">(ব্যক্তিগত তথ্যাদি)</a><br>
+								<a style="font-size: x-small">Please provide your personal information carefully</a><br>
+								<a style="font-size: smaller">(অনুগ্রহ করে নিম্নের ব্যক্তিগত তথ্যাদি সঠিকভাবে পূরণ করুন)</a>
+							</center>
+							<br><br>
+							<a style="font-size: small ; font-weight: bold">Full Name (পূর্ণ নাম)</a><br>
+							<a style="font-size: smaller ; color: gray; ">As per passport or national ID or academic certificate (পাসপোর্ট বা জাতীয় পরিচয়পত্র বা একাডেমিক সার্টিফিকেট অনুযায়ী) (ex. Zuhair Bin Zabbar)</a><br>
+							<input type="text" class="form-control" id="name" name="full-name" required>
+
+							<br>
+							<!-- Gender -->
+							<a style="font-size: small ; font-weight: bold">Gender (লিঙ্গ)</a><br>
+							<div class="form-row">
+								<div id="radio">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <input type="radio" name="gender" value="male" > <a style="font-size: small">Male (পুরুষ)</a>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <input type="radio" name="gender" value="female"> <a style="font-size: small">Female (নারী)</a>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <input type="radio" name="gender" value="other"> <a style="font-size: small">Other (অন্যান্য)</a>
+                                        </div>
+                                    </div>
+								</div>
+							</div>
+							<br>
+
+							<!-- Date and Nationality -->
+							<div class="row g-3">
+								<div class="col-md-6">
+									<a style="font-size: small ; font-weight: bold">Date of Birth (জন্ম তারিখ)</a><br>
+									<!-- DatePicker -->
+									<div class="input-group date" id="datepicker">
+										<input type="text" class="form-control" id="date" name="date-of-birth"/>
+										<span class="input-group-append">
+										  <span class="input-group-text bg-light d-block">
+											<i class="fa fa-calendar"></i>
+										  </span>
+										</span>
+									</div>
+								
+								
+						        </div>
+								<div class="col-md-6">
+									<a style="font-size: small ; font-weight: bold">Nationality (জাতীয়তা)</a><br>
+									<input type="text" class="form-control" id="nationality" name="nationality">
+								</div>
+							</div>
+
+							<br>
+							<!-- Father and Mother Name -->
+							<div class="row g-3">
+								<div class="col-md-6">
+									<a style="font-size: small ; font-weight: bold">Father Name (বাবার নাম)</a><br>
+									<input type="text" class="form-control" id="father_name" name="father_name">
+								</div>
+								<div class="col-md-6">
+									<a style="font-size: small ; font-weight: bold">Mother Name (মায়ের নাম)</a><br>
+									<input type="text" class="form-control" id="mother_name" name="mother-name">
+								</div>
+							</div>
+
+							<br>
+							<!-- Mobile and Emergency Contact -->
+							<div class="row g-3">
+								<div class="col-md-6">
+									<a style="font-size: small ; font-weight: bold">Mobile Number (মোবাইল নম্বর)</a><br>
+									<a style="font-size: smaller ; color: gray; ">01700000000</a><br>
+									<input type="text" class="form-control" id="mobile" name="mobile-number">
+								</div>
+								<div class="col-md-6">
+									<a style="font-size: small ; font-weight: bold">Emergency Contact Number (জরুরী প্রয়োজনে)</a><br>
+									<a style="font-size: smaller ; color: gray; ">01700000000</a><br>
+									<input type="text" class="form-control" id="emergency_contact" name="emergency-contact">
+								</div>
+							</div>
+
+							<br>
+							
+							<div class="row g-3">
+								<div class="col-md-6">
+									<!-- Email -->
+									<a style="font-size: small ; font-weight: bold">Email Address (ইমেইল)</a><br>
+									<input type="email" class="form-control" id="email" name="email-address">
+								</div>
+								<div class="col-md-6">
+									<!-- NID -->
+									<a style="font-size: small ; font-weight: bold">NID</a><br>
+									<input type="text" class="form-control" name="nid" id="nid" name="nid">
+								</div>
+							</div>
+							<br><br>
+							
+
+							<!-- Ethnicity and Disability -->
+							<a style="font-size: small ; font-weight: bold">Do you belong to any ethnic community, i.e.Chakma, Marma, etc? (আপনি কি কোন ক্ষুদ্র নৃগোষ্ঠীর অন্তর্ভুক্ত, যেমন চাকমা, মারমা ইত্যাদি?)</a><br>
+							<div class="form-row">
+								<div id="radio">
+									<input type="radio" name="ethnicity" onclick="javascript:ethnicityCheck();"  id="ethnicCheck" value="yes" > <a style="font-size: small">Yes (হ্যাঁ)</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									<input type="radio" name="ethnicity" onclick="javascript:ethnicityCheck();"  id="not_ethnicCheck" value="no"> <a style="font-size: small">No (না)</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								</div>
+								<div id="ethnic" style="display:none">
+                                    <a style="font-size: small ; font-weight: bold">If yes, please mention below. (অনুগ্রহ করে উল্লেখ করুন)</a>
+                                    <input type="text" class="form-control" id="ethnicity_name" name="ethnicity_name">
+                                </div>
+							</div><br>
+							<a style="font-size: small ; font-weight: bold">Do you have any disability, i.e., visual or hearing disabilities, physical disability, etc.? (আপনার কি কোন প্রতিবন্ধিতা রয়েছে, যেমনঃ দৃষ্টি, শ্রবণ, শারীরিক প্রতিবন্ধিতা বা অন্যান্য?)</a><br>
+							<div class="form-row">
+								<div id="radio">
+									<input type="radio" name="disability" onclick="javascript:disabilityCheck();"  id="disableCheck" value="yes" > <a style="font-size: small">Yes (হ্যাঁ)</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									<input type="radio" name="disability" onclick="javascript:disabilityCheck();"  id="not_disableCheck" value="no"> <a style="font-size: small">No (না)</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								</div>
+								<div id="disable" style="display:none">
+                                    <a style="font-size: small ; font-weight: bold">If yes, please mention below. (অনুগ্রহ করে উল্লেখ করুন)</a>
+                                    <input type="text" class="form-control" id="disability_name" name="disability_name">
+                                </div>
+							</div>
+
+
+							<br><br>
+							<!-- Present Address -->
+							<div class="subHeading" style="font-weight: bold ">Present Address (বর্তমান ঠিকানা)</div><br>
+
+							<div class="row g-3">
+								<!-- Apartment -->
+								<div class="col-md-4">
+									<a style="font-size: small ; font-weight: bold">Apartment No (এপার্টমেন্ট নং)</a><br>
+									<input type="text" class="form-control" id="per_apartment" name="per_apartment">
+								</div>	
+								<!-- House -->
+								<div class="col-md-4">
+									<a style="font-size: small ; font-weight: bold">House/Holding No. (বাসা/হোল্ডিং নং)</a><br>
+									<input type="text" class="form-control" id="per_house" name="per_house">
+								</div>
+								<!-- Road -->
+								<div class="col-md-4">
+									<a style="font-size: small ; font-weight: bold">Road No./Village (রোড নং/গ্রাম)</a><br>
+									<input type="text" class="form-control" id="per_road" name="per_road">
+								</div>
+							</div>
+							
+							<div class="row g-3">
+								<!-- Thana -->
+								<div class="col-md-4">
+									<a style="font-size: small ; font-weight: bold">Thana/Upazila (থানা/উপজেলা)</a><br>
+									<input type="text" class="form-control" id="per_thana" name="per_thana">
+								</div>	
+								<!-- District -->
+								<div class="col-md-4">
+									<a style="font-size: small ; font-weight: bold">District (জেলা)</a><br>
+									<div class="input-group mb-3" class="dropdown-menu">
+										<select class="form-select" id="per_district" name="per_district">
+										  <option selected>Select District</option>
+										  <option value="Bagerhat">Bagerhat (বাগেরহাট)</option>
+										  <option value="Bandarban">Bandarban (বান্দরবান)</option>
+										  <option value="Barguna">Barguna (বরগুনা)</option>
+										  <option value="Barishal">Barishal (বরিশাল)</option>
+										  <option value="Bhola">Bhola (ভোলা)</option>
+										  <option value="Barishal">Bogura (বগুড়া)</option>
+										  <option value="Bhola">Brahmanbaria (ব্রাহ্মণবাড়িয়া)</option>
+										</select>
+									</div>
+								</div>
+								<!-- Division -->
+								<div class="col-md-4">
+									<a style="font-size: small ; font-weight: bold">Division (বিভাগ)</a>
+									<div class="input-group mb-3">
+										<select class="form-select" id="per_division" name="per_division">
+										  <option selected>Select Division</option>
+										  <option value="Chattagram">Chattagram (চট্টগ্রাম)</option>
+										  <option value="Rajshahi">Rajshahi (রাজশাহী)</option>
+										  <option value="Khulna">Khulna (খুলনা)</option>
+										  <option value="Barisal">Barisal (বরিশাল)</option>
+										  <option value="Sylhet">Sylhet (সিলেট)</option>
+										  <option value="Dhaka">Dhaka (ঢাকা)</option>
+										  <option value="Rangpur">Rangpur (রংপুর)</option>
+										  <option value="Mymensingh">Mymensingh (ময়মনসিংহ)</option>
+										</select>
+									</div>
+								</div>
+							</div>
+							
+							<div class="row g-3">
+								<!-- Post Code -->
+								<div class="col-md-4">
+									<a style="font-size: small ; font-weight: bold">Post code (পোস্ট কোড)</a><br>
+									<input type="text" class="form-control" id="per_pc" name="per_pc">
+								</div>	
+							</div>
+
+
+							<br><br>
+							<!-- Permanent Address -->
+							<a style="font-size: small ; font-weight: bold">Is your permanent address similar to the present address? (আপনার স্থায়ী ঠিকানা ও বর্তমান ঠিকানা কি একই?)</a><br>
+							<div class="form-row">
+								<div id="radio">
+									<input type="radio" name="same_address" onclick="javascript:yesnoCheck();"  id="yesCheck" value="yes" > <a style="font-size: small">Yes (হ্যাঁ)</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									<input type="radio" name="same_address" onclick="javascript:yesnoCheck();"  id="noCheck" value="no"> <a style="font-size: small">No (না)</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								</div>
+							</div>
+
+                            <div id="ifYes" style="display:none">
+								<br>
+									<div class="subHeading" style="font-weight: bold ">Permanent Address (স্থায়ী ঠিকানা)</div><br>
+								
+									<div class="row g-3">
+										<!-- Apartment -->
+										<div class="col-md-4">
+											<a style="font-size: small ; font-weight: bold">Apartment No (এপার্টমেন্ট নং)</a><br>
+											<input type="text" class="form-control" id="apartment" name="apartment">
+										</div>	
+										<!-- House -->
+										<div class="col-md-4">
+											<a style="font-size: small ; font-weight: bold">House/Holding No. (বাসা/হোল্ডিং নং)</a><br>
+											<input type="text" class="form-control" id="house" name="house">
+										</div>
+										<!-- Road -->
+										<div class="col-md-4">
+											<a style="font-size: small ; font-weight: bold">Road No./Village (রোড নং/গ্রাম)</a><br>
+											<input type="text" class="form-control" id="road" name="road">
+										</div>
+									</div>
+									
+									<div class="row g-3">
+										<!-- Thana -->
+										<div class="col-md-4">
+											<a style="font-size: small ; font-weight: bold">Thana/Upazila (থানা/উপজেলা)</a><br>
+											<input type="text" class="form-control" id="thana" name="thana">
+										</div>	
+										<!-- District -->
+										<div class="col-md-4">
+											<a style="font-size: small ; font-weight: bold">District (জেলা)</a><br>
+											<div class="input-group mb-3">
+												<select class="form-select" id="district" name="district">
+												<option selected>Select District</option>
+												<option value="Bagerhat">Bagerhat (বাগেরহাট)</option>
+												<option value="Bandarban">Bandarban (বান্দরবান)</option>
+												<option value="Barguna">Barguna (বরগুনা)</option>
+												<option value="Barishal">Barishal (বরিশাল)</option>
+												<option value="Bhola">Bhola (ভোলা)</option>
+												<option value="Barishal">Bogura (বগুড়া)</option>
+												<option value="Bhola">Brahmanbaria (ব্রাহ্মণবাড়িয়া)</option>
+												</select>
+											</div>
+										</div>
+										<!-- Division -->
+										<div class="col-md-4">
+											<a style="font-size: small ; font-weight: bold">Division (বিভাগ)</a>
+											<div class="input-group mb-3">
+												<select class="form-select" id="division" name="division">
+												<option selected>Select Division</option>
+												<option value="Chattagram">Chattagram (চট্টগ্রাম)</option>
+												<option value="Rajshahi">Rajshahi (রাজশাহী)</option>
+												<option value="Khulna">Khulna (খুলনা)</option>
+												<option value="Barisal">Barisal (বরিশাল)</option>
+												<option value="Sylhet">Sylhet (সিলেট)</option>
+												<option value="Dhaka">Dhaka (ঢাকা)</option>
+												<option value="Rangpur">Rangpur (রংপুর)</option>
+												<option value="Mymensingh">Mymensingh (ময়মনসিংহ)</option>
+												</select>
+											</div>
+										</div>
+									</div>
+									
+									<div class="row g-3">
+										<!-- Post Code -->
+										<div class="col-md-4">
+											<a style="font-size: small ; font-weight: bold">Post code (পোস্ট কোড)</a><br>
+											<input type="text" class="form-control" id="pc" name="pc">
+										</div>	
+									</div>
+							</div>
+							<br><br>
+
+
+							<!-- Educational -->
+							<center>
+								<a style="font-size: medium ; color: darkblue ; font-weight: bold">Educational Information</a><br>
+								<a style="font-size: x-small">Please provide your educational information carefully</a><br>
+							</center>
+							<br><br>
+
+                            <!-- Medium -->
+							<a style="font-size: small ; font-weight: bold">Medium (মাধ্যম)</a><br>
+							<a style="font-size: smaller ; color: gray; ">Please select your education medium based on your SSC/Dakhil/O level exam (অনুগ্রহ করে আপনার এসএসসি/দাখিল/ও লেভেল পরীক্ষার উপর শিক্ষা মাধ্যম নির্বাচন করুন)</a><br>
+							
+							<div class="form-row">			
+								<div id="radio">
+									<div class="row g-1">
+										<div class="col-md-4">
+											<input type="radio" name="medium" value="Bengali Version" > <a style="font-size: small">Bengali Version</a> 
+										</div>
+										<div class="col-md-4">
+											<input type="radio" name="medium" value="English Version"> <a style="font-size: small">English Version</a>
+										</div>	
+									</div>
+									<div class="row g-1">
+										<div class="col-md-4">
+											<input type="radio" name="medium" value="English Medium" > <a style="font-size: small">English Medium</a>
+										</div>
+										<div class="col-md-4">
+											<input type="radio" name="medium" value="Madrassa"> <a style="font-size: small">Madrassa</a>
+										</div>	
+									</div>			
+								</div>
+							</div>
+							<br>
+
+                            <!-- Current Year of Study -->
+
+                            
+                            <a style="font-size: small ; font-weight: bold">Current Year of Study</a><br>	
+                            <div class="form-row">			
+                                <div id="radio">
+                                    <div class="row g-1">
+                                        <div class="col-md-4">
+                                            <input type="radio" name="study_year" value="Undergraduate 1st year"> <a style="font-size: small">Undergraduate 1st year</a> 
+                                        </div>
+                                        <div class="col-md-4">
+                                            <input type="radio" name="study_year" value="Undergraduate 1st year"> <a style="font-size: small">Undergraduate 2nd year</a>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <input type="radio" name="study_year" value="Undergraduate 3rd year"> <a style="font-size: small">Undergraduate 3rd year</a>
+                                        </div>	
+                                    </div>
+                                    <div class="row g-1">
+                                        <div class="col-md-4">
+                                            <input type="radio" name="study_year" value="Undergraduate 4th year"> <a style="font-size: small">Undergraduate 4th year</a>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <input type="radio" name="study_year" value="Graduated"> <a style="font-size: small">Graduated</a>
+                                        </div>	
+                                        <div class="col-md-4">
+                                            <input type="radio" name="study_year" value="Master's 1st year"> <a style="font-size: small">Master's 1st year</a>
+                                        </div>	
+                                    </div>	
+                                    <div class="row g-1">
+                                        <div class="col-md-4">
+                                            <input type="radio" name="study_year" value="Master's 2nd year"> <a style="font-size: small">Master's 2nd year</a>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <input type="radio" name="study_year" value="Diploma"> <a style="font-size: small">Diploma</a>
+                                        </div>
+                                    </div>			
+                                </div>
+                            </div>
+                            <br>
+
+							<!-- Institution Name -->
+							<a style="font-size: small ; font-weight: bold">Name of Institution</a><br>
+                            <a style="font-size: smaller ; color: gray; ">Example: University of Dhaka</a><br>
+							<input type="text" class="form-control" name="institution" id="institution">
+							<br>
+
+                            <!-- Year of Graduation -->
+							<a style="font-size: small ; font-weight: bold">Degree</a><br>
+                            <a style="font-size: smaller ; color: gray; ">Example: B.Sc. in Computer Science and Engineering</a><br>
+							<input type="text" class="form-control" name="degree" id="degree">
+							<br>
+
+                            <!-- CGPA -->
+							<a style="font-size: small ; font-weight: bold">CGPA</a><br>
+                            <a style="font-size: smaller ; color: gray; ">Example: 3.48</a><br>
+							<input type="text" class="form-control" id="cgpa" name="cgpa">
+							<br>
+                            
+                            <!-- Year of Graduation -->
+							<a style="font-size: small ; font-weight: bold">Expected/Year of Graduation</a><br>
+                            <a style="font-size: smaller ; color: gray; ">Example: 2022</a><br>
+							<input type="text" class="form-control" name="graduation_year" id="graduation_year">
+							<br>
+
+							<!-- Marketing Questionaires -->
+							<a style="font-size: small ; font-weight: bold">How did you learn about the CareerX program?</a><br>
+							<div class="form-row">
+								<div id="radio">
+									<div class="row g-1">
+										<div class="col-md-4">
+											<input type="radio" name="marketing_question" value="Newspaper" > <a style="font-size: small">Newspaper</a> 
+										</div>
+										<div class="col-md-4">
+											<input type="radio" name="marketing_question" value="Campus Ambassador"> <a style="font-size: small">Campus Ambassador</a>
+										</div>	
+                                        <div class="col-md-4">
+											<input type="radio" name="marketing_question" value="Youtube"> <a style="font-size: small">Youtube</a>
+										</div>	
+									</div>					
+									<div class="row g-1">
+										<div class="col-md-4">
+											<input type="radio" name="marketing_question" value="Website" > <a style="font-size: small">Website</a>
+										</div>
+										<div class="col-md-4">
+											<input type="radio" name="marketing_question" value="Workshop or presentation"> <a style="font-size: small">Workshop or presentation</a>
+										</div>	
+                                        <div class="col-md-4">
+											<input type="radio" name="marketing_question" value="Instagram"> <a style="font-size: small">Instagram</a>
+										</div>	
+									</div>							
+									<div class="row g-1">
+										<div class="col-md-4">
+											<input type="radio" name="marketing_question" value="Facebook" > <a style="font-size: small">Facebook page</a> 
+										</div>
+                                        <div class="col-md-4">
+											<input type="radio" name="marketing_question" value="Campus Ambassador"> <a style="font-size: small">Campus Ambassador</a>
+										</div>	
+										<div class="col-md-4">
+											<input type="radio" name="marketing_question" value="Friends and family"> <a style="font-size: small">Friends and family</a>
+										</div>	
+									</div>			
+									<div class="row g-1">
+										<div class="col-md-4">
+											<input type="radio" name="marketing_question" value="University Club" > <a style="font-size: small">University Club</a>
+										</div>
+                                        <div class="col-md-4">
+											<input type="radio" name="marketing_question" value="Linkedin"> <a style="font-size: small">Linkedin</a>
+										</div>
+										<div class="col-md-4">
+											<input type="radio" name="marketing_question" value="Email"> <a style="font-size: small">Email</a>
+										</div>	
+									</div>	
+                                    <div class="row g-1">
+										<div class="col-md-4">
+											<input type="radio" name="marketing_question" value="Promotional SMS" > <a style="font-size: small">Promotional SMS</a>
+										</div>
+                                        <div class="col-md-4">
+											<input type="radio" name="marketing_question" value="Class Representative"> <a style="font-size: small">Class Representative</a>
+										</div>
+										<div class="col-md-4">
+											<input type="radio" name="marketing_question" value="Others"> <a style="font-size: small">Others</a>
+										</div>	
+									</div>			
+								</div>
+							</div>
+							<br><br>
+
+                            
+							<div class="row g-1">
+								<div class="col-md-6">
+                                    <a style="font-size: small ; font-weight: bold">Have you applied to any of BYLC's CareerX programs before?</a><br>
+                                    <div class="row g-1">
+                                        <div class="col-md-4">
+                                            <input type="radio" name="CareerX_program"  onclick="javascript:careerxProgram();" id="CareerX_program_yes"  value="Yes"> <a style="font-size: small">Yes</a>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <input type="radio" name="CareerX_program" onclick="javascript:careerxProgram();" id="CareerX_program_no" value="No"> <a style="font-size: small">No</a>
+                                        </div>
+                                    </div>
+                                    <!-- If a CareerX program is done before -->
+                                    <div id="ifCareerX" style="display:none">
+                                        <a style="font-size: small ; font-weight: bold">Which CareerX program did you apply to before?</a><br>   
+											<div class="input-group mb-3">
+												<select class="form-select" id="CareerX" name="CareerX">
+												<option selected>Please Select</option>
+												<option value="CareerX 22">CareerX 22</option>
+												<option value="CareerX 21">CareerX 21</option>
+												<option value="CareerX 20">CareerX 20</option>
+												<option value="CareerX 19">CareerX 19</option>
+												<option value="CareerX 18">CareerX 18</option>
+												<option value="CareerX 17">CareerX 17</option>
+												<option value="CareerX 16">CareerX 16</option>
+												</select>
+											</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <a style="font-size: small ; font-weight: bold">Have you participated in any of BYLC's Bootcamp program?</a><br>
+                                    <div class="row g-1">
+                                        <div class="col-md-4">
+                                            <input type="radio" name="BYLC_bootcamp"  onclick="javascript:bylcBootcamp();" id="BYLC_bootcamp_yes" value="Yes"> <a style="font-size: small">Yes</a>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <input type="radio" name="BYLC_bootcamp" onclick="javascript:bylcBootcamp();" id="BYLC_bootcamp_no" value="No"> <a style="font-size: small">No</a>
+                                        </div>
+                                    </div>
+                                    <!-- If a BYLC program is done before -->
+                                    <div id="ifBYLCprogram" style="display:none">
+                                        <a style="font-size: small ; font-weight: bold">Which Bootcamp program did you apply to before?</a><br>   
+											<div class="input-group mb-3">
+												<select class="form-select" id="CareerX" name="bootcamp">
+												<option selected>Please Select</option>
+												<option value="Career Bootcamp 2020">Career Bootcamp 2020</option>
+												<option value="ICT Career Bootcamp 2021">ICT Career Bootcamp 2021</option>
+												<option value="Sales Career Bootcamp 2021">Sales Career Bootcamp 2021</option>
+												</select>
+											</div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                            <br><br>
+
+							<!-- Analytical -->
+							<center>
+								<a style="font-size: medium ; color: darkblue ; font-weight: bold">Analytical Questions</a><br>		
+                            </center>
+							<br>
+
+							<a style="font-size: smaller; font-weight: bold;">Read the below passage carefully and answer the questions:</a><br>
+							<p style="font-size: smaller">At a small company, parking spaces are reserved for the top executives: CEO, President, Vice President, Secretary, and Treasurer with the spaces lined up in that order. The parking lot guard can tell at a glance if the cars are parked correctly by looking at the color of the cars. The cars are yellow, green, purple, red, and blue, and the executives' names are Alice, Bert, Cheryl, David, and Enid.</p>
+
+							<ul style="font-size: smaller">
+								<li>The car in the first space is red.</li>
+								<li>A blue car is parked between the red car and the green car.</li>
+								<li>The car in the last space is purple.</li>
+								<li>The secretary drives a yellow car.</li>
+								<li>Alice's car is parked next to David's.</li>
+								<li>Enid drives a green car.</li>
+								<li>Bert's car is parked between Cheryl's and Enid's.</li>
+								<li>David's car is parked in the last space.</li>
+							</ul>
+
+							<a style="font-size: smaller;">Q1. Who is the secretary?</a><br>
+							<div class="row g-1">
+								<div class="col-md-4">
+									<input type="radio" name="mcq1"  value="Enid"> <a style="font-size: small">A. Enid</a>
+								</div>
+								<div class="col-md-4">
+									<input type="radio" name="mcq1"  value="Cheryl"> <a style="font-size: small">B. Cheryl</a>
+								</div>
+								<div class="col-md-4">
+									<input type="radio" name="mcq1"  value="Alice"> <a style="font-size: small">C. Alice</a>
+								</div>
+							</div>
+							<div class="row g-1">
+								<div class="col-md-4">
+									<input type="radio" name="mcq1"  value="David"> <a style="font-size: small">D. David</a>
+								</div>
+								<div class="col-md-4">
+									<input type="radio" name="mcq1"  value="Bert"> <a style="font-size: small">E. Bert</a>
+								</div>
+							</div>
+							<br>
+
+							<a style="font-size: smaller;">Q2.  Who is the CEO?</a><br>
+							<div class="row g-1">
+								<div class="col-md-4">
+									<input type="radio" name="mcq2"  value="Enid"> <a style="font-size: small">A. Enid</a>
+								</div>
+								<div class="col-md-4">
+									<input type="radio" name="mcq2"  value="Cheryl"> <a style="font-size: small">B. Cheryl</a>
+								</div>
+								<div class="col-md-4">
+									<input type="radio" name="mcq2"  value="Alice"> <a style="font-size: small">C. Alice</a>
+								</div>
+							</div>
+							<div class="row g-1">
+								<div class="col-md-4">
+									<input type="radio" name="mcq2"  value="David"> <a style="font-size: small">D. David</a>
+								</div>
+								<div class="col-md-4">
+									<input type="radio" name="mcq2"  value="CareerX_program_yes"> <a style="font-size: small">E. Bert</a>
+								</div>
+							</div>
+							<br>
+
+
+							<a style="font-size: smaller;">Q3. What color is the vice president's car?</a><br><br>
+							<div class="row g-1">
+								<div class="col-md-4">
+									<input type="radio" name="mcq3"  value="green"> <a style="font-size: small">A. green</a>
+								</div>
+								<div class="col-md-4">
+									<input type="radio" name="mcq3"  value="blue"> <a style="font-size: small">B. blue</a>
+								</div>
+								<div class="col-md-4">
+									<input type="radio" name="mcq3"  value="red"> <a style="font-size: small">C. red</a>
+								</div>
+							</div>
+							<div class="row g-1">
+								<div class="col-md-4">
+									<input type="radio" name="mcq3"  value="David"> <a style="font-size: small">D. David</a>
+								</div>
+								<div class="col-md-4">
+									<input type="radio" name="mcq3"  value="Bert"> <a style="font-size: small">E. Bert</a>
+								</div>
+							</div>
+							<br><br>
+
+							<!-- Analytical -->
+							<center>
+								<a style="font-size: medium ; color: darkblue ; font-weight: bold">Short Essay</a><br>		
+                            </center>
+							<br>
+
+						
+                            <a style="font-size: small ; font-weight: bold">Write a short bio. Use this opportunity to introduce yourself.</a><br>
+							<a style="font-size: x-small ; color: gray; ">
+                                <ul>
+                                    <li>Include your full name initial</li>
+                                    <li>Include the name of your institution/organization</li>
+                                    <li>Include your grade level</li>
+                                    <li>Tell about your extracurricular activities  (If you were involved with many activities/projects and received many honors/awards, please mention top 3-4 since this is a short bio)</li>
+                                </ul>
+                            </a>
+                            <a style="font-size: small ; color: gray; ">Maximum 200 words</a>
+							<br>
+							<div class="form-floating">
+								<textarea class="form-control" rows="8" style="height:100%;" placeholder="Leave a comment here" id="answer" name="bio"></textarea>
+								<label for="floatingTextarea">Write answer here</label>
+							</div>
+
+							<br><br>
+							<center><button type="submit" class="btn btn-primary">Apply</button></center>
+
+			            </section>
+		        	</div>
+		        </form>
+			</div>
+		</div>
+	</div>
+	<script src="{{asset('js/jquery-3.3.1.min.js')}}"></script>
+	<script src="{{asset('js/jquery.steps.js')}}"></script>
+	<script src="{{asset('js/jquery-ui.min.js')}}"></script>
+	<script src="{{asset('js/main.js')}}"></script>
+	<!-- Option 1: Bootstrap Bundle with Popper -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+
+	<!-- Hide and Display form fields based on necessity -->
+    <script type="text/javascript">
+
+        function yesnoCheck() {
+            if (document.getElementById('yesCheck').checked) {
+                document.getElementById('ifYes').style.display = 'none';
+            } 
+            else {
+                document.getElementById('ifYes').style.display = 'block';
+            }
+        }
+
+        function ethnicityCheck(){
+            if (document.getElementById('ethnicCheck').checked) {
+                document.getElementById('ethnic').style.display = 'block';
+            }
+            else{
+                document.getElementById('ethnic').style.display = 'none';
+            }
+        }
+
+        function disabilityCheck(){
+            if (document.getElementById('disableCheck').checked) {
+                document.getElementById('disable').style.display = 'block';
+            }
+            else{
+                document.getElementById('disable').style.display = 'none';
+            }
+        }
+
+        function careerxProgram(){
+            if (document.getElementById('CareerX_program_yes').checked) {
+                document.getElementById('ifCareerX').style.display = 'block';
+            }
+            else{
+                document.getElementById('ifCareerX').style.display = 'none';
+            }
+        }
+
+        function bylcBootcamp(){
+            if (document.getElementById('BYLC_bootcamp_yes').checked) {
+                document.getElementById('ifBYLCprogram').style.display = 'block';
+            }
+            else{
+                document.getElementById('ifBYLCprogram').style.display = 'none';
+            }
+        }
+
+    </script>
+
+
+</body>
+</html>

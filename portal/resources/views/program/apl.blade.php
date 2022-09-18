@@ -2,14 +2,14 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>BBLT Form</title>
+	<title>APL Form</title>
 	<link rel="icon" type="image/x-icon" href="{{asset('images/favicon.ico')}}">
 	<!-- Mobile Specific Metas -->
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<!-- Font-->
 	<link rel="stylesheet" type="text/css" href="{{asset('css/opensans-font.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{asset('css/roboto-font.css')}}">
-	<link rel="stylesheet" type="text/css" href="fonts/material-design-iconic-font/css/material-design-iconic-font.min.css">
+	<link rel="stylesheet" type="text/css" href="{{asset('fonts/material-design-iconic-font/css/material-design-iconic-font.min.css')}}">
 	<!-- datepicker -->
 	<link rel="stylesheet" type="text/css" href="{{asset('css/jquery-ui.min.css')}}">
 	<!-- Bootstrap CSS -->
@@ -28,87 +28,77 @@
 		div.Heading {
 		  font-size: 18px;
 		}
-
 		.dropdown-menu {
  		  max-height: 150px;
   		  overflow-y: scroll;
 		}
-
 		.f2:hover	{ border: 2px solid black; background-color: red; opacity:1.0;}
-
 	</style>
 
 </head>
 
 <body>
-	<div class="page-content" style="background:darkgreen">
+	<div class="page-content" style="background:	#800080">
 		<div class="wizard-v4-content">
 			<div class="wizard-form">
 				<div class="wizard-header">
 					<img src="{{asset('images/bylc-logo.png')}}" alt="" width="280" height="50"> <br><br>
-					<div class="Heading" style="font-weight: bold ">Building Bridges through Leadership Training (BBLT) Application Form</div>
-					<div class="subHeading" >বিল্ডিং ব্রিজেস থ্রূ লিডারশিপ ট্রেনিং (বিবিএলটি) আবেদনপত্র</div>
+					<div class="Heading" style="font-weight: bold ">The Art and Practice of Leadership (APL 28) Application Form</div>
+					<div class="subHeading" >দ্যা আর্ট অ্যান্ড প্র্যাকটিস অফ লিডারশিপ (এপিএল) আবেদনপত্র</div>
 				</div>
 		      
-				<form class="form-register"  method="post" action="{{url('/bblt/store')}}" name="add_school" id="add_school" novalidate="novalidate">{{csrf_field()}}
+				<form class="form-register" method="post" action="{{url('/apl/store')}}" name="add_school" id="add_school" novalidate="novalidate">{{csrf_field()}}
 		        	<div id="form-total">
-					<input type="hidden" class="form-control" id="program_name"  name="program_name" value="BBLT" >
+
 		        		<!-------------------------------- GUIDELINES ----------------------------------->
 			            <h2>
 							<!-- form template -->
 			            </h2>
-
+						<input type="hidden" class="form-control" id="program_name"  name="program_name" value="APL" >
 			            <section>
 							<div class="container">
 								<div class="row">
 									<div class="col-md-6">
-										<div class="sentence" style="font-weight: bold ">Important Information about Building Bridges through Leadership Training (BBLT) Program:</div>
+										<div class="sentence" style="font-weight: bold ">About Art and Practice of Leadership: </div>
+										<div class="sentence">The Art and Practice of Leadership (APL) is a seven-day-long leadership and skills development national workshop. Conceptualized at Harvard University, this workshop provides participants with an exceptional opportunity to learn about leadership during a crisis. The participants embark on a stimulating personal journey that develops their leadership potential and helps them gain new competencies to better compete in the fast-changing world. The ongoing pandemic is causing the global economy and job market to change faster than ever before. At the same time, this is creating opportunities for youth to lead change-making initiatives with new skills. In order to get crisis ready and equip yourself with the cutting-edge skills for the post-pandemic world, commence your journey on leadership with high potential youth from all over Bangladesh and also become part of a powerful network of young leaders.</div>
 										<br>
-										<div class="sentence">BBLT is one of BYLC's leadership training programs designed to combine Harvard University courses and educational models. Students develop their leadership skills through analytical thinking and become useful in the role of positive change in society. In the first phase of the program, students conduct experiments, take risks, and question deeply held assumptions in the online classes. In the second phase, students have the opportunity to translate their learning into action by implementing community service projects in underprivileged communities. </div>
-										<br>
-										<div class="sentence" style="font-weight: bold ">By participating in the BBLT program, through online classes the participants will gain the following skills:</div>
-										<br>
-										<a style="font-size: small">1. Public speaking</a><br> <a style="font-size: small">2. Active citizenship</a><br> <a style="font-size: small">3. Teamwork</a><br> <a style="font-size: small">4. Patience and compassion</a><br> <a style="font-size: small">5. Problem-solving</a><br> <a style="font-size: small">6. Professional skills development</a><br> <a style="font-size: small">7. Social service</a>
-										<br><br>
-										<div class="sentence" style="font-weight: bold ">Eligibility Criteria for Applying to the BBLT Program:</div>
-										<br>
-										<a style="font-size: small">1. Students studying in HSC/Alim/A Levels or first/second-year undergraduate students</a><br> <a style="font-size: small">2. Can commit attendance from 3:30 pm to 6:00 pm, five days a week</a><br> <a style="font-size: small">3. Participants must be able to attend the online classes during the training</a><br> <a style="font-size: small">4. Willing to work on implementing online social projects for three weeks as part of the program</a>
-										<br><br>
-										<div class="sentence" style="font-weight: bold ">Application Process and Admission Rules:</div>
-										<br>
-										<div class="sentence">All interested applicants must complete the application form. After the initial screening of the application forms (round one), the shortlisted applicants will be invited for an online written test and interview (round two). Final selected applicants will have the opportunity to register in the program. However, at any time, BYLC reserves the right to change or amend the admission rules, program fees, curriculum, rules of conduct and any information or content referred to through the website or social media.</div>
-										<br>
+										<div class="sentence" style="font-weight: bold ">Eligibility: </div>
+                                        <div class="sentence">Only third or fourth-year undergraduate students and first or second-year full-time master’s students (who have completed their bachelor’s degree not more than two years ago) from an accredited university in Bangladesh are eligible to apply for this seven-day-long national workshop on leadership and professional development.</div>
+                                        <br>
+                                        <a style="font-weight: bold ; font-size: small">Application Deadline: </a> <a style="font-size: small">October 9, 2021</a> 
+                                        <br><br>
+                                        <a style="font-weight: bold ; font-size: small">Class Time: </a> <a style="font-size: small">6:00 pm–8:40 pm</a>
+                                        <br><br>
+                                        <a style="font-weight: bold ; font-size: small">Mode of the Program: </a> <a style="font-size: small">Online</a> 
+                                        <br><br>
+                                        <a style="font-weight: bold ; font-size: small">Program Date: </a> <a style="font-size: small">October 30–November 5, 2021</a> 
+                                        <br><br>
+                                        <a style="font-weight: bold ; font-size: small">Registration Fee: </a> <a style="font-size: small">The registration fee for APL is BDT 5,000, which includes BDT 1,000 for lifetime membership of BYLC Graduate Network (BGN). The regular registration fee of APL is BDT 7,000 but in light of the ongoing pandemic, we are offering a general BDT 2,000 scholarship for all registrants. As a leadership institute, BYLC believes in youth development and will cover the remaining costs through its own consulting and training work and through other funding. If you are already a BYLC graduate and a BGN member, the BGN registration fee will not be applicable for you and you will have to pay BDT 4,000 for registration. Any other financial waiver will not be available.</a> 
+                                        <br><br>                                    
+                                        <a style="font-size: small">Please take your time and carefully fill out the following application form. Shortlisted applicants will be invited for an interview. If you finally get selected, you will receive the registration offer to enrol in this program.</a>
+                                        <br><br>
 									</div>
 									<div class="col-md-6">
-										<div class="sentence" style="font-weight: bold ">বিল্ডিং ব্রিজেস থ্রূ লিডারশিপ ট্রেনিং (বিবিএলটি) প্রোগ্রাম সম্পর্কে কিছু  গুরুত্বপূর্ণ তথ্য:</div>
-									    <br>
-										<div class="sentence">বিবিএলটি হচ্ছে বিওয়াইএলসির একটি অন্যতম নেতৃত্ব বিষয়ক প্রশিক্ষণ প্রোগ্রাম যা হার্ভার্ড বিশ্ববিদ্যালয়ের কোর্সসমূহ এবং শিক্ষামূলক বিভিন্ন মডেলের সমন্বয়ে সাজানো হয়েছে। শিক্ষার্থীরা বিশ্লেষণধর্মী চিন্তার মাধ্যমে নিজেদের নেতৃত্বজ্ঞানকে বিকশিত করে সমাজে ইতিবাচক পরিবর্তনে ভূমিকা পালনের উপযোগী হয়ে গড়ে ওঠে। এই কর্মসূচীর শুরুতে অংশগ্রহণকারীরা অনলাইন ক্লাসে নিজেদের বিভিন্ন ধারণাকে প্রশ্নের সম্মুখীন করেন, বিভিন্ন বিষয়ে পরীক্ষা-নিরীক্ষা করেন এবং ঝুঁকি নেন। পরবর্তী পর্যায়ে সমাজসেবামূলক প্রকল্প বাস্তবায়নের মাধ্যমে তারা তাদের নেতৃত্ব বিষয়ক অর্জিত জ্ঞান প্রয়োগের সুযোগ পেয়ে থাকেন।</div>
+                                        <div class="sentence" style="font-weight: bold ">আর্ট অ্যান্ড প্র্যাকটিস অফ লিডারশিপ সম্পর্কে: </div>
+										<div class="sentence">দ্যা আর্ট অ্যান্ড প্র্যাকটিস অফ লিডারশিপ (এপিএল) একটি ৭ দিনের নেতৃত্ব এবং দক্ষতা উন্নয়নের জাতীয় কর্মশালা। হার্ভার্ড বিশ্ববিদ্যালয়ের ধারণাগত, এই কর্মশালা অংশগ্রহণকারীদের কোনো সঙ্কটের সময় নেতৃত্ব সম্পর্কে শেখার একটি ব্যতিক্রমী সুযোগ সরবরাহ করে। অংশগ্রহণকারীরা একটি উদ্দীপনামূলক আত্মবিশ্লেষণধর্মী যাত্রা শুরু করে যা তাদের নেতৃত্বের সম্ভাবনা বিকশিত করে এবং দ্রুত পরিবর্তনশীল বিশ্বের সাথে তাল মিলিয়ে চলার জন্য নতুন দক্ষতা অর্জন করে। বর্তমান মহামারীটি পুরো বিশ্ব অর্থনীতি এবং চাকরীর বাজারকে আগের চেয়ে দ্রুত পরিবর্তিত করছে একই সাথে, এটি নতুন প্রজন্মের জন্য নতুন দক্ষতার সাথে উত্থানের সুযোগ তৈরি করছে। সংকট তৈরি হওয়ায় এবং মহামারী-পরবর্তী বিশ্বজুড়ে আধুনিক দক্ষতার সাথে নিজেকে গড়ে তোলার জন্য, সারা বাংলাদেশ থেকে সম্ভাব্য যুবকদের সাথে আপনার যাত্রা শুরু করুন এবং যুব নেতাদের একটি শক্তিশালী নেটওয়ার্কের অংশ হয়ে উঠুন।</div>
 										<br>
-										<div class="sentence" style="font-weight: bold ">বিবিএলটি প্রশিক্ষণ প্রোগ্রামে অংশগ্রহণকারী শিক্ষার্থীরা অনলাইন ক্লাসের মাধ্যমে যেসব গুরুত্বপূর্ণ বিষয়ে প্রশিক্ষণ পাবে, তা হলো:</div>
-										<br>
-										<a style="font-size: small">১. পাবলিক স্পিকিং তথা উপস্থিত বক্তৃতা</a><br> <a style="font-size: small">২. সক্রিয় নাগরিকত্ব</a><br> <a style="font-size: small">৩. দলগত কাজ</a><br> <a style="font-size: small">৪. ধৈর্য ও সহনশীলতা</a><br> <a style="font-size: small">৫. সমস্যা সমাধান পদ্ধতি</a><br> <a style="font-size: small">৬. পেশাগত দক্ষতা উন্নয়ন</a><br> <a style="font-size: small">৭. সোশ্যাল সার্ভিস</a>
-										<br><br>
-										<div class="sentence" style="font-weight: bold ">বিবিএলটি প্রোগ্রামে আবেদনের যোগ্যতা:</div>
-										<br>
-										<a style="font-size: small">১. স্বীকৃতি প্রাপ্ত শিক্ষা প্রতিষ্ঠান সমূহের এইচ এস সি/ আলিম/এ লেভেলস, অনার্স এবং ফাজিল (প্রথম ও দ্বিতীয় বর্ষের) শিক্ষার্থীরা</a><br> <a style="font-size: small">২. সপ্তাহে ৫ দিন, দুপুর ৩:৩০ টা থেকে বিকাল ৬:০০ টা পর্যন্ত ক্লাসে উপস্থিত থাকতে হবে</a><br> <a style="font-size: small">৩. প্রশিক্ষণ কালীন সময়ে অংশগ্রহণকারীকে অনলাইন ক্লাস করার সক্ষমতা থাকতে হবে</a><br> <a style="font-size: small">৪. প্রোগ্রামের অংশ হিসেবে ৩ সপ্তাহের জন্য অনলাইনে সমাজসেবামূলক প্রকল্প বাস্তবায়নে কাজ করতে ইচ্ছুক</a>
-										<br><br>
-										<div class="sentence" style="font-weight: bold ">আবেদন প্রক্রিয়া এবং ভর্তির নিয়মাবলী :</div>
-										<br>
-										<div class="sentence">আগ্রহী সকলকে এই আবেদনপত্রটি পূরণ করার মাধ্যমে আবেদন সম্পন্ন করতে হবে। আবেদনপত্র প্রাথমিকভাবে বাছাইয়ের (প্রথম রাউন্ড) পর বাছাইকৃত আবেদনকারীদেরকে অনলাইনে লিখিত পরীক্ষা এবং সাক্ষাৎকারের (দ্বিতীয় রাউন্ড) জন্য আমন্ত্রণ জানানো হবে। চূড়ান্ত নির্বাচিত আবেদনকারীরা প্রোগ্রামে নিবন্ধন করার সুযোগ পাবেন। তবে বিওয়াইএলসি যে কোন সময় ভর্তির নিয়মাবলী, প্রোগ্রাম ফি, পাঠক্রম, আচরণ বিধি এবং ওয়েবসাইট বা সামাজিক যোগাযোগ মাধ্যমে উল্লেখিত যে কোনো তথ্য বা বিষয় পরিবর্তন বা পরিবর্ধনের অধিকার রাখে।</div>
-										<br>
+										<div class="sentence" style="font-weight: bold ">যোগ্যতা: </div>
+                                        <div class="sentence">কেবলমাত্র তৃতীয় বা চতুর্থ বর্ষের স্নাতক ছাত্র এবং প্রথম বা দ্বিতীয়-বর্ষের পূর্ণকালীন স্নাতকোত্তর শিক্ষার্থীরা (যারা দুই বছরের কম সময়ের মধ্যে স্নাতক ডিগ্রি অর্জন করেছেন) সাত দিনের নেতৃত্ব এবং পেশাদার বিকাশের এই জাতীয় কর্মশালার জন্য আবেদন করতে পারবেন।</div>
+                                        <br>
+                                        <a style="font-weight: bold ; font-size: small">আবেদনের শেষ সময়: </a> <a style="font-size: small">অক্টোবর ৯, ২০২১</a> 
+                                        <br><br>
+                                        <a style="font-weight: bold ; font-size: small">ক্লাসের সময়: </a> <a style="font-size: small">সন্ধ্যা ৬:০০–রাত ৮:৪০</a>
+                                        <br><br>
+                                        <a style="font-weight: bold ; font-size: small">প্রোগ্রামের ধরণ: </a> <a style="font-size: small">অনলাইন</a> 
+                                        <br><br>
+                                        <a style="font-weight: bold ; font-size: small">প্রোগ্রামের সময়কাল: </a> <a style="font-size: small">অক্টোবর ৩০–নভেম্বর ৫, ২০২১</a> 
+                                        <br><br>
+                                        <a style="font-weight: bold ; font-size: small">রেজিস্ট্রেশন ফি: </a> <a style="font-size: small">এপিএলের রেজিস্ট্রেশন ফি ৫,০০০ টাকা, যা্র মধ্যে বিওয়াইএলসি গ্রাজুয়েট নেটওয়ার্কের (বিজিএন) আজীবন সদস্য ফি ১,০০০ টাকা অন্তর্ভুক্ত রয়েছে। মূল রেজিস্ট্রেশন ফি ছিল ৭,০০০ টাকা; কোভিড-১৯ মহামারীজনিত পরিস্থিতির কারণে ২,০০০ টাকা স্কলারশিপ হিসাবে দেওয়া হচ্ছে। নেতৃত্বদানকারী প্রতিষ্ঠান হিসাবে, বিওয়াইএলসি যুব বিকাশে বিশ্বাস করে এবং বাকী ব্যয়গুলি নিজের পরামর্শ এবং প্রশিক্ষণ কাজের মাধ্যমে এবং অন্যান্য অর্থায়নের মাধ্যমে পূরণ করবে। আপনি যদি ইতিমধ্যে বিওয়াইএলসি গ্রাজুয়েট এবং একজন বিজিএন সদস্য হন, আপনার জন্য বিজিএন রেজিস্ট্রেশন ফি প্রযোজ্য হবে না এবং আপনাকে রেজিস্ট্রেশনের জন্য ৪,০০০ টাকা দিতে হবে। অন্য কোনও আর্থিক বৃত্তি প্রযোজ্য হবে না।</a> 
+                                        <br><br>                                    
+                                        <a style="font-size: small">অনুগ্রহ করে সময় নিন এবং সাবধানতার সাথে নীচের আবেদন ফর্মটি পূরণ করুন। সংক্ষিপ্ত তালিকাভুক্ত আবেদনকারীদের একটি সাক্ষাত্কারের জন্য আমন্ত্রন করা হবে। আপনি যদি চূড়ান্তভাবে নির্বাচিত হন তবে এই প্রোগ্রামটিতে রেজিস্ট্রেশনের জন্য আপনাকে অফার করা হবে।</a>
+                                        <br><br>
 									</div>
 								  </div>
-								  <br><br>
-								  <center><div class="subHeading" style="font-weight: bold ; color: darkgreen">Program Details (প্রোগ্রামের বিবরণ)</div></center>
-								  <br><br>
-								  <a style="font-weight: bold ; font-size: small">Program Duration (প্রোগ্রামের ব্যপ্তিকাল):</a> <a style="font-size: small">March 6 - May 12, 2022 (৬ মার্চ - ১২ মে, ২০২২)</a> 
-								  <br><br>
-								  <a style="font-weight: bold ; font-size: small">Class Time (ক্লাসের সময়সূচি):</a> <a style="font-size: small">Sunday through Thursday from 3:30 pm to 6:00 pm (রবি থেকে বৃহস্পতিবার, বিকাল ৩ঃ৩০ থেকে সন্ধ্যা ৬ঃ০০ টা)</a>
-								  <br><br>
-								  <a style="font-weight: bold ; font-size: small">Mode of the Program (প্রোগ্রামের ধরণ):</a> <a style="font-size: small">Online (অনলাইন)</a> <br>
-								  <a style="font-size: small">*registration fee has been reduced from BDT 6,000 to BDT 4,000 due to the current pandemic situation. However, need-based financial aid will be provided to a limited number of students (বর্তমান মহামারী পরিস্থিতি বিবেচনায় রেজিস্ট্রেশন ফি ৬,০০০ টাকার পরিবর্তে ৪,০০০ টাকা নির্ধারণ করা হয়েছে। উল্লেখ্য, আর্থিক অবস্থা ও চাহিদা বিবেচনা করে সীমিত সংখ্যক শিক্ষার্থীকে আর্থিক সহায়তা প্রদান করা হবে)</a>
-								  <br><br>
-								  <a style="font-weight: bold ; font-size: small">Application Deadline (আবেদনের শেষ তারিখ):</a> <a style="font-size: small">January 29, 2022 (২৯ শে জানুয়ারী, ২০২২)</a>
 								  <br><br>
 
 						    </div>
@@ -120,15 +110,15 @@
 			            </h2>
 			            <section>
 			                <center>
-								<a style="font-size: medium ; font-weight: bold">Personal Information</a><br>
-								<a style="font-size: medium ; font-weight: bold">(ব্যক্তিগত তথ্যাদি)</a><br>
+								<a style="font-size: medium ; color: #800080; font-weight: bold">Personal Information</a><br>
+								<a style="font-size: medium ; color: #800080; font-weight: bold">(ব্যক্তিগত তথ্যাদি)</a><br>
 								<a style="font-size: x-small">Please provide your personal information carefully</a><br>
 								<a style="font-size: smaller">(অনুগ্রহ করে নিম্নের ব্যক্তিগত তথ্যাদি সঠিকভাবে পূরণ করুন)</a>
 							</center>
 							<br><br>
 							<a style="font-size: small ; font-weight: bold">Full Name (পূর্ণ নাম)</a><br>
 							<a style="font-size: smaller ; color: gray; ">As per passport or national ID or academic certificate (পাসপোর্ট বা জাতীয় পরিচয়পত্র বা একাডেমিক সার্টিফিকেট অনুযায়ী) (ex. Zuhair Bin Zabbar)</a><br>
-							<input type="text" class="form-control" id="name"  name="full-name" required>
+							<input type="text" class="form-control" id="name" name="full-name" required>
 
 							<br>
 							<!-- Gender -->
@@ -150,19 +140,19 @@
 							</div>
 							<br>
 
-							<br><br>
 							<!-- Date and Nationality -->
 							<div class="row g-3">
 								<div class="col-md-6">
 									<a style="font-size: small ; font-weight: bold">Date of Birth (জন্ম তারিখ)</a><br>
 									<!-- DatePicker -->
-									<div class="input-group">
-										<span class="input-group-text">
-											<svg class="icon icon-xs" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path></svg>
+									<div class="input-group date" id="datepicker">
+										<input type="text" class="form-control" id="date" name="date-of-birth"/>
+										<span class="input-group-append">
+										  <span class="input-group-text bg-light d-block">
+											<i class="fa fa-calendar"></i>
+										  </span>
 										</span>
-										<input data-datepicker="" class="form-control" id="birthday" type="text" placeholder="dd/mm/yyyy" name="date-of-birth">
 									</div>
-
 								
 								
 						        </div>
@@ -205,10 +195,11 @@
 							<div class="row g-3">
 								<div class="col-md-6">
 									<a style="font-size: small ; font-weight: bold">Email Address (ইমেইল)</a><br>
-									<input type="email" class="form-control" id="email"  name="email-address">
+									<input type="email" class="form-control" id="email" name="email-address" >
 								</div>
 							</div>
 							<br><br>
+							
 
 							<!-- Ethnicity and Disability -->
 							<a style="font-size: small ; font-weight: bold">Do you belong to any ethnic community, i.e.Chakma, Marma, etc? (আপনি কি কোন ক্ষুদ্র নৃগোষ্ঠীর অন্তর্ভুক্ত, যেমন চাকমা, মারমা ইত্যাদি?)</a><br>
@@ -261,7 +252,7 @@
 								<!-- Thana -->
 								<div class="col-md-4">
 									<a style="font-size: small ; font-weight: bold">Thana/Upazila (থানা/উপজেলা)</a><br>
-									<input type="text" class="form-control" id="per_thana" name="per_thana">
+									<input type="text" class="form-control" id="per_thana"  name="per_thana">
 								</div>	
 								<!-- District -->
 								<div class="col-md-4">
@@ -335,7 +326,7 @@
 										<!-- Road -->
 										<div class="col-md-4">
 											<a style="font-size: small ; font-weight: bold">Road No./Village (রোড নং/গ্রাম)</a><br>
-											<input type="text" class="form-control" id="road" name="road">
+											<input type="text" class="form-control" id="road"  name="road">
 										</div>
 									</div>
 									
@@ -387,29 +378,24 @@
 											<input type="text" class="form-control" id="pc" name="pc">
 										</div>	
 									</div>
-								</div>
-	
-								<br><br>
+							</div>
+							<br><br>
 
 
 							<!-- Educational -->
 							<center>
-								<a style="font-size: medium ; font-weight: bold">Educational Information</a><br>
-								<a style="font-size: medium ; font-weight: bold">(শিক্ষাগত তথ্যাদি)</a><br>
+								<a style="font-size: medium ; color: #800080 ; font-weight: bold">Educational Information</a><br>
+								<a style="font-size: medium ; color: #800080 ;font-weight: bold">(শিক্ষাগত তথ্যাদি)</a><br>
 								<a style="font-size: x-small">Please provide your educational information carefully</a><br>
 								<a style="font-size: smaller">(অনুগ্রহ করে নিম্নের ব্শিক্ষাগত তথ্যাদি সঠিকভাবে পূরণ করুন)</a>
 							</center>
 							<br><br>
 
+                            <!-- Medium -->
 							<a style="font-size: small ; font-weight: bold">Medium (মাধ্যম)</a><br>
 							<a style="font-size: smaller ; color: gray; ">Please select your education medium based on your SSC/Dakhil/O level exam (অনুগ্রহ করে আপনার এসএসসি/দাখিল/ও লেভেল পরীক্ষার উপর শিক্ষা মাধ্যম নির্বাচন করুন)</a><br>
 							
-							<!-- <a style="font-size: x-small ; color: gray; ">1. Bengali version/English version if you appeared for SSC exam (বাংলা ভার্সন/ইংরেজি ভার্সন, যদি মাধ্যমিক পরীক্ষা দিয়ে থাকেন)</a><br>
-							<a style="font-size: x-small ; color: gray; ">2. Madrassa if you appeared for Dakhil exam (মাদরাসা, যদি দাখিল পরীক্ষা দিয়ে থাকেন)</a><br>
-							<a style="font-size: x-small ; color: gray; ">3. English medium if you appeared for O'level exam (ইংরেজি মাধ্যম, যদি ও লেভেল পরীক্ষা দিয়ে থাকেন)</a><br> -->
-
-							<div class="form-row">
-								<!-- Medium -->
+							<div class="form-row">			
 								<div id="radio">
 									<div class="row g-1">
 										<div class="col-md-4">
@@ -431,50 +417,49 @@
 							</div>
 							<br>
 
-							<!-- Current Educational Level-->
-							<a style="font-size: small ; font-weight: bold">Current Education Level (বর্তমান শিক্ষাস্তর)</a><br>
-							<div class="input-group mb-3">
-								<select class="form-select" id="edu_level" name="edu_level">
-								  <option selected>Please Select</option>
-								  <option value="Bachelor">Bachelor's</option>
-								  <option value="Fazil">Fazil</option>
-								  <option value="HSC">HSC</option>
-								  <option value="A'Level">A'Level</option>
-								  <option value="Alim">Alim</option>
-								  <option value="Diploma">Diploma</option>
-								</select>
+                            <!-- Medium -->
+							<a style="font-size: small ; font-weight: bold">Current Year of Study (চলতি শিক্ষাবর্ষ)</a><br>	
+							<div class="form-row">			
+								<div id="radio">
+									<div class="row g-1">
+										<div class="col-md-4">
+											<input type="radio" name="current_year_study" value="Honor's 3rd year" > <a style="font-size: small">Honor's 3rd year (অনার্স ৩য় বর্ষ)</a> 
+										</div>
+										<div class="col-md-4">
+											<input type="radio" name="current_year_study" value="Graduation completed"> <a style="font-size: small">Graduation completed (স্নাতক সম্পন্ন)</a>
+										</div>	
+									</div>
+									<div class="row g-1">
+										<div class="col-md-4">
+											<input type="radio" name="current_year_study" value="Honor's 4th year" > <a style="font-size: small">Honor's 4th year (অনার্স ৪র্থ বর্ষ)</a>
+										</div>
+										<div class="col-md-4">
+											<input type="radio" name="current_year_study" value="Masters"> <a style="font-size: small">Masters (মাস্টার্স)</a>
+										</div>	
+									</div>			
+								</div>
 							</div>
 							<br>
 
 							<!-- Institution Name -->
 							<a style="font-size: small ; font-weight: bold">Name of Institution (প্রতিষ্ঠানের নাম)</a><br>
+                            <a style="font-size: smaller ; color: gray; ">Example: University of Dhaka</a><br>
 							<input type="text" class="form-control" id="institution" name="institution">
 							<br>
-							<!-- Current Year of Study -->
-							<a style="font-size: small ; font-weight: bold">Current Year of Study (বর্তমান শিক্ষা বছর)</a><br>
-							<div class="input-group mb-3">
-								<select class="form-select" id="study_year" name="study_year">
-								  <option selected>Please Select</option>
-								  <option value="A'Level/Alim/HSC 1st Year">A'Level/Alim/HSC 1st Year</option>
-								  <option value="A'Level/Alim/HSC 2nd Year">A'Level/Alim/HSC 2nd Year</option>
-								  <option value="A'Level/Alim/HSC Completed">A'Level/Alim/HSC Completed</option>
-								  <option value="Fazil/Undergraduate 1st Year">Fazil/Undergraduate 1st Year</option>
-								  <option value="Fazil/Undergraduate 2nd Year">Fazil/Undergraduate 2nd Year</option>
-								</select>
-							</div>
+
+                            <!-- Year of Graduation -->
+							<a style="font-size: small ; font-weight: bold">Year of Graduation / Expected Year of Graduation (স্নাতক সম্পন্নের/সম্ভাব্য সম্পন্নের সন)</a><br>
+                            <a style="font-size: smaller ; color: gray; ">Example: 2012</a><br>
+							<input type="text" class="form-control" id="graduation_year" name= "graduation_year">
 							<br>
-							<!-- Current CGPA -->
-							<a style="font-size: small ; font-weight: bold">Current CGPA (বর্তমান সিজিপিএ)</a><br>
+
+                            <!-- CGPA -->
+							<a style="font-size: small ; font-weight: bold">CGPA (সিজিপিএ)</a><br>
+                            <a style="font-size: smaller ; color: gray; ">Example: 3.48</a><br>
 							<input type="text" class="form-control" id="cgpa" name="cgpa">
 							<br>
-							<!-- Extracurricular Activity -->
-							<a style="font-size: small ; font-weight: bold">Extracurricular Activity (সহশিক্ষামূলক কার্যক্রম)</a><br>
-							<a style="font-size: x-small ; color: gray; ">List one notable extracurricular activity that you have been/are currently involved in. Please mention the year/duration, your position, and responsibilities. If you don't have any experience in extracurricular activities, you can skip this section.</a><br>
-							<a style="font-size: x-small ; color: gray; ">(যদি প্রযোজ্য হয় তবে, যেকোনো একটি সহশিক্ষামূলক কার্যক্রমে অংশগ্রহনের বর্ণনা দিন। অনুগ্রহ করে সময়/বছর, পদবি ও দায়িত্বসমুহ উল্লেখ করুন। যদি আপনার অতিরিক্ত কার্যক্রমের কোনও অভিজ্ঞতা না থাকে, তবে আপনি এই সেকশনটি এড়িয়ে যেতে পারেন।)</a><br>
-							<input type="text" class="form-control" id="extracurricular"  name="extracurricular">
-							<br>
-							
-							<!-- Extracurricular Activity -->
+
+							<!-- Marketing Questionaires -->
 							<a style="font-size: small ; font-weight: bold">How did you learn about the BBLT program? (আপনি কিভাবে বিবিএলটি প্রোগ্রাম সম্পর্কে জেনেছেন?)</a><br>
 							<div class="form-row">
 								<div id="radio">
@@ -519,29 +504,39 @@
 
 							<!-- Analytical -->
 							<center>
-								<a style="font-size: medium ; font-weight: bold">Analytical Assessment</a><br>
-								<a style="font-size: medium ; font-weight: bold">(বিশ্লেষণাত্মক মূল্যায়ন)</a><br>				
-							</center>
+								<a style="font-size: medium ; color: #800080 ; font-weight: bold">Short Essays</a><br>
+								<a style="font-size: medium ; color: #800080 ; font-weight: bold">(সংক্ষিপ্ত প্রবন্ধ)</a><br>				
+                            </center>
 							<br>
 
-							<a style="font-size: smaller">Please read the following reflective question carefully, and answer within the word limit. Your response will be judged on its articulation, logical reasoning, and authentication.</a>
+							<a style="font-size: smaller">Please answer the following questions in your own words. The quality of your answers will be assessed based on your articulation, logical thinking, framing, and authenticity.</a>
 							<a style="font-size: smaller ; color:red">(*Any sort of plagiarism will cause immediate disqualification of the application)</a><br>
-							<a style="font-size: smaller">অনুগ্রহ করে ধীরে সুস্থে এবং সতর্কতার সাথে নিচের প্রশ্নের উত্তর দিন। আপনি বাংলায় অথবা ইংরেজিতে লিখতে পারবেন। স্পষ্টতা, সুসংগঠন এবং মৌলিকতার ভিত্তিতে আপনার আবেদনপত্রটি যাচাই করা হবে।</a>
+							<a style="font-size: smaller">অনুগ্রহ করে আপনার নিজের মত করে প্রশ্নগুলোর উত্তর দিন। স্পষ্টতা, যৌক্তিকতা, সুসংগঠন এবং মৌলিকতার ভিত্তিতে আপনার উত্তরের মান মূল্যায়ন করা হবে।</a>
 							<a style="font-size: smaller ; color:red">(*কোন ধরনের অসৎ উপায় অবলম্বন করলে আবেদনকারীর আবেদন বাতিল বলে গন্য হবে)</a><br><br>
-							<a style="font-size: small ; font-weight: bold">Question: “Saving the environment is more important than economic growth.” Do you agree with this statement? Justify your answer. (“অর্থনৈতিক উন্নতির চেয়ে পরিবেশকে রক্ষা করা বেশী গুরুত্বপূর্ণ” আপনি কি উপরোক্ত উক্তির সাথে একমত? আপনার উত্তরের যথার্থতা বিশ্লেষণ করুন)</a><br>
-							<a style="font-size: x-small ; color: gray; ">(Minimum 100 words)</a>
+							
+                            <a style="font-size: small ; font-weight: bold">Q.1. Why do you want to do this program? How would you like this program to contribute to your personal and professional development?</a><br>
+							<a style="font-size: small ; font-weight: bold">(“অর্থনৈতিক উন্নতির চেয়ে পরিবেশকে রক্ষা করা বেশী গুরুত্বপূর্ণ” আপনি কি উপরোক্ত উক্তির সাথে একমত? আপনার উত্তরের যথার্থতা বিশ্লেষণ করুন)</a><br>
+							<a style="font-size: small ; color: gray; ">Maximum 200 words (সর্বোচ্চ ২০০ শব্দ)</a>
 							<br>
-
 							<div class="form-floating">
-								<textarea class="form-control" rows="7" style="height:100%;" placeholder="Leave a comment here" id="answer" name="justify_ans"></textarea>
+								<textarea class="form-control" rows="8" style="height:100%;" placeholder="Leave a comment here" id="answer" name="narrative_writing_1"></textarea>
 								<label for="floatingTextarea">Write answer here</label>
-							</div>
+							</div><br>
+
+                            <a style="font-size: small ; font-weight: bold">Q.2. Have you exercised leadership in your professional or personal life? Share an experience if you have one.</a><br>
+							<a style="font-size: small ; font-weight: bold">(আপনি কি আপনার পেশাগত বা ব্যক্তিগত জীবনে নেতৃত্ব চর্চা করেছেন? অনুগ্রহ করে আপনার অভিজ্ঞতা বর্ণনা করুন।)</a><br>
+							<a style="font-size: small ; color: gray; ">Maximum 200 words (সর্বোচ্চ ২০০ শব্দ)</a>
+							<br>
+							<div class="form-floating">
+								<textarea class="form-control" rows="8" style="height:100%;" placeholder="Leave a comment here" id="answer" name="narrative_writing_2"></textarea>
+								<label for="floatingTextarea">Write answer here</label>
+							</div><br>
 
 							<br>
-							<a style="font-size: x-small ; color: gray; ">Please check the box*</a><br>
+							<a style="font-size: small ; color: black; ">Please follow the link below to check our terms of data usage and read them carefully before you submit the form.</a><br>
 							<div class="form-check">
 								<input class="form-check-input" type="checkbox" value="" id="agree_terms">
-								<a style="font-size: smaller">My parents and I have read the terms and we agree to the terms of data usage (আমি এবং আমার পিতা/মাতা তথ্যের ব্যবহার বিষয়ক শর্তাবলী পড়েছি এবং সম্মতি প্রদান করছি)</a>
+								<a style="font-size: smaller">I agree to the terms of data usage</a>
 							</div>
 
 							<br><br>
@@ -559,74 +554,6 @@
 	<script src="{{asset('js/main.js')}}"></script>
 	<!-- Option 1: Bootstrap Bundle with Popper -->
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
-
-	<script>
-		const districtsList = document.querySelector('.districts');
-		const endPoint = "https://bdapis.herokuapp.com/api/v1.1/districts/";
-
-		async function bdApi(url) {
-		const res = await fetch(url)
-		return res.json();
-		}
-
-		bdApi(endPoint)
-		.then(districts => {
-			const allDistricts = districts.data;
-
-			allDistricts.forEach(district => {
-			const li = document.createElement("li");
-			li.textContent = district.district + ' - ' + district.districtbn;
-			districtsList.append(li);
-			})
-		})
-		.catch(error => {
-			console.error('Error::', error);
-		});
-	</script>
-
-	<!-- Disable form fields when clicked yes in radio button -->
-	<script>
-		function disableField() {
-			document.getElementById("apartment").setAttribute("value","asd");
-			document.getElementById("apartment").disabled = true;
-			document.getElementById("house").setAttribute("value","asd");
-			document.getElementById("house").disabled = true;
-			document.getElementById("road").setAttribute("value","asd");
-			document.getElementById("road").disabled = true;
-			document.getElementById("thana").setAttribute("value","asd");
-			document.getElementById("thana").disabled = true;
-			document.getElementById("thana").setAttribute("value","asd");
-			document.getElementById("district").disabled = true;
-			document.getElementById("thana").setAttribute("value","asd");
-			document.getElementById("division").disabled = true;
-			document.getElementById("pc").setAttribute("value","asd");
-			document.getElementById("pc").disabled = true;				
-		}
-		function enableField() {
-			document.getElementById("apartment").setAttribute("value","");
-			document.getElementById("apartment").disabled = false;
-			document.getElementById("house").setAttribute("value","");
-			document.getElementById("house").disabled = false;
-			document.getElementById("road").setAttribute("value","");
-			document.getElementById("road").disabled = false;
-			document.getElementById("thana").setAttribute("value","");
-			document.getElementById("thana").disabled = false;
-			document.getElementById("district").disabled = false;
-			document.getElementById("division").disabled = false;
-			document.getElementById("pc").setAttribute("value","");
-			document.getElementById("pc").disabled = false;	
-		}
-	</script>
-
-	<script>
-		var datepickers = [].slice.call(document.querySelectorAll('[data-datepicker]'))
-		var datepickersList = datepickers.map(function (el) {
-			return new Datepicker(el, {
-				buttonClass: 'btn'
-			});
-		});
-	</script>
-    <script src="@@path/vendor/vanillajs-datepicker/dist/js/datepicker.min.js"></script>
 
 	<!-- Hide and Display form fields based on necessity -->
     <script type="text/javascript">
