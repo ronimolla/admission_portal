@@ -88,7 +88,7 @@ class AdminController extends Controller
     {
         //
         $employe = Admin::where(['id'=>$id])->first();
-        return view('admin.edit_admin')->with(compact('employe'));;
+        return view('admin.edit_admin')->with(compact('employe'));
     }
  
     public function update(Request $request, $id)

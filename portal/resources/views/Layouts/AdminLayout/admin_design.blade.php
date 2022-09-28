@@ -82,6 +82,52 @@
         <script src="{{asset('assets/js/sleek.js')}}"></script>
         <link href="{{asset('assets/options/optionswitch.css')}}" rel="stylesheet">
         <script src="{{asset('assets/options/optionswitcher.js')}}"></script>
+        <!-- JS For Dependent Dropdown (Program_Batch_Name depends on Program_Name)-->
+        <script>
+            jQuery(document).ready(function(){
+                    //Dropdown to select program
+                    jQuery('#program_name').change(function(){                       
+                        let cid=jQuery(this).val();
+                        jQuery.ajax({
+                            url:'/getBatch',
+                            type:'post',
+                            data:'cid='+cid+'&_token={{csrf_token()}}',
+                            success:function(result){
+                                jQuery('#batch_name').html(result)
+                                jQuery('#student_data_table').html(result)
+                            }
+                        });
+                    });
+                    
+                    
+                    //Dropdown to select program-batch
+                    jQuery('#batch_name').change(function(){                       
+                        let bid=jQuery(this).val();
+                        jQuery.ajax({
+                            url:'/getBatchData',
+                            type:'post',
+                            data:'bid='+bid+'&_token={{csrf_token()}}',
+                            success:function(result){
+                                jQuery('#student_data_table').html(result)
+                            }
+                        });
+                    });
+
+                    // jQuery('#batch_name').change(function(){                       
+                    //     let batchId=jQuery(this).val();
+                    //     jQuery.ajax({
+                    //         url:'/download-csv',
+                    //         type:'post',
+                    //         data:'batchId='+batchId+'&_token={{csrf_token()}}',
+                    //         success:function(data){
+                    //             $(".error_msg").text(data);
+                    //         }
+                    //     });
+                    // });
+
+                    
+            });
+        </script>
 
     </body>
 </html>

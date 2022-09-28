@@ -27,29 +27,12 @@
         <div class="" data-simplebar style="height: 100%;">
             <!-- sidebar menu -->
             <ul class="nav sidebar-inner" id="sidebar-menu">
-                <li class="has-sub active expand">
-                    <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#dashboard"
-                        aria-expanded="false" aria-controls="dashboard">
+               
+                <li class="">
+                    <a class="sidenav-item-link" href="#">
                         <i class="mdi mdi-view-dashboard-outline"></i>
-                        <span class="nav-text">Dashboard</span> <b class="caret"></b>
+                        <span class="nav-text">Dashboard</span> 
                     </a>
-
-                    <ul class="collapse show" id="dashboard" data-parent="#sidebar-menu">
-                        <div class="sub-menu">
-                            <li class="active">
-                                <a class="sidenav-item-link" href="index.html">
-                                <span class="nav-text">Ecommerce</span>
-                                </a>
-                            </li>
-
-                            <li class="">
-                                <a class="sidenav-item-link" href="analytics.html">
-                                <span class="nav-text">Analytics</span>
-                                <span class="badge badge-success">new</span>
-                                </a>
-                            </li>
-                        </div>
-                    </ul>
                 </li>
 
                 
@@ -61,42 +44,34 @@
                     <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#components"
                         aria-expanded="false" aria-controls="components">
                         <i class="mdi mdi-folder-multiple-outline"></i>
-                        <span class="nav-text">Programs/Events</span> <b class="caret"></b>
+                        <span class="nav-text">Assesment</span> <b class="caret"></b>
                     </a>
 
                     <ul class="collapse " id="components" data-parent="#sidebar-menu">
                         <div class="sub-menu">
-                            <li class="">
-                                <a class="sidenav-item-link" href="alert.html">
-                                <span class="nav-text">Alert</span>
-                                </a>
-                            </li>
-
                             <li class="has-sub ">
-                                <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#buttons"
-                                aria-expanded="false" aria-controls="buttons">
-                                <span class="nav-text">Programs</span> <b class="caret"></b>
+                                <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#buttons" aria-expanded="false" aria-controls="buttons">
+                                    <span class="nav-text">Program</span> <b class="caret"></b>
                                 </a>
 
                                 <ul class="collapse " id="buttons">
                                     <div class="sub-menu">
                                         <li class="">
-                                             <a href="button-default.html">Professional Development</a>
+                                             <a href="{{url('/assesment/preselection')}}">Pre Selection</a>
                                         </li>
 
                                         <li class="">
-                                            <a href="button-dropdown.html">Leadership</a>
+                                            <a href="{{url('/assesment/writing')}}">Writing test</a>
                                         </li>
                                         <li class="">
-                                            <a href="button-dropdown.html">Enterpreneurship</a>
+                                            <a href="{{url('/assesment/interview')}}">Interview</a>
                                         </li>
                                     </div>
                                 </ul>
                             </li>
                             <li class="has-sub ">
-                                <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#buttons1"
-                                aria-expanded="false" aria-controls="buttons">
-                                <span class="nav-text">Events</span> <b class="caret"></b>
+                                <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#buttons1" aria-expanded="false" aria-controls="buttons">
+                                    <span class="nav-text">Event</span> <b class="caret"></b>
                                 </a>
                                 <ul class="collapse " id="buttons1">
                                     <div class="sub-menu">
@@ -110,11 +85,6 @@
                                     </div>
                                 </ul>
                             </li>
-                            <li class="">
-                                <a class="sidenav-item-link" href="carousel.html">
-                                <span class="nav-text">Carousel</span>
-                                </a>
-                            </li>
                         </div>
                     </ul>
                 </li>
@@ -123,6 +93,12 @@
                     <a class="sidenav-item-link" href="{{url('/Admins')}}">
                         <i class="mdi mdi-account-box-outline"></i>
                         <span class="nav-text">Admins</span> 
+                    </a>
+                </li>
+                <li class="">
+                    <a class="sidenav-item-link" href="{{url('/program_page/programs_info')}}">
+                        <i class="mdi mdi-book-open"></i>
+                        <span class="nav-text">Programs</span> 
                     </a>
                 </li>
 

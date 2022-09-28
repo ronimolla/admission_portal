@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('student_id')->unique();
             $table->string('program_name')->unique();
+            $table->string('program_batch_id')->unique();
             $table->string('full_name')->nullable();
             $table->string('gender')->nullable();
             $table->date('dob')->nullable();
