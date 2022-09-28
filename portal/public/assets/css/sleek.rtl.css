@@ -15768,12 +15768,16 @@ div.copied {
     overflow: hidden;
   }
 }
-
+/* 
 .app-brand a img {
   max-width: 80px;
   vertical-align: middle;
 }
-
+*/
+.app-brand a img {
+  max-width: 80px;
+  vertical-align: middle;
+}
 .app-brand .brand-name {
   color: #ffffff;
   font-size: 1.12rem;

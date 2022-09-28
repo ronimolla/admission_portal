@@ -9,13 +9,13 @@
                     <div class="profile-content-left profile-left-spacing pt-5 pb-3 px-3 px-xl-5">
                         <div class="card text-center widget-profile px-0 border-0">
                             <div class="card-img mx-auto rounded-circle">
-                                <img src="assets/img/user/u6.jpg" alt="user image">
+                                <img src="{{asset('assets/img/user/u6.jpg')}}" alt="user image">
                             </div>
 
                             <div class="card-body">
-                                <h4 class="py-2 text-dark">Albrecht Straub</h4>
-                                <p>Albrecht.straub@gmail.com</p>
-                                <a class="btn btn-primary btn-pill btn-lg my-4" href="#">Follow</a>
+                                <h4 class="py-2 text-dark">{{$personalinfo->full_name}}</h4>
+                                <p>{{$contactinfo->email_address}}</p><br>
+                                <a   class="btn btn-primary" href="{{ url('edit-profile/'.$personalinfo->student_id)}}">Edit</a>
                             </div>
                         </div>
 
@@ -24,13 +24,15 @@
                         <div class="contact-info pt-4">
                             <h5 class="text-dark mb-1">Contact Information</h5>
                             <p class="text-dark font-weight-medium pt-4 mb-2">Student ID</p>
-                            <p>BBLT1001</p>
+                            <p>{{$personalinfo->student_id}}</p>
+                            <p class="text-dark font-weight-medium pt-4 mb-2">Program Name</p>
+                            <p>{{$personalinfo->program_name}}</p>
                             <p class="text-dark font-weight-medium pt-4 mb-2">Email address</p>
-                            <p>Albrecht.straub@gmail.com</p>
+                            <p>{{$contactinfo->email_address}}</p>
                             <p class="text-dark font-weight-medium pt-4 mb-2">Phone Number</p>
-                            <p>+99 9539 2641 31</p>
+                            <p>{{$contactinfo->personal_phone_no}}</p>
                             <p class="text-dark font-weight-medium pt-4 mb-2">Birthday</p>
-                            <p>Nov 15, 1990</p>
+                            <p>{{$personalinfo->dob}}</p>
                             <p class="text-dark font-weight-medium pt-4 mb-2">Social Profile</p>
                             <p class="pb-3 social-button">
                                 <a href="#" class="mb-1 btn btn-outline btn-linkedin rounded-circle">
@@ -64,24 +66,24 @@
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <div class="form-group">
-                                            <label for="FullName" >Full Name :</label><br/>
-                                            <label for="gender">Gender :</label><br/>
-                                            <label for="nationality">Nationality :</label><br/>
-                                            <label for="ethnicity">Ethnicity :</label><br/>  
-                                            <label for="disability">Disability :</label><br/>
-                                            <label for="father-name">father Name :</label><br/>
-                                            <label for="mother-name">Mother Name :</label><br/>                                          
+                                            <label for="FullName" ><b>Full Name :</b> {{$personalinfo->full_name}}</label><br/>
+                                            <label for="gender"><b>Gender :</b> {{$personalinfo->gender}}</label><br/>
+                                            <label for="nationality"><b>Nationality :</b> {{$personalinfo->nationality}}</label><br/>
+                                            <label for="ethnicity"><b>Ethnicity :</b> </label><br/>  
+                                            <label for="disability"><b>Disability:</b> </label><br/>
+                                            <label for="father-name"><b>father Name :</b> {{$personalinfo->father_name}}</label><br/>
+                                            <label for="mother-name"><b>Mother Name :</b> {{$personalinfo->mother_name}}</label><br/>                                          
                                         </div>
                                     </div>
 
                                     <div class="col-lg-6">
                                         <div class="form-group">                        
-                                        <label for="FullName">Guardian's Name :</label><br/>
-                                        <label for="FullName">Relationship with the Guardian :</label><br/>
-                                        <label for="FullName">Emergency Contact Number :</label><br/>
-                                        <label for="FullName">Guardian's Phone Number :</label><br/>
-                                        <label for="FullName">Guardian's Email Address :</label><br/>
-                                        <label for="FullName">Guardian's Alternative Phone Number :</label><br/>
+                                        <label for="FullName"><b>Guardian's Name :</b> {{$personalinfo->guardian_name}}</label><br/>
+                                        <label for="FullName"><b>Relationship with the Guardian :</b> {{$personalinfo->guardian_relation}}</label><br/>
+                                        <label for="FullName"><b>Emergency Contact Number :</b> {{$contactinfo->emergency_contact_no}}</label><br/>
+                                        <label for="FullName"><b>Guardian's Phone Number :</b> {{$contactinfo->guardian_phone_no}}</label><br/>
+                                        <label for="FullName"><b>Guardian's Email Address :</b> {{$contactinfo->guardian_email_address}}</label><br/>
+                                        <label for="FullName"><b>Guardian's Alternative Phone Number :</b> {{$contactinfo->guardian_phone_no2}}</label><br/>
                                         </div>
                                     </div>
                                 </div>
@@ -90,25 +92,25 @@
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <div class="form-group">
-                                            <label for="FullName">Present Apartment No :</label><br/>
-                                            <label for="gender">Present House No :</label><br/>
-                                            <label for="nationality">Present Road No/Village :</label><br/>
-                                            <label for="ethnicity">Present Thana / Upozila :</label><br/>  
-                                            <label for="disability">Present District :</label><br/>
-                                            <label for="father-name">Present Division :</label><br/>
-                                            <label for="mother-name">Present Post Code:</label><br/>                                          
+                                            <label for="FullName"><b>Present Apartment No :</b>  {{$addressinfo->present_apartment_no}}</label><br/>
+                                            <label for="gender"><b>Present House No :</b>  {{$addressinfo->present_house_no}}</label><br/>
+                                            <label for="nationality"><b>Present Road No/Village :</b>  {{$addressinfo->present_road_no_OR_village}}</label><br/>
+                                            <label for="ethnicity"><b>Present Thana / Upozila :</b>  {{$addressinfo->present_thana_OR_upazala}}</label><br/>  
+                                            <label for="disability"><b>Present District :</b>  {{$addressinfo->present_district}}</label><br/>
+                                            <label for="father-name"><b>Present Division :</b>  {{$addressinfo->present_division}}</label><br/>
+                                            <label for="mother-name"><b>Present Post Code:</b>  {{$addressinfo->present_post_code}}</label><br/>                                          
                                         </div>
                                     </div>
 
                                     <div class="col-lg-6">
                                         <div class="form-group">
-                                            <label for="FullName">Permanent Apartment No :</label><br/>
-                                            <label for="gender">Permanent House No :</label><br/>
-                                            <label for="nationality">Permanent Road No/Village :</label><br/>
-                                            <label for="ethnicity">Permanent Thana / Upozila :</label><br/>  
-                                            <label for="disability">Permanent District :</label><br/>
-                                            <label for="father-name">Permanent Division :</label><br/>
-                                            <label for="mother-name">Permanent Post Code:</label><br/>   
+                                            <label for="FullName"><b>Permanent Apartment No :</b>  {{$addressinfo->permanent_apartment_no}}</label><br/>
+                                            <label for="gender"><b>Permanent House No :</b>  {{$addressinfo->permanent_house_no}}</label><br/>
+                                            <label for="nationality"><b>Permanent Road No/Village :</b>  {{$addressinfo->permanent_road_no_OR_village}}</label><br/>
+                                            <label for="ethnicity"><b>Permanent Thana / Upozila :</b>  {{$addressinfo->permanent_thana_OR_upazala}}</label><br/>  
+                                            <label for="disability"><b>Permanent District :</b>  {{$addressinfo->permanent_district}}</label><br/>
+                                            <label for="father-name"><b>Permanent Division :</b>  {{$addressinfo->permanent_division}}</label><br/>
+                                            <label for="mother-name"><b>Permanent Post Code:</b>  {{$addressinfo->permanent_post_code}}</label><br/>   
                                         </div>
                                     </div>
                                  </div>
@@ -119,24 +121,27 @@
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <div class="form-group">
-                                            <label for="FullName"  class="text-dark font-weight-medium pt-4 mb-2">Educational Medium :</label><p>i have no idea what i have to do in this situation</p><br/>
-                                            <label for="gender">Primary Institute Name :</label><br/>
-                                            <label for="nationality">Class(Primary) :</label><br/>
-                                            <label for="ethnicity">Secondary Institute Name :</label><br/>  
-                                            <label for="disability">Class(Secondary) :</label><br/>
-                                            <label for="father-name">Higher Secondary Institute Name :</label><br/>
-                                            <label for="mother-name">Passing Year/Current year of study :</label><br/> 
-                                            <label for="mother-name">Result (if passing year is given) :</label><br/>                                            
+                                            <label for="FullName"><b>Educational Medium :</b> {{$eduinfo->educational_medium}}</label><br/>
+                                            <label for="ethnicity"><b>Institute Name : {{$eduinfo->school}}</b> </label><br/>  
+                                            <label for="disability"><b>Class :</b> {{$eduinfo->class}}</label><br/>
+                                            <label for="disability"><b>SSC passing Year :</b> {{$eduinfo->ssc_passing_year}}</label><br/>
+                                            <label for="disability"><b>SSC Result :</b> {{$eduinfo->ssc_result}}</label><br/>
+                                            <label for="father-name"><b>Higher Secondary Institute Name :</b> {{$eduinfo->college}} </label><br/>
+                                            <label for="mother-name"><b>Current study year :</b> {{$eduinfo->college_current_year}}</label><br/> 
+                                            <label for="mother-name"><b>Passing Year/Current year of study :</b> {{$eduinfo->college_passing_year}}</label><br/> 
+                                            <label for="mother-name"><b>Result (if passing year is given) :</b> {{$eduinfo->gpa	}}</label><br/>                                            
                                         </div>
                                     </div>
 
                                     <div class="col-lg-6">
                                         <div class="form-group">
-                                            <label for="FullName">University Name :it's your choice to what things can be done</label><br/>
-                                            <label for="gender">Graduation Degree :</label><br/>
-                                            <label for="nationality">Passing year / Current Year of Study :</label><br/>
-                                            <label for="ethnicity">Result (if passing year is given) :</label><br/>  
-                                            <label for="disability">CGPA (if Current Year of Study) :</label><br/> 
+                                            <label for="FullName"><b>UnderGyaduate Level :</b> {{$eduinfo->undergraduate_leve}}</label><br/>
+                                            <label for="FullName"><b>University Name :</b> {{$eduinfo->university}}</label><br/>
+                                            <label for="gender"><b>Graduation Degree :</b> {{$eduinfo->degree}}</label><br/>
+                                            <label for="nationality"><b>Current Year of Study :</b> {{$eduinfo->uni_current_year}}</label><br/>
+                                            <label for="nationality"><b>Passing year / Current Year of Study :</b>  {{$eduinfo->uni_passing_year}}</label><br/>
+                                            <label for="ethnicity"><b>Result (if passing year is given) :</b> {{$eduinfo->cgpa}}</label><br/>  
+                                            <label for="disability"><b>Extracurricular :</b> {{$eduinfo->extracurricular}}</label><br/> 
                                         </div>
                                     </div>
                                 </div>        

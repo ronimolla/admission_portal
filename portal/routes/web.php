@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\ProgramController;
+use App\Http\Controllers\StudentController;
+use App\Http\Controllers\AssesmentController;
 Auth::routes();
 /*
 |--------------------------------------------------------------------------
@@ -41,5 +43,43 @@ Route::group(['middleware' =>['adminlogin']],function(){
     //YLS program route 
     Route::get('/program/careerx', [ProgramController::class, 'careerx']);
     Route::match(['get', 'post'], '/careerx/store',[ProgramController::class, 'careerxstore']);
+
+    //All program data information
+    Route::resource('Students', StudentController::class);
+    Route::get('/view-profile/{student_id}', [StudentController::class, 'profile']);
+    Route::get('/edit-profile/{student_id}', [StudentController::class, 'editprofile']);
+
+    //Assesment for applicaent pre-Selection
+    Route::get('/assesment/preselection', [AssesmentController::class, 'preselection']);
+    Route:: match(['get','post'],'/preselection/edit/{student_id}',[AssesmentController::class, 'update']);
+    Route:: match(['get','post'],'/preselection/follow-up/{student_id}',[AssesmentController::class, 'follow_up']);
+
+    //Assesment for applicaent Writing test
+    Route::get('/assesment/writing', [AssesmentController::class, 'writingtest']);
+    Route:: match(['get','post'],'/testresult/edit/{student_id}',[AssesmentController::class, 'testresult']);
+    Route:: match(['get','post'],'/writing/follow-up/{student_id}',[AssesmentController::class, 'writing_follow_up']);
+
+    //Assesment for applicaent Interview
+    Route::get('/assesment/interview', [AssesmentController::class, 'interview']);
+    Route:: match(['get','post'],'/interviewresult/edit/{student_id}',[AssesmentController::class, 'interviewresult']);
+    Route:: match(['get','post'],'/interview/follow-up/{student_id}',[AssesmentController::class, 'interview_follow_up']);
+
+    //Financial Aid
+    route:: match(['get','post'],'/financialaid',[AssesmentController::class, 'financialaid']);
+
+
+    //Program Info Page 
+    Route::get('/program_page/programs_info', [ProgramController::class, 'programs_info']);
+    Route::match(['get', 'post'], '/getBatch',[ProgramController::class, 'getBatch']);
+    Route::match(['get', 'post'], '/getBatchData',[ProgramController::class, 'getBatchData']);
+    
+    //Download CSV
+    //Route::get('/all-tweets-csv', [ProgramController::class, 'export_program_data']);   
+    //Route::get('/all-tweets-csv', [ProgramController::class, 'download']);
+    Route::match(['get', 'post'], '/download-csv', [ProgramController::class, 'downloadCSVReport']);
+
+
+    Route::get('/overview', [ProgramController::class, 'overview']);
+
    
 });
