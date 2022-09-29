@@ -2,7 +2,7 @@
  <footer class="footer mt-auto">
     <div class="copyright bg-white">
         <p>
-            Copyright &copy; <span id="copy-year"></span> a template by
+            Copyright &copy; <span id="copy-year"></span> a Admin dashboard developed by BYLC
         </p>
     </div>
     <script>

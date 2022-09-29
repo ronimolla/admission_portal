@@ -12,13 +12,35 @@
     <link href="assets/img/favicon.png" rel="shortcut icon" />
     <script src="assets/plugins/nprogress/nprogress.js"></script>
   </head>
+  <style>
+       
+        .r-image{
 
-<body class="" id="body">
+            height: 55px;
+            width: 250px;
+            padding-top: 1px;
+            padding-right: 10px;
+            padding-bottom: 10px;
+            
+            margin: 5px 1px 25px 40px;
+        }
+        .back{
+            background:#135C06;
+            }
+
+        
+    </style>
+<body class="back" id="body">
     <div class="container d-flex align-items-center justify-content-center vh-100">
         <div class="row justify-content-center">
             <div class="col-lg-6 col-md-10">
                 <div class="card">
                     <div class="card-body p-8">
+                        <div>
+                        <img src="{{asset('images/bylc-logo.png')}}" class="r-image" alt="Responsive image">
+                        </div>
+                        <br>
+                        
                         <div id="loginbox">
                             @if($message = Session::get('flash_message_error'))
                             <div class="alert alert-error alert-block">
@@ -54,7 +76,7 @@
                                     </div>
                                     <p><a class="text-blue" href="#">Forgot Your Password?</a></p>
                                     </div>
-                                    <button type="submit" class="btn btn-lg btn-primary btn-block mb-4">Sign In</button>
+                                    <button type="submit" class="btn btn-lg btn-success btn-block mb-4">Sign In</button>
                                 </div>
                             </div>
                         </form>

@@ -26,6 +26,8 @@ Route::post('/login', [AdminController::class, 'login']);
 Route::group(['middleware' =>['adminlogin']],function(){
 
     Route::get('/logout',[AdminController::class, 'logout']);
+    Route::get('/over-view', [IndexController::class, 'overview']);
+    Route::get('/forms', [IndexController::class, 'form']);
     Route::get('/dashboard', [IndexController::class, 'dashboard']);
     Route::resource('Admins', AdminController::class);
     //BBLT program route 

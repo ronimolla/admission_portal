@@ -1,8 +1,8 @@
 <header class="main-header " id="header">
     <nav class="navbar navbar-static-top navbar-expand-lg">
         <!-- Sidebar toggle button -->
-        <button id="sidebar-toggler" class="sidebar-toggle">
-            <span class="sr-only">Toggle navigation</span>
+        <button class="rtbrand">
+        <img src="{{asset('images/brand.png')}}" class="r-image" alt="User Image" />
         </button>
         <!-- search form -->
         <div class="search-form d-none d-lg-inline-block">
