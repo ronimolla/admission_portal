@@ -35,7 +35,7 @@ class AdminController extends Controller
                 //echo "Success"; die;
                 Session::put('adminSession', $data['email']);
                 
-                return redirect('/dashboard');
+                return redirect('/over-view');
         	}else{
                 echo "failed"; die;
                 return redirect('/admin')->with('flash_message_error','Invalid Username or Password');
@@ -88,7 +88,7 @@ class AdminController extends Controller
     {
         //
         $employe = Admin::where(['id'=>$id])->first();
-        return view('admin.edit_admin')->with(compact('employe'));;
+        return view('admin.edit_admin')->with(compact('employe'));
     }
  
     public function update(Request $request, $id)

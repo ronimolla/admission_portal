@@ -13,6 +13,19 @@ class IndexController extends Controller
        //echo "Success"; die;
         return view('dashboard');
     }
+    public function form()
+    {
+       
+       //echo "Success"; die;
+        return view('form_collection');
+    }
+    public function overview()
+    {
+       
+      // echo "Success"; die;
+        return view('overview');
+    }
+
 
 
 }

@@ -53,6 +53,7 @@
 							<!-- form template -->
 			            </h2>
 						<input type="hidden" class="form-control" id="program_name"  name="program_name" value="CareerX" >
+						<input type="hidden" class="form-control" id="program_name"  name="program_batch_id" value="10" >
 			            <section>
 							<div class="container">
 										<div class="sentence" style="font-weight: bold ">About CareerX: </div>

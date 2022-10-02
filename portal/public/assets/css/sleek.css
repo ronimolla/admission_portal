@@ -15665,6 +15665,7 @@ div.copied {
   z-index: 1050;
   min-height: 100vh;
   position: relative;
+  background: #fff;
 }
 
 .sidebar .sidebar-inner {
@@ -15693,7 +15694,7 @@ div.copied {
 .sidebar .sidebar-inner > li > a {
   padding: 1.25rem 1.56rem;
   line-height: 20px;
-  color: #a6aab4;
+  color: black;
   display: block;
   text-decoration: none;
   text-transform: uppercase;
@@ -15721,6 +15722,11 @@ div.copied {
   background: #4c84ff;
   opacity: 0;
 }
+.rt-image{
+
+  height: 55px;
+  width: 65px;
+}
 
 .sidebar .sidebar-inner .section-title {
   padding: 1.25rem 1.56rem 0;
@@ -15743,7 +15749,7 @@ div.copied {
 .app-brand {
   position: relative;
   display: block;
-  background-color: #4c84ff;
+  background-color: #fff;
 }
 
 .app-brand a {
@@ -15754,7 +15760,7 @@ div.copied {
   line-height: 75px;
   width: 250px;
   transition: width 0.3s ease-in-out;
-  padding-left: 1.56rem;
+  padding-left: 0.30rem;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -15775,7 +15781,7 @@ div.copied {
 }
 
 .app-brand .brand-name {
-  color: #ffffff;
+  color: black;
   font-size: 1.12rem;
   margin-left: 0.94rem;
   max-width: 170px;
@@ -16500,7 +16506,7 @@ div.copied {
 }
 
 .sidebar-dark .sidebar .sub-menu {
-  background: #1d2531;
+  background: #fff;
 }
 
 .sidebar-dark .sidebar .sub-menu > li > a {
@@ -16520,7 +16526,7 @@ div.copied {
 .sidebar-dark .sidebar .sub-menu > li.active > a:hover,
 .sidebar-dark .sidebar .sub-menu > li > a:focus,
 .sidebar-dark .sidebar .sub-menu > li > a:hover {
-  color: #ffffff;
+  color: black;
 }
 
 .sidebar-dark .sidebar .nav > li.active > a {

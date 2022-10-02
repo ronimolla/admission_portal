@@ -14,12 +14,12 @@ return new class extends Migration
     public function up()
     {
         Schema::create('student_personal_infos', function (Blueprint $table) {
-            $table->id();
-            $table->string('student_id')->unique();
-            $table->string('program_name')->unique();
+            $table->increments('student_id');
+            $table->string('program_name')->nullable();
+            $table->string('program_batch_id')->nullable();
             $table->string('full_name')->nullable();
             $table->string('gender')->nullable();
-            $table->date('dob')->nullable();
+            $table->string('dob')->nullable();
             $table->string('nationality')->nullable();
             $table->string('father_name')->nullable();
             $table->string('mother_name')->nullable();          

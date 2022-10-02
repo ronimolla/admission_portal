@@ -28,10 +28,41 @@
         <link id="sleek-css" rel="stylesheet" href="{{asset('assets/css/sleek.css')}}" />
     
         <!-- FAVICON -->
-        <link href="{{asset('assets/img/favicon.png')}}" rel="shortcut icon" />
+        <link href="{{asset('images/brand.png')}}" rel="shortcut icon" />
     
         
         <script src="{{asset('assets/plugins/nprogress/nprogress.js')}}"></script>
+
+        
+        <style>
+        .target {
+            height: 150px;
+            width: 150px;
+            transition-property: height,width;
+            transition-duration: 0.3s;
+        }
+
+        .target:hover {
+            height: 170px;
+            width: 170px;
+        }
+
+        .box {
+            transition: box-shadow .3s;
+            width: 150px;
+            height: 150px;
+            margin: 50px;
+            border-radius:10px;
+            border: 1px solid #ccc;
+            background: #fff;
+            float: left;
+        }
+
+        .box:hover {
+            box-shadow: 0 0 11px rgba(33,33,33,.2); 
+        }
+    </style>
+
     </head>
 
     <body class="header-fixed sidebar-fixed sidebar-dark header-light" id="body">
@@ -82,6 +113,41 @@
         <script src="{{asset('assets/js/sleek.js')}}"></script>
         <link href="{{asset('assets/options/optionswitch.css')}}" rel="stylesheet">
         <script src="{{asset('assets/options/optionswitcher.js')}}"></script>
+        
+        <!-- JS For Dependent Dropdown (Program_Batch_Name depends on Program_Name)-->
+        <script>
+            jQuery(document).ready(function(){
+                    //Dropdown to select program
+                    jQuery('#program_name').change(function(){                       
+                        let cid=jQuery(this).val();
+                        jQuery.ajax({
+                            url:'/getBatch',
+                            type:'post',
+                            data:'cid='+cid+'&_token={{csrf_token()}}',
+                            success:function(result){
+                                jQuery('#batch_name').html(result)
+                                //jQuery('#student_data_table').html(result)
+                            }
+                        });
+                    });
+                    
+                    
+                    //Dropdown to select program-batch
+                    jQuery('#batch_name').change(function(){                       
+                        let bid=jQuery(this).val();
+                        jQuery.ajax({
+                            url:'/getBatchData',
+                            type:'post',
+                            data:'bid='+bid+'&_token={{csrf_token()}}',
+                            success:function(result){
+                                jQuery('#student_data_table').html(result)
+                            }
+                        });
+                    });
+
+                    
+            });
+        </script>
 
     </body>
 </html>
