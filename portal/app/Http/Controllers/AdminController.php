@@ -35,7 +35,7 @@ class AdminController extends Controller
                 //echo "Success"; die;
                 Session::put('adminSession', $data['email']);
                 
-                return redirect('/dashboard');
+                return redirect('/over-view');
         	}else{
                 echo "failed"; die;
                 return redirect('/admin')->with('flash_message_error','Invalid Username or Password');

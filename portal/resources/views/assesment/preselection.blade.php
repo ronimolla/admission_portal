@@ -25,7 +25,7 @@
 			<div class="col-12">
 				<div class="card card-default">
 					<div class="card-header card-header-border-bottom d-flex justify-content-between">
-						<h2>All Applicaents Who are Waiting for Pre-Selection</h2>
+						<h2>All Applicants Who are Waiting for Pre-Selection</h2>
 						
 					</div>
 
@@ -78,7 +78,7 @@
             <div class="col-12">
                 <div class="card card-default">
                     <div class="card-header card-header-border-bottom d-flex justify-content-between">
-                        <h2>All Applicaents Who are Waiting for Follow-Up</h2>
+                        <h2>All Applicants Who are Waiting for Follow-Up</h2>
 
                         
                     </div>

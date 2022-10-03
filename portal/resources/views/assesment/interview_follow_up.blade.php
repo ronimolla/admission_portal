@@ -92,7 +92,7 @@
                                     <textarea class="form-control" id="validationServer03" name ="renark"rows="4" cols="50"></textarea>
                                 </div>     
                             </div>  
-                            <button class="btn btn-primary" type="submit">Submit form</button>
+                            <button class="btn btn-primary" type="submit">Update</button>
                         </form>
                     </div>
                 </div>
