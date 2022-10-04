@@ -104,7 +104,6 @@
                     <i class="mdi mdi-diamond-stone"></i>
                     <span class="nav-text">Programs</span> <b class="caret"></b>
                   </a>
-
                   <ul class="collapse " id="icons" data-parent="#sidebar-menu">
                     <div class="sub-menu">
                       <li class="">
@@ -112,10 +111,31 @@
                           <span class="nav-text">Program</span>
                         </a>
                       </li>
-
                       <li class="">
                         <a class="sidenav-item-link" href="{{url('programs/programBatch')}}">
-                          <span class="nav-text">Batch</span>
+                          <span class="nav-text">Program-Batch</span>
+                        </a>
+                      </li>
+                    </div>
+                  </ul>
+                </li>
+
+                <li class="has-sub ">
+                  <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#icons"
+                    aria-expanded="false" aria-controls="icons">
+                    <i class="mdi mdi-diamond-stone"></i>
+                    <span class="nav-text">Events</span> <b class="caret"></b>
+                  </a>
+                  <ul class="collapse " id="icons" data-parent="#sidebar-menu">
+                    <div class="sub-menu">
+                      <li class="">
+                        <a class="sidenav-item-link" href="{{url('events/eventsView')}}">
+                          <span class="nav-text">Event</span>
+                        </a>
+                      </li>
+                      <li class="">
+                        <a class="sidenav-item-link" href="{{url('events/eventBatch')}}">
+                          <span class="nav-text">Event-Batch</span>
                         </a>
                       </li>
                     </div>

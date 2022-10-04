@@ -27,8 +27,7 @@
     
         <!-- FAVICON -->
         <link href="{{asset('assets/img/favicon.png')}}" rel="shortcut icon" />
-    
-        
+           
         <script src="{{asset('assets/plugins/nprogress/nprogress.js')}}"></script>
 
     <style>

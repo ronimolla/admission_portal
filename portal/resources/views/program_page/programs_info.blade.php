@@ -75,8 +75,8 @@
                                                         <td>{{$std->present_district}}</td>
                                                         <td>{{$std->batch_name}}</td>
                                                         <td>
-                                                            <a href=" " class="btn btn-primary">View</a>
-                                                        </td>
+															<a href="{{ url('view-profile/'.$std->student_id)}}" class="btn btn-primary">View</a>
+														</td>	
                                                     </tr>
                                                 @endforeach	
 											</tbody>

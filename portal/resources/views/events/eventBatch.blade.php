@@ -3,7 +3,7 @@
 <div class="content-wrapper">
   	<div class="content">
 	  <div class="breadcrumb-wrapper">
-						<h1>Program Information</h1>
+						<h1>Event Information</h1>
 						<nav aria-label="breadcrumb">
 							<ol class="breadcrumb p-0">
 								<li class="breadcrumb-item">
@@ -12,7 +12,7 @@
 									 </a>
 								</li>
 								<li class="breadcrumb-item">
-									Program-tables
+									Event-tables
 								</li>								
 							</ol>
 						</nav>
@@ -25,17 +25,17 @@
 
                                     <div class="form-group">
 										<a>Category</a>
-										<select class="form-control" id="category" style="font-size:13px">
-											<option value="0" disabled="true" selected="true">Select Category</option>
-                                            <option value="Leadership">Leadership</option>
-                                            <option value="Professional Development">Professional Development</option>
-                                            <option value="Entrepreneurship">Entrepreneurship</option>												
+										<select class="form-control" id="events" style="font-size:13px">
+											<option value="0" disabled="true" selected="true">Select Program</option>												
+											@foreach($event_name as $pname)
+												<option value="{{$pname->id}}">{{$pname->event_name}}</option>
+											@endforeach
 										</select>
 									</div>
 
-                                    <h2>Program Data Table</h2>
+                                    <h2>Event Data Table</h2>
 
-									<a href="{{ url('programs/createProgram')}}"  class="btn btn-success">Create New Program</a>
+									<a href="{{ url('events/createEvent')}}"  class="btn btn-success">Create New Event</a>
 								</div>
 
 								<div class="card-body">
@@ -44,24 +44,28 @@
 											<thead>
 												<tr>
 													<th>SL.No.</th>
-													<th>Program Name</th>
-													<th>Category</th>
-													<th>Program Duration (months)</th>
-                                                    <th>Total Batches</th>
-													<th>Donor</th>												
+													<th>Batch Name</th>
+													<th>Event Name</th>
+													<th>Start Date</th>
+                                                    <th>End Date</th>
+													<th>Year</th>
+													<th>Budget</th>
+                                                    <th>Sponser</th>											
 												</tr>
 											</thead>
                                             
                                             <?php $c = 1; ?>
 											<tbody>
-                                                @foreach($program_name as $prg)
+												@foreach($event_info as $prg)
                                                     <tr>
-                                                        <td>{{$c++}}</td>
-                                                        <td>{{$prg->program_name}}</td>
-                                                        <td>{{$prg->category}}</td>
-                                                        <td>{{$prg->duration}}</td>
-                                                        <td>07</td>
-                                                        <td>{{$prg->donor}}</td>
+														<td>{{$c++}}</td>
+                                                        <td>{{$prg->batch_name}}</td>
+                                                        <td>{{$prg->event_name}}</td>
+                                                        <td>{{$prg->start_date}}</td>
+														<td>{{$prg->end_date}}</td>
+                                                        <td>{{$prg->year}}</td>
+                                                        <td>{{$prg->budget}}</td>
+														<td>{{$prg->sponser}}</td>
                                                     </tr>
                                                 @endforeach	
 											</tbody>
@@ -71,7 +75,6 @@
 							</div><!-- End card card-default -->
 						</div>
 					</div>
-
 
  	 </div>
 </div>

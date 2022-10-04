@@ -117,7 +117,10 @@
         <!-- JS For Dependent Dropdown (Program_Batch_Name depends on Program_Name)-->
         <script>
             jQuery(document).ready(function(){
-                    //Dropdown to select program
+                    
+                //-----------(Student  Management page)-------------------------
+
+                //Dropdown to select program
                     jQuery('#program_name').change(function(){                       
                         let cid=jQuery(this).val();
                         jQuery.ajax({
@@ -129,8 +132,7 @@
                                 //jQuery('#student_data_table').html(result)
                             }
                         });
-                    });
-                    
+                    });                    
                     
                     //Dropdown to select program-batch
                     jQuery('#batch_name').change(function(){                       
@@ -140,12 +142,70 @@
                             type:'post',
                             data:'bid='+bid+'&_token={{csrf_token()}}',
                             success:function(result){
-                                jQuery('#student_data_table').html(result)
+                                jQuery('#basic-data-table').html(result)
                             }
                         });
                     });
 
+                    //-----------(Program Page)-------------------------
+
+                    //Dropdown to select program name For showing table data 
+                    jQuery('#category').change(function(){                       
+                        let cat=jQuery(this).val();
+                        jQuery.ajax({
+                            url:'/getProgramDatabyCategory',
+                            type:'post',
+                            data:'cat='+cat+'&_token={{csrf_token()}}',
+                            success:function(result){                 
+                                jQuery('#basic-data-table').html(result)
+                            }
+                        });
+                    }); 
+
+                    //-----------(Program-Batch-page)-------------------------
+
+                    //Dropdown to select program name For showing table data 
+                    jQuery('#programs').change(function(){                       
+                        let pnid=jQuery(this).val();
+                        jQuery.ajax({
+                            url:'/getProgramData',
+                            type:'post',
+                            data:'pnid='+pnid+'&_token={{csrf_token()}}',
+                            success:function(result){                 
+                                jQuery('#basic-data-table').html(result)
+                            }
+                        });
+                    });     
+
+                    //-----------(Program Page)-------------------------
+
+                    //Dropdown to select program name For showing table data 
+                    jQuery('#category_event').change(function(){                       
+                        let cat=jQuery(this).val();
+                        jQuery.ajax({
+                            url:'/getEventDatabyCategory',
+                            type:'post',
+                            data:'cat='+cat+'&_token={{csrf_token()}}',
+                            success:function(result){                 
+                                jQuery('#basic-data-table').html(result)
+                            }
+                        });
+                    }); 
                     
+                    //-----------(Event-Batch-page)-------------------------
+                    
+                    //Dropdown to select Event name For showing table data 
+                    jQuery('#events').change(function(){                       
+                        let eid=jQuery(this).val();
+                        jQuery.ajax({
+                            url:'/getEventData',
+                            type:'post',
+                            data:'eid='+eid+'&_token={{csrf_token()}}',
+                            success:function(result){
+                                jQuery('#basic-data-table').html(result)
+                            }
+                        });
+                    });   
             });
         </script>
 
