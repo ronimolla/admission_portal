@@ -17,6 +17,7 @@ use App\Models\Interview;
 use App\Models\Program;
 use App\Models\Program_batch;
 
+
 class ProgramController extends Controller
 {
     /*  
@@ -146,6 +147,7 @@ class ProgramController extends Controller
             $preselection->program_name =$programname; 
             $preselection->program_batch_id = $program_batch_id;
 
+
             $followup = new FollowUp;
             $followup->program_name =$programname; 
             $followup->program_batch_id = $program_batch_id;
@@ -157,6 +159,7 @@ class ProgramController extends Controller
             $interview = new Interview;
             $interview->program_name =$programname; 
             $interview->program_batch_id = $program_batch_id;
+
 
 
             $info->save();
@@ -442,6 +445,7 @@ class ProgramController extends Controller
             $followup->program_name =$programname; 
             $followup->program_batch_id = $program_batch_id;
 
+
             $writing = new WritingTest;
             $writing->program_name =$programname; 
             $writing->program_batch_id = $program_batch_id;
@@ -449,6 +453,7 @@ class ProgramController extends Controller
             $interview = new Interview;
             $interview->program_name =$programname; 
             $interview->program_batch_id = $program_batch_id;
+
 
 
             $info->save();
@@ -982,6 +987,7 @@ class ProgramController extends Controller
             }
         }
     }
+
 
     //-----------Programs------------------
 

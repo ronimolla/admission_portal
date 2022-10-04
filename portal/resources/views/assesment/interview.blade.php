@@ -58,7 +58,7 @@
                                         <td>{{$std->present_district}}</td>
 										<td>{{$std->present_division}}</td>
 										<td>
-											<a href="{{ url('interviewresult/edit/'.$std->student_id)}}" class="btn btn-primary">Preselection</a>
+											<a href="{{ url('interviewresult/edit/'.$std->student_id)}}" class="btn btn-primary">Update_Result</a>
 										</td>	
                                         <td>
 											<a href="{{ url('view-profile/'.$std->student_id)}}" class="btn btn-primary">view Profile</a>

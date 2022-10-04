@@ -10,6 +10,7 @@
           <div class="card-body">
             <h2 class="mb-1">6,232</h2>
             <p>Leadership Graduates</p>
+
             <div class="chartjs-wrapper">
               <canvas id="barChart"></canvas>
             </div>
@@ -19,8 +20,10 @@
       <div class="col-xl-3 col-sm-6">
         <div class="card card-mini  mb-4">
           <div class="card-body">
+
             <h2 class="mb-1">4,607</h2>
             <p>OPD graduates</p>
+
             <div class="chartjs-wrapper">
               <canvas id="dual-line"></canvas>
             </div>
@@ -43,6 +46,7 @@
           <div class="card-body">
             <h2 class="mb-1">19</h2>
             <p>Total Startups</p>
+
             <div class="chartjs-wrapper">
               <canvas id="line"></canvas>
             </div>
@@ -56,6 +60,7 @@
         <div class="card card-default">
           <div class="card-header">
             <h2>Graduates Amount Of The Year</h2>
+
           </div>
           <div class="card-body">
             <canvas id="linechart" class="chartjs"></canvas>
@@ -63,14 +68,17 @@
           <div class="card-footer d-flex flex-wrap bg-white p-0">
             <div class="col-6 px-0">
               <div class="text-center p-4">
+
                 <h4>6,308</h4>
                 <p class="mt-2">Total graduates of this year</p>
+
               </div>
             </div>
             <div class="col-6 px-0">
               <div class="text-center p-4 border-left">
                 <h4>8</h4>
                 <p class="mt-2">Total courses of this year</p>
+
               </div>
             </div>
           </div>

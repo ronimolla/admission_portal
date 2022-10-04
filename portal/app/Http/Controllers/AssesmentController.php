@@ -15,6 +15,9 @@ use App\Models\WritingTest;
 use App\Models\FollowUp;
 use App\Models\Interview;
 
+use App\Models\FinancialAid;
+use App\Models\Waiver;
+
 class AssesmentController extends Controller
 {
     /* ------
@@ -201,19 +204,104 @@ class AssesmentController extends Controller
          return view('assesment.interview_follow_up')->with(compact('studentinfo'));  
     }
 
-
-    public function financialaid(Request $request){
+    public function financialaid_form(Request $request){
 		if($request->isMethod('post')){
             $data = $request->input();
-           echo "<pre>"; print_r($data); die;
-            FollowUp::where(['student_id'=>$student_id])->update([
-                'interview_follow_up_assessor_name'=>$data['assessor_name'],'interview_followup_contact_media'=>$data['conatct_media'],'want_to_registration'=>$data['want_to_registration'],
-                'request_faq'=>$data['request_faq'],'sent_faq'=>$data['sent_fid'],'reason_for_not_registration'=>$data['reason'],'final_remark'=>$data['renark']]);
-                Interview::where(['student_id'=>$student_id])->update(['interview_follow_up_stage'=>'Done']);
-            return redirect('/assesment/interview');
+           // echo "<pre>"; print_r($data); die;
+            $financila = new FinancialAid;
+            $financila->full_name = $data['full_name'];
+            $financila->bgn_member_id = $data['bgn_id'];
+            $financila->student_id = $data['student_id'];
+            $financila->email = $data['email'];
+            $financila->contact_number = $data['contact'];
+
+            $financila->family_members = $data['family_members'];
+            $financila->earning_person_number = $data['earning_person_number'];
+            $financila->earning_person_father = $data['father'];
+            $financila->earning_person_mother = $data['mother'];
+            $financila->earning_person_other = $data['others'];
+
+            $financila->father_name = $data['father_name'];
+            $financila->father_contact_number = $data['father_contact_number'];
+            $financila->father_occupation = $data['father_occupation'];
+            $financila->father_organization_name = $data['father_orgazation_name'];
+            $financila->father_monthly_income = $data['father_monthly_income'];
+
+            $financila->mother_name = $data['mother_name'];
+            $financila->mother_contact_number = $data['mother_contact_number'];
+            $financila->mother_occupation = $data['mother_occupation'];
+            $financila->mother_organization_name = $data['mother_orgazation_name'];
+            $financila->mother_monthly_income = $data['mother_monthly_income'];
+            
+            $financila->other_name = $data['other_name'];
+            $financila->relation = $data['relation'];
+            $financila->other_contact_number = $data['other_contact'];
+            $financila->other_occupation = $data['other_occupation'];
+            $financila->other_organization_name = $data['other_organization_name'];
+            $financila->other_monthly_income = $data['mother_monthly_income'];
+            $financila->income_from_asset = $data['monthly_fixedasset_income'];
+
+            $financila-> tuition_fees= $data['tution_fees'];
+            $financila->booking_supplies= $data['book&supply'];
+            $financila->living_expenses = $data['living_expenses'];
+            $financila->total_educational_expense = $data['total_educational_expense'];
+            $financila->personal_expenses = $data['personal_expenses'];
+            $financila->transportation_expenses = $data['transportation_expenses'];
+            $financila->parent_contribution = $data['parent_contribution'];
+            $financila->own_contribution = $data['own_contribution'];
+
+            $financila->total_earning = $data['total_earn'];
+            $financila->scholarship = $data['schlarship'];
+            $financila->other_member_contribution = $data['family_menber_contribution'];
+            $financila->total_resource = $data['total_resources'];
+            $financila-> reason_for_apply= $data['reasoning'];
+            $financila-> communicate_person= $data['verification_person'];
+            $financila->save();
+            
+            return redirect('/assesment/financialaid');
         }  
         
-         return view('assesment.financialaid');  
+         return view('assesment.financialaid_form');  
     }
+
+
+    public function financialaid(){	
+      
+       // $finamce = FinancialAid::get();
+        
+        $finamce = DB::table('student_personal_infos')
+        ->join('student_contact_infos', 'student_personal_infos.student_id', '=', 'student_contact_infos.student_id')
+        ->join('student_address_infos', 'student_personal_infos.student_id', '=', 'student_address_infos.student_id')
+        ->join('financial_aids', 'student_personal_infos.student_id', '=', 'financial_aids.student_id')
+        ->where('financial_aids.update_request','=','pending')
+        ->get();
+        return view('assesment.financialaid')->with(compact('finamce'));   
+    }
+
+    public function waiver(Request $request,$student_id= null){
+		 if($request->isMethod('post')){
+            $data = $request->input();
+            //echo "<pre>"; print_r($data); die;
+            $waiver = new Waiver;
+            $waiver->student_id = $data['std_id'];
+            $waiver->full_name = $data['full_name'];
+            $waiver->program_name = $data['program_name'];
+            $waiver->program_batch_id = $data['program_code'];
+            $waiver->educational_medium = $data['medium'];
+            $waiver->request_Faq = $data['request_Faq'];
+            $waiver->waiver_percentage = $data['waiver_amount'];
+            $waiver->waiver_amount = $data['waiver_percentage'];
+            $waiver->waiver_reason = $data['reason'];
+            $waiver->save();
+
+            FinancialAid::where(['student_id'=>$student_id])->update(['update_request'=>'Done']);
+            return redirect('/assesment/financialaid');
+         }  
+        $applicaent = FinancialAid::where(['student_id'=>$student_id])->first();
+         return view('assesment.update_financial_status')->with(compact('applicaent'));  
+    }
+
+
+
 
 }

@@ -26,6 +26,7 @@
                                     <div class="form-group">
 										<a>Category</a>
 										<select class="form-control" id="category" style="font-size:13px">
+
 											<option value="0" disabled="true" selected="true">Select Category</option>
                                             <option value="Leadership">Leadership</option>
                                             <option value="Professional Development">Professional Development</option>
@@ -34,8 +35,9 @@
 									</div>
 
                                     <h2>Program Data Table</h2>
-
+                                    
 									<a href="{{ url('programs/createProgram')}}"  class="btn btn-success">Create New Program</a>
+
 								</div>
 
 								<div class="card-body">
@@ -46,7 +48,9 @@
 													<th>SL.No.</th>
 													<th>Program Name</th>
 													<th>Category</th>
+
 													<th>Program Duration (months)</th>
+
                                                     <th>Total Batches</th>
 													<th>Donor</th>												
 												</tr>

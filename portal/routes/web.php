@@ -46,10 +46,12 @@ Route::group(['middleware' =>['adminlogin']],function(){
     Route::get('/program/careerx', [ProgramController::class, 'careerx']);
     Route::match(['get', 'post'], '/careerx/store',[ProgramController::class, 'careerxstore']);
 
+
     //All program data information
     Route::resource('Students', StudentController::class);
     Route::get('/view-profile/{student_id}', [StudentController::class, 'profile']);
     Route::get('/edit-profile/{student_id}', [StudentController::class, 'editprofile']);
+
 
     //Assesment for applicaent pre-Selection
     Route::get('/assesment/preselection', [AssesmentController::class, 'preselection']);
@@ -67,23 +69,43 @@ Route::group(['middleware' =>['adminlogin']],function(){
     Route:: match(['get','post'],'/interview/follow-up/{student_id}',[AssesmentController::class, 'interview_follow_up']);
 
     //Financial Aid
-    route:: match(['get','post'],'/financialaid',[AssesmentController::class, 'financialaid']);
+
+    //route:: match(['get','post'],'/financialaid',[AssesmentController::class, 'financialaid']);
 
 
     //---------------------------------------------- JUBAIR ----------------------------------------------------//
+
+    route:: match(['get','post'],'/financialaid-form',[AssesmentController::class, 'financialaid_form']);
+    Route::get('/assesment/financialaid', [AssesmentController::class, 'financialaid']);
+    Route:: match(['get','post'],'/financialaid-status/{student_id}',[AssesmentController::class, 'waiver']);
+   
+
+    
+
+    /*
+    Jubair work start
+    */
+    //All program data information
+    Route::resource('Students', StudentController::class);
+    Route::get('/view-profile/{student_id}', [StudentController::class, 'profile']);
+    Route::get('/edit-profile/{student_id}', [StudentController::class, 'editprofile']);
+
 
     //Student Management Page 
     Route::get('/program_page/programs_info', [ProgramController::class, 'programs_info']);
     Route::match(['get', 'post'], '/getBatch',[ProgramController::class, 'getBatch']);
     Route::match(['get', 'post'], '/getBatchData',[ProgramController::class, 'getBatchData']);
     
+
     //Download CSV-(From Student Table)
+
     Route::match(['get', 'post'], '/download-csv', [ProgramController::class, 'downloadCSVReport']);
 
     //Overview Page
     Route::get('/overview', [ProgramController::class, 'overview']);
 
     //Programs Page
+
     Route::get('/programs/programsView', [ProgramController::class, 'programsView']); //View Page
     Route::match(['get', 'post'], '/getProgramDatabyCategory',[ProgramController::class, 'getProgramDatabyCategory']); //Dropdown
     Route::match(['get', 'post'], '/programs/createProgram',[ProgramController::class, 'createProgram']);
@@ -102,5 +124,6 @@ Route::group(['middleware' =>['adminlogin']],function(){
     Route::get('/events/eventBatch', [ProgramController::class, 'eventBatch']); //View Page
     Route::match(['get', 'post'], '/getEventData',[ProgramController::class, 'getEventData']); //Dropdown
     Route::match(['get', 'post'], '/events/createEventBatch',[ProgramController::class, 'createEventBatch']);
+
    
 });

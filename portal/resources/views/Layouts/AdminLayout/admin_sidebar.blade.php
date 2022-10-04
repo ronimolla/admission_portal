@@ -58,9 +58,14 @@
 
                                         <li class="">
                                             <a href="{{url('/assesment/writing')}}">Writing test</a>
+
                                         </li>
                                         <li class="">
                                             <a href="{{url('/assesment/interview')}}">Interview</a>
+                                        </li>
+                                        <li class="">
+                                            <a href="{{url('/assesment/financialaid')}}">Financial Aid</a>
+
                                         </li>
                                     </div>
                                 </ul>
@@ -104,6 +109,7 @@
                     <i class="mdi mdi-diamond-stone"></i>
                     <span class="nav-text">Programs</span> <b class="caret"></b>
                   </a>
+
                   <ul class="collapse " id="icons" data-parent="#sidebar-menu">
                     <div class="sub-menu">
                       <li class="">
@@ -111,6 +117,7 @@
                           <span class="nav-text">Program</span>
                         </a>
                       </li>
+
                       <li class="">
                         <a class="sidenav-item-link" href="{{url('programs/programBatch')}}">
                           <span class="nav-text">Program-Batch</span>

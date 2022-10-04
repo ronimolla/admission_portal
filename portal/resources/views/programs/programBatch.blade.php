@@ -26,6 +26,7 @@
                                     <div class="form-group">
 										<a>Program Name</a>
 										<select class="form-control" id="programs" style="font-size:13px">
+
 											<option value="0" disabled="true" selected="true">Select Program</option>												
 											@foreach($program_name as $pname)
 												<option value="{{$pname->program_id}}">{{$pname->program_name}}</option>
@@ -36,6 +37,7 @@
                                     <h2>Program-Batch Table</h2>
 
 									<a href="{{url('/programs/createBatch')}}"  class="btn btn-success">Create New Batch</a>
+
 								</div>
 
 								<div class="card-body">
@@ -64,7 +66,6 @@
 														</tr>
 													@endforeach	
 												</tbody>
-											<!-- </div> -->
 										</table>
 									</div><!-- End basic-data-table -->
 								</div><!-- End card body -->

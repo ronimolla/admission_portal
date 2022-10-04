@@ -121,6 +121,7 @@
                 //-----------(Student  Management page)-------------------------
 
                 //Dropdown to select program
+
                     jQuery('#program_name').change(function(){                       
                         let cid=jQuery(this).val();
                         jQuery.ajax({
@@ -132,7 +133,9 @@
                                 //jQuery('#student_data_table').html(result)
                             }
                         });
+
                     });                    
+
                     
                     //Dropdown to select program-batch
                     jQuery('#batch_name').change(function(){                       
@@ -143,6 +146,7 @@
                             data:'bid='+bid+'&_token={{csrf_token()}}',
                             success:function(result){
                                 jQuery('#basic-data-table').html(result)
+
                             }
                         });
                     });
@@ -206,6 +210,7 @@
                             }
                         });
                     });   
+
             });
         </script>
 
