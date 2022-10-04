@@ -293,7 +293,7 @@ class AssesmentController extends Controller
             $waiver->waiver_amount = $data['waiver_percentage'];
             $waiver->waiver_reason = $data['reason'];
             $waiver->save();
-//my work need to dome
+//my work need to dome my deuty
             FinancialAid::where(['student_id'=>$student_id])->update(['update_request'=>'Done']);
             return redirect('/assesment/financialaid');
          }  
