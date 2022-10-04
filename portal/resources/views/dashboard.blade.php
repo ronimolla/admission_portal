@@ -135,6 +135,7 @@
         </div>
 			</div>
 
+
 			<div class="col-xl-4 col-lg-6 col-12">
         <!-- Top Sell Table -->
         <div class="card card-table-border-none">
@@ -268,6 +269,9 @@
         </div>
 			</div>
 		</div>
+
+    
+
 
 
   
