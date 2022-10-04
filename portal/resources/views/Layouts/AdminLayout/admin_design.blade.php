@@ -28,7 +28,7 @@
         <link id="sleek-css" rel="stylesheet" href="{{asset('assets/css/sleek.css')}}" />
     
         <!-- FAVICON -->
-        <link href="{{asset('assets/img/favicon.png')}}" rel="shortcut icon" />
+        <link href="{{asset('images/brand.png')}}" rel="shortcut icon" />
     
         
         <script src="{{asset('assets/plugins/nprogress/nprogress.js')}}"></script>
@@ -113,6 +113,7 @@
         <script src="{{asset('assets/js/sleek.js')}}"></script>
         <link href="{{asset('assets/options/optionswitch.css')}}" rel="stylesheet">
         <script src="{{asset('assets/options/optionswitcher.js')}}"></script>
+        
         <!-- JS For Dependent Dropdown (Program_Batch_Name depends on Program_Name)-->
         <script>
             jQuery(document).ready(function(){
@@ -125,7 +126,7 @@
                             data:'cid='+cid+'&_token={{csrf_token()}}',
                             success:function(result){
                                 jQuery('#batch_name').html(result)
-                                jQuery('#student_data_table').html(result)
+                                //jQuery('#student_data_table').html(result)
                             }
                         });
                     });
@@ -143,18 +144,6 @@
                             }
                         });
                     });
-
-                    // jQuery('#batch_name').change(function(){                       
-                    //     let batchId=jQuery(this).val();
-                    //     jQuery.ajax({
-                    //         url:'/download-csv',
-                    //         type:'post',
-                    //         data:'batchId='+batchId+'&_token={{csrf_token()}}',
-                    //         success:function(data){
-                    //             $(".error_msg").text(data);
-                    //         }
-                    //     });
-                    // });
 
                     
             });

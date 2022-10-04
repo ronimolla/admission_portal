@@ -3,7 +3,7 @@
 <div class="content-wrapper">
   	<div class="content">
 	    <div class="breadcrumb-wrapper">
-			<h1>Program Information</h1>
+			<h1>Student Information</h1>
 				<nav aria-label="breadcrumb">
 					<ol class="breadcrumb p-0">
 						<li class="breadcrumb-item">
@@ -12,7 +12,7 @@
 							</a>
 						</li>
 						<li class="breadcrumb-item">
-							Program-tables
+							Student-tables
 						</li>								
 					</ol>
 				</nav>
@@ -20,9 +20,8 @@
 					<div class="row">
 						<div class="col-12">
 							<div class="card card-default">
-								<div class="card-header card-header-border-bottom d-flex justify-content-between">
-                                    
-                                <h2>Program Data Table</h2>
+								<div class="card-header card-header-border-bottom d-flex justify-content-between">                                
+                                <h2>Student Data Table</h2>
 								
 									<div class="form-group">
 										<a>Program Name</a>
