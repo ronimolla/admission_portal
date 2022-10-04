@@ -80,11 +80,7 @@
                                     <!-- LFK Form -->
                                     <button type="">
                                         <div class="shadow-lg p-1 mb-2 bg-white rounded">
-
                                             <div class="target"><img class="target" src="{{asset('images/no_image.png')}}" alt=" " class="rounded mx-auto d-block" style="width: 150; height:150"></div>
-
-                                            <div class="target"><img class="target" src="{{asset('images/dashboard.jpeg')}}" alt=" " class="rounded mx-auto d-block" style="width: 150; height:150"></div>
-
                                         </div>
                                         <a style="font-size:14px">LFK</a>
                                     </button>
@@ -94,11 +90,7 @@
                                     <!-- YLB Form -->
                                     <button type="">
                                         <div class="shadow-lg p-1 mb-2 bg-white rounded">
-
                                             <div class="target"><img class="target" src="{{asset('images/no_image.png')}}" alt=" " class="rounded mx-auto d-block" style="width: 150; height:150"></div>
-
-                                            <div class="target"><img class="target" src="{{asset('images/dashboard.jpeg')}}" alt=" " class="rounded mx-auto d-block" style="width: 150; height:150"></div>
-
                                         </div>
                                         <a style="font-size:14px">YLB</a>
                                     </button>
@@ -122,11 +114,7 @@
                                                 <button type="">
                                                     <div class="shadow-lg p-1 mb-2 bg-white rounded">
                                                         <a href="{{ url('program/careerx')}}">
-
                                                             <div class="target"><img class="target" src="{{asset('images/no_image.png')}}" alt=" " class="rounded mx-auto d-block" style="width: 150; height:150"></div>
-
-                                                            <div class="target"><img class="target" src="{{asset('images/dashboard.jpeg')}}" alt=" " class="rounded mx-auto d-block" style="width: 150; height:150"></div>
-
                                                         </a>
                                                     </div>
                                                     <a style="font-size:14px">CareerX</a>
@@ -136,11 +124,7 @@
                                                 <!-- ACE Form -->
                                                 <button type="">
                                                     <div class="shadow-lg p-1 mb-2 bg-white rounded">
-
                                                         <div class="target"><img class="target" src="{{asset('images/no_image.png')}}" alt=" " class="rounded mx-auto d-block" style="width: 150; height:150"></div>
-
-                                                        <div class="target"><img class="target" src="{{asset('images/dashboard.jpeg')}}" alt=" " class="rounded mx-auto d-block" style="width: 150; height:150"></div>
-
                                                     </div>
                                                     <a style="font-size:14px">ACE</a>
                                                 </button>
@@ -149,11 +133,7 @@
                                                 <!-- Bootcaps Form -->
                                                 <button type="">
                                                     <div class="shadow-lg p-1 mb-2 bg-white rounded">
-
                                                         <div class="target"><img class="target" src="{{asset('images/no_image.png')}}" alt=" " class="rounded mx-auto d-block" style="width: 150; height:150"></div>
-
-                                                        <div class="target"><img class="target" src="{{asset('images/dashboard.jpeg')}}" alt=" " class="rounded mx-auto d-block" style="width: 150; height:150"></div>
-
                                                     </div>
                                                     <a style="font-size:14px">Bootcamps</a>
                                                 </button>

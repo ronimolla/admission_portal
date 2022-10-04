@@ -2,11 +2,7 @@
  <footer class="footer mt-auto">
     <div class="copyright bg-white">
         <p>
-
             Copyright &copy; <span id="copy-year"></span> Admission Portal Version 1.1 - Developed by BYLC IT
-
-            
-
         </p>
     </div>
     <script>
