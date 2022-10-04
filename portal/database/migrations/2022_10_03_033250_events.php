@@ -13,11 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('program_batches', function (Blueprint $table) {
-            $table->id('batch_id');
-            $table->integer('program_id');
-            $table->string('batch_name')->nullable();
-            $table->integer('totalStudents')->nullable();;
+        Schema::create('events', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('event_name')->nullable();
+            $table->string('category')->nullable();
             $table->timestamps();
         });
     }
@@ -29,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('program_batches');
+        Schema::dropIfExists('events');
     }
 };
