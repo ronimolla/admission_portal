@@ -98,5 +98,6 @@ Route::group(['middleware' =>['adminlogin']],function(){
     /*test our work
     for confilct resolve
     */
+    Route::get('/programs/programBatch', [ProgramController::class, 'Batch']);
    
 });
