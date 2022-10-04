@@ -25,7 +25,8 @@
 
                                     <div class="form-group">
 										<a>Program Name</a>
-										<select class="form-control" id="program_name" style="font-size:13px">
+										<select class="form-control" id="programs" style="font-size:13px">
+
 											<option value="0" disabled="true" selected="true">Select Program</option>												
 											@foreach($program_name as $pname)
 												<option value="{{$pname->program_id}}">{{$pname->program_name}}</option>
@@ -35,34 +36,36 @@
 
                                     <h2>Program-Batch Table</h2>
 
-									<a href=" "  class="btn btn-success">Create New Batch</a>
+									<a href="{{url('/programs/createBatch')}}"  class="btn btn-success">Create New Batch</a>
+
 								</div>
 
 								<div class="card-body">
 									<div class="basic-data-table">
 										<table id="basic-data-table" class="table nowrap" style="width:100%">
-											<thead>
-												<tr>
-													<th>SL.No.</th>
-													<th>Batch Name</th>
-													<th>Program</th>
-													<th>Duration</th>
-                                                    <th>Total Students</th>									
-												</tr>
-											</thead>
-                                            
-                                            <?php $c = 1; ?>
-											<tbody>
-                                                @foreach($program_info as $prg)
-                                                    <tr>
-                                                        <td>{{$c++}}</td>
-                                                        <td>{{$prg->batch_name}}</td>
-                                                        <td>{{$prg->program_name}}</td>
-                                                        <td>{{$prg->duration}}</td>
-                                                        <td>40</td>
-                                                    </tr>
-                                                @endforeach	
-											</tbody>
+											<!-- <div id="batch_data_table"> -->
+												<thead>
+													<tr>
+														<th>SL.No.</th>
+														<th>Batch Name</th>
+														<th>Program</th>
+														<th>Duration</th>
+														<th>Total Students</th>									
+													</tr>
+												</thead>
+												
+												<?php $c = 1; ?>
+												<tbody>
+													@foreach($program_info as $prg)
+														<tr>
+															<td>{{$c++}}</td>
+															<td>{{$prg->batch_name}}</td>
+															<td>{{$prg->program_name}}</td>
+															<td>{{$prg->duration}}</td>
+															<td>{{$prg->totalStudents}}</td>
+														</tr>
+													@endforeach	
+												</tbody>
 										</table>
 									</div><!-- End basic-data-table -->
 								</div><!-- End card body -->
