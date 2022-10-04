@@ -27,12 +27,7 @@
     
         <!-- FAVICON -->
         <link href="{{asset('assets/img/favicon.png')}}" rel="shortcut icon" />
-
            
-
-    
-        
-
         <script src="{{asset('assets/plugins/nprogress/nprogress.js')}}"></script>
 
     <style>
@@ -94,11 +89,7 @@
                     <div class="col">
                         <button type="">
                             <div class="shadow-lg p-1 mb-2 bg-white rounded">
-
                                 <a href="{{ url('/programs/programsView')}}">
-
-                                <a href="{{ url('programs')}}">
-
                                     <div class="target"><img src="{{asset('images/programs.jpeg')}}" alt=" " class="rounded mx-auto d-block" style="width: 150; height:150"></div>
                                 </a>
                             </div>

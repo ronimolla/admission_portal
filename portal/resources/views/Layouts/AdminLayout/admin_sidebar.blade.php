@@ -95,21 +95,9 @@
                     </a>
                 </li>
                 <li class="">
-                    <a class="sidenav-item-link" href="{{url('#')}}">
-                        <i class="mdi mdi-book-open"></i>
-                        <span class="nav-text">Student management</span> 
-                    </a>
-                </li>
-                <li class="">
                     <a class="sidenav-item-link" href="{{url('/program_page/programs_info')}}">
                         <i class="mdi mdi-book-open"></i>
                         <span class="nav-text">Student management</span> 
-                    </a>
-                </li>
-                <li class="">
-                    <a class="sidenav-item-link" href="{{url('/program_page/programs_info')}}">
-                        <i class="mdi mdi-book-open"></i>
-                        <span class="nav-text">Settings</span> 
                     </a>
                 </li>
 
@@ -119,7 +107,6 @@
                     <i class="mdi mdi-diamond-stone"></i>
                     <span class="nav-text">Programs</span> <b class="caret"></b>
                   </a>
-
 
                   <ul class="collapse " id="icons" data-parent="#sidebar-menu">
                     <div class="sub-menu">
