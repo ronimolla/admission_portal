@@ -53,7 +53,7 @@
 				<form class="form-register"  method="post" action="{{url('/bblt/store')}}" name="add_school" id="add_school" novalidate="novalidate">{{csrf_field()}}
 		        	<div id="form-total">
 					<input type="hidden" class="form-control" id="program_name"  name="program_name" value="BBLT" >
-					<input type="hidden" class="form-control" id="program_name"  name="program_batch_id" value="1" >
+					<input type="hidden" class="form-control" id="program_name"  name="program_batch_id" value="{{$batchinfo->batch_id}}" >
 		        		<!-------------------------------- GUIDELINES ----------------------------------->
 			            <h2>
 							<!-- form template -->

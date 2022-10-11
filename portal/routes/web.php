@@ -70,14 +70,14 @@ Route::group(['middleware' =>['adminlogin']],function(){
 
     //Financial Aid
 
-    //route:: match(['get','post'],'/financialaid',[AssesmentController::class, 'financialaid']);
+    route:: match(['get','post'],'/financialaid-form',[AssesmentController::class, 'financialaid_form']);
+    Route::get('/assesment/financialaid', [AssesmentController::class, 'financialaid']);
+    Route:: match(['get','post'],'/financialaid-status/{student_id}',[AssesmentController::class, 'waiver']);
 
 
     //---------------------------------------------- JUBAIR ----------------------------------------------------//
 
-    route:: match(['get','post'],'/financialaid-form',[AssesmentController::class, 'financialaid_form']);
-    Route::get('/assesment/financialaid', [AssesmentController::class, 'financialaid']);
-    Route:: match(['get','post'],'/financialaid-status/{student_id}',[AssesmentController::class, 'waiver']);
+   
    
 
     
