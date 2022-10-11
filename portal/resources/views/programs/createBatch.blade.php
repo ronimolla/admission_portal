@@ -27,10 +27,19 @@
                     <label for="exampleFormControlInput1">Batch Name</label>
                     <input type="text" class="form-control" id="exampleFormControlInput1" name="batch_name" placeholder="BBLT5"> 
                 </div>
-
+                <div class="form-row">
+                  <div class="col-md-4 mb-3">
+                    <label for="exampleFormControlInput1">Start Date</label>
+                    <input type="date" class="form-control" id="validationServer03" name="start_date" required> 
+                  </div>
+                  <div class="col-md-4 mb-3">
+                    <label for="exampleFormControlInput1">End Date</label>
+                    <input type="date" class="form-control" id="validationServer03" name="end_date" required>
+                  </div>                   
+                </div> 
                 <div class="form-footer pt-4 pt-5 mt-4 border-top">
-                    <button type="submit" class="btn btn-primary btn-default">Create</button>
-                    <button type="submit" class="btn btn-secondary btn-default">Cancel</button>
+                  <button type="submit" class="btn btn-primary btn-default">Create</button>
+                  <button type="submit" class="btn btn-secondary btn-default">Cancel</button>
                 </div>
             </form>
 

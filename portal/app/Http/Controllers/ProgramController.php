@@ -18,6 +18,7 @@ use App\Models\Program;
 use App\Models\Program_batch;
 
 
+
 class ProgramController extends Controller
 {
     /*  
@@ -27,9 +28,20 @@ class ProgramController extends Controller
     */
     public function bblt() 
     { 
-        //echo "Success"; die;
-        return view('program.bblt');
+        $date = now()->format('Y-m-d');
+        $batchinfo = Program_batch::all()
+                       ->where('program_id', '= ','1')
+                       ->last();
+        $application_last_date = $batchinfo->end_date;
+        $application_start_date = $batchinfo->start_date;
+        //echo "<pre>"; print_r($application_last_date); die;
+        if($date <= $application_last_date && $date >= $application_start_date){
+            return view('program.bblt')->with(compact('batchinfo'));
+        }else{
+            return view('program.blank');
+        }
     }
+
     public function bbltstore(Request $request)
     {     
         if($request->isMethod('post')){
@@ -184,17 +196,23 @@ class ProgramController extends Controller
     */
     public function bbltj()
     {  
-       //echo "Success"; die;
-       return view('program.bbltj');
+        $date = now()->format('Y-m-d');
+        $batchinfo = Program_batch::all()
+                       ->where('program_id', '= ','2')
+                       ->last();
+        $application_last_date = $batchinfo->end_date;
+        $application_start_date = $batchinfo->start_date;
+        if($date <= $application_last_date && $date >= $application_start_date){
+            return view('program.bbltj')->with(compact('batchinfo'));
+        }else{
+            return view('program.blank');
+        }
     }
 
     public function bbltjstore(Request $request)
     {
-        
         if($request->isMethod('post')){
-
             $data = $request->input();
-
             $program_batch_id=$data['program_batch_id'];
             $programname=$data['program_name'];
             //echo "<pre>"; print_r($data); die;
@@ -277,8 +295,6 @@ class ProgramController extends Controller
             }      
             //$addinfo->save();
 
-
-            
             $marconinfo = new StudentMarcomInfo;
             if(empty($data['marketing_question'])){
                     $knowing_media =' ';
@@ -287,6 +303,7 @@ class ProgramController extends Controller
                 }
             $marconinfo->knowing_media = $knowing_media;
             //$marconinfo->save();
+
             $questioninfo = new StudentQuestionaryInfo;
             $questioninfo->justify_answer = $data['justify_ans'];
             //$questioninfo->save();
@@ -306,7 +323,6 @@ class ProgramController extends Controller
             $interview = new Interview;
             $interview->program_name =$programname; 
             $interview->program_batch_id = $program_batch_id;
-
 
             $info->save();
             $coninfo->save();
@@ -328,15 +344,25 @@ class ProgramController extends Controller
     */
     public function apl()
     {  
-       //echo "Success"; die;
-       return view('program.apl');
+        $date = now()->format('Y-m-d');
+        $batchinfo = Program_batch::all()
+                       ->where('program_id', '= ','3')
+                       ->last();
+        $application_last_date = $batchinfo->end_date;
+        $application_start_date = $batchinfo->start_date;
+        if($date <= $application_last_date && $date >= $application_start_date){
+            return view('program.apl')->with(compact('batchinfo'));
+        }else{
+            return view('program.blank');
+        }
     }
+
     public function aplstore(Request $request)
     { 
         if($request->isMethod('post')){
 
             $data = $request->input();
-            //echo "<pre>"; print_r($data); die;
+            echo "<pre>"; print_r($data); die;
             $program_batch_id=$data['program_batch_id'];
             $programname=$data['program_name'];
             $info = new StudentPersonalInfo;
@@ -370,13 +396,11 @@ class ProgramController extends Controller
             $info->disability_name = $data['disability_name'];
             //$info->save();
           
-
             $coninfo = new StudentContactInfo;
             $coninfo->personal_phone_no = $data['mobile-number'];
             $coninfo->emergency_contact_no = $data['emergency-contact']; 
             $coninfo->email_address = $data['email-address'];            
             //$coninfo->save();
-
 
             $addinfo = new StudentAddressInfo;
             $addinfo->present_apartment_no = $data['per_apartment'];
@@ -407,7 +431,6 @@ class ProgramController extends Controller
             }      
             //$addinfo->save();
 
-
             $edinfo = new StudentEducationalInfo;
             if(empty($data['medium'])){
                 $medium =' ';  
@@ -420,7 +443,6 @@ class ProgramController extends Controller
             $edinfo->uni_passing_year = $data['graduation_year'];
             $edinfo->cgpa = $data['cgpa'];
             //$edinfo->save();
-
            
            $marconinfo = new StudentMarcomInfo;
            if(empty($data['marketing_question'])){
@@ -430,7 +452,6 @@ class ProgramController extends Controller
             }
            $marconinfo->knowing_media = $knowing_media;
            //$marconinfo->save();
-
 
            $questioninfo = new StudentQuestionaryInfo;
            $questioninfo->narrative_writing_1 = $data['narrative_writing_1'];
@@ -445,7 +466,6 @@ class ProgramController extends Controller
             $followup->program_name =$programname; 
             $followup->program_batch_id = $program_batch_id;
 
-
             $writing = new WritingTest;
             $writing->program_name =$programname; 
             $writing->program_batch_id = $program_batch_id;
@@ -453,8 +473,6 @@ class ProgramController extends Controller
             $interview = new Interview;
             $interview->program_name =$programname; 
             $interview->program_batch_id = $program_batch_id;
-
-
 
             $info->save();
             $coninfo->save();
@@ -475,16 +493,24 @@ class ProgramController extends Controller
     */
     public function yls()
     {  
-       //echo "Success"; die;
-       return view('program.yls');
+        $date = now()->format('Y-m-d');
+        $batchinfo = Program_batch::all()
+                       ->where('program_id', '= ','4')
+                       ->last();
+        $application_last_date = $batchinfo->end_date;
+        $application_start_date = $batchinfo->start_date;
+        if($date <= $application_last_date && $date >= $application_start_date){
+            return view('program.yls')->with(compact('batchinfo'));
+        }else{
+            return view('program.blank');
+        }   
     }
+
     public function ylsstore(Request $request)
     { 
         if($request->isMethod('post')){
-
             $data = $request->input();
-           // echo "<pre>"; print_r($data); die;
-
+            //echo "<pre>"; print_r($data); die;
            $program_batch_id=$data['program_batch_id'];
             $programname=$data['program_name'];
             $info = new StudentPersonalInfo;
@@ -518,13 +544,11 @@ class ProgramController extends Controller
             $info->disability_name = $data['disability_name'];
             //$info->save();
           
-
             $coninfo = new StudentContactInfo;
             $coninfo->personal_phone_no = $data['mobile-number'];
             $coninfo->emergency_contact_no = $data['emergency-contact']; 
             $coninfo->email_address = $data['email-address'];            
             //$coninfo->save();
-
 
             $addinfo = new StudentAddressInfo;
             $addinfo->present_apartment_no = $data['per_apartment'];
@@ -555,7 +579,6 @@ class ProgramController extends Controller
             }      
             //$addinfo->save();
 
-
             $edinfo = new StudentEducationalInfo;
             if(empty($data['medium'])){
                 $medium =' ';  
@@ -580,7 +603,6 @@ class ProgramController extends Controller
             $edinfo->undergraduate_level = $undergrad_level;
             //$edinfo->save();
 
-
             $marconinfo = new StudentMarcomInfo;
             if(empty($data['marketing_question'])){
             $knowing_media =' ';
@@ -589,7 +611,6 @@ class ProgramController extends Controller
             }
             $marconinfo->knowing_media = $knowing_media;
             //$marconinfo->save();
-
 
             $questioninfo = new StudentQuestionaryInfo;
             $questioninfo->narrative_writing_1 = $data['narrative_writing_1'];
@@ -612,7 +633,6 @@ class ProgramController extends Controller
             $interview->program_name =$programname; 
             $interview->program_batch_id = $program_batch_id;
 
-
             $info->save();
             $coninfo->save();
             $edinfo->save();
@@ -631,16 +651,25 @@ class ProgramController extends Controller
 
     public function careerx()
     {  
-       //echo "Success"; die;
-       return view('program.careerx');
+        $date = now()->format('Y-m-d');
+        $batchinfo = Program_batch::all()
+                       ->where('program_id', '= ','5')
+                       ->last();
+        $application_last_date = $batchinfo->end_date;
+        $application_start_date = $batchinfo->start_date;
+        if($date <= $application_last_date && $date >= $application_start_date){
+            return view('program.careerx')->with(compact('batchinfo'));
+        }else{
+            return view('program.blank');
+        }
     }
+
     public function careerxstore(Request $request)
     { 
         if($request->isMethod('post')){
 
             $data = $request->input();
-            // echo "<pre>"; print_r($data); die;
-
+            //echo "<pre>"; print_r($data); die;
             $program_batch_id=$data['program_batch_id'];
             $programname=$data['program_name'];
             $info = new StudentPersonalInfo;
@@ -674,13 +703,11 @@ class ProgramController extends Controller
             $info->nid = $data['nid'];
             //$info->save();
 
-
             $coninfo = new StudentContactInfo;
             $coninfo->personal_phone_no = $data['mobile-number'];
             $coninfo->emergency_contact_no = $data['emergency-contact']; 
             $coninfo->email_address = $data['email-address'];            
             //$coninfo->save();
-
 
             $addinfo = new StudentAddressInfo;
             $addinfo->present_apartment_no = $data['per_apartment'];
@@ -711,7 +738,6 @@ class ProgramController extends Controller
             }      
             //$addinfo->save();
 
-
             $edinfo = new StudentEducationalInfo;
             if(empty($data['medium'])){
                 $medium =' ';  
@@ -730,7 +756,6 @@ class ProgramController extends Controller
             $edinfo->cgpa = $data['cgpa'];
             $edinfo->uni_passing_year = $data['graduation_year'];
             //$edinfo->save();
-
 
             $marconinfo = new StudentMarcomInfo;
             if(empty($data['marketing_question'])){
@@ -754,7 +779,6 @@ class ProgramController extends Controller
             $marconinfo->careerx_program = $bootcamp;
             $marconinfo->bootcamp_bach_no =$data['bootcamp'];
             //$marconinfo->save();
-
 
             $questioninfo = new StudentQuestionaryInfo;
             if(empty($data['mcq1'])){
@@ -1121,6 +1145,8 @@ class ProgramController extends Controller
         
             $program_batch ->program_id = $data['category_program'];
             $program_batch ->batch_name = $data['batch_name'];
+            $program_batch ->start_date = $data['start_date'];
+            $program_batch ->end_date = $data['end_date'];
             
             $program_batch->save();
             return redirect('/programs/programBatch');
