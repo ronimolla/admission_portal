@@ -45,8 +45,15 @@ class StudentController extends Controller
         return view('profile')->with(compact('personalinfo','contactinfo','eduinfo','addressinfo'));
     }
 
-
-
+    public function studentlogin(Request $request){
+		if($request->isMethod('post')){
+            $data = $request->input();
+          
+            return redirect('/assesment/interview');
+        }  
+       
+         return view('assesment.interview_follow_up');  
+    }
 
 
 
