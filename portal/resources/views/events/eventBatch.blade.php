@@ -3,7 +3,7 @@
 <div class="content-wrapper">
   	<div class="content">
 	  <div class="breadcrumb-wrapper">
-						<h1>Event Information</h1>
+						<h1>Event-Batch Information</h1>
 						<nav aria-label="breadcrumb">
 							<ol class="breadcrumb p-0">
 								<li class="breadcrumb-item">
@@ -12,7 +12,7 @@
 									 </a>
 								</li>
 								<li class="breadcrumb-item">
-									Event-tables
+									Event-batch-tables
 								</li>								
 							</ol>
 						</nav>
@@ -35,7 +35,7 @@
 
                                     <h2>Event Data Table</h2>
 
-									<a href="{{ url('events/createEvent')}}"  class="btn btn-success">Create New Event</a>
+									<a href="{{ url('events/createEventBatch')}}"  class="btn btn-success">Create New Event</a>
 								</div>
 
 								<div class="card-body">
@@ -50,7 +50,8 @@
                                                     <th>End Date</th>
 													<th>Year</th>
 													<th>Budget</th>
-                                                    <th>Sponser</th>											
+                                                    <th>Sponser</th>
+													<th>Total Participants</th>											
 												</tr>
 											</thead>
                                             
@@ -66,6 +67,7 @@
                                                         <td>{{$prg->year}}</td>
                                                         <td>{{$prg->budget}}</td>
 														<td>{{$prg->sponser}}</td>
+														<td>40</td>
                                                     </tr>
                                                 @endforeach	
 											</tbody>

@@ -80,7 +80,7 @@
                         <button type="">
                             <div class="shadow-lg p-1 mb-2 bg-white rounded">
                                 <a href="{{ url('dashboard')}}">
-                                    <div class="target"><img class="target" src="{{asset('images/dashboard.jpeg')}}" alt=" " class="rounded mx-auto d-block" style="width: 150; height:150"></div>
+                                    <div class="target"><img class="target" src="{{asset('images/overview_logos/dashboard.jpeg')}}" alt=" " class="rounded mx-auto d-block" style="width: 150; height:150"></div>
                                 </a>
                             </div>
                             <a style="font-size:14px ; font-weight:bold"  >Dashboard</a>
@@ -90,7 +90,7 @@
                         <button type="">
                             <div class="shadow-lg p-1 mb-2 bg-white rounded">
                                 <a href="{{ url('/programs/programsView')}}">
-                                    <div class="target"><img src="{{asset('images/programs.jpeg')}}" alt=" " class="rounded mx-auto d-block" style="width: 150; height:150"></div>
+                                    <div class="target"><img src="{{asset('images/overview_logos/programs.jpeg')}}" alt=" " class="rounded mx-auto d-block" style="width: 150; height:150"></div>
                                 </a>
                             </div>
                             <a style="font-size:14px; font-weight:bold">Programs</a>
@@ -99,7 +99,9 @@
                     <div class="col">
                         <button type="">
                             <div class="shadow-lg p-1 mb-2 bg-white rounded">
-                                <div class="target"><img src="{{asset('images/events.jpeg')}}" alt=" " class="rounded mx-auto d-block" style="width: 150; height:150"></div>
+                                <a href="{{ url('/events/eventsView')}}">
+                                    <div class="target"><img src="{{asset('images/overview_logos/events.jpeg')}}" alt=" " class="rounded mx-auto d-block" style="width: 150; height:150"></div>
+                                </a>
                             </div>
                             <a style="font-size:14px; font-weight:bold">Events</a>
                         </button>
@@ -107,8 +109,8 @@
                     <div class="col">
                         <button type="">
                             <div class="shadow-lg p-1 mb-2 bg-white rounded">
-                                <a href="{{ url('program_page/programs_info')}}">
-                                    <div class="target"><img src="{{asset('images/students.jpg')}}" alt=" " class="rounded mx-auto d-block" style="width: 150; height:150"></div>
+                                <a href="{{ url('students/programs_info')}}">
+                                    <div class="target"><img src="{{asset('images/overview_logos/students.jpg')}}" alt=" " class="rounded mx-auto d-block" style="width: 150; height:150"></div>
                                 </a>
                             </div>
                             <a style="font-size:14px; font-weight:bold">Student Management</a>
@@ -120,7 +122,7 @@
                     <div class="col">
                         <button type="">
                             <div class="shadow-lg p-1 mb-2 bg-white rounded">
-                                <div class="target"><img src="{{asset('images/ongoing.png')}}" alt=" " class="rounded mx-auto d-block" style="width: 150; height:150"></div>
+                                <div class="target"><img src="{{asset('images/overview_logos/ongoing.png')}}" alt=" " class="rounded mx-auto d-block" style="width: 150; height:150"></div>
                             </div>
                             <a style="font-size:14px; font-weight:bold">Ongoing Programs</a>
                         </button>
@@ -129,7 +131,7 @@
                         <button type="">
                             <div class="shadow-lg p-1 mb-2 bg-white rounded">
                                 <a href="{{ url('assesment/preselection')}}">
-                                    <div class="target"><img src="{{asset('images/assessment.jpeg')}}" alt=" " class="rounded mx-auto d-block" style="width: 150; height:150"></div>
+                                    <div class="target"><img src="{{asset('images/overview_logos/assessment.jpeg')}}" alt=" " class="rounded mx-auto d-block" style="width: 150; height:150"></div>
                                 </a>
                             </div>
                             <a style="font-size:14px; font-weight:bold">Assessment</a>
@@ -139,7 +141,7 @@
                         <button type="">
                             <div class="shadow-lg p-1 mb-2 bg-white rounded">
                                 <a href="{{ url('forms')}}">
-                                    <div class="target"><img src="{{asset('images/forms.jpeg')}}" alt=" " class="rounded mx-auto d-block" style="width: 150; height:150"></div>
+                                    <div class="target"><img src="{{asset('images/overview_logos/forms.jpeg')}}" alt=" " class="rounded mx-auto d-block" style="width: 150; height:150"></div>
                                 </a>
                             </div>
                             <a style="font-size:14px; font-weight:bold">Forms</a>
@@ -148,7 +150,7 @@
                     <div class="col">
                         <button type="">
                             <div class="shadow-lg p-1 mb-2 bg-white rounded">
-                                <div class="target"><img src="{{asset('images/settings.jpeg')}}" alt=" " class="rounded mx-auto d-block" style="width: 150; height:150"></div>
+                                <div class="target"><img src="{{asset('images/overview_logos/settings.jpeg')}}" alt=" " class="rounded mx-auto d-block" style="width: 150; height:150"></div>
                             </div>
                             <a style="font-size:14px; font-weight:bold">Settings</a>
                         </button>

@@ -9,7 +9,7 @@
 								<li class="breadcrumb-item">
 									<a href="index.html">
 									<span class="mdi mdi-home"></span>                
-									 </a>
+									</a>
 								</li>
 								<li class="breadcrumb-item">
 									Batch-tables
@@ -54,16 +54,26 @@
 													</tr>
 												</thead>
 												
-												<?php $c = 1; ?>
+												<?php 
+												$c = 1; 
+											 	$count = 0; 
+												?>
+
 												<tbody>
 													@foreach($program_info as $prg)
+														@foreach($totalStudents as $ts)
+															@if($prg->batch_id == $ts->program_batch_id)
+																<?php $count++;?>
+															@endif
+														@endforeach
 														<tr>
 															<td>{{$c++}}</td>
 															<td>{{$prg->batch_name}}</td>
 															<td>{{$prg->program_name}}</td>
 															<td>{{$prg->duration}}</td>
-															<td>{{$prg->totalStudents}}</td>
+															<td>{{$count}}</td>
 														</tr>
+														<?php $count=0;?>
 													@endforeach	
 												</tbody>
 										</table>
@@ -72,7 +82,6 @@
 							</div><!-- End card card-default -->
 						</div>
 					</div>
-
 
  	 </div>
 </div>
