@@ -80,11 +80,6 @@ Route::group(['middleware' =>['adminlogin']],function(){
    
    
 
-    
-
-    /*
-    Jubair work start
-    */
     //All program data information
     Route::resource('Students', StudentController::class);
     Route::get('/view-profile/{student_id}', [StudentController::class, 'profile']);
@@ -92,20 +87,18 @@ Route::group(['middleware' =>['adminlogin']],function(){
 
 
     //Student Management Page 
-    Route::get('/program_page/programs_info', [ProgramController::class, 'programs_info']);
+    Route::get('/students/programs_info', [ProgramController::class, 'programs_info']);
     Route::match(['get', 'post'], '/getBatch',[ProgramController::class, 'getBatch']);
     Route::match(['get', 'post'], '/getBatchData',[ProgramController::class, 'getBatchData']);
     
-
     //Download CSV-(From Student Table)
-
     Route::match(['get', 'post'], '/download-csv', [ProgramController::class, 'downloadCSVReport']);
 
     //Overview Page
     Route::get('/overview', [ProgramController::class, 'overview']);
 
-    //Programs Page
 
+    //Programs Page
     Route::get('/programs/programsView', [ProgramController::class, 'programsView']); //View Page
     Route::match(['get', 'post'], '/getProgramDatabyCategory',[ProgramController::class, 'getProgramDatabyCategory']); //Dropdown
     Route::match(['get', 'post'], '/programs/createProgram',[ProgramController::class, 'createProgram']);
@@ -115,6 +108,7 @@ Route::group(['middleware' =>['adminlogin']],function(){
     Route::match(['get', 'post'], '/getProgramData',[ProgramController::class, 'getProgramData']); //Dropdown
     Route::match(['get', 'post'], '/programs/createBatch',[ProgramController::class, 'createProgramBatch']);
     
+
     //Event Page
     Route::get('/events/eventsView', [ProgramController::class, 'eventsView']); //View Page
     Route::match(['get', 'post'], '/getEventDatabyCategory',[ProgramController::class, 'getEventDatabyCategory']); //Dropdown
@@ -124,6 +118,10 @@ Route::group(['middleware' =>['adminlogin']],function(){
     Route::get('/events/eventBatch', [ProgramController::class, 'eventBatch']); //View Page
     Route::match(['get', 'post'], '/getEventData',[ProgramController::class, 'getEventData']); //Dropdown
     Route::match(['get', 'post'], '/events/createEventBatch',[ProgramController::class, 'createEventBatch']);
+
+    //Event- Forms
+    Route::get('/events/forms/alumni_iftar', [ProgramController::class, 'alumni_iftar']); //View Iftar Page
+    Route::get('/events/forms/careerExpo', [ProgramController::class, 'careerExpo']); //View CareerExpo Page
 
    
 });

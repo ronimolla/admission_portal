@@ -48,25 +48,34 @@
 													<th>SL.No.</th>
 													<th>Program Name</th>
 													<th>Category</th>
-
 													<th>Program Duration (months)</th>
-
                                                     <th>Total Batches</th>
 													<th>Donor</th>												
 												</tr>
 											</thead>
                                             
-                                            <?php $c = 1; ?>
-											<tbody>
-                                                @foreach($program_name as $prg)
-                                                    <tr>
+                                            <?php 
+												$c = 1; 
+											 	$count = 0; 
+											?>
+                                                
+											<tbody>	
+												@foreach($program_name as $prg)
+
+													@foreach($totalBatch as $tb)
+														@if($prg->program_id == $tb->program_id)
+															<?php $count++;?>
+														@endif
+													@endforeach
+													<tr>
                                                         <td>{{$c++}}</td>
                                                         <td>{{$prg->program_name}}</td>
                                                         <td>{{$prg->category}}</td>
                                                         <td>{{$prg->duration}}</td>
-                                                        <td>07</td>
+                                                        <td>{{$count}}</td>
                                                         <td>{{$prg->donor}}</td>
                                                     </tr>
+													<?php $count=0;?>
                                                 @endforeach	
 											</tbody>
 										</table>

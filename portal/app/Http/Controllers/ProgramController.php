@@ -16,6 +16,8 @@ use App\Models\FollowUp;
 use App\Models\Interview;
 use App\Models\Program;
 use App\Models\Program_batch;
+use App\Models\Event;
+use App\Models\Event_batch;
 
 
 
@@ -835,7 +837,9 @@ class ProgramController extends Controller
     }
 
 
-    //----------------------------------------- JUBAIR -----------------------------------------------
+    //---------------************------------ JUBAIR --------------************----------------
+
+    // ---------------------Students-------------------------
 
     // View program page with table
     public function programs_info()
@@ -852,7 +856,7 @@ class ProgramController extends Controller
         $program_batch_name= DB::table('program_batches')
             ->get();
         //echo "<pre>"; print_r($program_name); die;
-        return view('program_page.programs_info')->with(compact('student_info','program_name','program_batch_name'));
+        return view('students.programs_info')->with(compact('student_info','program_name','program_batch_name'));
     }
 
     // public function getBatch(Request $request)
@@ -1018,7 +1022,11 @@ class ProgramController extends Controller
     // Display All program information (Programs Page)
     public function programsView(){        
         $program_name= DB::table('programs')->get();
-        return view('programs.programsView')->with(compact('program_name'));
+        $totalBatch = DB::table('programs')
+            ->join('program_batches', 'programs.program_id', '=', 'program_batches.program_id')
+            ->get();
+
+        return view('programs.programsView')->with(compact('program_name','totalBatch'));
     }
 
     // Display table data based category selected from dropdown (Program Page)
@@ -1029,6 +1037,12 @@ class ProgramController extends Controller
         $state = DB::table('programs')
         ->where('category',$cat)
         ->get();
+        
+        $totalBatch = DB::table('programs')
+            ->join('program_batches', 'programs.program_id', '=', 'program_batches.program_id')
+            ->where('category',$cat)
+            ->get();
+
         
         $html=
         '  
@@ -1045,7 +1059,14 @@ class ProgramController extends Controller
         ';
 
         $count=1;
+        $batch=0;
         foreach($state as $list){
+            foreach($totalBatch as $tb){
+                if($list->program_id == $tb->program_id){
+                    $batch++;
+                }
+            }
+
             $html.='
             <tbody>                        
                 <tr>
@@ -1053,11 +1074,12 @@ class ProgramController extends Controller
                     <td>'.$list->program_name.'</td>
                     <td>'.$list->category.'</td>
                     <td>'.$list->duration.'</td>
-                    <td>40</td>
+                    <td>'.$batch.'</td>
                     <td>'.$list->donor.'</td>              
                 </tr>	
             </tbody>
             ';
+            $batch=0;
         }
         echo $html;
     }
@@ -1089,10 +1111,14 @@ class ProgramController extends Controller
             ->join('program_batches', 'programs.program_id', '=', 'program_batches.program_id')
             ->get();
 
+        $totalStudents = DB::table('student_personal_infos')
+            ->join('program_batches', 'student_personal_infos.program_batch_id', '=', 'program_batches.program_id')
+            ->get();    
+
         //Programs Dropdown
         $program_name= DB::table('programs')->get();
 
-        return view('programs.programBatch')->with(compact('program_name','program_info'));
+        return view('programs.programBatch')->with(compact('program_name','program_info','totalStudents'));
     }
 
     // Display table data based program-name selected from dropdown (program-batch Page)
@@ -1200,18 +1226,16 @@ class ProgramController extends Controller
         echo $html;
     }
 
-    // Create new program
+    // Create new event (EVENT PAGE)
     public function createEvent(Request $request){
         if($request->isMethod('post')){
             $data = $request->input();
-            //echo "<pre>"; print_r($data); die;
-            $program = new Program;
+            $event = new Event;
         
-            $program ->program_name = $data['program_name'];
-            $program ->duration = $data['duration'];
-            $program ->category = $data['category'];  
-                   
-            $program->save();
+            $event -> category = $data['category'];
+            $event -> event_name = $data['event_name'];
+              
+            $event -> save();
             return redirect('/events/eventsView');
         }
         return view('events.createEvent');
@@ -1252,7 +1276,8 @@ class ProgramController extends Controller
                     <th>End Date</th>
                     <th>Year</th>
                     <th>Budget</th>
-                    <th>Sponser</th>													
+                    <th>Sponser</th>
+                    <th>Total Participants</th>													
                 </tr>
             </thead>      
         ';
@@ -1270,6 +1295,7 @@ class ProgramController extends Controller
                     <td>'.$list->year.'</td>
                     <td>'.$list->budget.'</td>
                     <td>'.$list->sponser.'</td>
+                    <td>40</td>
                 </tr>	
             </tbody>
             ';
@@ -1278,21 +1304,39 @@ class ProgramController extends Controller
     }
 
     // Create new Event-batch (EVENT-batch Page)
-    public function createEventBatch(Request $request){
-
+    public function createEventBatch(Request $request)
+    {
+        $event_name= DB::table('events')->get();
+        
         if($request->isMethod('post')){
             $data = $request->input();
-            //echo "<pre>"; print_r($data); die;
-            $program = new Program;
+            $event_batch = new Event_batch;
         
-            $program ->program_name = $data['program_name'];
-            $program ->duration = $data['duration'];
-            $program ->category = $data['category'];  
-                   
-            $program->save();
-            return redirect('/programs/programBatch');
+            $event_batch ->event_id = $data['event_name'];
+            $event_batch ->batch_name = $data['batch_name'];
+            $event_batch ->start_date = $data['start_date'];
+            $event_batch ->end_date = $data['end_date'];
+            $event_batch ->year = $data['year'];
+            $event_batch ->budget = $data['budget'];
+            $event_batch ->sponser = $data['sponser'];
+            
+            $event_batch->save();
+            return redirect('/events/eventBatch');
         }
-        return view('programs.createBatch');
+        return view('events.createEventBatch')->with(compact('event_name'));
+    }
+
+
+    //------------- Event FORMS ----------------------
+
+    public function alumni_iftar()
+    {
+        return view('events.forms.alumni_iftar');
+    }
+
+    public function careerExpo()
+    {
+        return view('events.forms.careerExpo');
     }
 
 
