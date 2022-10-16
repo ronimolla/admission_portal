@@ -32,7 +32,7 @@
                                     <!-- BBLT Form -->
                                     <button type="">
                                         <div class="shadow-lg p-1 mb-2 bg-white rounded">
-                                            <a href="{{ url('program/bblt')}}">
+                                            <a href="{{ url('admin/program/bblt')}}" target="_blank" >
                                                 <div class="target"><img class="target" src="{{asset('images/program_image/bblt.png')}}" alt=" " class="rounded mx-auto d-block" style="width: 150; height:150"></div>
                                             <a>
                                         </div>
@@ -44,7 +44,7 @@
                                     <!-- BBLTJ Form -->
                                     <button type="">
                                         <div class="shadow-lg p-1 mb-2 bg-white rounded">
-                                            <a href="{{ url('program/bbltj')}}">
+                                            <a href="{{ url('admin/program/bbltj')}}">
                                                 <div class="target"><img class="target" src="{{asset('images/program_image/bbltj.png')}}" alt=" " class="rounded mx-auto d-block" style="width: 150; height:150"></div>
                                             </a>
                                         </div>
@@ -56,7 +56,7 @@
                                     <!-- YLS Form -->
                                     <button type="">
                                         <div class="shadow-lg p-1 mb-2 bg-white rounded">
-                                            <a href="{{ url('program/yls')}}">
+                                            <a href="{{ url('admin/program/yls')}}" >
                                                 <div class="target"><img class="target" src="{{asset('images/program_image/yls.png')}}" alt=" " class="rounded mx-auto d-block" style="width: 150; height:150"></div>
                                             </a>
                                         </div>
@@ -68,7 +68,7 @@
                                     <!-- APL Form -->
                                     <button type="">
                                         <div class="shadow-lg p-1 mb-2 bg-white rounded">
-                                            <a href="{{ url('program/apl')}}">
+                                            <a href="{{ url('admin/program/apl')}}">
                                                 <div class="target"><img class="target" src="{{asset('images/program_image/apl.png')}}" alt=" " class="rounded mx-auto d-block" style="width: 150; height:150"></div>
                                             </a>
                                         </div>
@@ -113,7 +113,7 @@
                                                 <!-- CareerX Form -->
                                                 <button type="">
                                                     <div class="shadow-lg p-1 mb-2 bg-white rounded">
-                                                        <a href="{{ url('program/careerx')}}">
+                                                        <a href="{{ url('admin/program/careerx')}}">
                                                             <div class="target"><img class="target" src="{{asset('images/no_image.png')}}" alt=" " class="rounded mx-auto d-block" style="width: 150; height:150"></div>
                                                         </a>
                                                     </div>

@@ -16510,7 +16510,7 @@ div.copied {
 }
 
 .sidebar-dark .sidebar .sub-menu > li > a {
-  color: #b7c0cd;
+  color: black;
 }
 
 .sidebar-dark .sidebar .sub-menu > li > a .nav-text {
@@ -16526,11 +16526,12 @@ div.copied {
 .sidebar-dark .sidebar .sub-menu > li.active > a:hover,
 .sidebar-dark .sidebar .sub-menu > li > a:focus,
 .sidebar-dark .sidebar .sub-menu > li > a:hover {
-  color: black;
+  color: #6495ED;
 }
 
 .sidebar-dark .sidebar .nav > li.active > a {
-  color: #ffffff;
+  color: #6495ED;
+  font-style: var(--breakpoint-xl);
 }
 
 .sidebar-dark .separator {

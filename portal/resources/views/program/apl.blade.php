@@ -55,7 +55,7 @@
 							<!-- form template -->
 			            </h2>
 						<input type="hidden" class="form-control" id="program_name"  name="program_name" value="APL" >
-						<input type="hidden" class="form-control" id="program_name"  name="program_batch_id" value="5" >
+						<input type="hidden" class="form-control" id="program_name"  name="program_batch_id" value="{{$batchinfo->batch_id}}" >
 			            <section>
 							<div class="container">
 								<div class="row">

@@ -17,6 +17,8 @@ return new class extends Migration
             $table->id('batch_id');
             $table->integer('program_id');
             $table->string('batch_name')->nullable();
+            $table->date('start_date');
+            $table->date('end_date');
             $table->integer('totalStudents')->nullable();;
             $table->timestamps();
         });

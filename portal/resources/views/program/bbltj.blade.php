@@ -57,7 +57,7 @@
 				<form class="form-register"  method="post" action="{{url('/bbltj/store')}}" name="add_school" id="add_school" novalidate="novalidate">{{csrf_field()}}
 		        	<div id="form-total">
 					<input type="hidden" class="form-control" id="program_name"  name="program_name" value="BBLTJ" >
-					<input type="hidden" class="form-control" id="program_name"  name="program_batch_id" value="3" >
+					<input type="hidden" class="form-control" id="program_name"  name="program_batch_id" value="{{$batchinfo->batch_id}}">
 		        		<!-------------------------------- GUIDELINES ----------------------------------->
 			            <h2>
 							<!-- form template -->

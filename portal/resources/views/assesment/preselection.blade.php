@@ -132,15 +132,6 @@
                 </div><!-- End card card-default -->
             </div>
         </div>
-
-
-                   
-		
-
-  
-
-
-  
  	</div>
 </div>
 @endsection

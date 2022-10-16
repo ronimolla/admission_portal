@@ -6,6 +6,8 @@ use App\Http\Controllers\IndexController;
 use App\Http\Controllers\ProgramController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\AssesmentController;
+use App\Http\Controllers\SettingController;
+use App\Http\Controllers\ViewController;
 Auth::routes();
 /*
 |--------------------------------------------------------------------------
@@ -30,24 +32,16 @@ Route::group(['middleware' =>['adminlogin']],function(){
     Route::get('/forms', [IndexController::class, 'form']);
     Route::get('/dashboard', [IndexController::class, 'dashboard']);
     Route::resource('Admins', AdminController::class);
-    //BBLT program route 
-    Route::get('/program/bblt', [ProgramController::class, 'bblt']);
-    Route::match(['get', 'post'], '/bblt/store',[ProgramController::class, 'bbltstore']);
-    //BBLTJ program route 
-    Route::get('/program/bbltj', [ProgramController::class, 'bbltj']);
-    Route::match(['get', 'post'], '/bbltj/store',[ProgramController::class, 'bbltjstore']);
-    //APL program route 
-    Route::get('/program/apl', [ProgramController::class, 'apl']);
-    Route::match(['get', 'post'], '/apl/store',[ProgramController::class, 'aplstore']);
-    //YLS program route 
-    Route::get('/program/yls', [ProgramController::class, 'yls']);
-    Route::match(['get', 'post'], '/yls/store',[ProgramController::class, 'ylsstore']);
-    //YLS program route 
-    Route::get('/program/careerx', [ProgramController::class, 'careerx']);
-    Route::match(['get', 'post'], '/careerx/store',[ProgramController::class, 'careerxstore']);
+   
+    //form view for admin side
+    Route::get('admin/program/bblt', [ViewController::class, 'bblt']);
+    Route::get('admin/program/bbltj', [ViewController::class, 'bbltj']);
+    Route::get('admin/program/yls', [ViewController::class, 'yls']);
+    Route::get('admin/program/apl', [ViewController::class, 'apl']);
+    Route::get('admin/program/careerx', [ViewController::class, 'careerx']);
 
 
-    //All program data information
+    //All program data(Applicant data) information
     Route::resource('Students', StudentController::class);
     Route::get('/view-profile/{student_id}', [StudentController::class, 'profile']);
     Route::get('/edit-profile/{student_id}', [StudentController::class, 'editprofile']);
@@ -70,14 +64,20 @@ Route::group(['middleware' =>['adminlogin']],function(){
 
     //Financial Aid
 
-    //route:: match(['get','post'],'/financialaid',[AssesmentController::class, 'financialaid']);
+    route:: match(['get','post'],'/financialaid-form',[AssesmentController::class, 'financialaid_form']);
+    Route::get('/assesment/financialaid', [AssesmentController::class, 'financialaid']);
+    Route:: match(['get','post'],'/financialaid-status/{student_id}',[AssesmentController::class, 'waiver']);
+
+    //Settings for User controll
+    Route::get('/admin/setings', [SettingController::class, 'settings']);
+
+
+
 
 
     //---------------------------------------------- JUBAIR ----------------------------------------------------//
 
-    route:: match(['get','post'],'/financialaid-form',[AssesmentController::class, 'financialaid_form']);
-    Route::get('/assesment/financialaid', [AssesmentController::class, 'financialaid']);
-    Route:: match(['get','post'],'/financialaid-status/{student_id}',[AssesmentController::class, 'waiver']);
+   
    
 
     //All program data information
@@ -125,3 +125,24 @@ Route::group(['middleware' =>['adminlogin']],function(){
 
    
 });
+
+
+//Student side where student need not to loging at the system
+
+Route:: match(['get','post'],'/student/login',[StudentController::class, 'studentlogin']);
+
+ //BBLT program route 
+ Route::get('/program/bblt', [ProgramController::class, 'bblt']);
+ Route::match(['get', 'post'], '/bblt/store',[ProgramController::class, 'bbltstore']);
+ //BBLTJ program route 
+ Route::get('/program/bbltj', [ProgramController::class, 'bbltj']);
+ Route::match(['get', 'post'], '/bbltj/store',[ProgramController::class, 'bbltjstore']);
+ //APL program route 
+ Route::get('/program/apl', [ProgramController::class, 'apl']);
+ Route::match(['get', 'post'], '/apl/store',[ProgramController::class, 'aplstore']);
+ //YLS program route 
+ Route::get('/program/yls', [ProgramController::class, 'yls']);
+ Route::match(['get', 'post'], '/yls/store',[ProgramController::class, 'ylsstore']);
+ //YLS program route 
+ Route::get('/program/careerx', [ProgramController::class, 'careerx']);
+ Route::match(['get', 'post'], '/careerx/store',[ProgramController::class, 'careerxstore']);
