@@ -8,6 +8,7 @@ use App\Http\Controllers\StudentController;
 use App\Http\Controllers\AssesmentController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\ViewController;
+use App\Http\Controllers\UserController;
 Auth::routes();
 /*
 |--------------------------------------------------------------------------
@@ -129,9 +130,9 @@ Route::group(['middleware' =>['adminlogin']],function(){
 });
 
 
-//Student side where student need not to loging at the system
+//----------Student side where student need not to loging at the system----------------//
 
-Route:: match(['get','post'],'/student/login',[StudentController::class, 'studentlogin']);
+
 
  //BBLT program route 
  Route::get('/program/bblt', [ProgramController::class, 'bblt']);
@@ -148,3 +149,8 @@ Route:: match(['get','post'],'/student/login',[StudentController::class, 'studen
  //YLS program route 
  Route::get('/program/careerx', [ProgramController::class, 'careerx']);
  Route::match(['get', 'post'], '/careerx/store',[ProgramController::class, 'careerxstore']);
+
+ Route::get('/student/login', [UserController::class, 'stdlog']);
+ Route::post('/student/login', [UserController::class, 'loginrequest']);
+ Route::get('/student/dashboard', [UserController::class, 'stddashboard']);
+ Route::get('/student/logout', [UserController::class, 'logout']);
