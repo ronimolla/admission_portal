@@ -8,9 +8,9 @@
     
         <title>BYLC Admission Portal</title>
         <!-- "{{asset('css/backend_css/bootstrap.min.css')}}" -->
+
         <!-- GOOGLE FONTS -->
         <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500|Poppins:400,500,600,700|Roboto:400,500" rel="stylesheet" />
-
         <link href="https://cdn.materialdesignicons.com/4.4.95/css/materialdesignicons.min.css" rel="stylesheet" />
     
         <!-- PLUGINS CSS STYLE -->
@@ -21,7 +21,6 @@
         <!-- No Extra plugin used -->
         <link href="{{asset('assets/plugins/jvectormap/jquery-jvectormap-2.0.3.css')}}" rel='stylesheet'>
         <link href="{{asset('assets/plugins/daterangepicker/daterangepicker.css')}}" rel='stylesheet'>
-        
         <link href="{{asset('assets/plugins/toastr/toastr.min.css')}}" rel='stylesheet'>
         
         <!-- SLEEK CSS -->
@@ -38,7 +37,10 @@
     </head>
 
     <body class="header-fixed sidebar-fixed sidebar-dark header-light" id="body">
-    
+    <script>
+      NProgress.configure({ showSpinner: false });
+      NProgress.start();
+    </script>
 
         <!-- ====================================
         ——— WRAPPER
@@ -83,6 +85,7 @@
         <script src="{{asset('assets/plugins/data-tables/jquery.datatables.min.js')}}"></script>
         <script src="{{asset('assets/plugins/data-tables/datatables.bootstrap4.min.js')}}"></script>
         <script src="{{asset('assets/js/sleek.js')}}"></script>
+        <script src="{{asset('assets/plugins/circle-progress/circle-progress.js')}}"></script>
         <link href="{{asset('assets/options/optionswitch.css')}}" rel="stylesheet">
         <script src="{{asset('assets/options/optionswitcher.js')}}"></script>
     
