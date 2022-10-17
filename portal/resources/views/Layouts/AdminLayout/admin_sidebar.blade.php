@@ -98,7 +98,7 @@
 
 
                 <li class="">
-                    <a class="sidenav-item-link" href="{{url('/program_page/programs_info')}}">
+                    <a class="sidenav-item-link" href="{{url('/students/programs_info')}}">
                         <i class="mdi mdi-book-open"></i>
                         <span class="nav-text">Student management</span> 
                     </a>

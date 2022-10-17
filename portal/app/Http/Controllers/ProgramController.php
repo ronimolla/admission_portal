@@ -1007,8 +1007,7 @@ class ProgramController extends Controller
                     $product['email_address'],
                     $product['personal_phone_no'],
                     $product['present_district'],
-                    $product['batch_name'],
-                    
+                    $product['batch_name'],                 
                 ];
 
                 fputcsv($output, $product_row);
@@ -1112,7 +1111,7 @@ class ProgramController extends Controller
             ->get();
 
         $totalStudents = DB::table('student_personal_infos')
-            ->join('program_batches', 'student_personal_infos.program_batch_id', '=', 'program_batches.program_id')
+            ->join('program_batches', 'student_personal_infos.program_batch_id', '=', 'program_batches.batch_id')
             ->get();    
 
         //Programs Dropdown
@@ -1127,9 +1126,13 @@ class ProgramController extends Controller
         $pnid=$request->post('pnid');
         
         $state = DB::table('programs')
-        ->join('program_batches', 'program_batches.program_id', '=', 'programs.program_id')
-        ->where('programs.program_id',$pnid)
-        ->get();
+            ->join('program_batches', 'program_batches.program_id', '=', 'programs.program_id')
+            ->where('programs.program_id',$pnid)
+            ->get();
+
+        $totalStudents = DB::table('student_personal_infos')
+            ->join('program_batches', 'student_personal_infos.program_batch_id', '=', 'program_batches.batch_id')
+            ->get();   
         
         $html=
         '  
@@ -1144,19 +1147,27 @@ class ProgramController extends Controller
             </thead>      
         ';
 
-        $count=1;
+        $c=1;
+        $count=0;
         foreach($state as $list){
+            foreach($totalStudents as $ts){
+                if($list->batch_id == $ts->program_batch_id){
+                    $count++;
+                }
+            }
+                
             $html.='
             <tbody>                        
                 <tr>
-                    <td>'.$count++.'</td>
+                    <td>'.$c++.'</td>
                     <td>'.$list->batch_name.'</td>
                     <td>'.$list->program_name.'</td>
                     <td>'.$list->duration.'</td>
-                    <td>'.$list->totalStudents.'</td>              
+                    <td>'.$count.'</td>              
                 </tr>	
             </tbody>
             ';
+            $count=0;
         }
         echo $html;
     }
@@ -1186,7 +1197,12 @@ class ProgramController extends Controller
     // Display All event information (Event Page)
     public function eventsView(){        
         $event_name= DB::table('events')->get();
-        return view('events.eventsView')->with(compact('event_name'));
+        
+        $totalBatch = DB::table('events')
+        ->join('event_batches', 'events.id', '=', 'event_batches.event_id')
+        ->get();
+
+        return view('events.eventsView')->with(compact('event_name','totalBatch'));
     }
 
     // Display table data based on category selected from dropdown (EVENT Page)
@@ -1196,6 +1212,10 @@ class ProgramController extends Controller
         
         $state = DB::table('events')
         ->where('category',$cat)
+        ->get();
+
+        $totalBatch = DB::table('events')
+        ->join('event_batches', 'events.id', '=', 'event_batches.event_id')
         ->get();
         
         $html=
@@ -1210,18 +1230,26 @@ class ProgramController extends Controller
             </thead>      
         ';
 
-        $count=1;
+        $c=1;
+        $count=0;
         foreach($state as $list){
+            foreach($totalBatch as $tb){
+                if($list->id == $tb->event_id){
+                    $count++;
+                }
+            }
+           
             $html.='
             <tbody>                        
                 <tr>
-                    <td>'.$count++.'</td>
+                    <td>'.$c++.'</td>
                     <td>'.$list->event_name.'</td>
                     <td>'.$list->category.'</td>
-                    <td>07</td>
+                    <td>'.$count.'</td>
                 </tr>	
             </tbody>
             ';
+            $count=0;
         }
         echo $html;
     }
