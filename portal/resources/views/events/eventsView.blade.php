@@ -51,15 +51,24 @@
 												</tr>
 											</thead>
                                             
-                                            <?php $c = 1; ?>
+											<?php 
+												$c = 1; 
+											 	$count = 0; 
+											?>
 											<tbody>
                                                 @foreach($event_name as $evt)
+													@foreach($totalBatch as $tb)
+														@if($evt->id == $tb->event_id)
+															<?php $count++; ?>
+														@endif
+													@endforeach
                                                     <tr>
                                                         <td>{{$c++}}</td>
                                                         <td>{{$evt->event_name}}</td>
                                                         <td>{{$evt->category}}</td>
-                                                        <td>07</td>
+                                                        <td>{{$count}}</td>
                                                     </tr>
+													<?php $count=0;?>
                                                 @endforeach	
 											</tbody>
 										</table>

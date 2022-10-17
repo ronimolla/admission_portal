@@ -49,7 +49,7 @@
 
 								<div class="card-body">
 									<div class="basic-data-table">
-										<table id="student_data_table" class="table nowrap" style="width:100%">
+										<table id="basic-data-table" class="table nowrap" style="width:100%">
 											<thead>
 												<tr>
 													<th>Sl.No.</th>
@@ -75,7 +75,6 @@
                                                         <td>{{$std->present_district}}</td>
                                                         <td>{{$std->batch_name}}</td>
                                                         <td>
-
 															<a href="{{ url('view-profile/'.$std->student_id)}}" class="btn btn-primary">View</a>
 														</td>	
 
