@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use \Illuminate\Support\Facades\DB;
 use Session;
+use App\Models\AssesementPreselection;
+use App\Models\WritingTest;
 use App\Models\User;
+use App\Models\Interview;
 class UserController extends Controller
 {
     //
@@ -34,8 +37,18 @@ class UserController extends Controller
     public function stddashboard()
     {
         $studentDetails = User::where(['email'=>Session::get('adminSession')])->first();
-        //echo "<pre>"; print_r($studentDetails); die;
-        return view('student.std_dashboard')->with(compact('studentDetails')); 
+        $student_id = $studentDetails->student_id;
+        
+        $preselcetion = AssesementPreselection::where(['student_id'=>$student_id])->first();
+        $preselcetionpercentage = $preselcetion-> subtotal/10;
+        
+        $testresult = WritingTest::where(['student_id'=>$student_id])->first();
+        $testpercentage = $testresult->total_score/25;
+
+        $interviewresult = Interview::where(['student_id'=>$student_id])->first();
+        $interviewpercentage = $interviewresult->total_interview_marks/40;
+        //echo $testpercentage; die;
+        return view('student.std_dashboard')->with(compact('studentDetails','preselcetionpercentage','preselcetion','testresult','testpercentage','interviewresult','interviewpercentage')); 
     }
 
     public function logout(){

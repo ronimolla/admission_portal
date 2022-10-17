@@ -28,7 +28,7 @@
             <!-- sidebar menu -->
             <ul class="nav sidebar-inner" id="sidebar-menu">
               
-                <li class="{{ request()->is('dashboard') ? 'active' : '' }}" >
+                <li class="" >
                     <a class="sidenav-item-link" href="{{url('/dashboard')}}">
                         <i class="mdi mdi-view-dashboard-outline"></i>
                         <span class="nav-text">Dashboard</span> 
@@ -43,27 +43,27 @@
                         <span class="nav-text">Assesment</span> <b class="caret"></b>
                     </a>
                     
-                    <ul class="{{ request()->is('assesment/preselection') || request()->is('assesment/writing') || request()->is('assesment/interview') || request()->is('assesment/financialaid') ? '' : 'collapse' }}  " id="components" data-parent="#sidebar-menu">
+                    <ul class="collapse" id="components" data-parent="#sidebar-menu">
                         <div class="sub-menu">
                             <li class="has-sub " >
                                 <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#buttons" aria-expanded="false" aria-controls="buttons">
                                     <span class="nav-text">Program</span> <b class="caret"></b>
                                 </a>
 
-                                <ul class="{{ request()->is('assesment/preselection') || request()->is('assesment/writing')|| request()->is('assesment/interview') || request()->is('assesment/financialaid') ? '' : 'collapse' }} " id="buttons">
+                                <ul class="collapse" id="buttons">
                                     <div class="sub-menu">
-                                        <li class="{{ request()->is('assesment/preselection') ? 'active' : '' }}">
+                                        <li class="active">
                                              <a href="{{url('/assesment/preselection')}}">Pre Selection</a>
                                         </li>
 
-                                        <li class="{{ request()->is('assesment/writing') ? 'active' : '' }}">
+                                        <li class="active">
                                             <a href="{{url('/assesment/writing')}}">Writing test</a>
 
                                         </li>
-                                        <li class="{{ request()->is('assesment/interview') ? 'active' : '' }}">
+                                        <li class="active">
                                             <a href="{{url('/assesment/interview')}}">Interview</a>
                                         </li>
-                                        <li class="{{ request()->is('assesment/financialaid') ? 'active' : '' }}">
+                                        <li class="active">
                                             <a href="{{url('/assesment/financialaid')}}">Financial Aid</a>
                                         </li>
                                     </div>

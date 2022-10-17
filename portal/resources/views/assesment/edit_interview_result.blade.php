@@ -75,16 +75,23 @@
                                     <input type="text" class="form-control" id="commitment" name="commitment" required>
                                 </div>
                                 <div class="col-md-4 mb-3">
+                                        <label for="validationServer03">Select For Registration</label>
+                                        <select class="form-control" id="select_for_registration" name="select_for_registration">
+                                            <option>Eligible</option>
+                                            <option> Incapable</option>
+                                        </select>   
+                                </div> 
+                                <!-- <div class="col-md-4 mb-3">
                                     <label for="validationServer04">Total_Interview_marks(40)</label>
                                     <input type="number" class="form-control" id="courage" name="t_i_mark" required>
                                 </div>  
                                 <div class="col-md-4 mb-3">
                                     <label for="validationServer04">Total Marks(75)</label>
                                     <input type="number" class="form-control" id="compassion" name="t_mark" required>
-                                </div>    
+                                </div>     -->
                             </div>  
 
-                            <div class="form-row"> 
+                            <!-- <div class="form-row"> 
                                 <div class="col-md-4 mb-3">
                                         <label for="validationServer03">Select For Registration</label>
                                         <select class="form-control" id="select_for_registration" name="select_for_registration">
@@ -92,7 +99,7 @@
                                             <option> Incapable</option>
                                         </select>   
                                 </div>    
-                            </div>  
+                            </div>   -->
                             <button class="btn btn-primary" type="submit">Update</button> 
                         </form>
                     </div>

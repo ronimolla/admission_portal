@@ -53,10 +53,7 @@
                                     <label for="validationServer03">Logical_reasoning</label>
                                     <input type="number" class="form-control" id="validationServer03" name="logical_reasoning" required>
                                 </div>
-                                <div class="col-md-4 mb-3">
-                                    <label for="validationServer04">Total Mark</label>
-                                    <input type="number" class="form-control" id="validationServer04" name="total_marke" required>
-                                </div>  
+                                
                                 <div class="col-md-4 mb-3">
                                     <div class="form-group">
                                         <label for="exampleFormControlSelect12">Writting Exam Eligibility</label>
