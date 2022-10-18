@@ -29,7 +29,7 @@
                 </div>
                 <div class="form-group">
                     <label for="exampleFormControlInput1">registration fees</label>
-                    <input type="text" class="form-control" id="exampleFormControlInput1" name="registration_fees" > 
+                    <input type="text" class="form-control" id="exampleFormControlInput1" name="registration_fees" placeholder ="BD5000" > 
                 </div>
                 <div class="form-row">
                   <div class="col-md-4 mb-3">
