@@ -11,11 +11,12 @@ use App\Models\StudentAddressInfo;
 use App\Models\StudentMarcomInfo;
 use App\Models\StudentQuestionaryInfo;
 use App\Models\AssesementPreselection;
+use App\Models\Program_batch;
 use App\Models\WritingTest;
 use App\Models\FollowUp;
 use App\Models\Interview;
 use App\Models\User;
-
+use Session;
 use App\Models\FinancialAid;
 use App\Models\Waiver;
 
@@ -239,21 +240,38 @@ class AssesmentController extends Controller
     }
 
     public function financialaid_form(Request $request){
+        
 		if($request->isMethod('post')){
             $data = $request->input();
-           // echo "<pre>"; print_r($data); die;
+            //echo "<pre>"; print_r($data); die;
             $financila = new FinancialAid;
             $financila->full_name = $data['full_name'];
             $financila->bgn_member_id = $data['bgn_id'];
             $financila->student_id = $data['student_id'];
             $financila->email = $data['email'];
             $financila->contact_number = $data['contact'];
-
+            $financila->program_name = $data['program_name'];
+            $financila->program_batch_id = $data['program_code'];
+            if(empty($data['father'])){
+                $father =' ';
+            }else{
+                $father = $data['father'];
+            }
+            if(empty($data['mother'])){
+                $mother =' ';
+            }else{
+                $mother = $data['mother'];
+            }
+            if(empty($data['others'])){
+                $others =' ';
+            }else{
+                $others = $data['others'];
+            }
             $financila->family_members = $data['family_members'];
             $financila->earning_person_number = $data['earning_person_number'];
-            $financila->earning_person_father = $data['father'];
-            $financila->earning_person_mother = $data['mother'];
-            $financila->earning_person_other = $data['others'];
+            $financila->earning_person_father = $father;
+            $financila->earning_person_mother = $mother;
+            $financila->earning_person_other  = $others;
 
             $financila->father_name = $data['father_name'];
             $financila->father_contact_number = $data['father_contact_number'];
@@ -292,10 +310,16 @@ class AssesmentController extends Controller
             $financila-> communicate_person= $data['verification_person'];
             $financila->save();
             
-            return redirect('/assesment/financialaid');
+            return redirect('/student/dashboard');
         }  
-        
-         return view('assesment.financialaid_form');  
+        $studentinfo = DB::table('student_personal_infos')
+        ->join('student_contact_infos', 'student_personal_infos.student_id', '=', 'student_contact_infos.student_id')
+        ->where(['email_address'=>Session::get('userSession')])
+        ->first();
+        $batchinfo = Program_batch::all()
+                       ->where('program_id', '= ','1')
+                       ->last();
+         return view('assesment.financialaid_form')->with(compact('studentinfo','batchinfo')); 
     }
 
 
@@ -334,8 +358,6 @@ class AssesmentController extends Controller
         $applicaent = FinancialAid::where(['student_id'=>$student_id])->first();
          return view('assesment.update_financial_status')->with(compact('applicaent'));  
     }
-
-
 
 
 }

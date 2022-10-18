@@ -25,7 +25,7 @@ class UserController extends Controller
             $user = DB::table('users')->where(['email'=> $data['email'],'password' => $data['password']])->count(); 
             if($user > 0){
                 //echo "Success"; die;
-                Session::put('adminSession', $data['email']);
+                Session::put('userSession', $data['email']);
                 
                 return redirect('/student/dashboard');
         	}else{
@@ -36,7 +36,7 @@ class UserController extends Controller
     }
     public function stddashboard()
     {
-        $studentDetails = User::where(['email'=>Session::get('adminSession')])->first();
+        $studentDetails = User::where(['email'=>Session::get('userSession')])->first();
         $student_id = $studentDetails->student_id;
         
         $preselcetion = AssesementPreselection::where(['student_id'=>$student_id])->first();
