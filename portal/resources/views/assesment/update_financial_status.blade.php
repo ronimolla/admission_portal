@@ -63,9 +63,8 @@
                                 </div> 
                             </div> 
                             <div class="form-row">
-                                
                                 <div class="col-md-6 mb-3">
-                                    <textarea id="w3review" name="reason" rows="4" cols="50"></textarea>
+                                    <textarea id="w3review" placeholder = "Reason for giving Waiver" name="reason" rows="4" cols="50"></textarea>
                                 </div>     
                             </div>  
                            

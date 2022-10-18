@@ -25,7 +25,7 @@
 			<div class="col-12">
 				<div class="card card-default">
 					<div class="card-header card-header-border-bottom d-flex justify-content-between">
-						<h2>All Student who are Selected for Interview and Waiting for Update their resut</h2>
+						<h2>All Student who are applied for waiver and waiting update their request</h2>
 						
 					</div>
 

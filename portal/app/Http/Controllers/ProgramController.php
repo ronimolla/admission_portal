@@ -1182,6 +1182,7 @@ class ProgramController extends Controller
         
             $program_batch ->program_id = $data['category_program'];
             $program_batch ->batch_name = $data['batch_name'];
+            $program_batch ->registration_fees = $data['registration_fees'];
             $program_batch ->start_date = $data['start_date'];
             $program_batch ->end_date = $data['end_date'];
             
