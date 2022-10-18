@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('program_batches', function (Blueprint $table) {
             $table->id('batch_id');
             $table->integer('program_id');
-            $table->string('batch_name')->nullable();
+            $table->string('batch_name')->unique();
             $table->date('start_date');
             $table->date('end_date');
             $table->integer('registration_fees')->nullable();;

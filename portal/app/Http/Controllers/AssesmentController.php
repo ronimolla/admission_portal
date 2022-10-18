@@ -251,7 +251,7 @@ class AssesmentController extends Controller
             $financila->email = $data['email'];
             $financila->contact_number = $data['contact'];
             $financila->program_name = $data['program_name'];
-            $financila->program_batch_id = $data['program_code'];
+            $financila->program_batch_code = $data['program_code'];
             if(empty($data['father'])){
                 $father =' ';
             }else{
@@ -344,11 +344,10 @@ class AssesmentController extends Controller
             $waiver->student_id = $data['std_id'];
             $waiver->full_name = $data['full_name'];
             $waiver->program_name = $data['program_name'];
-            $waiver->program_batch_id = $data['program_code'];
+            $waiver->program_batch_code = $data['program_code'];
             $waiver->educational_medium = $data['medium'];
-            $waiver->request_Faq = $data['request_Faq'];
-            $waiver->waiver_percentage = $data['waiver_amount'];
-            $waiver->waiver_amount = $data['waiver_percentage'];
+            $waiver->waiver_percentage = $data['waiver_percentage'];
+            $waiver->waiver_amount = $data['waiver_amount'];
             $waiver->waiver_reason = $data['reason'];
             $waiver->save();
 
@@ -356,7 +355,10 @@ class AssesmentController extends Controller
             return redirect('/assesment/financialaid');
          }  
         $applicaent = FinancialAid::where(['student_id'=>$student_id])->first();
-         return view('assesment.update_financial_status')->with(compact('applicaent'));  
+        $batch_name =  $applicaent->program_batch_code;
+        $batchdetails = Program_batch::where(['batch_name'=>$batch_name])->first();
+
+         return view('assesment.update_financial_status')->with(compact('applicaent','batchdetails'));  
     }
 
 
