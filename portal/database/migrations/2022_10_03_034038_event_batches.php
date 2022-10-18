@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('event_batches', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('batch_name')->nullable();
+            $table->string('batch_name')->unique();
             $table->integer('event_id')->nullable();
             $table->string('start_date')->nullable();
             $table->string('end_date')->nullable();

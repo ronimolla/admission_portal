@@ -43,12 +43,12 @@
                   <ul class="collapse" id="event" data-parent="#sidebar-menu">
                     <div class="sub-menu">
                       <li class="">
-                        <a class="sidenav-item-link" href="#">
+                        <a class="sidenav-item-link" href="{{url('/student/program')}}">
                           <span class="nav-text">Program</span>
                         </a>
                       </li>
                       <li class="">
-                        <a class="sidenav-item-link" href="#">
+                        <a class="sidenav-item-link" href="{{url('/student/event')}}">
                           <span class="nav-text">Event</span>
                         </a>
                       </li>
@@ -83,6 +83,14 @@
                         <span class="nav-text">Request For Waiver</span> 
                     </a>
                 </li>
+
+                <li class="">
+                    <a class="sidenav-item-link" href="{{url('/student/mywaiver')}}">
+                        <i class="mdi mdi-book-open"></i>
+                        <span class="nav-text">My waiver</span> 
+                    </a>
+                </li>
+
                 <li class="">
                     <a class="sidenav-item-link" href="#">
                         <i class="mdi mdi-book-open"></i>
