@@ -65,7 +65,7 @@ Route::group(['middleware' =>['adminlogin']],function(){
 
     //Financial Aid
 
-    route:: match(['get','post'],'/financialaid-form',[AssesmentController::class, 'financialaid_form']);
+   
     Route::get('/assesment/financialaid', [AssesmentController::class, 'financialaid']);
     Route:: match(['get','post'],'/financialaid-status/{student_id}',[AssesmentController::class, 'waiver']);
 
@@ -128,9 +128,7 @@ Route::group(['middleware' =>['adminlogin']],function(){
 });
 
 
-//----------Student side where student need not to loging at the system----------------//
-
-
+//--------------Student side where student need not to loging at the system----------------------//
 
  //BBLT program route 
  Route::get('/program/bblt', [ProgramController::class, 'bblt']);
@@ -148,7 +146,16 @@ Route::group(['middleware' =>['adminlogin']],function(){
  Route::get('/program/careerx', [ProgramController::class, 'careerx']);
  Route::match(['get', 'post'], '/careerx/store',[ProgramController::class, 'careerxstore']);
 
+ /*------------------------All route those will be showed when student will login the system-------------------------------------*/
+ //login page for tstudent
  Route::get('/student/login', [UserController::class, 'stdlog']);
+ //login request from the student side and access the portal 
  Route::post('/student/login', [UserController::class, 'loginrequest']);
- Route::get('/student/dashboard', [UserController::class, 'stddashboard']);
- Route::get('/student/logout', [UserController::class, 'logout']);
+ Route::group(['middleware' =>['userlogin']],function(){
+
+    Route::get('/student/dashboard', [UserController::class, 'stddashboard']);
+    Route::get('/student/logout', [UserController::class, 'logout']);
+    route:: match(['get','post'],'/financialaid-form',[AssesmentController::class, 'financialaid_form']);
+    
+
+});
