@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('batch_name')->nullable();
             $table->date('start_date');
             $table->date('end_date');
-            $table->integer('totalStudents')->nullable();;
+            $table->integer('registration_fees')->nullable();;
             $table->timestamps();
         });
     }

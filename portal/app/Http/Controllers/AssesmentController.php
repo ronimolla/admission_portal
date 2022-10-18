@@ -11,10 +11,12 @@ use App\Models\StudentAddressInfo;
 use App\Models\StudentMarcomInfo;
 use App\Models\StudentQuestionaryInfo;
 use App\Models\AssesementPreselection;
+use App\Models\Program_batch;
 use App\Models\WritingTest;
 use App\Models\FollowUp;
 use App\Models\Interview;
-
+use App\Models\User;
+use Session;
 use App\Models\FinancialAid;
 use App\Models\Waiver;
 
@@ -46,12 +48,32 @@ class AssesmentController extends Controller
     Complite done Don't change the database and migration file
     ---------
     */
-    public function update(Request $request,$student_id= null){		
-		if($request->isMethod('post')){    
+    public function update(Request $request,$student_id= null){	
+
+        $studentcontactinfo = StudentContactInfo::where(['student_id'=>$student_id])->first();
+        $email_address = $studentcontactinfo ->email_address;
+        $password = random_int(100000, 999999);	
+
+		if($request->isMethod('post')){ 
+
             $data = $request->input();
+            $totall = 0;
+            if($data['writting_eligibility'] == 'Eligible'){
+                
+                $student = new User;
+                $student->student_id = $data['std_id'];
+                $student->name = $data['full_name'];
+                $student->email  = $email_address;
+                $student->password =  $password; 
+                $student->save(); 
+            }
+            $totall = $data['articulation'] + $data['logical_reasoning'] + $data['authemticity'] ;
+            
             AssesementPreselection::where(['student_id'=>$student_id])->update(['assessor'=>$data['assessor_name'],'authenticity'=>$data['authemticity'],
-                'articulation'=>$data['articulation'],'logical_reasoning'=>$data['logical_reasoning'],'subtotal'=>$data['total_marke'],
+                'articulation'=>$data['articulation'],'logical_reasoning'=>$data['logical_reasoning'],'subtotal'=>$totall,
                 'select_for_writing_test'=>$data['writting_eligibility'],'preselection_stage'=>'Done']);
+            
+
             return redirect('/assesment/preselection');
         }  
         $studentinfo = StudentPersonalInfo::where(['student_id'=>$student_id])->first();
@@ -72,7 +94,8 @@ class AssesmentController extends Controller
                 'reason_for_not_attending_test'=>$data['reason'],'test_time'=>$data['time']]);
             AssesementPreselection::where(['student_id'=>$student_id])->update(['follow_up_stage'=>'Done']);
             return redirect('/assesment/preselection');
-        }  
+        } 
+
         $studentinfo = DB::table('student_personal_infos')
         ->join('assesement_preselections', 'student_personal_infos.student_id', '=', 'assesement_preselections.student_id')
         ->where('student_personal_infos.student_id','=',$student_id)
@@ -110,10 +133,14 @@ class AssesmentController extends Controller
     public function testresult(Request $request,$student_id= null){	
         
         //echo"$student_id";die;
+        $prescore = AssesementPreselection::where(['student_id'=>$student_id])->first();
+        $presubtotal = $prescore->subtotal;
+        $WAscore = 0;
         if($request->isMethod('post')){    
             $data = $request->input();
+            $WAscore = $data['test_score'] + $presubtotal;
             WritingTest::where(['student_id'=>$student_id])->update(['writing_test_assessor'=>$data['assessor_name'],'writing_test_attended'=>$data['attended'],
-                'total_score'=>$data['test_score'],'writing_and_appication_score'=>$data['writing_and_appication_score'],'select_for_interview'=>$data['select_for_interview'],
+                'total_score'=>$data['test_score'],'writing_and_appication_score'=> $WAscore,'select_for_interview'=>$data['select_for_interview'],
                 'writing_preselection_stage'=>'Done']);
             return redirect('/assesment/writing'); 
         }  
@@ -169,13 +196,21 @@ class AssesmentController extends Controller
     Succefully complited
     --------
     */
-    public function interviewresult(Request $request,$student_id= null){	
+    public function interviewresult(Request $request,$student_id= null){
+        
+        $writing_result = WritingTest::where(['student_id'=>$student_id])->first();
+        $totalresult = $writing_result->writing_and_appication_score;
+        $interviewtotal = 0;
+         
         if($request->isMethod('post')){    
             $data = $request->input();
             //echo "<pre>"; print_r($data); die;
+            $interviewtotal =$data['competence'] + $data['courage'] + $data['compassion'] + $data['commitment'] ;
+            $alltotall = $totalresult + $interviewtotal ;
+           
             Interview::where(['student_id'=>$student_id])->update(['interviewer'=>$data['interviewer'],'attend_interview'=>$data['attend'],'attend_group_discussion'=>$data['g_attend'],
-                'competence'=>$data['competence'],'courage'=>$data['courage'],'compassion'=>$data['compassion'],'commitment'=>$data['commitment'],'total_interview_marks'=>$data['t_i_mark'],
-                'all_totall_marks'=>$data['t_mark'],'select_for_registration'=>$data['select_for_registration'],
+                'competence'=>$data['competence'],'courage'=>$data['courage'],'compassion'=>$data['compassion'],'commitment'=>$data['commitment'],'total_interview_marks'=>$interviewtotal,
+                'all_totall_marks'=>$alltotall,'select_for_registration'=>$data['select_for_registration'],
                 'interview_preselection_stage'=>'Done']);
             return redirect('/assesment/interview'); 
         }  
@@ -205,21 +240,38 @@ class AssesmentController extends Controller
     }
 
     public function financialaid_form(Request $request){
+        
 		if($request->isMethod('post')){
             $data = $request->input();
-           // echo "<pre>"; print_r($data); die;
+            //echo "<pre>"; print_r($data); die;
             $financila = new FinancialAid;
             $financila->full_name = $data['full_name'];
             $financila->bgn_member_id = $data['bgn_id'];
             $financila->student_id = $data['student_id'];
             $financila->email = $data['email'];
             $financila->contact_number = $data['contact'];
-
+            $financila->program_name = $data['program_name'];
+            $financila->program_batch_id = $data['program_code'];
+            if(empty($data['father'])){
+                $father =' ';
+            }else{
+                $father = $data['father'];
+            }
+            if(empty($data['mother'])){
+                $mother =' ';
+            }else{
+                $mother = $data['mother'];
+            }
+            if(empty($data['others'])){
+                $others =' ';
+            }else{
+                $others = $data['others'];
+            }
             $financila->family_members = $data['family_members'];
             $financila->earning_person_number = $data['earning_person_number'];
-            $financila->earning_person_father = $data['father'];
-            $financila->earning_person_mother = $data['mother'];
-            $financila->earning_person_other = $data['others'];
+            $financila->earning_person_father = $father;
+            $financila->earning_person_mother = $mother;
+            $financila->earning_person_other  = $others;
 
             $financila->father_name = $data['father_name'];
             $financila->father_contact_number = $data['father_contact_number'];
@@ -258,10 +310,16 @@ class AssesmentController extends Controller
             $financila-> communicate_person= $data['verification_person'];
             $financila->save();
             
-            return redirect('/assesment/financialaid');
+            return redirect('/student/dashboard');
         }  
-        
-         return view('assesment.financialaid_form');  
+        $studentinfo = DB::table('student_personal_infos')
+        ->join('student_contact_infos', 'student_personal_infos.student_id', '=', 'student_contact_infos.student_id')
+        ->where(['email_address'=>Session::get('userSession')])
+        ->first();
+        $batchinfo = Program_batch::all()
+                       ->where('program_id', '= ','1')
+                       ->last();
+         return view('assesment.financialaid_form')->with(compact('studentinfo','batchinfo')); 
     }
 
 
@@ -300,8 +358,6 @@ class AssesmentController extends Controller
         $applicaent = FinancialAid::where(['student_id'=>$student_id])->first();
          return view('assesment.update_financial_status')->with(compact('applicaent'));  
     }
-
-
 
 
 }

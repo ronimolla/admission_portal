@@ -67,11 +67,12 @@
 								<a style="font-size: larger ; color: darkgreen; font-weight: bold">Section A — Applicant’s Information (আবেদনকারীর তথ্য)</a><br>
 							</center>
 							<br><br>
-
+							<input type="hidden" class="form-control" name="program_name" id="full_name" value ="BBLT" >
+							<input type="hidden" class="form-control" name="program_code" id="full_name" value ="{{$batchinfo->batch_name}}" >
                             <!-- Full name -->
 							<a style="font-size: small ; font-weight: bold">Full Name (পূর্ণ নাম)</a><br>
 							<a style="font-size: smaller ; color: gray; ">As per passport or national ID or academic certificate (পাসপোর্ট বা জাতীয় পরিচয়পত্র বা একাডেমিক সার্টিফিকেট অনুযায়ী) (ex. Zuhair Bin Zabbar)</a><br>
-							<input type="text" class="form-control" name="full_name" id="full_name" >
+							<input type="text" class="form-control" name="full_name" id="full_name" value ="{{$studentinfo->full_name}}" readonly>
 							<br>
 
 							<!-- BGN Member or not -->
@@ -85,17 +86,17 @@
 							<div class="row g-1">
 								<div class="col-md-6">
 									<a style="font-size: small ; font-weight: bold">Reference ID (রেফারেন্স আইডি)</a><br>
-									<input type="text" class="form-control" name="student_id" id="student_id">
+									<input type="text" class="form-control" name="student_id" id="student_id"  value ="{{$studentinfo->student_id}}" readonly>
 								</div>
 								<div class="col-md-6">
 									<a style="font-size: small ; font-weight: bold">Email (ইমেইল)</a><br>
-									<input type="text" class="form-control" name="email" id="email">
+									<input type="text" class="form-control" name="email" id="email"  value ="{{$studentinfo->email_address}}" readonly>
 								</div>
 							</div>
 							<div class="row g-1">
 								<div class="col-md-6">
 									<a style="font-size: small ; font-weight: bold">Contact number (যোগাযোগ নাম্বার)</a><br>
-									<input type="text" class="form-control" name="contact" id="contact">
+									<input type="text" class="form-control" name="contact" id="contact"  value ="{{$studentinfo->personal_phone_no}}" readonly>
 								</div>
 							</div>
 							<br><br>
