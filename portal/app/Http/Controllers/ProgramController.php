@@ -1122,8 +1122,8 @@ class ProgramController extends Controller
             ->join('program_batches', 'programs.program_id', '=', 'program_batches.program_id')
             ->get();
 
-        $totalStudents = DB::table('student_personal_infos')
-            ->join('program_batches', 'student_personal_infos.program_batch_id', '=', 'program_batches.batch_id')
+        $totalStudents = DB::table('student_programs')
+            ->join('program_batches', 'student_programs.program_batch_id', '=', 'program_batches.batch_id')
             ->get();    
 
         //Programs Dropdown
@@ -1142,9 +1142,9 @@ class ProgramController extends Controller
             ->where('programs.program_id',$pnid)
             ->get();
 
-        $totalStudents = DB::table('student_personal_infos')
-            ->join('program_batches', 'student_personal_infos.program_batch_id', '=', 'program_batches.batch_id')
-            ->get();   
+        $totalStudents = DB::table('student_programs')
+            ->join('program_batches', 'student_programs.program_batch_id', '=', 'program_batches.batch_id')
+            ->get(); 
         
         $html=
         '  
@@ -1281,7 +1281,7 @@ class ProgramController extends Controller
         }
         return view('events.createEvent');
     }
-    
+
 
 
     // Display program-batch information in (EVENT-batch Page)
