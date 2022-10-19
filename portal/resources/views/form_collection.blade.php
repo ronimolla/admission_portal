@@ -44,7 +44,7 @@
                                     <!-- BBLTJ Form -->
                                     <button type="">
                                         <div class="shadow-lg p-1 mb-2 bg-white rounded">
-                                            <a href="{{ url('admin/program/bbltj')}}">
+                                            <a href="{{ url('admin/program/bbltj')}}" target="_blank">
                                                 <div class="target"><img class="target" src="{{asset('images/program_image/bbltj.png')}}" alt=" " class="rounded mx-auto d-block" style="width: 150; height:150"></div>
                                             </a>
                                         </div>
@@ -56,7 +56,7 @@
                                     <!-- YLS Form -->
                                     <button type="">
                                         <div class="shadow-lg p-1 mb-2 bg-white rounded">
-                                            <a href="{{ url('admin/program/yls')}}" >
+                                            <a href="{{ url('admin/program/yls')}}" target="_blank">
                                                 <div class="target"><img class="target" src="{{asset('images/program_image/yls.png')}}" alt=" " class="rounded mx-auto d-block" style="width: 150; height:150"></div>
                                             </a>
                                         </div>
@@ -68,7 +68,7 @@
                                     <!-- APL Form -->
                                     <button type="">
                                         <div class="shadow-lg p-1 mb-2 bg-white rounded">
-                                            <a href="{{ url('admin/program/apl')}}">
+                                            <a href="{{ url('admin/program/apl')}}" target="_blank">
                                                 <div class="target"><img class="target" src="{{asset('images/program_image/apl.png')}}" alt=" " class="rounded mx-auto d-block" style="width: 150; height:150"></div>
                                             </a>
                                         </div>
@@ -102,45 +102,45 @@
 				</div><!-- End card card-default -->
 
                 <div class="card card-default">
-								<div class="card-header card-header-border-bottom d-flex justify-content-between">                                  
-                                    <h2>Professional Development</h2>
-								</div>
+                    <div class="card-header card-header-border-bottom d-flex justify-content-between">                                  
+                        <h2>Professional Development</h2>
+                    </div>
 
-								<div class="card-body">
-                                    <div class="card-header card-header-border-bottom d-flex justify-content-between">
-                                        <div class="row">               
-                                            <div class="col">
-                                                <!-- CareerX Form -->
-                                                <button type="">
-                                                    <div class="shadow-lg p-1 mb-2 bg-white rounded">
-                                                        <a href="{{ url('admin/program/careerx')}}">
-                                                            <div class="target"><img class="target" src="{{asset('images/no_image.png')}}" alt=" " class="rounded mx-auto d-block" style="width: 150; height:150"></div>
-                                                        </a>
-                                                    </div>
-                                                    <a style="font-size:14px">CareerX</a>
-                                                </button>
-                                            </div>                                       
-                                            <div class="col">
-                                                <!-- ACE Form -->
-                                                <button type="">
-                                                    <div class="shadow-lg p-1 mb-2 bg-white rounded">
-                                                        <div class="target"><img class="target" src="{{asset('images/no_image.png')}}" alt=" " class="rounded mx-auto d-block" style="width: 150; height:150"></div>
-                                                    </div>
-                                                    <a style="font-size:14px">ACE</a>
-                                                </button>
-                                            </div>
-                                            <div class="col">
-                                                <!-- Bootcaps Form -->
-                                                <button type="">
-                                                    <div class="shadow-lg p-1 mb-2 bg-white rounded">
-                                                        <div class="target"><img class="target" src="{{asset('images/no_image.png')}}" alt=" " class="rounded mx-auto d-block" style="width: 150; height:150"></div>
-                                                    </div>
-                                                    <a style="font-size:14px">Bootcamps</a>
-                                                </button>
-                                            </div>
+                    <div class="card-body">
+                        <div class="card-header card-header-border-bottom d-flex justify-content-between">
+                            <div class="row">               
+                                <div class="col">
+                                    <!-- CareerX Form -->
+                                    <button type="">
+                                        <div class="shadow-lg p-1 mb-2 bg-white rounded">
+                                            <a href="{{ url('admin/program/careerx')}}" target="_blank">
+                                                <div class="target"><img class="target" src="{{asset('images/no_image.png')}}" alt=" " class="rounded mx-auto d-block" style="width: 150; height:150"></div>
+                                            </a>
                                         </div>
-                                    </div>
-								</div><!-- End card body -->
+                                        <a style="font-size:14px">CareerX</a>
+                                    </button>
+                                </div>                                       
+                                <div class="col">
+                                    <!-- ACE Form -->
+                                    <button type="">
+                                        <div class="shadow-lg p-1 mb-2 bg-white rounded">
+                                            <div class="target"><img class="target" src="{{asset('images/no_image.png')}}" alt=" " class="rounded mx-auto d-block" style="width: 150; height:150"></div>
+                                        </div>
+                                        <a style="font-size:14px">ACE</a>
+                                    </button>
+                                </div>
+                                <div class="col">
+                                    <!-- Bootcaps Form -->
+                                    <button type="">
+                                        <div class="shadow-lg p-1 mb-2 bg-white rounded">
+                                            <div class="target"><img class="target" src="{{asset('images/no_image.png')}}" alt=" " class="rounded mx-auto d-block" style="width: 150; height:150"></div>
+                                        </div>
+                                        <a style="font-size:14px">Bootcamps</a>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- End card body -->
 				</div><!-- End card card-default -->
 
                 <div class="card card-default">

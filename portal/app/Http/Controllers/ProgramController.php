@@ -18,6 +18,7 @@ use App\Models\Program;
 use App\Models\Program_batch;
 use App\Models\Event;
 use App\Models\Event_batch;
+use App\Models\StudentProgram;
 
 
 
@@ -46,9 +47,11 @@ class ProgramController extends Controller
 
     public function bbltstore(Request $request)
     {     
+
         if($request->isMethod('post')){
             $data = $request->input();
-            //echo "<pre>"; print_r($data); die;
+            $batchinfo = Program_batch::where(['batch_id'=>$data['program_batch_id']])->first();
+            //echo "<pre>"; print_r($batchinfo); die;
             // $usersCount = StudentPersonalInfo::where('student_id ',$data['email'])->count();
             //echo $usersCount ; die;
             //if($usersCount>0){
@@ -56,6 +59,11 @@ class ProgramController extends Controller
             //}
             $program_batch_id=$data['program_batch_id'];
             $programname=$data['program_name'];
+
+            $student_batch= new StudentProgram;
+            $student_batch->program_batch_id = $batchinfo->batch_id ;
+            $student_batch->program_batch_name = $batchinfo->batch_name ;
+
             $info = new StudentPersonalInfo;
             $info->full_name = $data['full-name'];
             $info->program_name =$programname; 
@@ -174,7 +182,7 @@ class ProgramController extends Controller
             $interview->program_name =$programname; 
             $interview->program_batch_id = $program_batch_id;
 
-
+            
 
             $info->save();
             $coninfo->save();
@@ -186,6 +194,7 @@ class ProgramController extends Controller
             $followup->save();
             $writing->save();
             $interview->save();
+            $student_batch->save();
 
             return redirect('/program/bblt');
             
@@ -215,6 +224,7 @@ class ProgramController extends Controller
     {
         if($request->isMethod('post')){
             $data = $request->input();
+            $batchinfo = Program_batch::where(['batch_id'=>$data['program_batch_id']])->first();
             $program_batch_id=$data['program_batch_id'];
             $programname=$data['program_name'];
             //echo "<pre>"; print_r($data); die;
@@ -364,7 +374,7 @@ class ProgramController extends Controller
         if($request->isMethod('post')){
 
             $data = $request->input();
-            echo "<pre>"; print_r($data); die;
+            $batchinfo = Program_batch::where(['batch_id'=>$data['program_batch_id']])->first();
             $program_batch_id=$data['program_batch_id'];
             $programname=$data['program_name'];
             $info = new StudentPersonalInfo;
@@ -513,7 +523,8 @@ class ProgramController extends Controller
         if($request->isMethod('post')){
             $data = $request->input();
             //echo "<pre>"; print_r($data); die;
-           $program_batch_id=$data['program_batch_id'];
+            $batchinfo = Program_batch::where(['batch_id'=>$data['program_batch_id']])->first();
+            $program_batch_id=$data['program_batch_id'];
             $programname=$data['program_name'];
             $info = new StudentPersonalInfo;
             if(empty($data['gender'])){
@@ -672,6 +683,7 @@ class ProgramController extends Controller
 
             $data = $request->input();
             //echo "<pre>"; print_r($data); die;
+            $batchinfo = Program_batch::where(['batch_id'=>$data['program_batch_id']])->first();
             $program_batch_id=$data['program_batch_id'];
             $programname=$data['program_name'];
             $info = new StudentPersonalInfo;
