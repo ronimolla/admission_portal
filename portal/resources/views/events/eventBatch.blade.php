@@ -55,9 +55,22 @@
 												</tr>
 											</thead>
                                             
-                                            <?php $c = 1; ?>
+                                            <?php 
+												$c = 1; 
+												$count=0;
+											?>
 											<tbody>
 												@foreach($event_info as $prg)
+													@foreach($totalStudents as $ts)
+															@if($prg->batch_name == $ts->event_batch_name)
+																<?php $count++;?>
+															@endif
+													@endforeach
+													@foreach($totalParticipants as $ps)
+															@if($prg->batch_name == $ps->event_batch_name)
+																<?php $count++;?>
+															@endif
+													@endforeach
                                                     <tr>
 														<td>{{$c++}}</td>
                                                         <td>{{$prg->batch_name}}</td>
@@ -67,8 +80,9 @@
                                                         <td>{{$prg->year}}</td>
                                                         <td>{{$prg->budget}}</td>
 														<td>{{$prg->sponser}}</td>
-														<td>40</td>
+														<td>{{$count}}</td>
                                                     </tr>
+													<?php $count=0; ?>	
                                                 @endforeach	
 											</tbody>
 										</table>

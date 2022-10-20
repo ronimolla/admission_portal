@@ -1279,10 +1279,17 @@ class ProgramController extends Controller
             ->join('event_batches', 'events.id', '=' , 'event_batches.event_id')
             ->get();
 
+        $totalStudents = DB::table('student_events')
+            ->join('event_batches', 'student_events.event_batch_name', '=', 'event_batches.batch_name')
+            ->get();
+        $totalParticipants = DB::table('participant_events')
+            ->join('event_batches', 'participant_events.event_batch_name', '=', 'event_batches.batch_name')
+            ->get();
+
         //Events Dropdown
         $event_name = DB::table('events')->get();
 
-        return view('events.eventBatch')->with(compact('event_name','event_info'));
+        return view('events.eventBatch')->with(compact('event_name','event_info','totalStudents','totalParticipants'));
     }
 
     // Display table data based program-name selected from dropdown (EVENT-batch Page)
@@ -1291,9 +1298,16 @@ class ProgramController extends Controller
         $eid=$request->post('eid');
         
         $state = DB::table('events')
-        ->join('event_batches', 'event_batches.event_id', '=', 'events.id')
-        ->where('event_batches.event_id',$eid)
-        ->get();
+            ->join('event_batches', 'event_batches.event_id', '=', 'events.id')
+            ->where('event_batches.event_id',$eid)
+            ->get();
+
+        $totalStudents = DB::table('student_events')
+            ->join('event_batches', 'student_events.event_batch_name', '=', 'event_batches.batch_name')
+            ->get();
+        $totalParticipants = DB::table('participant_events')
+            ->join('event_batches', 'participant_events.event_batch_name', '=', 'event_batches.batch_name')
+            ->get();
         
         $html=
         '  
@@ -1312,12 +1326,24 @@ class ProgramController extends Controller
             </thead>      
         ';
 
-        $count=1;
+        $c=1;
+        $count=0;
         foreach($state as $list){
+            foreach($totalStudents as $ts){
+                if($list->batch_name == $ts->event_batch_name){
+                    $count++;
+                }
+            }
+            foreach($totalParticipants as $ps){
+                if($list->batch_name == $ps->event_batch_name){
+                    $count++;
+                }
+            }
+
             $html.='
             <tbody>                        
                 <tr>
-                    <td>'.$count++.'</td>
+                    <td>'.$c++.'</td>
                     <td>'.$list->batch_name.'</td>
                     <td>'.$list->event_name.'</td>
                     <td>'.$list->start_date.'</td>
@@ -1325,10 +1351,11 @@ class ProgramController extends Controller
                     <td>'.$list->year.'</td>
                     <td>'.$list->budget.'</td>
                     <td>'.$list->sponser.'</td>
-                    <td>40</td>
+                    <td>'.$count.'</td>
                 </tr>	
             </tbody>
             ';
+            $count=0;
         }
         echo $html;
     }
