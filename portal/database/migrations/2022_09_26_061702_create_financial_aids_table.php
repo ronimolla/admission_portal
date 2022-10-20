@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('financial_aids', function (Blueprint $table) {
             $table->id();
             $table->string('program_name');
-            $table->string('program_batch_id');
+            $table->string('program_batch_code');
             $table->string('student_id')->nullable();
 
             $table->string('full_name')->nullable();

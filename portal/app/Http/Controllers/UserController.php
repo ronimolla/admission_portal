@@ -9,6 +9,8 @@ use App\Models\AssesementPreselection;
 use App\Models\WritingTest;
 use App\Models\User;
 use App\Models\Interview;
+use App\Models\Waiver;
+use App\Models\Program_batch;
 class UserController extends Controller
 {
     //
@@ -55,6 +57,25 @@ class UserController extends Controller
 		Session::flush();
 		return redirect('/student/login')->with('flash_message_error','Logout Successfully');
 	}
+    public function program()
+    {
+       
+        return view('student.program');
+    }
 
+    public function event()
+    {
+       
+        return view('student.event');
+    }
+
+    public function mywaiver()
+    {
+        $studentDetails = User::where(['email'=>Session::get('userSession')])->first();
+        $student_id = $studentDetails->student_id;
+        $mywaiver = Waiver::where(['student_id'=> $student_id])->first();
+        $prodramBatch =Program_batch::where(['batch_name'=> $mywaiver->program_batch_code])->first();
+        echo "<pre>"; print_r($prodramBatch); die;
+    }
 
 }
