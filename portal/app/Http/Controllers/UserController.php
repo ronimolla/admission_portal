@@ -28,11 +28,12 @@ class UserController extends Controller
             if($user > 0){
                 //echo "Success"; die;
                 Session::put('userSession', $data['email']);
+                //Session::put('userName', $data['email']);
                 
                 return redirect('/student/dashboard');
         	}else{
                // echo "failed"; die;
-                return redirect('/admin')->with('flash_message_error','Invalid Username or Password');
+                return redirect('/student/login')->with('flash_message_error','Invalid Username or Password');
         	}
         }    
     }
@@ -75,7 +76,7 @@ class UserController extends Controller
         $student_id = $studentDetails->student_id;
         $mywaiver = Waiver::where(['student_id'=> $student_id])->first();
         $prodramBatch =Program_batch::where(['batch_name'=> $mywaiver->program_batch_code])->first();
-        echo "<pre>"; print_r($prodramBatch); die;
+        echo "<pre>"; print_r($mywaiver); die;
     }
 
 }

@@ -124,7 +124,8 @@
 							<br><br>
 							<a style="font-size: small ; font-weight: bold">Full Name (পূর্ণ নাম)</a><br>
 							<a style="font-size: smaller ; color: gray; ">As per passport or national ID or academic certificate (পাসপোর্ট বা জাতীয় পরিচয়পত্র বা একাডেমিক সার্টিফিকেট অনুযায়ী) (ex. Zuhair Bin Zabbar)</a><br>
-							<input type="text" class="form-control" id="name" name="full-name" required>
+							<input type="text" class="form-control" id="name" name="full-name" value ="{{old('full-name')}}">
+							<span style ="color: red">@error('full-name'){{$message}}@enderror </span>
 							<br>
 
 							<!-- Gender -->
@@ -132,14 +133,14 @@
 							<div class="form-row">
 								<div id="radio">
                                     <div class="row">
-                                        <div class="col-md-4">
-                                            <input type="radio" name="gender" value="male" > <a style="font-size: small">Male (পুরুষ)</a>
+									<div class="col-md-4">
+                                            <input type="radio" name="gender" value="male" {{ old("gender") == 'male' ? 'checked' : '' }}> <a style="font-size: small">Male (পুরুষ)</a>
                                         </div>
                                         <div class="col-md-4">
-                                            <input type="radio" name="gender" value="female"> <a style="font-size: small">Female (নারী)</a>
+                                            <input type="radio" name="gender" value="female" {{ old("gender") == 'female' ? 'checked' : '' }}> <a style="font-size: small">Female (নারী)</a>
                                         </div>
                                         <div class="col-md-4">
-                                            <input type="radio" name="gender" value="other"> <a style="font-size: small">Other (অন্যান্য)</a>
+                                            <input type="radio" name="gender" value="other" {{ old("gender") == 'other' ? 'checked' : '' }}> <a style="font-size: small">Other (অন্যান্য)</a>
                                         </div>
                                     </div>
 								</div>
@@ -152,7 +153,7 @@
 									<a style="font-size: small ; font-weight: bold">Date of Birth (জন্ম তারিখ)</a><br>
 									<!-- DatePicker -->
 									<div class="input-group date" id="datepicker">
-										<input type="text" class="form-control" id="date" name="date-of-birth"/>
+										<input type="text" class="form-control" id="date" name="date-of-birth"  value ="{{old('date-of-birth')}}" />
 										<span class="input-group-append">
 										  <span class="input-group-text bg-light d-block">
 											<i class="fa fa-calendar"></i>
@@ -164,7 +165,7 @@
 						        </div>
 								<div class="col-md-6">
 									<a style="font-size: small ; font-weight: bold">Nationality (জাতীয়তা)</a><br>
-									<input type="text" class="form-control" id="nationality" name="nationality" required>
+									<input type="text" class="form-control" id="nationality" name="nationality" value ="{{old('nationality')}}">
 								</div>
 							</div>
 
@@ -173,11 +174,11 @@
 							<div class="row g-3">
 								<div class="col-md-6">
 									<a style="font-size: small ; font-weight: bold">Father Name (বাবার নাম)</a><br>
-									<input type="text" class="form-control" id="father_name" name="father_name">
+									<input type="text" class="form-control" id="father_name" name="father_name" value ="{{old('father_name')}}">
 								</div>
 								<div class="col-md-6">
 									<a style="font-size: small ; font-weight: bold">Mother Name (মায়ের নাম)</a><br>
-									<input type="text" class="form-control" id="mother_name" name="mother-name">
+									<input type="text" class="form-control" id="mother_name" name="mother-name" value ="{{old('mother-name')}}">
 								</div>
 							</div>
 
@@ -187,12 +188,12 @@
 								<div class="col-md-6">
 									<a style="font-size: small ; font-weight: bold">Mobile Number (মোবাইল নম্বর)</a><br>
 									<a style="font-size: smaller ; color: gray; ">01700000000</a><br>
-									<input type="text" class="form-control" id="mobile" name="mobile-number">
+									<input type="text" class="form-control" id="mobile" name="mobile-number" value ="{{old('mobile-number')}}">
 								</div>
 								<div class="col-md-6">
 									<a style="font-size: small ; font-weight: bold">Emergency Contact Number (জরুরী প্রয়োজনে)</a><br>
 									<a style="font-size: smaller ; color: gray; ">01700000000</a><br>
-									<input type="text" class="form-control" id="emergency_contact" name="emergency-contact">
+									<input type="text" class="form-control" id="emergency_contact" name="emergency-contact" value ="{{old('emergency-contact')}}">
 								</div>
 							</div>
 
@@ -201,7 +202,8 @@
 							<div class="row g-3">
 								<div class="col-md-6">
 									<a style="font-size: small ; font-weight: bold">Email Address (ইমেইল)</a><br>
-									<input type="email" class="form-control" id="email" name="email-address">
+									<input type="email" class="form-control" id="email"  name="email-address" value ="{{old('email-address')}}">
+									<span style ="color: red">@error('email-address'){{$message}}@enderror </span>
 								</div>
 							</div>
 							<br><br>
@@ -211,26 +213,25 @@
 							<a style="font-size: small ; font-weight: bold">Do you belong to any ethnic community, i.e.Chakma, Marma, etc? (আপনি কি কোন ক্ষুদ্র নৃগোষ্ঠীর অন্তর্ভুক্ত, যেমন চাকমা, মারমা ইত্যাদি?)</a><br>
 							<div class="form-row">
 								<div id="radio">
-									<input type="radio" name="ethnicity" onclick="javascript:ethnicityCheck();"  id="ethnicCheck" value="yes"> <a style="font-size: small">Yes (হ্যাঁ)</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-									<input type="radio" name="ethnicity" onclick="javascript:ethnicityCheck();"  id="not_ethnicCheck" value="no"> <a style="font-size: small">No (না)</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									<input type="radio" name="ethnicity" onclick="javascript:ethnicityCheck();"  id="ethnicCheck" value="yes"  {{ old("ethnicity") == 'yes' ? 'checked' : '' }} > <a style="font-size: small">Yes (হ্যাঁ)</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									<input type="radio" name="ethnicity" onclick="javascript:ethnicityCheck();"  id="not_ethnicCheck" value="no" {{ old("ethnicity") == 'no' ? 'checked' : '' }}> <a style="font-size: small">No (না)</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 								</div>
-                                <div id="ethnic" style="display:none">
-                                    <a style="font-size: small ; font-weight: bold">If yes, please mention below. (অনুগ্রহ করে উল্লেখ করুন)</a>
-                                    <input type="text" class="form-control" id="ethnicity_name" name="ethnicity_name">
-                                </div>
+								<div id="ethnic" style="display:none">
+									<a style="font-size: small ; font-weight: bold">If yes, please mention below. (অনুগ্রহ করে উল্লেখ করুন)</a>
+									<input type="text" class="form-control" id="ethnicity_name" name="ethnicity_name"  value ="{{old('ethnicity_name')}}">
+								</div>
 							</div><br>
 							<a style="font-size: small ; font-weight: bold">Do you have any disability, i.e., visual or hearing disabilities, physical disability, etc.? (আপনার কি কোন প্রতিবন্ধিতা রয়েছে, যেমনঃ দৃষ্টি, শ্রবণ, শারীরিক প্রতিবন্ধিতা বা অন্যান্য?)</a><br>
 							<div class="form-row">
 								<div id="radio">
-									<input type="radio" name="disability" onclick="javascript:disabilityCheck();"  id="disableCheck" value="yes"> <a style="font-size: small">Yes (হ্যাঁ)</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-									<input type="radio" name="disability" onclick="javascript:disabilityCheck();"  id="not_disableCheck" value="no"> <a style="font-size: small">No (না)</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									<input type="radio" name="disability" onclick="javascript:disabilityCheck();"  id="disableCheck" value="yes" {{ old("disability") == 'yes' ? 'checked' : '' }}> <a style="font-size: small">Yes (হ্যাঁ)</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									<input type="radio" name="disability" onclick="javascript:disabilityCheck();"  id="not_disableCheck" value="no" {{ old("disability") == 'no' ? 'checked' : '' }}> <a style="font-size: small">No (না)</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 								</div>
-                                <div id="disable" style="display:none">
+								<div id="disable" style="display:none">
                                     <a style="font-size: small ; font-weight: bold">If yes, please mention below. (অনুগ্রহ করে উল্লেখ করুন)</a>
-                                    <input type="text" class="form-control" id="disability_name" name="disability_name">
+                                    <input type="text" class="form-control" id="disability_name" name="disability_name"  value ="{{old('disability_name')}}">
                                 </div>
 							</div>
-
 
 							<br><br>
 							<!-- Present Address -->
@@ -240,17 +241,17 @@
 								<!-- Apartment -->
 								<div class="col-md-4">
 									<a style="font-size: small ; font-weight: bold">Apartment No (এপার্টমেন্ট নং)</a><br>
-									<input type="text" class="form-control" id="per_apartment" name="per_apartment">
+									<input type="text" class="form-control" id="per_apartment"  name="per_apartment" value ="{{old('per_apartment')}}">
 								</div>	
 								<!-- House -->
 								<div class="col-md-4">
 									<a style="font-size: small ; font-weight: bold">House/Holding No. (বাসা/হোল্ডিং নং)</a><br>
-									<input type="text" class="form-control" id="per_house" name="per_house">
+									<input type="text" class="form-control" id="per_house" name="per_house" value ="{{old('per_house')}}">
 								</div>
 								<!-- Road -->
 								<div class="col-md-4">
 									<a style="font-size: small ; font-weight: bold">Road No./Village (রোড নং/গ্রাম)</a><br>
-									<input type="text" class="form-control" id="per_road" name="per_road">
+									<input type="text" class="form-control" id="per_road" name="per_road" value ="{{old('per_road')}}">
 								</div>
 							</div>
 							
@@ -258,21 +259,21 @@
 								<!-- Thana -->
 								<div class="col-md-4">
 									<a style="font-size: small ; font-weight: bold">Thana/Upazila (থানা/উপজেলা)</a><br>
-									<input type="text" class="form-control" id="per_thana" name="per_thana">
+									<input type="text" class="form-control" id="per_thana" name="per_thana" value ="{{old('per_thana')}}">
 								</div>	
 								<!-- District -->
 								<div class="col-md-4">
 									<a style="font-size: small ; font-weight: bold">District (জেলা)</a><br>
 									<div class="input-group mb-3" class="dropdown-menu">
-										<select class="form-select" id="per_district" name="per_district">
+										<select class="form-select" id="per_district" name="per_district" >
 										  <option selected>Select District</option>
-										  <option value="Bagerhat">Bagerhat (বাগেরহাট)</option>
-										  <option value="Bandarban">Bandarban (বান্দরবান)</option>
-										  <option value="Barguna">Barguna (বরগুনা)</option>
-										  <option value="Barishal">Barishal (বরিশাল)</option>
-										  <option value="Bhola">Bhola (ভোলা)</option>
-										  <option value="Barishal">Bogura (বগুড়া)</option>
-										  <option value="Bhola">Brahmanbaria (ব্রাহ্মণবাড়িয়া)</option>
+										  <option value="Bagerhat" {{ old("per_district") == 'Bagerhat' ? 'selected' : '' }}>Bagerhat (বাগেরহাট)</option>
+										  <option value="Bandarban" {{ old("per_district") == 'Bandarban' ? 'selected' : '' }}>Bandarban (বান্দরবান)</option>
+										  <option value="Barguna" {{ old("per_district") == 'Barguna' ? 'selected' : '' }}>Barguna (বরগুনা)</option>
+										  <option value="Barishal" {{ old("per_district") == 'Barishal' ? 'selected' : '' }}>Barishal (বরিশাল)</option>
+										  <option value="Bhola" {{ old("per_district") == 'Bhola' ? 'selected' : '' }}>Bhola (ভোলা)</option>
+										  <option value="Bogura" {{ old("per_district") == 'Bogura' ? 'selected' : '' }}>Bogura (বগুড়া)</option>
+										  
 										</select>
 									</div>
 								</div>
@@ -299,7 +300,7 @@
 								<!-- Post Code -->
 								<div class="col-md-4">
 									<a style="font-size: small ; font-weight: bold">Post code (পোস্ট কোড)</a><br>
-									<input type="text" class="form-control" id="per_pc" name="per_pc">
+									<input type="text" class="form-control" id="per_pc" name="per_pc" value ="{{old('per_pc')}}">
 								</div>	
 							</div>
 
@@ -308,9 +309,9 @@
 							<a style="font-size: small ; font-weight: bold">Is your permanent address similar to the present address? (আপনার স্থায়ী ঠিকানা ও বর্তমান ঠিকানা কি একই?)</a><br>
 							<div class="form-row">
 								<div id="radio">
-									<input type="radio" name="same_address"  onclick="javascript:yesnoCheck();"  id="yesCheck" value="yes" > <a style="font-size: small">Yes (হ্যাঁ)</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-									<input type="radio" name="same_address" onclick="javascript:yesnoCheck();"  id="noCheck" value="no"> <a style="font-size: small">No (না)</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                </div>
+									<input type="radio" name="same_address" onclick="javascript:yesnoCheck();"  id="yesCheck" value="yes" {{ old("same_address") == 'yes' ? 'checked' : '' }} > <a style="font-size: small">Yes (হ্যাঁ)</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									<input type="radio" name="same_address" onclick="javascript:yesnoCheck();"  id="noCheck" value="no" {{ old("same_address") == 'no' ? 'checked' : '' }}> <a style="font-size: small">No (না)</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								</div>
 							</div>
 
                             <div id="ifYes" style="display:none">
@@ -318,28 +319,28 @@
 							    <div class="subHeading" style="font-weight: bold ">Permanent Address (স্থায়ী ঠিকানা)</div><br>
                             
                                 <div class="row g-3">
-                                    <!-- Apartment -->
-                                    <div class="col-md-4">
-                                        <a style="font-size: small ; font-weight: bold">Apartment No (এপার্টমেন্ট নং)</a><br>
-                                        <input type="text" class="form-control" id="apartment" name="apartment">
-                                    </div>	
-                                    <!-- House -->
-                                    <div class="col-md-4">
-                                        <a style="font-size: small ; font-weight: bold">House/Holding No. (বাসা/হোল্ডিং নং)</a><br>
-                                        <input type="text" class="form-control" id="house" name="house">
-                                    </div>
-                                    <!-- Road -->
-                                    <div class="col-md-4">
-                                        <a style="font-size: small ; font-weight: bold">Road No./Village (রোড নং/গ্রাম)</a><br>
-                                        <input type="text" class="form-control" id="road" name="road">
-                                    </div>
-                                </div>
+									<!-- Apartment -->
+									<div class="col-md-4">
+										<a style="font-size: small ; font-weight: bold">Apartment No (এপার্টমেন্ট নং)</a><br>
+										<input type="text" class="form-control" id="apartment" name="apartment" value ="{{old('apartment')}}">
+									</div>	
+									<!-- House -->
+									<div class="col-md-4">
+										<a style="font-size: small ; font-weight: bold">House/Holding No. (বাসা/হোল্ডিং নং)</a><br>
+										<input type="text" class="form-control" id="house" name="house" value ="{{old('house')}}">
+									</div>
+									<!-- Road -->
+									<div class="col-md-4">
+										<a style="font-size: small ; font-weight: bold">Road No./Village (রোড নং/গ্রাম)</a><br>
+										<input type="text" class="form-control" id="road" name="road" value ="{{old('road')}}">
+									</div>
+								</div>
                                 
                                 <div class="row g-3">
                                     <!-- Thana -->
                                     <div class="col-md-4">
                                         <a style="font-size: small ; font-weight: bold">Thana/Upazila (থানা/উপজেলা)</a><br>
-                                        <input type="text" class="form-control" id="thana" name="thana">
+                                        <input type="text" class="form-control" id="thana" name="thana" value ="{{old('thana')}}">
                                     </div>	
                                     <!-- District -->
                                     <div class="col-md-4">
@@ -380,7 +381,7 @@
                                     <!-- Post Code -->
                                     <div class="col-md-4">
                                         <a style="font-size: small ; font-weight: bold">Post code (পোস্ট কোড)</a><br>
-                                        <input type="text" class="form-control" id="pc" name="pc">
+                                        <input type="text" class="form-control" id="pc" name="pc" value ="{{old('pc')}}">
                                     </div>	
                                 </div>
                             </div>
@@ -405,21 +406,21 @@
 								<div id="radio">
 									<div class="row g-1">
 										<div class="col-md-4">
-											<input type="radio" name="medium" value="Bengali Version" > <a style="font-size: small">Bengali Version (বাংলা ভার্সন)</a> 
+											<input type="radio" name="medium" value="Bengali Version" {{ old("medium") == 'Bengali Version' ? 'checked' : '' }}> <a style="font-size: small">Bengali Version (বাংলা ভার্সন)</a> 
 										</div>
 										<div class="col-md-4">
-											<input type="radio" name="medium" value="English Version"> <a style="font-size: small">English Version (ইংরেজী ভার্সন)</a>
+											<input type="radio" name="medium" value="English Version" {{ old("medium") == 'English Version' ? 'checked' : '' }}> <a style="font-size: small">English Version (ইংরেজী ভার্সন)</a>
 										</div>	
 									</div>
 									<div class="row g-1">
 										<div class="col-md-4">
-											<input type="radio" name="medium" value="English Medium" > <a style="font-size: small">English Medium (ইংরেজী মাধ্যম)</a>
+											<input type="radio" name="medium" value="English Medium" {{ old("medium") == 'English Medium' ? 'checked' : '' }}> <a style="font-size: small">English Medium (ইংরেজী মাধ্যম)</a>
 										</div>
 										<div class="col-md-4">
-											<input type="radio" name="medium" value="Madrassa"> <a style="font-size: small">Madrassa (মাদ্রাসা)</a>
+											<input type="radio" name="medium" value="Madrassa" {{ old("medium") == 'Madrassa' ? 'checked' : '' }}> <a style="font-size: small">Madrassa (মাদ্রাসা)</a>
 										</div>	
-									</div>			
-								</div>
+									</div>		
+								</div> 
 							</div>
 							<br>
 
@@ -429,13 +430,13 @@
 								<div id="radio">
 									<div class="row g-1">
 										<div class="col-md-4">
-											<input type="radio" name="secondary_level" value="SSC" > <a style="font-size: small">SSC (এস এস সি)</a> 
+											<input type="radio" name="secondary_level" value="SSC"  {{ old("secondary_level") == 'SSC' ? 'checked' : '' }}> <a style="font-size: small">SSC (এস এস সি)</a> 
 										</div>
 										<div class="col-md-4">
-											<input type="radio" name="secondary_level" value="O'Levels"> <a style="font-size: small">O'Levels (ও' লেভেল)</a>
+											<input type="radio" name="secondary_level" value="OLevels" {{ old("secondary_level") == 'OLevels' ? 'checked' : '' }}>  <a style="font-size: small">O'Levels (ও' লেভেল)</a>
 										</div>
                                         <div class="col-md-4">
-											<input type="radio" name="secondary_level" value=">Dakhil" > <a style="font-size: small">Dakhil (দাখিল)</a>
+											<input type="radio" name="secondary_level" value="Dakhil"{{ old("secondary_level") == 'Dakhil' ? 'checked' : '' }}>  <a style="font-size: small">Dakhil (দাখিল)</a>
 										</div>	
 									</div>			
 								</div>
@@ -444,7 +445,7 @@
 
 							<!-- School Name -->
 							<a style="font-size: small ; font-weight: bold">Name of School/Madrassa Attended (শিক্ষা প্রতিষ্ঠানের নাম)</a><br>
-							<input type="text" class="form-control" id="school_name" name="school_name">
+							<input type="text" class="form-control" id="school_name" name="school_name" value ="{{old('school_name')}}">
 							<br>
 
                             <div class="row">
@@ -452,36 +453,36 @@
                                     <!-- Year of Passing -->
                                     <a style="font-size: small ; font-weight: bold">Year of Passing (পাশের সন)</a><br>
                                     <a style="font-size: smaller ; color: gray; ">Example: 2012</a><br>
-                                    <input type="text" class="form-control" id="graduation_year_school" name="graduation_year_school">
+                                    <input type="text" class="form-control" id="graduation_year_school" name="graduation_year_school" value ="{{old('graduation_year_school')}}">
                                     <br>        
                                 </div>
                                 <div class="col-md-6">
                                     <!-- Result -->
                                     <a style="font-size: small ; font-weight: bold">Result (ফলাফল)</a><br>
                                     <a style="font-size: smaller ; color: gray; ">Example (উদাহরণ): 2010 (২০১০)</a><br>
-                                    <input type="text" class="form-control" id="school_result" name="school_result">
+                                    <input type="text" class="form-control" id="school_result" name="school_result" value ="{{old('school_result')}}">
                                     <br>
                                 </div>
                             </div>
 
-                            <!-- Higher Secondary Level -->
+                           <!-- Higher Secondary Level -->
 							<a style="font-size: small ; font-weight: bold">Higher Secondary Level (উচ্চ মাধ্যমিক শিক্ষা স্তর)</a><br>	
 							<div class="form-row">			
 								<div id="radio">
 									<div class="row g-1">
 										<div class="col-md-4">
-											<input type="radio" name="higher_secondary_level" value="HSC" > <a style="font-size: small">HSC (এইস এস সি)</a> 
+											<input type="radio" name="higher_secondary_level" value="HSC" {{ old("higher_secondary_level") == 'HSC' ? 'checked' : '' }}> <a style="font-size: small">HSC (এইস এস সি)</a> 
 										</div>
 										<div class="col-md-4">
-											<input type="radio" name="higher_secondary_level" value="Alim"> <a style="font-size: small">Alim (আলিম)</a>
+											<input type="radio" name="higher_secondary_level" value="Alim" {{ old("higher_secondary_level") == 'Alim' ? 'checked' : '' }}> <a style="font-size: small">Alim (আলিম)</a>
 										</div>	
 									</div>
 									<div class="row g-1">
 										<div class="col-md-4">
-											<input type="radio" name="higher_secondary_level" value="A'Levels" > <a style="font-size: small">A'Levels (এ' লেভেল)</a>
+											<input type="radio" name="higher_secondary_level" value="ALevels" {{ old("higher_secondary_level") == 'ALevels' ? 'checked' : '' }} > <a style="font-size: small">A'Levels (এ' লেভেল)</a>
 										</div>
 										<div class="col-md-4">
-											<input type="radio" name="higher_secondary_level" value="Diploma"> <a style="font-size: small">Diploma (ডিপ্লোমা)</a>
+											<input type="radio" name="higher_secondary_level" value="Diploma" {{ old("higher_secondary_level") == 'Diploma' ? 'checked' : '' }}> <a style="font-size: small">Diploma (ডিপ্লোমা)</a>
 										</div>	
 									</div>			
 								</div>
@@ -490,7 +491,7 @@
 
                             <!-- College Name -->
 							<a style="font-size: small ; font-weight: bold">Name of College/Madrassa Attended (শিক্ষা প্রতিষ্ঠানের নাম)</a><br>
-							<input type="text" class="form-control" id="school_name" name="collage_name">
+							<input type="text" class="form-control" id="school_name" name="collage_name" value ="{{old('collage_name')}}">
 							<br>
 
                             <div class="row">
@@ -498,14 +499,14 @@
                                     <!-- Year of Passing -->
                                     <a style="font-size: small ; font-weight: bold">Year of Passing (পাশের সন)</a><br>
                                     <a style="font-size: smaller ; color: gray; ">Example: 2012</a><br>
-                                    <input type="text" class="form-control" id="graduation_year_college" name="graduation_year_college">
+                                    <input type="text" class="form-control" id="graduation_year_college" name="graduation_year_college" value ="{{old('graduation_year_college')}}">
                                     <br>        
                                 </div>
                                 <div class="col-md-6">
                                     <!-- Result -->
                                     <a style="font-size: small ; font-weight: bold">Result (ফলাফল)</a><br>
                                     <a style="font-size: smaller ; color: gray; ">Example (উদাহরণ): 2010 (২০১০)</a><br>
-                                    <input type="text" class="form-control" id="college_result" name="college_result">
+                                    <input type="text" class="form-control" id="college_result" name="college_result" value ="{{old('college_result')}}">
                                     <br>
                                 </div>
                             </div>
@@ -515,21 +516,21 @@
                             <a style="font-size: small ; font-weight: bold">Did you get your admission to the undergraduate level? (আপনি কি আপনার পরবর্তী শিক্ষাগত স্তরে (স্নাতক) ভর্তি হয়েছেন?)</a><br>
 							<div class="form-row">
 								<div id="radio">
-									<input type="radio" name="get_admission" onclick="javascript:ifUndergrad();" id="yes_undergrad" value="yes" > <a style="font-size: small">Yes (হ্যাঁ)</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-									<input type="radio" name="get_admission" onclick="javascript:ifUndergrad();" id="no_undergrad" value="no"> <a style="font-size: small">No, waiting for admission (না, ভর্তির জন্য অপেক্ষারত আছি)</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									<input type="radio" name="get_admission" onclick="javascript:ifUndergrad();" id="yes_undergrad" value="yes" {{ old("get_admission") == 'yes' ? 'checked' : '' }} > <a style="font-size: small">Yes (হ্যাঁ)</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									<input type="radio" name="get_admission" onclick="javascript:ifUndergrad();" id="no_undergrad" value="no" {{ old("get_admission") == 'no' ? 'checked' : '' }}> <a style="font-size: small">No, waiting for admission (না, ভর্তির জন্য অপেক্ষারত আছি)</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 								</div>
                                 <div id="undergrad_level" style="display:none">
                                     <a style="font-size: small ; font-weight: bold">Undergraduate Level (স্নাতক ডিগ্রী)</a><br>
                                     <div id="radio">
                                         <div class="row g-1">
                                             <div class="col-md-4">
-                                                <input type="radio" name="undergrad_level" value="Bachelor" > <a style="font-size: small">Bachelor's (স্নাতক)</a> 
+                                                <input type="radio" name="undergrad_level" value="Bachelor" {{ old("undergrad_level") == 'Bachelor' ? 'checked' : '' }} > <a style="font-size: small">Bachelor's (স্নাতক)</a> 
                                             </div>
                                             <div class="col-md-4">
-                                                <input type="radio" name="undergrad_level" value="Fazil"> <a style="font-size: small">Fazil (ফাযিল)</a> 
+                                                <input type="radio" name="undergrad_level" value="Fazil" {{ old("undergrad_level") == 'Fazil' ? 'checked' : '' }} > <a style="font-size: small">Fazil (ফাযিল)</a> 
                                             </div>
                                             <div class="col-md-4">
-                                                <input type="radio" name="undergrad_level" value="Others"> <a style="font-size: small">Others (অন্যান্য)</a>
+                                                <input type="radio" name="undergrad_level" value="Others" {{ old("undergrad_level") == 'Others' ? 'checked' : '' }} > <a style="font-size: small">Others (অন্যান্য)</a>
                                             </div>
                                         </div>
                                     </div>
@@ -543,26 +544,26 @@
                                 (আপনি কি এর আগে কোনো বিওয়াইএলসি প্রোগ্রামে অংশগ্রহণ করেছিলেন?)</a><br>
 							<div class="form-row">
 								<div id="radio">
-									<input type="radio" name="any_program" onclick="javascript:programPartipated();" id="yes" value="yes" > <a style="font-size: small">Yes (হ্যাঁ)</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-									<input type="radio" name="any_program" onclick="javascript:programPartipated();" id="no" value="no"> <a style="font-size: small">No (না)</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									<input type="radio" name="any_program" onclick="javascript:programPartipated();" id="yes" value="yes" {{ old("any_program") == 'yes' ? 'checked' : '' }} > <a style="font-size: small">Yes (হ্যাঁ)</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									<input type="radio" name="any_program" onclick="javascript:programPartipated();" id="no" value="no" {{ old("any_program") == 'no' ? 'checked' : '' }} > <a style="font-size: small">No (না)</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 								</div>
                                 <div id="program_participated" style="display:none">
                                     <div class="row g-1">
 										<div class="col-md-4">
                                             <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="BBLTJ" id="BBLTJ" name="BBLTJ">
+                                                <input class="form-check-input" type="checkbox" value="BBLTJ" id="BBLTJ" name="BBLTJ" {{ old("BBLTJ") == 'BBLTJ' ? 'checked' : '' }} >
                                                 <label class="form-check-label" for="flexCheckDefault">BBLTJ (বিবিএলটিজে)</label>
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="YLB" id="YLB" name="YLB">
+                                                <input class="form-check-input" type="checkbox" value="YLB" id="YLB" name="YLB" {{ old("YLB") == 'YLB' ? 'checked' : '' }} >
                                                 <label class="form-check-label" for="flexCheckDefault">YLB (ওয়াইএলবি)</label>
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="CareerX" id="CareerX" name="CareerX">
+                                                <input class="form-check-input" type="checkbox" value="CareerX" id="CareerX" name="CareerX" {{ old("CareerX") == 'CareerX' ? 'checked' : '' }}>
                                                 <label class="form-check-label" for="flexCheckDefault">CareerX (ক্যারিয়ার এক্স)</label>
                                             </div>
                                         </div>
@@ -570,19 +571,19 @@
                                     <div class="row g-1">
 										<div class="col-md-4">
                                             <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="BBLT" id="BBLT" name="BBLT">
+                                                <input class="form-check-input" type="checkbox" value="BBLT" id="BBLT" name="BBLT" {{ old("BBLT") == 'BBLT' ? 'checked' : '' }}>
                                                 <label class="form-check-label" for="flexCheckDefault">BBLT (বিবিএলটি)</label>
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="YEB" id="YEB" name="YEB">
+                                                <input class="form-check-input" type="checkbox" value="YEB" id="YEB" name="YEB" {{ old("YEB") == 'YEB' ? 'checked' : '' }}>
                                                 <label class="form-check-label" for="flexCheckDefault">YEB (ওয়াইইবি)</label>
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="Career Bootcamp" id="Career Bootcamp" name="Career Bootcamp">
+                                                <input class="form-check-input" type="checkbox" value="Career_Bootcamp" id="Career-Bootcamp" name="Career_Bootcamp" {{ old("Career_Bootcamp") == 'Career_Bootcamp' ? 'checked' : '' }}>
                                                 <label class="form-check-label" for="flexCheckDefault">Career Bootcamp (ক্যারিয়ার বুটক্যাম্প)</label>
                                             </div>
                                         </div>
@@ -590,19 +591,19 @@
                                     <div class="row g-1">
 										<div class="col-md-4">
                                             <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="APL" id="APL" name="APL">
+                                                <input class="form-check-input" type="checkbox" value="APL" id="APL" name="APL" {{ old("APL") == 'APL' ? 'checked' : '' }}>
                                                 <label class="form-check-label" for="flexCheckDefault">APL (এপিএল)</label>
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="ACE" id="ACE" name="ACE">
+                                                <input class="form-check-input" type="checkbox" value="ACE" id="ACE" name="ACE" {{ old("ACE") == 'ACE' ? 'checked' : '' }}>
                                                 <label class="form-check-label" for="flexCheckDefault">ACE (এইস)</label>
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="YLS" id="YLS" name="YLS">
+                                                <input class="form-check-input" type="checkbox" value="YLS" id="YLS" name="YLS" {{ old("YLS") == 'YLS' ? 'checked' : '' }}>
                                                 <label class="form-check-label" for="flexCheckDefault">YLS (ওয়াইএলএস)</label>
                                             </div>
                                         </div>
@@ -615,15 +616,15 @@
                             <a style="font-size: small ; font-weight: bold">Applicant Type (আবেদনকারীর ধরণ)</a><br>
 							<div class="form-row">
 								<div id="radio">
-									<input type="radio" name="applicant_type" onclick="javascript:applicantType();"  id="student" value="Student" > <a style="font-size: small">Student (শিক্ষার্থী)</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-									<input type="radio" name="applicant_type" onclick="javascript:applicantType();"  id="professional" value="Young professional"> <a style="font-size: small">Young professional (তরুণ পেশাজীবী)</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									<input type="radio" name="applicant_type" onclick="javascript:applicantType();"  id="student" value="Student" {{ old("applicant_type") == 'Student' ? 'checked' : '' }}> <a style="font-size: small">Student (শিক্ষার্থী)</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									<input type="radio" name="applicant_type" onclick="javascript:applicantType();"  id="professional" value="Young professional" {{ old("applicant_type") == 'Young professional' ? 'checked' : '' }}> <a style="font-size: small">Young professional (তরুণ পেশাজীবী)</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 								</div>
                                 <div id="appl_type" style="display:none">
                                     <a style="font-size: small ; font-weight: bold">Employment Type (পেশার ধরন)</a>
                                     <div class="form-row">
                                         <div id="radio">
-                                            <input type="radio" name="employment_type" value="Self Employed" > <a style="font-size: small">Self Employed</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                            <input type="radio" name="employment_type" value="Employed"> <a style="font-size: small">Employed</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            <input type="radio" name="employment_type" value="Self Employed" {{ old("employment_type") == 'Self Employed' ? 'checked' : '' }} > <a style="font-size: small" >Self Employed</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            <input type="radio" name="employment_type" value="Employed" {{ old("employment_type") == 'Employed' ? 'checked' : '' }}> <a style="font-size: small">Employed</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                         </div>
                                     </div>
                                 </div>
@@ -637,37 +638,37 @@
 								<div id="radio">
 									<div class="row g-1">
 										<div class="col-md-5">
-											<input type="radio" name="marketing_question" value="Newspaper" > <a style="font-size: small">Newspaper (পত্রিকা)</a> 
+											<input type="radio" name="marketing_question" value="Newspaper" {{ old("marketing_question") == 'Newspaper' ? 'checked' : '' }}> <a style="font-size: small">Newspaper (পত্রিকা)</a> 
 										</div>
 										<div class="col-md-6">
-											<input type="radio" name="marketing_question" value="Campus Ambassador"> <a style="font-size: small">Campus Ambassador (ক্যাম্পাস প্রতিনিধি)</a>
+											<input type="radio" name="marketing_question" value="Campus Ambassador" {{ old("marketing_question") == 'Campus Ambassador' ? 'checked' : '' }}> <a style="font-size: small">Campus Ambassador (ক্যাম্পাস প্রতিনিধি)</a>
 										</div>	
 									</div>
 									
 									<div class="row g-1">
 										<div class="col-md-5">
-											<input type="radio" name="marketing_question" value="Website" > <a style="font-size: small">Website (ওয়েবসাইট)</a>
+											<input type="radio" name="marketing_question" value="Website" {{ old("marketing_question") == 'Website' ? 'checked' : '' }}> <a style="font-size: small">Website (ওয়েবসাইট)</a>
 										</div>
 										<div class="col-md-6">
-											<input type="radio" name="marketing_question" value="Workshop or presentation"> <a style="font-size: small">Workshop or presentation (কর্মশালা বা উপস্থাপনা)</a>
+											<input type="radio" name="marketing_question" value="Workshop or presentation" {{ old("marketing_question") == 'Workshop or presentation' ? 'checked' : '' }}> <a style="font-size: small">Workshop or presentation (কর্মশালা বা উপস্থাপনা)</a>
 										</div>	
 									</div>	
 									
 									<div class="row g-1">
 										<div class="col-md-5">
-											<input type="radio" name="marketing_question" value="Facebook" > <a style="font-size: small">Facebook page (ফেইসবুক)</a> 
+											<input type="radio" name="marketing_question" value="Facebook" {{ old("marketing_question") == 'Facebook' ? 'checked' : '' }}> <a style="font-size: small">Facebook page (ফেইসবুক)</a> 
 										</div>
 										<div class="col-md-6">
-											<input type="radio" name="marketing_question" value="Friends and family"> <a style="font-size: small">Friends and family (বন্ধু এবং পরিবার)</a>
+											<input type="radio" name="marketing_question" value="Friends and family" {{ old("marketing_question") == 'Friends and family' ? 'checked' : '' }}> <a style="font-size: small">Friends and family (বন্ধু এবং পরিবার)</a>
 										</div>	
 									</div>
 									
 									<div class="row g-1">
 										<div class="col-md-5">
-											<input type="radio" name="marketing_question" value="Youtube" > <a style="font-size: small">Youtube channel (ইউটিউব চ্যানেল)</a>
+											<input type="radio" name="marketing_question" value="Youtube" {{ old("marketing_question") == 'Youtube' ? 'checked' : '' }}> <a style="font-size: small">Youtube channel (ইউটিউব চ্যানেল)</a>
 										</div>
 										<div class="col-md-6">
-											<input type="radio" name="marketing_question" value="Others"> <a style="font-size: small">Others (অন্যান্য)</a>
+											<input type="radio" name="marketing_question" value="Others" {{ old("marketing_question") == 'Others' ? 'checked' : '' }}> <a style="font-size: small">Others (অন্যান্য)</a>
 										</div>	
 									</div>			
 								</div>
@@ -689,7 +690,7 @@
 							<a style="font-size: small ; color: gray; ">Word limit: 150 words maximum (সর্বোচ্চ ১৫০ শব্দে)</a>
 							<br>
 							<div class="form-floating">
-								<textarea class="form-control" rows="5" style="height:100%;" placeholder="Leave a comment here" id="answer" name="narrative_writing_1"></textarea>
+								<textarea class="form-control" rows="5" style="height:100%;" placeholder="Leave a comment here" id="answer" name="narrative_writing_1">{{ old('narrative_writing_1') }}</textarea>
 								<label for="floatingTextarea">Write answer here</label>
 							</div><br>
 
@@ -698,7 +699,7 @@
 							<a style="font-size: small ; color: gray; ">Word limit: 200 words minimum (সর্বোচ্চ ২০০ শব্দে)</a>
 							<br>
 							<div class="form-floating">
-								<textarea class="form-control" rows="5" style="height:100%;" placeholder="Leave a comment here" id="answer" name="narrative_writing_2"></textarea>
+								<textarea class="form-control" rows="5" style="height:100%;" placeholder="Leave a comment here" id="answer" name="narrative_writing_2"> {{ old('narrative_writing_2') }}</textarea>
 								<label for="floatingTextarea">Write answer here</label>
 							</div><br>
 
@@ -730,7 +731,6 @@
         // window.onload = function() {
         //     document.getElementById('ifYes').style.display = 'none';
         // }
-
         function yesnoCheck() {
             if (document.getElementById('yesCheck').checked) {
                 document.getElementById('ifYes').style.display = 'none';
@@ -739,7 +739,6 @@
                 document.getElementById('ifYes').style.display = 'block';
             }
         }
-
         function ethnicityCheck(){
             if (document.getElementById('ethnicCheck').checked) {
                 document.getElementById('ethnic').style.display = 'block';
@@ -748,7 +747,6 @@
                 document.getElementById('ethnic').style.display = 'none';
             }
         }
-
         function disabilityCheck(){
             if (document.getElementById('disableCheck').checked) {
                 document.getElementById('disable').style.display = 'block';
@@ -757,7 +755,6 @@
                 document.getElementById('disable').style.display = 'none';
             }
         }
-
         function programPartipated(){
             if (document.getElementById('yes').checked) {
                 document.getElementById('program_participated').style.display = 'block';
@@ -766,7 +763,6 @@
                 document.getElementById('program_participated').style.display = 'none';
             }
         }
-
         function applicantType(){
             if (document.getElementById('professional').checked) {
                 document.getElementById('appl_type').style.display = 'block';
@@ -775,7 +771,6 @@
                 document.getElementById('appl_type').style.display = 'none';
             }
         }
-
         function ifUndergrad(){
             if (document.getElementById('yes_undergrad').checked) {
                 document.getElementById('undergrad_level').style.display = 'block';
@@ -784,7 +779,6 @@
                 document.getElementById('undergrad_level').style.display = 'none';
             }
         }
-
     </script>
 
 </body>

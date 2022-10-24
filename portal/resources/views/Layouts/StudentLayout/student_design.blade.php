@@ -32,7 +32,34 @@
         
         <script src="{{asset('assets/plugins/nprogress/nprogress.js')}}"></script>
 
-       
+        <style>
+        .target {
+            height: 150px;
+            width: 150px;
+            transition-property: height,width;
+            transition-duration: 0.3s;
+        }
+
+        .target:hover {
+            height: 170px;
+            width: 170px;
+        }
+
+        .box {
+            transition: box-shadow .3s;
+            width: 150px;
+            height: 150px;
+            margin: 50px;
+            border-radius:10px;
+            border: 1px solid #ccc;
+            background: #fff;
+            float: left;
+        }
+
+        .box:hover {
+            box-shadow: 0 0 11px rgba(33,33,33,.2); 
+        }
+    </style>
 
     </head>
 
