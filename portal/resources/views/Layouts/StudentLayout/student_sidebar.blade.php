@@ -28,26 +28,26 @@
             <!-- sidebar menu -->
             <ul class="nav sidebar-inner" id="sidebar-menu">
               
-                <li class="" >
+                <li class="{{ request()->is('student/dashboard') ? 'active' : '' }}" >
                     <a class="sidenav-item-link" href="{{url('/student/dashboard')}}">
                         <i class="mdi mdi-view-dashboard-outline"></i>
                         <span class="nav-text">Dashboard</span> 
                     </a>
                 </li>
-                <li class="has-sub ">
+                <li class="has-sub {{ request()->is('student/program') || request()->is('student/event') ? 'active' : '' }}">
                   <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#event"
                     aria-expanded="false" aria-controls="event">
                     <i class="mdi mdi-diamond-stone"></i>
                     <span class="nav-text">Application Forms</span> <b class="caret"></b>
                   </a>
-                  <ul class="collapse" id="event" data-parent="#sidebar-menu">
+                  <ul class="{{ request()->is('student/program') || request()->is('student/event') ? '' : 'collapse' }}" id="event" data-parent="#sidebar-menu">
                     <div class="sub-menu">
-                      <li class="">
+                      <li class="{{ request()->is('student/program') ? 'active' : '' }}">
                         <a class="sidenav-item-link" href="{{url('/student/program')}}">
                           <span class="nav-text">Program</span>
                         </a>
                       </li>
-                      <li class="">
+                      <li class="{{ request()->is('student/event') ? 'active' : '' }}">
                         <a class="sidenav-item-link" href="{{url('/student/event')}}">
                           <span class="nav-text">Event</span>
                         </a>
@@ -63,12 +63,7 @@
                     </a>
                 </li>
 
-                <li class="">
-                    <a class="sidenav-item-link" href="#">
-                        <i class="mdi mdi-account-box-outline"></i>
-                        <span class="nav-text">Result</span> 
-                    </a>
-                </li>
+               
 
                 <li class="">
                     <a class="sidenav-item-link" href="#">
@@ -77,8 +72,8 @@
                     </a>
                 </li>
 
-                <li class="">
-                    <a class="sidenav-item-link" href="{{url('/financialaid-form')}}">
+                <li class={{ request()->is('financialaid-form') ? 'active' : '' }}"">
+                    <a class="sidenav-item-link" href="{{url('/financialaid-form')}}" target="_blank">
                         <i class="mdi mdi-book-open"></i>
                         <span class="nav-text">Request For Waiver</span> 
                     </a>

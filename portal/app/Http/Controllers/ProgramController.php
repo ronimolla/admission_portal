@@ -17,8 +17,10 @@ use App\Models\Interview;
 use App\Models\Program;
 use App\Models\Program_batch;
 use App\Models\Event;
+use Illuminate\Support\Facades\Validator;
 use App\Models\Event_batch;
 use App\Models\StudentProgram;
+use Session;
 
 
 
@@ -31,6 +33,8 @@ class ProgramController extends Controller
     */
     public function bblt() 
     { 
+        $studentDetails = StudentContactInfo::where(['email_address'=>Session::get('userSession')])->first();
+        //echo "<pre>"; print_r($studentDetails); die;
         $date = now()->format('Y-m-d');
         $batchinfo = Program_batch::all()
                        ->where('program_id', '= ','1')
@@ -39,7 +43,7 @@ class ProgramController extends Controller
         $application_start_date = $batchinfo->start_date;
         //echo "<pre>"; print_r($application_last_date); die;
         if($date <= $application_last_date && $date >= $application_start_date){
-            return view('program.bblt')->with(compact('batchinfo'));
+            return view('program.bblt')->with(compact('batchinfo','studentDetails'));
         }else{
             return view('program.blank');
         }
@@ -47,11 +51,17 @@ class ProgramController extends Controller
 
     public function bbltstore(Request $request)
     {     
+        $request->validate([
+            'full-name'=>'required | max:10',
+            'email-address'=>'required | unique:student_contact_infos,email_address'
+
+
+        ]);
 
         if($request->isMethod('post')){
             $data = $request->input();
-            $batchinfo = Program_batch::where(['batch_id'=>$data['program_batch_id']])->first();
-            //echo "<pre>"; print_r($batchinfo); die;
+            
+            echo "<pre>"; print_r($data); die;
             // $usersCount = StudentPersonalInfo::where('student_id ',$data['email'])->count();
             //echo $usersCount ; die;
             //if($usersCount>0){
@@ -60,6 +70,7 @@ class ProgramController extends Controller
             $program_batch_id=$data['program_batch_id'];
             $programname=$data['program_name'];
 
+            $batchinfo = Program_batch::where(['batch_id'=>$data['program_batch_id']])->first();
             $student_batch= new StudentProgram;
             $student_batch->program_batch_id = $batchinfo->batch_id ;
             $student_batch->program_batch_name = $batchinfo->batch_name ;
@@ -222,13 +233,27 @@ class ProgramController extends Controller
 
     public function bbltjstore(Request $request)
     {
+        $request->validate([
+            'full-name'=>'required | max:10',
+            'email-address'=>'required | unique:student_contact_infos,email_address'
+
+        ]);
+
         if($request->isMethod('post')){
             $data = $request->input();
-            $batchinfo = Program_batch::where(['batch_id'=>$data['program_batch_id']])->first();
+            echo "<pre>"; print_r($data); die;
+
             $program_batch_id=$data['program_batch_id'];
             $programname=$data['program_name'];
-            //echo "<pre>"; print_r($data); die;
-           if(empty($data['gender'])){
+
+            $batchinfo = Program_batch::where(['batch_id'=>$data['program_batch_id']])->first();
+            $student_batch= new StudentProgram;
+            $student_batch->program_batch_id = $batchinfo->batch_id ;
+            $student_batch->program_batch_name = $batchinfo->batch_name ;
+            
+       
+            $info = new StudentPersonalInfo;
+            if(empty($data['gender'])){
                 $gender =' ';
             }else{
                 $gender = $data['gender'];
@@ -244,7 +269,6 @@ class ProgramController extends Controller
             }else{
                 $disability = $data['disability'];
             }
-            $info = new StudentPersonalInfo;
             $info->full_name = $data['full-name'];
             $info->program_name =$programname; 
             $info->program_batch_id = $program_batch_id;
@@ -346,6 +370,7 @@ class ProgramController extends Controller
             $followup->save();
             $writing->save();
             $interview->save();
+            $student_batch->save();
 
             return redirect('/program/bbltj'); 
         }
@@ -371,12 +396,24 @@ class ProgramController extends Controller
 
     public function aplstore(Request $request)
     { 
-        if($request->isMethod('post')){
+        $request->validate([
+            'full-name'=>'required | max:10',
+            'email-address'=>'required | unique:student_contact_infos,email_address'
 
+        ]);
+
+        if($request->isMethod('post')){
             $data = $request->input();
-            $batchinfo = Program_batch::where(['batch_id'=>$data['program_batch_id']])->first();
+            echo "<pre>"; print_r($data); die;
+
             $program_batch_id=$data['program_batch_id'];
             $programname=$data['program_name'];
+
+            $batchinfo = Program_batch::where(['batch_id'=>$data['program_batch_id']])->first();
+            $student_batch= new StudentProgram;
+            $student_batch->program_batch_id = $batchinfo->batch_id ;
+            $student_batch->program_batch_name = $batchinfo->batch_name ;
+
             $info = new StudentPersonalInfo;
             if(empty($data['gender'])){
                 $gender =' ';
@@ -496,6 +533,8 @@ class ProgramController extends Controller
             $followup->save();
             $writing->save();
             $interview->save();
+            $student_batch->save();
+
             return redirect('/program/apl'); 
         }
     }
@@ -520,12 +559,24 @@ class ProgramController extends Controller
 
     public function ylsstore(Request $request)
     { 
+        $request->validate([
+            'full-name'=>'required | max:10',
+            'email-address'=>'required | unique:student_contact_infos,email_address'
+
+        ]);
+
         if($request->isMethod('post')){
             $data = $request->input();
-            //echo "<pre>"; print_r($data); die;
-            $batchinfo = Program_batch::where(['batch_id'=>$data['program_batch_id']])->first();
+            echo "<pre>"; print_r($data); die;
+            
             $program_batch_id=$data['program_batch_id'];
             $programname=$data['program_name'];
+
+            $batchinfo = Program_batch::where(['batch_id'=>$data['program_batch_id']])->first();
+            $student_batch= new StudentProgram;
+            $student_batch->program_batch_id = $batchinfo->batch_id ;
+            $student_batch->program_batch_name = $batchinfo->batch_name ;
+
             $info = new StudentPersonalInfo;
             if(empty($data['gender'])){
                 $gender =' ';
@@ -656,6 +707,7 @@ class ProgramController extends Controller
             $followup->save();
             $writing->save();
             $interview->save();
+            $student_batch->save();
 
             return redirect('/program/yls'); 
         }
@@ -679,13 +731,24 @@ class ProgramController extends Controller
 
     public function careerxstore(Request $request)
     { 
-        if($request->isMethod('post')){
+        $request->validate([
+            'full-name'=>'required | max:10',
+            'email-address'=>'required | unique:student_contact_infos,email_address'
 
+        ]);
+        
+        if($request->isMethod('post')){
             $data = $request->input();
-            //echo "<pre>"; print_r($data); die;
-            $batchinfo = Program_batch::where(['batch_id'=>$data['program_batch_id']])->first();
+            echo "<pre>"; print_r($data); die;
+            
             $program_batch_id=$data['program_batch_id'];
             $programname=$data['program_name'];
+
+            $batchinfo = Program_batch::where(['batch_id'=>$data['program_batch_id']])->first();
+            $student_batch= new StudentProgram;
+            $student_batch->program_batch_id = $batchinfo->batch_id ;
+            $student_batch->program_batch_name = $batchinfo->batch_name ;
+
             $info = new StudentPersonalInfo;
             if(empty($data['gender'])){
                 $gender =' ';
@@ -843,6 +906,7 @@ class ProgramController extends Controller
             $followup->save();
             $writing->save();
             $interview->save();
+            $student_batch->save();
 
             return redirect('/program/careerx'); 
         }
