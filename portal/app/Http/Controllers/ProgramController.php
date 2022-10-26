@@ -847,8 +847,13 @@ class ProgramController extends Controller
         $student_info = DB::table('student_personal_infos')
             ->join('student_contact_infos', 'student_personal_infos.student_id', '=', 'student_contact_infos.student_id')
             ->join('student_address_infos', 'student_personal_infos.student_id', '=', 'student_address_infos.student_id')
-            ->join('program_batches', 'program_batches.batch_id', '=', 'student_personal_infos.program_batch_id')
+            ->join('student_programs', 'student_programs.student_id', '=', 'student_personal_infos.student_id')
+            ->join('program_batches', 'program_batches.batch_id', '=', 'student_programs.program_batch_id')
+            ->orderBy('program_batches.batch_name', 'ASC')
+            ->orderBy('student_personal_infos.full_name', 'ASC')
             ->get();
+
+        // echo "<pre>"; print_r($student_info); die;
 
         $program_name= DB::table('programs')
             ->get();
@@ -935,12 +940,16 @@ class ProgramController extends Controller
     public function getBatchData(Request $request)
     {
         $bid=$request->post('bid');
+
         $state = DB::table('student_personal_infos')
-        ->join('student_contact_infos', 'student_personal_infos.student_id', '=', 'student_contact_infos.student_id')
-        ->join('student_address_infos', 'student_personal_infos.student_id', '=', 'student_address_infos.student_id')
-        ->join('program_batches', 'program_batches.batch_id', '=', 'student_personal_infos.program_batch_id')
-        ->where('program_batch_id',$bid)
-        ->get();
+            ->join('student_contact_infos', 'student_personal_infos.student_id', '=', 'student_contact_infos.student_id')
+            ->join('student_address_infos', 'student_personal_infos.student_id', '=', 'student_address_infos.student_id')
+            ->join('student_programs', 'student_programs.student_id', '=', 'student_personal_infos.student_id')
+            ->join('program_batches', 'program_batches.batch_id', '=', 'student_programs.program_batch_id')
+            ->orderBy('program_batches.batch_name', 'ASC')
+            ->orderBy('student_personal_infos.full_name', 'ASC')
+            ->where('student_programs.program_batch_id',$bid)
+            ->get();
         
         $html='  
             <thead>
@@ -982,32 +991,34 @@ class ProgramController extends Controller
     // Display table data based program-batch-name selected from dropdown
     public function downloadCSVReport(Request $request)
     {   
-        $bid=$request->post('batchId');
+        $bid=$request->post('bid');
+        // echo $bid; die;
 
         header('Content-Type: text/csv; charset=utf-8');
-        header('Content-Disposition: attachment; filename=Program_Batch_Name-' . date("Y-m-d-h-i-s") . '.csv ');
+        header('Content-Disposition: attachment; filename=Student_Batch_Information-' . date("Y-m-d-h-i-s") . '.csv ');
         $output = fopen('php://output', 'w');
     
-        fputcsv($output, array('SL.NO.','BATCH_ID', 'STUDENT ID', 'FULL NAME ','EMAIL', 'PHONE','ADDRESS'));
+        fputcsv($output, array('SL.NO.', 'PROGRAM BATCH NAME', 'STUDENT ID', 'FULL NAME ', 'GENGER', 'DATE OF BIRTH', 'EMAIL', 'PERSONAL PHONE NO.', 'EMERGENCY CONTACT NO.', 'PRESENT ADDRESS', 'PERMANENT ADDRESS', 'FATHER NAME', 'MOTHER NAME', 'GUARDIAN PHONE NUMBER', 'ETHNICITY', 'DISABILITY', 'EDUCATIONAL MEDIUM',  'SCHOOL NAME', 'PASSING YEAR', 'RESULT', 'COLLEGE', 'DEPARTMENT', 'PASSING YEAR', 'RESULT', 'UNIVERSITY', 'DEGREE', 'PASSING YEAR', 'CGPA'));
 
-        $tweets = StudentPersonalInfo::join('student_contact_infos', 'student_contact_infos.student_id', '=', 'student_personal_infos.student_id')
-                                    ->join('student_address_infos', 'student_personal_infos.student_id', '=', 'student_address_infos.student_id')
-                                    ->join('program_batches', 'program_batches.batch_id', '=', 'student_personal_infos.program_batch_id')
+        $tweets = StudentPersonalInfo :: join('student_contact_infos', 'student_contact_infos.student_id', '=', 'student_personal_infos.student_id')
+                                    ->join('student_address_infos', 'student_personal_infos.student_id', '=', 'student_address_infos.student_id')   
+                                    ->join('student_programs', 'student_programs.student_id', '=', 'student_personal_infos.student_id')
+                                    ->where('student_programs.program_batch_id',$bid)
                                     ->get();
         
         $count=1;                            
         if (count($tweets) > 0) {
-            foreach ($tweets as $product) {
-
+            foreach ($tweets as $product) 
+            {
                 $product_row = [
                     $count++,
-                    $bid,
+                    $product['program_batch_name'],
                     $product['student_id'],
                     $product['full_name'],
                     $product['email_address'],
                     $product['personal_phone_no'],
                     $product['present_district'],
-                    $product['batch_name'],                 
+                    $product['program_batch_name'],                 
                 ];
 
                 fputcsv($output, $product_row);
@@ -1041,7 +1052,6 @@ class ProgramController extends Controller
             ->join('program_batches', 'programs.program_id', '=', 'program_batches.program_id')
             ->where('category',$cat)
             ->get();
-
         
         $html=
         '  
@@ -1102,7 +1112,6 @@ class ProgramController extends Controller
     }
 
     
-
     // Display program-batch information in (Program-Batch Page)
     public function programBatch(){        
         //Table Data Fetch
@@ -1278,7 +1287,6 @@ class ProgramController extends Controller
         $event_info = DB::table('events')
             ->join('event_batches', 'events.id', '=' , 'event_batches.event_id')
             ->get();
-
         $totalStudents = DB::table('student_events')
             ->join('event_batches', 'student_events.event_batch_name', '=', 'event_batches.batch_name')
             ->get();
@@ -1328,7 +1336,9 @@ class ProgramController extends Controller
 
         $c=1;
         $count=0;
-        foreach($state as $list){
+        
+        foreach($state as $list)
+        {
             foreach($totalStudents as $ts){
                 if($list->batch_name == $ts->event_batch_name){
                     $count++;

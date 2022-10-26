@@ -4,6 +4,60 @@
   <div class="content">
 
   
+  <div class="row">
+    <div class="col-md-6 col-lg-6 col-xl-3">
+      <div class="media widget-media p-4 bg-white border">
+        <div class="icon rounded-circle mr-4 bg-primary">
+          <i class="mdi mdi-account-outline text-white "></i>
+        </div>
+
+        <div class="media-body align-self-center">
+          <h4 class="text-primary mb-2">5300</h4>
+          <p>Total Applicants</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6 col-lg-6 col-xl-3">
+      <div class="media widget-media p-4 bg-white border">
+        <div class="icon rounded-circle bg-warning mr-4">
+          <i class="mdi mdi-account-outline text-white "></i>
+        </div>
+
+        <div class="media-body align-self-center">
+          <h4 class="text-primary mb-2">1953</h4>
+          <p>Registered Students</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6 col-lg-6 col-xl-3">
+      <div class="media widget-media p-4 bg-white border">
+        <div class="icon rounded-circle mr-4 bg-danger">
+          <i class="mdi mdi-file-document-box-multiple text-white "></i>
+        </div>
+
+        <div class="media-body align-self-center">
+          <h4 class="text-primary mb-2">1450</h4>
+          <p>Total Programs</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6 col-lg-6 col-xl-3">
+      <div class="media widget-media p-4 bg-white border">
+        <div class="icon bg-success rounded-circle mr-4">
+          <i class="mdi mdi-paper-cut-vertical text-white "></i>
+        </div>
+
+        <div class="media-body align-self-center">
+          <h4 class="text-primary mb-2">9503</h4>
+          <p>Total Events</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
     <div class="row">
       <div class="col-xl-3 col-sm-6">
         <div class="card card-mini mb-4">
@@ -54,9 +108,10 @@
         </div>
       </div>
     </div>
+
     <div class="row">
-      <div class="col-xl-8 col-md-12">
-        <!-- Sales Graph -->
+      
+      <!-- <div class="col-xl-8 col-md-12">  
         <div class="card card-default">
           <div class="card-header">
             <h2>Graduates Amount Of The Year</h2>
@@ -83,7 +138,40 @@
             </div>
           </div>
         </div>
+      </div> -->
+
+      
+      <div class="col-xl-4 col-md-12">
+        <!-- Doughnut Chart -->
+        <div class="card card-default">
+          <div class="card-header justify-content-center">
+            <h2>Ethnicity</h2>
+          </div>
+          <div class="card-body" >
+            <canvas id="doChart" ></canvas>
+          </div>
+          <a href="#" class="pb-5 d-block text-center text-muted"><i class="mdi mdi-download mr-2"></i> Download overall report</a>
+          <div class="card-footer d-flex flex-wrap bg-white p-0">
+            <div class="col-6">
+              <div class="py-4 px-4">
+                <ul class="d-flex flex-column justify-content-between">
+                  <li class="mb-2"><i class="mdi mdi-checkbox-blank-circle-outline mr-2" style="color: #4c84ff"></i>Order Completed</li>
+                  <li><i class="mdi mdi-checkbox-blank-circle-outline mr-2" style="color: #80e1c1 "></i>Order Unpaid</li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-6 border-left">
+              <div class="py-4 px-4 ">
+                <ul class="d-flex flex-column justify-content-between">
+                  <li class="mb-2"><i class="mdi mdi-checkbox-blank-circle-outline mr-2" style="color: #8061ef"></i>Order Pending</li>
+                  <li><i class="mdi mdi-checkbox-blank-circle-outline mr-2" style="color: #ffa128"></i>Order Canceled</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
+
       <div class="col-xl-4 col-md-12">
         <!-- Doughnut Chart -->
         <div class="card card-default">
@@ -114,6 +202,38 @@
           </div>
         </div>
       </div>
+
+      <div class="col-xl-4 col-md-12">
+        <!-- Doughnut Chart -->
+        <div class="card card-default">
+          <div class="card-header justify-content-center">
+            <h2>Courses Overview</h2>
+          </div>
+          <div class="card-body" >
+            <canvas id="doChart" ></canvas>
+          </div>
+          <a href="#" class="pb-5 d-block text-center text-muted"><i class="mdi mdi-download mr-2"></i> Download overall report</a>
+          <div class="card-footer d-flex flex-wrap bg-white p-0">
+            <div class="col-6">
+              <div class="py-4 px-4">
+                <ul class="d-flex flex-column justify-content-between">
+                  <li class="mb-2"><i class="mdi mdi-checkbox-blank-circle-outline mr-2" style="color: #4c84ff"></i>Order Completed</li>
+                  <li><i class="mdi mdi-checkbox-blank-circle-outline mr-2" style="color: #80e1c1 "></i>Order Unpaid</li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-6 border-left">
+              <div class="py-4 px-4 ">
+                <ul class="d-flex flex-column justify-content-between">
+                  <li class="mb-2"><i class="mdi mdi-checkbox-blank-circle-outline mr-2" style="color: #8061ef"></i>Order Pending</li>
+                  <li><i class="mdi mdi-checkbox-blank-circle-outline mr-2" style="color: #ffa128"></i>Order Canceled</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
 		</div>
     <div class="row">
 			<div class="col-xl-4 col-lg-6 col-12">

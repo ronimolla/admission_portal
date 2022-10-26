@@ -86,7 +86,6 @@ Route::group(['middleware' =>['adminlogin']],function(){
     Route::get('/view-profile/{student_id}', [StudentController::class, 'profile']);
     Route::get('/edit-profile/{student_id}', [StudentController::class, 'editprofile']);
 
-
     //Student Management Page 
     Route::get('/students/programs_info', [ProgramController::class, 'programs_info']);
     Route::match(['get', 'post'], '/getBatch',[ProgramController::class, 'getBatch']);
@@ -98,7 +97,6 @@ Route::group(['middleware' =>['adminlogin']],function(){
     //Overview Page
     Route::get('/overview', [ProgramController::class, 'overview']);
 
-
     //Programs Page
     Route::get('/programs/programsView', [ProgramController::class, 'programsView']); //View Page
     Route::match(['get', 'post'], '/getProgramDatabyCategory',[ProgramController::class, 'getProgramDatabyCategory']); //Dropdown
@@ -108,7 +106,6 @@ Route::group(['middleware' =>['adminlogin']],function(){
     Route::get('/programs/programBatch', [ProgramController::class, 'programBatch']); //View Page
     Route::match(['get', 'post'], '/getProgramData',[ProgramController::class, 'getProgramData']); //Dropdown
     Route::match(['get', 'post'], '/programs/createBatch',[ProgramController::class, 'createProgramBatch']);
-    
 
     //Event Page
     Route::get('/events/eventsView', [ProgramController::class, 'eventsView']); //View Page
@@ -126,6 +123,7 @@ Route::group(['middleware' =>['adminlogin']],function(){
 
    
 });
+
 
 
 //--------------Student side where student need not to loging at the system----------------------//
