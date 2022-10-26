@@ -154,6 +154,9 @@ Route::group(['middleware' =>['adminlogin']],function(){
     Route::get('/student/dashboard', [UserController::class, 'stddashboard']);
     Route::get('/student/logout', [UserController::class, 'logout']);
     route:: match(['get','post'],'/financialaid-form',[AssesmentController::class, 'financialaid_form']);
+    Route::get('/student/program', [UserController::class, 'program']);
+    Route::get('/student/event', [UserController::class, 'event']);
+    Route::get('/student/mywaiver', [UserController::class, 'mywaiver']);
     
 
 });

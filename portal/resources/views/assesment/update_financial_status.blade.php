@@ -31,7 +31,7 @@
                                 </div>
                                 <div class="col-md-4 mb-3">
                                     <label for="validationServer04">Program Code</label>
-                                    <input type="text" class="form-control" id="validationServer04"  name="program_code" value="{{$applicaent->program_batch_id}}"  readonly>
+                                    <input type="text" class="form-control" id="validationServer04"  name="program_code" value="{{$applicaent->program_batch_code}}"  readonly>
                                 </div>
                                 <div class="col-md-4 mb-3">
                                     <label for="validationServer03">Educational Medium</label>
@@ -47,11 +47,10 @@
                             <div class="form-row">
                                 
                                 <div class="col-md-4 mb-3">
-                                    <label for="validationServer03">Requst for FA</label>
-                                    <select class="form-control" id="request_Faq" name="request_Faq">
-                                        <option>Yes</option>
-                                        <option> No</option>
-                                    </select>
+                                
+                                    <label for="validationServer03">registration fees</label>
+                                    <input type="text" class="form-control" id="waiver_percentage" name="registration_fees" value ="{{$batchdetails->registration_fees}}" readonly>
+                                
                                 </div>
                                 <div class="col-md-4 mb-3">
                                     <label for="validationServer03">Waiver Amount</label>
@@ -59,12 +58,12 @@
                                 </div>  
                                 <div class="col-md-4 mb-6">
                                     <label for="validationServer03">Waiver Percentage</label>
-                                    <input type="text" class="form-control" id="waiver_percentage" name="waiver_percentage" required>
+                                    <input type="text" class="form-control" id="waiver_percentage" name="waiver_percentage" >
                                 </div> 
                             </div> 
                             <div class="form-row">
                                 <div class="col-md-6 mb-3">
-                                    <textarea id="w3review" placeholder = "Reason for giving Waiver" name="reason" rows="4" cols="50"></textarea>
+                                    <textarea id="w3review" placeholder = "descride the for giving waiver" name="reason" rows="4" cols="50"></textarea>
                                 </div>     
                             </div>  
                            
