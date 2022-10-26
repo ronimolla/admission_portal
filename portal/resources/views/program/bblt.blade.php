@@ -145,8 +145,9 @@
 							<br><br>
 							<a style="font-size: small ; font-weight: bold">Full Name (পূর্ণ নাম)</a><br>
 							<a style="font-size: smaller ; color: gray; ">As per passport or national ID or academic certificate (পাসপোর্ট বা জাতীয় পরিচয়পত্র বা একাডেমিক সার্টিফিকেট অনুযায়ী) (ex. Zuhair Bin Zabbar)</a><br>
-							<input type="text" class="form-control" id="name"  name="full-name" value ="{{old('full-name', $studentDetails->email_address)}}">
+							<input type="text" class="form-control" id="name"  name="full-name" value ="{{old('full-name')}}">
 							<span style ="color: red">@error('full-name'){{$message}}@enderror </span>
+							
 							<br>
 							<!-- Gender -->
 							<a style="font-size: small ; font-weight: bold">Gender (লিঙ্গ)</a><br>
@@ -173,15 +174,9 @@
 								<div class="col-md-6">
 									<a style="font-size: small ; font-weight: bold">Date of Birth (জন্ম তারিখ)</a><br>
 									<!-- DatePicker -->
-									<div class="input-group">
-										<span class="input-group-text">
-											<svg class="icon icon-xs" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path></svg>
-										</span>
-										<input data-datepicker="" class="form-control" id="birthday" type="text" placeholder="dd/mm/yyyy" name="date-of-birth" value ="{{old('date-of-birth')}}">
+									<div class="input-group date" id="datepicker">
+										<input type="date" class="form-control" id="datetime" name="date-of-birth" value ="{{old('date-of-birth')}}"/>	
 									</div>
-
-								
-								
 						        </div>
 								<div class="col-md-6">
 									<a style="font-size: small ; font-weight: bold">Nationality (জাতীয়তা)</a><br>
@@ -221,9 +216,16 @@
 							<!-- Email -->
 							<div class="row g-3">
 								<div class="col-md-6">
+									<!-- Email -->
 									<a style="font-size: small ; font-weight: bold">Email Address (ইমেইল)</a><br>
 									<input type="email" class="form-control" id="email"  name="email-address" value ="{{old('email-address')}}">
 									<span style ="color: red">@error('email-address'){{$message}}@enderror </span>
+								</div>
+								<div class="col-md-6">
+									<!-- NID -->
+									<a style="font-size: small ; font-weight: bold">NID/Bith Certificate/Paport No</a><br>
+									<input type="text" class="form-control" name="nid" id="nid" name="nid" value ="{{old('nid')}}" >
+									<span style ="color: red">@error('nid'){{$message}}@enderror </span>
 								</div>
 							</div>
 							<br><br>
@@ -333,6 +335,7 @@
 									<input type="radio" name="same_address" onclick="javascript:yesnoCheck();"  id="yesCheck" value="yes" {{ old("same_address") == 'yes' ? 'checked' : '' }}> <a style="font-size: small">Yes (হ্যাঁ)</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 									<input type="radio" name="same_address" onclick="javascript:yesnoCheck();"  id="noCheck" value="no" {{ old("same_address") == 'no' ? 'checked' : '' }}> <a style="font-size: small">No (না)</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 								</div>
+								<span style ="color: red">@error('same_address'){{$message}}@enderror </span>
 							</div>
 
                             <div id="ifYes" style="display:none">

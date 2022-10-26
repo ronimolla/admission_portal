@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('interviews', function (Blueprint $table) {
-            $table->increments('student_id');
+            $table->string('student_id');
             $table->string('program_name');
             $table->string('program_batch_id');
             $table->string('interviewer')->nullable();
