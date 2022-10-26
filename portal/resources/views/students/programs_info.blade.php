@@ -53,12 +53,12 @@
 											<thead>
 												<tr>
 													<th>Sl.No.</th>
+													<th>Batch</th>
 													<th>Student ID</th>
 													<th>Full name</th>
 													<th>Email ID</th>
 													<th>Phone No</th>
 													<th>Address</th>
-													<th>Batch</th>
 													<th>Profile</th>													
 												</tr>
 											</thead>
@@ -68,12 +68,12 @@
                                                 @foreach($student_info as $std)
                                                     <tr>
                                                         <td>{{$c++}}</td>
-                                                        <td>{{$std->student_id}}</td>
+                                                        <td>{{$std->batch_name}}</td>
+														<td>{{$std->student_id}}</td>
                                                         <td>{{$std->full_name}}</td>
                                                         <td>{{$std->email_address}}</td>
                                                         <td>{{$std->personal_phone_no}}</td>
                                                         <td>{{$std->present_district}}</td>
-                                                        <td>{{$std->batch_name}}</td>
                                                         <td>
 															<a href="{{ url('view-profile/'.$std->student_id)}}" class="btn btn-primary">View</a>
 														</td>	

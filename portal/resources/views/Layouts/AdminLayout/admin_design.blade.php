@@ -133,7 +133,6 @@
                                 //jQuery('#student_data_table').html(result)
                             }
                         });
-
                     });                    
 
                     
@@ -148,6 +147,22 @@
                                 jQuery('#basic-data-table').html(result)
 
                             }
+                        });
+                    });
+
+                    //Dropdown to select program-batch
+                    jQuery('#batch_name').change(function(){                       
+                        let bid=jQuery(this).val();
+                        jQuery.ajax({
+                            url:'/download-csv',
+                            type:'post',
+                            data:'bid='+bid+'&_token={{csrf_token()}}',
+                            // success: function (result) {
+                            //     alert('Success');
+                            // },
+                            // error: function (result) {
+                            //     alert('Error');
+                            // }
                         });
                     });
 
@@ -181,7 +196,7 @@
                         });
                     });     
 
-                    //-----------(Program Page)-------------------------
+                    //-----------(Program Page)-----------------------------
 
                     //Dropdown to select program name For showing table data 
                     jQuery('#category_event').change(function(){                       
@@ -195,6 +210,7 @@
                             }
                         });
                     }); 
+              
                     
                     //-----------(Event-Batch-page)-------------------------
                     
