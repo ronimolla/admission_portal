@@ -9,6 +9,7 @@ use App\Http\Controllers\AssesmentController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\ViewController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\StudentProgramController;
 Auth::routes();
 /*
 |--------------------------------------------------------------------------
@@ -155,6 +156,10 @@ Route::group(['middleware' =>['adminlogin']],function(){
 
     Route::get('/student/dashboard', [UserController::class, 'stddashboard']);
     Route::get('/student/logout', [UserController::class, 'logout']);
+    //BBLT program route
+    Route::get('/student/program/bblt', [StudentProgramController::class, 'bblt']);
+    Route::match(['get', 'post'], 'student/bblt/store',[StudentProgramController::class, 'bbltstore']);
+
     route:: match(['get','post'],'/financialaid-form',[AssesmentController::class, 'financialaid_form']);
     Route::get('/student/program', [UserController::class, 'program']);
     Route::get('/student/event', [UserController::class, 'event']);

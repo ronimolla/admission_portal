@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('student_career_infos', function (Blueprint $table) {
-            $table->increments('student_id');
+            $table->string('student_id');
             $table->string('resume')->nullable();
             $table->string('designation')->nullable();
             $table->string('company_name')->nullable();

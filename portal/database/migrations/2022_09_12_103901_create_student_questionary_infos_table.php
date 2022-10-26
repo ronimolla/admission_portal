@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('student_questionary_infos', function (Blueprint $table) {
-            $table->increments('student_id');
+            $table->string('student_id');
             $table->string('justify_answer')->nullable();
             $table->string('ambition')->nullable();
             $table->string('short_bio')->nullable();

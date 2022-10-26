@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('waivers', function (Blueprint $table) {
-            $table->increments('student_id');
+            $table->string('student_id');
             $table->string('full_name')->nullable();
             $table->string('program_name')->nullable();
             $table->string('program_batch_id')->nullable();

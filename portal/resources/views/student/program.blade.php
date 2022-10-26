@@ -32,7 +32,7 @@
                                     <!-- BBLT Form -->
                                     <button type="">
                                         <div class="shadow-lg p-1 mb-2 bg-white rounded">
-                                            <a href="{{ url('program/bblt')}}" target="_blank" >
+                                            <a href="{{ url('student/program/bblt')}}" target="_blank" >
                                                 <div class="target"><img class="target" src="{{asset('images/program_image/bblt.png')}}" alt=" " class="rounded mx-auto d-block" style="width: 150; height:150"></div>
                                             <a>
                                         </div>
