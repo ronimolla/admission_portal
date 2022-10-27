@@ -886,6 +886,7 @@ $(document).ready(function() {
       }
     });
   }
+
   /*======== 12. POLAR CHART ========*/
     var polar = document.getElementById("polar");
     if (polar !== null) {

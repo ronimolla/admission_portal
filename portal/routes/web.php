@@ -79,8 +79,6 @@ Route::group(['middleware' =>['adminlogin']],function(){
     //---------------------------------------------- JUBAIR ----------------------------------------------------//
 
    
-   
-
     //All program data information
     Route::resource('Students', StudentController::class);
     Route::get('/view-profile/{student_id}', [StudentController::class, 'profile']);
@@ -121,7 +119,10 @@ Route::group(['middleware' =>['adminlogin']],function(){
     Route::get('/events/forms/alumni_iftar', [ProgramController::class, 'alumni_iftar']); //View Iftar Page
     Route::get('/events/forms/careerExpo', [ProgramController::class, 'careerExpo']); //View CareerExpo Page
 
+    //Dashboard
+    Route::get('/dashboard', [ProgramController::class, 'dashboard']);
    
+
 });
 
 

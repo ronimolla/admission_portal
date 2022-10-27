@@ -1418,6 +1418,19 @@ class ProgramController extends Controller
         return view('events.forms.careerExpo');
     }
 
+    //------------- Dashboard ----------------------
+    public function dashboard()
+    {
+        //Counting Total No. of applicants
+        $total_applicants= DB::table('student_personal_infos')->count();
+        $registered_students = 123;
+        $total_programs = DB::table('program_batches')->count();
+        $total_events = DB::table('event_batches')->count();
+
+
+
+        return view('/dashboard')->with(compact('total_applicants','registered_students','total_programs','total_events'));
+    }
 
 
 }
