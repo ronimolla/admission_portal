@@ -15,6 +15,8 @@ return new class extends Migration
     {
         Schema::create('student_questionary_infos', function (Blueprint $table) {
             $table->string('student_id');
+            $table->string('program_name');
+            $table->string('program_batch_id');
             $table->string('justify_answer')->nullable();
             $table->string('ambition')->nullable();
             $table->string('short_bio')->nullable();

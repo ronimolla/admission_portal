@@ -444,11 +444,11 @@
 							<div class="input-group mb-3">
 								<select class="form-select" id="school_class" name="school_class">
 								  <option selected>Please Select</option>
-								  <option value="Class 6" {{ old("edu_level") == 'Class 6' ? 'selected' : '' }}>Class 6</option>
-								  <option value="Class 7" {{ old("edu_level") == 'Class 7' ? 'selected' : '' }}>Class 7</option>
-								  <option value="Class 8" {{ old("edu_level") == 'Class 8' ? 'selected' : '' }}>Class 8</option>
-								  <option value="Class 9" {{ old("edu_level") == 'Class 8' ? 'selected' : '' }}>Class 9</option>
-								  <option value="Class 10" {{ old("edu_level") == 'Class 10' ? 'selected' : '' }}>Class 10</option>
+								  <option value="Class 6" {{ old("school_class") == 'Class 6' ? 'selected' : '' }}>Class 6</option>
+								  <option value="Class 7" {{ old("school_class") == 'Class 7' ? 'selected' : '' }}>Class 7</option>
+								  <option value="Class 8" {{ old("school_class") == 'Class 8' ? 'selected' : '' }}>Class 8</option>
+								  <option value="Class 9" {{ old("school_class") == 'Class 8' ? 'selected' : '' }}>Class 9</option>
+								  <option value="Class 10" {{ old("school_class") == 'Class 10' ? 'selected' : '' }}>Class 10</option>
 								</select>
 							</div>
 							<br>
@@ -520,7 +520,7 @@
 							<br>
 
 							<div class="form-floating">
-								<textarea class="form-control" rows="7" style="height:100%;" placeholder="Leave a comment here" id="answer" name="justify_ans"></textarea>
+								<textarea class="form-control" rows="7" style="height:100%;" placeholder="Leave a comment here" id="answer" name="justify_ans"> {{old('extracurricular')}}</textarea>
 								<label for="floatingTextarea">Write answer here</label>
 							</div>
 

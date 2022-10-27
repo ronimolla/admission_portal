@@ -66,7 +66,7 @@
 					<div class="subHeading" >বিল্ডিং ব্রিজেস থ্রূ লিডারশিপ ট্রেনিং (বিবিএলটি) আবেদনপত্র</div>
 				</div>
 		     
-				<form class="form-register"  method="post" action="{{url('/bblt/store')}}" name="add_school" id="add_school" novalidate="novalidate">{{csrf_field()}}
+				<form class="form-register"  method="post" action="{{url('/student/bblt/store')}}" name="add_school" id="add_school" novalidate="novalidate">{{csrf_field()}}
 		        	<div id="form-total">
 					<input type="hidden" class="form-control" id="program_name"  name="program_name" value="BBLT" >
 					<input type="hidden" class="form-control" id="program_name"  name="program_batch_id" value="{{$batchinfo->batch_id}}" >
@@ -145,7 +145,7 @@
 							<br><br>
 							<a style="font-size: small ; font-weight: bold">Full Name (পূর্ণ নাম)</a><br>
 							<a style="font-size: smaller ; color: gray; ">As per passport or national ID or academic certificate (পাসপোর্ট বা জাতীয় পরিচয়পত্র বা একাডেমিক সার্টিফিকেট অনুযায়ী) (ex. Zuhair Bin Zabbar)</a><br>
-							<input type="text" class="form-control" id="name"  name="full-name" value ="{{old('full-name', $studentDetails->email_address)}}">
+							<input type="text" class="form-control" id="name"  name="full-name" value ="{{old('full-name', $student->full_name)}}" readonly>
 							<span style ="color: red">@error('full-name'){{$message}}@enderror </span>
 							
 							<br>
@@ -155,13 +155,13 @@
 								<div id="radio">
                                     <div class="row">
                                         <div class="col-md-4">
-                                            <input type="radio" name="gender" value="male" {{ old("gender") == 'male' ? 'checked' : '' }}> <a style="font-size: small">Male (পুরুষ)</a>
+                                            <input type="radio" name="gender" value="male" {{ old("gender") == 'male' ||  $student->gender =='male'? 'checked' : '' }}> <a style="font-size: small">Male (পুরুষ)</a>
                                         </div>
                                         <div class="col-md-4">
-                                            <input type="radio" name="gender" value="female" {{ old("gender") == 'female' ? 'checked' : '' }}> <a style="font-size: small">Female (নারী)</a>
+                                            <input type="radio" name="gender" value="female" {{ old("gender") == 'female' ||  $student->gender =='female'? 'checked' : '' }}> <a style="font-size: small">Female (নারী)</a>
                                         </div>
                                         <div class="col-md-4">
-                                            <input type="radio" name="gender" value="other" {{ old("gender") == 'other' ? 'checked' : '' }}> <a style="font-size: small">Other (অন্যান্য)</a>
+                                            <input type="radio" name="gender" value="other" {{ old("gender") == 'other' ||  $student->gender =='other' ? 'checked' : '' }}> <a style="font-size: small">Other (অন্যান্য)</a>
                                         </div>
                                     </div>
 								</div>
@@ -175,12 +175,12 @@
 									<a style="font-size: small ; font-weight: bold">Date of Birth (জন্ম তারিখ)</a><br>
 									<!-- DatePicker -->
 									<div class="input-group date" id="datepicker">
-										<input type="date" class="form-control" id="datetime" name="date-of-birth" value ="{{old('date-of-birth')}}"/>	
+										<input type="date" class="form-control" id="datetime" name="date-of-birth" value ="{{old('date-of-birth', $student->dob)}}" readonly/>	
 									</div>
 						        </div>
 								<div class="col-md-6">
 									<a style="font-size: small ; font-weight: bold">Nationality (জাতীয়তা)</a><br>
-									<input type="text" class="form-control" id="nationality" name="nationality" value ="{{old('nationality')}}">
+									<input type="text" class="form-control" id="nationality" name="nationality" value ="{{old('nationality', $student->nationality)}}" readonly>
 								</div>
 							</div>
 
@@ -189,11 +189,11 @@
 							<div class="row g-3">
 								<div class="col-md-6">
 									<a style="font-size: small ; font-weight: bold">Father Name (বাবার নাম)</a><br>
-									<input type="text" class="form-control" id="father_name" name="father_name" value ="{{old('father_name')}}">
+									<input type="text" class="form-control" id="father_name" name="father_name" value ="{{old('father_name', $student->father_name)}}" readonly>
 								</div>
 								<div class="col-md-6">
 									<a style="font-size: small ; font-weight: bold">Mother Name (মায়ের নাম)</a><br>
-									<input type="text" class="form-control" id="mother_name" name="mother-name" value ="{{old('mother-name')}}">
+									<input type="text" class="form-control" id="mother_name" name="mother-name" value ="{{old('mother-name', $student->mother_name)}}" readonly>
 								</div>
 							</div>
 
@@ -203,12 +203,12 @@
 								<div class="col-md-6">
 									<a style="font-size: small ; font-weight: bold">Mobile Number (মোবাইল নম্বর)</a><br>
 									<a style="font-size: smaller ; color: gray; ">01700000000</a><br>
-									<input type="text" class="form-control" id="mobile" name="mobile-number" value ="{{old('mobile-number')}}">
+									<input type="text" class="form-control" id="mobile" name="mobile-number" value ="{{old('mobile-number', $student->personal_phone_no)}}">
 								</div>
 								<div class="col-md-6">
 									<a style="font-size: small ; font-weight: bold">Emergency Contact Number (জরুরী প্রয়োজনে)</a><br>
 									<a style="font-size: smaller ; color: gray; ">01700000000</a><br>
-									<input type="text" class="form-control" id="emergency_contact" name="emergency-contact" value ="{{old('emergency-contact')}}">
+									<input type="text" class="form-control" id="emergency_contact" name="emergency-contact" value ="{{old('emergency-contact', $student->emergency_contact_no)}}">
 								</div>
 							</div>
 
@@ -218,13 +218,13 @@
 								<div class="col-md-6">
 									<!-- Email -->
 									<a style="font-size: small ; font-weight: bold">Email Address (ইমেইল)</a><br>
-									<input type="email" class="form-control" id="email"  name="email-address" value ="{{old('email-address')}}">
+									<input type="email" class="form-control" id="email"  name="email-address" value ="{{old('email-address', $student->email_address)}}" readonly>
 									<span style ="color: red">@error('email-address'){{$message}}@enderror </span>
 								</div>
 								<div class="col-md-6">
 									<!-- NID -->
 									<a style="font-size: small ; font-weight: bold">NID/Bith Certificate/Paport No</a><br>
-									<input type="text" class="form-control" name="nid" id="nid" name="nid" value ="{{old('nid')}}" >
+									<input type="text" class="form-control" name="nid" id="nid" name="nid" value ="{{old('nid',$student->student_id)}}" readonly>
 									<span style ="color: red">@error('nid'){{$message}}@enderror </span>
 								</div>
 							</div>
@@ -234,23 +234,23 @@
 							<a style="font-size: small ; font-weight: bold">Do you belong to any ethnic community, i.e.Chakma, Marma, etc? (আপনি কি কোন ক্ষুদ্র নৃগোষ্ঠীর অন্তর্ভুক্ত, যেমন চাকমা, মারমা ইত্যাদি?)</a><br>
 							<div class="form-row">
 								<div id="radio">
-									<input type="radio" name="ethnicity" onclick="javascript:ethnicityCheck();"  id="ethnicCheck" value="yes"  {{ old("ethnicity") == 'yes' ? 'checked' : '' }}> <a style="font-size: small">Yes (হ্যাঁ)</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-									<input type="radio" name="ethnicity" onclick="javascript:ethnicityCheck();"  id="not_ethnicCheck" value="no"  {{ old("ethnicity") == 'no' ? 'checked' : '' }}> <a style="font-size: small">No (না)</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									<input type="radio" name="ethnicity" onclick="javascript:ethnicityCheck();"  id="ethnicCheck" value="yes"  {{ old("ethnicity") == 'yes' || $student->ethnicity == 'yes'? 'checked' : '' }} > <a style="font-size: small">Yes (হ্যাঁ)</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									<input type="radio" name="ethnicity" onclick="javascript:ethnicityCheck();"  id="not_ethnicCheck" value="no"  {{ old("ethnicity") == 'no' || $student->ethnicity =='no'? 'checked' : '' }}> <a style="font-size: small">No (না)</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 								</div>
 								<div id="ethnic" style="display:none">
                                     <a style="font-size: small ; font-weight: bold">If yes, please mention below. (অনুগ্রহ করে উল্লেখ করুন)</a>
-                                    <input type="text" class="form-control" id="ethnicity_name" name="ethnicity_name" value ="{{old('ethnicity_name')}}">
+                                    <input type="text" class="form-control" id="ethnicity_name" name="ethnicity_name" value ="{{old('ethnicity_name',$student->ethnicity)}}">
                                 </div>
 							</div><br>
 							<a style="font-size: small ; font-weight: bold">Do you have any disability, i.e., visual or hearing disabilities, physical disability, etc.? (আপনার কি কোন প্রতিবন্ধিতা রয়েছে, যেমনঃ দৃষ্টি, শ্রবণ, শারীরিক প্রতিবন্ধিতা বা অন্যান্য?)</a><br>
 							<div class="form-row">
 								<div id="radio">
-									<input type="radio" name="disability" onclick="javascript:disabilityCheck();"  id="disableCheck" value="yes" {{ old("disability") == 'yes' ? 'checked' : '' }} > <a style="font-size: small">Yes (হ্যাঁ)</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-									<input type="radio" name="disability" onclick="javascript:disabilityCheck();"  id="not_disableCheck" value="no" {{ old("disability") == 'no' ? 'checked' : '' }}> <a style="font-size: small">No (না)</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									<input type="radio" name="disability" onclick="javascript:disabilityCheck();"  id="disableCheck" value="yes" {{ old("disability") == 'yes' || $student->disability == 'yes' ? 'checked' : '' }} > <a style="font-size: small">Yes (হ্যাঁ)</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									<input type="radio" name="disability" onclick="javascript:disabilityCheck();"  id="not_disableCheck" value="no" {{ old("disability") == 'no' || $student->disability =='no' ? 'checked' : '' }}> <a style="font-size: small">No (না)</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 								</div>
 								<div id="disable" style="display:none">
                                     <a style="font-size: small ; font-weight: bold">If yes, please mention below. (অনুগ্রহ করে উল্লেখ করুন)</a>
-                                    <input type="text" class="form-control" id="disability_name" name="disability_name" value ="{{old('disability_name')}}">
+                                    <input type="text" class="form-control" id="disability_name" name="disability_name" value ="{{old('disability_name',$student->disability)}}">
                                 </div>
 							</div>
 
@@ -263,17 +263,17 @@
 								<!-- Apartment -->
 								<div class="col-md-4">
 									<a style="font-size: small ; font-weight: bold">Apartment No (এপার্টমেন্ট নং)</a><br>
-									<input type="text" class="form-control" id="per_apartment" name="per_apartment" value ="{{old('per_apartment')}}">
+									<input type="text" class="form-control" id="per_apartment" name="per_apartment" value ="{{old('per_apartment',$student->present_apartment_no)}}">
 								</div>	
 								<!-- House -->
 								<div class="col-md-4">
 									<a style="font-size: small ; font-weight: bold">House/Holding No. (বাসা/হোল্ডিং নং)</a><br>
-									<input type="text" class="form-control" id="per_house" name="per_house" value ="{{old('per_house')}}">
+									<input type="text" class="form-control" id="per_house" name="per_house" value ="{{old('per_house',$student->present_house_no)}}">
 								</div>
 								<!-- Road -->
 								<div class="col-md-4">
 									<a style="font-size: small ; font-weight: bold">Road No./Village (রোড নং/গ্রাম)</a><br>
-									<input type="text" class="form-control" id="per_road" name="per_road" value ="{{old('per_road')}}">
+									<input type="text" class="form-control" id="per_road" name="per_road" value ="{{old('per_road',$student->present_road_no_OR_village)}}">
 								</div>
 							</div>
 							
@@ -281,7 +281,7 @@
 								<!-- Thana -->
 								<div class="col-md-4">
 									<a style="font-size: small ; font-weight: bold">Thana/Upazila (থানা/উপজেলা)</a><br>
-									<input type="text" class="form-control" id="per_thana" name="per_thana" value ="{{old('per_thana')}}">
+									<input type="text" class="form-control" id="per_thana" name="per_thana" value ="{{old('per_thana',$student->present_thana_OR_upazala)}}">
 								</div>	
 								<!-- District -->
 								<div class="col-md-4">
@@ -322,7 +322,7 @@
 								<!-- Post Code -->
 								<div class="col-md-4">
 									<a style="font-size: small ; font-weight: bold">Post code (পোস্ট কোড)</a><br>
-									<input type="text" class="form-control" id="per_pc" name="per_pc" value ="{{old('per_pc')}}">
+									<input type="text" class="form-control" id="per_pc" name="per_pc" value ="{{old('per_pc',$student->present_post_code)}}">
 								</div>	
 							</div>
 
@@ -332,8 +332,8 @@
 							<a style="font-size: small ; font-weight: bold">Is your permanent address similar to the present address? (আপনার স্থায়ী ঠিকানা ও বর্তমান ঠিকানা কি একই?)</a><br>
 							<div class="form-row">
 								<div id="radio">
-									<input type="radio" name="same_address" onclick="javascript:yesnoCheck();"  id="yesCheck" value="yes" {{ old("same_address") == 'yes' ? 'checked' : '' }}> <a style="font-size: small">Yes (হ্যাঁ)</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-									<input type="radio" name="same_address" onclick="javascript:yesnoCheck();"  id="noCheck" value="no" {{ old("same_address") == 'no' ? 'checked' : '' }}> <a style="font-size: small">No (না)</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									<input type="radio" name="same_address" onclick="javascript:yesnoCheck();"  id="yesCheck" value="yes" {{ old("same_address") == 'yes' || $student->present_similar_to_permanent == 'yes' ? 'checked' : '' }}> <a style="font-size: small">Yes (হ্যাঁ)</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									<input type="radio" name="same_address" onclick="javascript:yesnoCheck();"  id="noCheck" value="no" {{ old("same_address") == 'no' || $student->present_similar_to_permanent == 'no'? 'checked' : '' }}> <a style="font-size: small">No (না)</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 								</div>
 								<span style ="color: red">@error('same_address'){{$message}}@enderror </span>
 							</div>
@@ -346,17 +346,17 @@
 										<!-- Apartment -->
 										<div class="col-md-4">
 											<a style="font-size: small ; font-weight: bold">Apartment No (এপার্টমেন্ট নং)</a><br>
-											<input type="text" class="form-control" id="apartment" name="apartment" value ="{{old('apartment')}}">
+											<input type="text" class="form-control" id="apartment" name="apartment" value ="{{old('apartment',$student->permanent_apartment_no)}}">
 										</div>	
 										<!-- House -->
 										<div class="col-md-4">
 											<a style="font-size: small ; font-weight: bold">House/Holding No. (বাসা/হোল্ডিং নং)</a><br>
-											<input type="text" class="form-control" id="house" name="house" value ="{{old('house')}}">
+											<input type="text" class="form-control" id="house" name="house" value ="{{old('house',$student->permanent_house_no)}}">
 										</div>
 										<!-- Road -->
 										<div class="col-md-4">
 											<a style="font-size: small ; font-weight: bold">Road No./Village (রোড নং/গ্রাম)</a><br>
-											<input type="text" class="form-control" id="road" name="road" value ="{{old('road')}}">
+											<input type="text" class="form-control" id="road" name="road" value ="{{old('road',$student->permanent_road_no_OR_village)}}">
 										</div>
 									</div>
 									
@@ -364,7 +364,7 @@
 										<!-- Thana -->
 										<div class="col-md-4">
 											<a style="font-size: small ; font-weight: bold">Thana/Upazila (থানা/উপজেলা)</a><br>
-											<input type="text" class="form-control" id="thana" name="thana" value ="{{old('thana')}}">
+											<input type="text" class="form-control" id="thana" name="thana" value ="{{old('thana',$student->permanent_thana_OR_upazala)}}">
 										</div>	
 										<!-- District -->
 										<div class="col-md-4">
@@ -405,7 +405,7 @@
 										<!-- Post Code -->
 										<div class="col-md-4">
 											<a style="font-size: small ; font-weight: bold">Post code (পোস্ট কোড)</a><br>
-											<input type="text" class="form-control" id="pc" name="pc" value ="{{old('pc')}}">
+											<input type="text" class="form-control" id="pc" name="pc" value ="{{old('pc',$student->permanent_post_code)}}">
 										</div>	
 									</div>
 								</div>
@@ -437,15 +437,15 @@
 											<input type="radio" name="medium" value="Bengali Version" {{ old("medium") == 'Bengali Version' ? 'checked' : '' }}> <a style="font-size: small">Bengali Version (বাংলা ভার্সন)</a> 
 										</div>
 										<div class="col-md-4">
-											<input type="radio" name="medium" value="English Version" {{ old("medium") == 'English Version' ? 'checked' : '' }}> <a style="font-size: small">English Version (ইংরেজী ভার্সন)</a>
+											<input type="radio" name="medium" value="English Version" {{ old("medium") == 'English Version'  ? 'checked' : '' }}> <a style="font-size: small">English Version (ইংরেজী ভার্সন)</a>
 										</div>	
 									</div>
 									<div class="row g-1">
 										<div class="col-md-4">
-											<input type="radio" name="medium" value="English Medium" {{ old("medium") == 'English Medium' ? 'checked' : '' }}> <a style="font-size: small">English Medium (ইংরেজী মাধ্যম)</a>
+											<input type="radio" name="medium" value="English Medium" {{ old("medium") == 'English Medium'  ? 'checked' : '' }}> <a style="font-size: small">English Medium (ইংরেজী মাধ্যম)</a>
 										</div>
 										<div class="col-md-4">
-											<input type="radio" name="medium" value="Madrassa" {{ old("medium") == 'Madrassa' ? 'checked' : '' }}> <a style="font-size: small">Madrassa (মাদ্রাসা)</a>
+											<input type="radio" name="medium" value="Madrassa" {{ old("medium") == 'Madrassa'  ? 'checked' : '' }}> <a style="font-size: small">Madrassa (মাদ্রাসা)</a>
 										</div>	
 									</div>			
 								</div>
