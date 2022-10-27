@@ -12,7 +12,7 @@
         </div>
 
         <div class="media-body align-self-center">
-          <h4 class="text-primary mb-2">5300</h4>
+          <h4 class="text-primary mb-2">{{$total_applicants}}</h4>
           <p>Total Applicants</p>
         </div>
       </div>
@@ -25,7 +25,7 @@
         </div>
 
         <div class="media-body align-self-center">
-          <h4 class="text-primary mb-2">1953</h4>
+          <h4 class="text-primary mb-2">{{$registered_students}}</h4>
           <p>Registered Students</p>
         </div>
       </div>
@@ -38,7 +38,7 @@
         </div>
 
         <div class="media-body align-self-center">
-          <h4 class="text-primary mb-2">1450</h4>
+          <h4 class="text-primary mb-2">{{$total_programs}}</h4>
           <p>Total Programs</p>
         </div>
       </div>
@@ -51,7 +51,7 @@
         </div>
 
         <div class="media-body align-self-center">
-          <h4 class="text-primary mb-2">9503</h4>
+          <h4 class="text-primary mb-2">{{$total_events}}</h4>
           <p>Total Events</p>
         </div>
       </div>
