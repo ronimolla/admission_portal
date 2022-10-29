@@ -42,7 +42,8 @@ class UserController extends Controller
         $studentDetails = User::where(['email'=>Session::get('userSession')])->first();
         $student_id = $studentDetails->student_id;
         
-        $preselcetion = AssesementPreselection::where(['student_id'=>$student_id])->first();
+       $preselcetion = AssesementPreselection::where(['student_id'=>$student_id])->first();
+        //$preselcetion = AssesementPreselection::all()->where(['student_id'=>$student_id])->last();
         $preselcetionpercentage = $preselcetion-> subtotal/10;
         
         $testresult = WritingTest::where(['student_id'=>$student_id])->first();
