@@ -54,11 +54,15 @@ class AssesmentController extends Controller
         $email_address = $studentcontactinfo ->email_address;
         $password = random_int(100000, 999999);	
 
+
+        $usersCount = User::where('email',$email_address)->count();
+        //echo $usersCount ; die;
+            
 		if($request->isMethod('post')){ 
 
             $data = $request->input();
             $totall = 0;
-            if($data['writting_eligibility'] == 'Eligible'){
+            if($data['writting_eligibility'] == 'Eligible' && $usersCount==0 ){
                 
                 $student = new User;
                 $student->student_id = $data['std_id'];

@@ -54,7 +54,7 @@ class ProgramController extends Controller
             'full-name'=>'required | max:10',
             'email-address'=>'required | unique:student_contact_infos,email_address',
             'same_address'=>'required ',
-            'nid'=>'required '
+            'nid'=>'required | unique:student_personal_infos,student_id'
 
 
         ]);
@@ -62,7 +62,7 @@ class ProgramController extends Controller
         if($request->isMethod('post')){
             $data = $request->input();
             
-            echo "<pre>"; print_r($data); die;
+            //echo "<pre>"; print_r($data); die;
             // $usersCount = StudentPersonalInfo::where('student_id ',$data['email'])->count();
             //echo $usersCount ; die;
             //if($usersCount>0){
@@ -107,6 +107,8 @@ class ProgramController extends Controller
             }
             $info->disability = $disability; 
             $info->disability_name = $data['disability_name'];
+            $info->nid = $data['nid'];
+
             //$info->save();
 
             $coninfo = new StudentContactInfo;
@@ -177,11 +179,15 @@ class ProgramController extends Controller
             }
             $marcominfo = new StudentMarcomInfo;
             $marcominfo->student_id = $student_id;
+            $marcominfo->program_name =$programname; 
+            $marcominfo->program_batch_id = $program_batch_id;
             $marcominfo->knowing_media = $knowing_media;
            
 
             $questioninfo = new StudentQuestionaryInfo;
             $questioninfo->student_id = $student_id;
+            $questioninfo->program_name =$programname; 
+            $questioninfo->program_batch_id = $program_batch_id;
             $questioninfo->justify_answer = $data['justify_ans'];
            
 
@@ -250,7 +256,8 @@ class ProgramController extends Controller
             'full-name'=>'required | max:10',
             'email-address'=>'required | unique:student_contact_infos,email_address',
             'same_address'=>'required ',
-            'nid'=>'required '
+            'nid'=>'required ',
+            'nid'=>'required | unique:student_personal_infos,student_id'
 
         ]);
 
@@ -299,6 +306,7 @@ class ProgramController extends Controller
             $info->ethnicity_name = $data['ethnicity_name'];
             $info->disability = $disability; 
             $info->disability_name = $data['disability_name'];
+            $info->nid = $data['nid'];
             //$info->save();
 
             $coninfo = new StudentContactInfo;
@@ -360,10 +368,14 @@ class ProgramController extends Controller
                     $knowing_media = $data['marketing_question'];
                 }
             $marcominfo->knowing_media = $knowing_media;
+            $marcominfo->program_name =$programname; 
+            $marcominfo->program_batch_id = $program_batch_id;
             //$marconinfo->save();
 
             $questioninfo = new StudentQuestionaryInfo;
             $questioninfo->student_id = $student_id;
+            $questioninfo->program_name =$programname; 
+            $questioninfo->program_batch_id = $program_batch_id;
             $questioninfo->justify_answer = $data['justify_ans'];
             //$questioninfo->save();
 
@@ -427,7 +439,7 @@ class ProgramController extends Controller
             'full-name'=>'required | max:10',
             'email-address'=>'required | unique:student_contact_infos,email_address',
             'same_address'=>'required ',
-            'nid'=>'required '
+            'nid'=>'required ','nid'=>'required | unique:student_personal_infos,student_id'
         ]);
 
         if($request->isMethod('post')){
@@ -474,6 +486,7 @@ class ProgramController extends Controller
             $info->ethnicity_name = $data['ethnicity_name'];
             $info->disability = $disability; 
             $info->disability_name = $data['disability_name'];
+            $info->nid = $data['nid'];
             //$info->save();
           
             $coninfo = new StudentContactInfo;
@@ -540,10 +553,14 @@ class ProgramController extends Controller
             $knowing_media = $data['marketing_question'];
             }
            $marcominfo->knowing_media = $knowing_media;
+           $marcominfo->program_name =$programname; 
+            $marcominfo->program_batch_id = $program_batch_id;
            //$marconinfo->save();
 
            $questioninfo = new StudentQuestionaryInfo;
            $questioninfo->student_id = $student_id;
+           $questioninfo->program_name =$programname; 
+           $questioninfo->program_batch_id = $program_batch_id;
            $questioninfo->narrative_writing_1 = $data['narrative_writing_1'];
            $questioninfo->narrative_writing_2 = $data['narrative_writing_2'];
            //$questioninfo->save();
@@ -606,7 +623,9 @@ class ProgramController extends Controller
     { 
         $request->validate([
             'full-name'=>'required | max:10',
-            'email-address'=>'required | unique:student_contact_infos,email_address'
+            'email-address'=>'required | unique:student_contact_infos,email_address',
+            'same_address'=>'required ',
+            'nid'=>'required ','nid'=>'required | unique:student_personal_infos,student_id'
 
         ]);
 
@@ -651,6 +670,7 @@ class ProgramController extends Controller
             $info->ethnicity_name = $data['ethnicity_name'];
             $info->disability = $disability; 
             $info->disability_name = $data['disability_name'];
+            $info->nid = $data['nid'];
             //$info->save();
           
             $coninfo = new StudentContactInfo;
@@ -719,9 +739,13 @@ class ProgramController extends Controller
             $knowing_media = $data['marketing_question'];
             }
             $marconinfo->knowing_media = $knowing_media;
+            $marcominfo->program_name =$programname; 
+            $marcominfo->program_batch_id = $program_batch_id;
             //$marconinfo->save();
 
             $questioninfo = new StudentQuestionaryInfo;
+            $questioninfo->program_name =$programname; 
+            $questioninfo->program_batch_id = $program_batch_id;
             $questioninfo->narrative_writing_1 = $data['narrative_writing_1'];
             $questioninfo->narrative_writing_2 = $data['narrative_writing_2'];
             //$questioninfo->save();
@@ -778,7 +802,9 @@ class ProgramController extends Controller
     { 
         $request->validate([
             'full-name'=>'required | max:10',
-            'email-address'=>'required | unique:student_contact_infos,email_address'
+            'email-address'=>'required | unique:student_contact_infos,email_address',
+            'same_address'=>'required ',
+            'nid'=>'required ','nid'=>'required | unique:student_personal_infos,student_id'
 
         ]);
         
@@ -899,6 +925,8 @@ class ProgramController extends Controller
                 $bootcamp = $data['BYLC_bootcamp'];
             }
             $marconinfo->careerx_program = $bootcamp;
+            $marcominfo->program_name =$programname; 
+            $marcominfo->program_batch_id = $program_batch_id;
             $marconinfo->bootcamp_bach_no =$data['bootcamp'];
             //$marconinfo->save();
 
@@ -922,6 +950,8 @@ class ProgramController extends Controller
             }
             $questioninfo->mcq_3 = $ans_mcq3;
             $questioninfo->short_bio = $data['bio'];
+            $questioninfo->program_name =$programname; 
+            $questioninfo->program_batch_id = $program_batch_id;
             //$questioninfo->save();
             
             $preselection = new AssesementPreselection;
