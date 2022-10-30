@@ -20,6 +20,7 @@ use App\Models\Event;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Event_batch;
 use App\Models\StudentProgram;
+use App\Models\Assesment;
 use Session;
 
 class StudentProgramController extends Controller
@@ -55,6 +56,7 @@ class StudentProgramController extends Controller
     { 
         $studentDetails = StudentContactInfo::where(['email_address'=>Session::get('userSession')])->first();
         $studentid = $studentDetails->student_id;
+
 
         if($request->isMethod('post')){
             $data = $request->input();
@@ -103,48 +105,47 @@ class StudentProgramController extends Controller
             $questioninfo->program_batch_id = $program_batch_id;
             $questioninfo->justify_answer = $data['justify_ans'];
             $questioninfo->save();
-
-            $preselection = new AssesementPreselection;
-            $preselection->student_id = $student_id;
-            $preselection->program_name =$programname; 
-            $preselection->program_batch_id = $program_batch_id;
-            $preselection->save();
-
-
-            $followup = new FollowUp;
-            $followup->student_id = $student_id;
-            $followup->program_name =$programname; 
-            $followup->program_batch_id = $program_batch_id;
-            $followup->save();
-
-            $writing = new WritingTest;
-            $writing->student_id = $student_id;
-            $writing->program_name =$programname; 
-            $writing->program_batch_id = $program_batch_id;
-            $writing->save();
-
-            $interview = new Interview;
-            $interview->student_id = $student_id;
-            $interview->program_name =$programname; 
-            $interview->program_batch_id = $program_batch_id;
-            $interview->save();
-            
-
+        
+            $assesment = new Assesment;
+            $assesment->student_id = $student_id;
+            $assesment->program_name =$programname; 
+            $assesment->program_batch_id = $program_batch_id;
+            $assesment->save();
            
            
-           
-           
-            
-           
-            
-           
-           
-           
-           
-
-           
-
             return redirect('/program/bblt');
         }
     }
+
+    public function bbltj()
+    {  
+        $studentDetails = StudentContactInfo::where(['email_address'=>Session::get('userSession')])->first();
+        $studentid = $studentDetails->student_id;
+        // echo print_r($studentid); die;
+        $student = DB::table('student_personal_infos')
+        ->join('student_contact_infos', 'student_personal_infos.student_id', '=', 'student_contact_infos.student_id')
+        ->join('student_address_infos', 'student_personal_infos.student_id', '=', 'student_address_infos.student_id')
+        ->join('student_educational_infos', 'student_personal_infos.student_id', '=', 'student_educational_infos.student_id')
+        ->where('student_personal_infos.student_id','=', $studentid)
+        ->first();
+
+        $date = now()->format('Y-m-d');
+        $batchinfo = Program_batch::all()
+                       ->where('program_id', '= ','2')
+                       ->last();
+        $application_last_date = $batchinfo->end_date;
+        $application_start_date = $batchinfo->start_date;
+        if($date <= $application_last_date && $date >= $application_start_date){
+            return view('student.program_application_form.bbltj')->with(compact('batchinfo','student'));
+        }else{
+            return view('program.blank');
+        }
+    }
+
+
+
+
+
+
+
  }

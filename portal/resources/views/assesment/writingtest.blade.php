@@ -37,7 +37,7 @@
 										<th>Student ID</th>
 										<th>Full Name</th>
 										<th>Program Name</th>
-										<th>Program Code</th>
+										<th>Batch Code</th>
 										<th>Gender</th>
 										<th>Date of Birth</th>
 										<th>Present Destrict</th>
@@ -60,7 +60,7 @@
                                         <td>{{$std->present_district}}</td>
 										<td>{{$std->present_division}}</td>
 										<td>
-											<a href="{{ url('testresult/edit/'.$std->student_id)}}" class="btn btn-primary">Test Resut</a>
+											<a href="{{ url('testresult/edit/'.$std->student_id.'/'.$std->program_batch_id)}}" class="btn btn-primary">Test Resut</a>
 										</td>	
                                         <td>
 											<a href="{{ url('view-profile/'.$std->student_id)}}" class="btn btn-primary">view Profile</a>
@@ -107,7 +107,7 @@
 											<td>{{$pstage->present_district}}</td>
 											<td>{{$pstage->present_division}}</td>
 											<td>
-												<a href="{{ url('writing/follow-up/'.$pstage->student_id)}}" class="btn btn-primary">Follow-Up</a>
+												<a href="{{ url('writing/follow-up/'.$pstage->student_id.'/'.$pstage->program_batch_id)}}" class="btn btn-primary">Follow-Up</a>
 											</td>	
 											<td>
 												<a href="{{ url('view-profile/'.$pstage->student_id)}}" class="btn btn-primary">view Profile</a>

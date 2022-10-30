@@ -133,7 +133,7 @@
 							<br><br>
 							<a style="font-size: small ; font-weight: bold">Full Name (পূর্ণ নাম)</a><br>
 							<a style="font-size: smaller ; color: gray; ">As per passport or national ID or academic certificate (পাসপোর্ট বা জাতীয় পরিচয়পত্র বা একাডেমিক সার্টিফিকেট অনুযায়ী) (ex. Zuhair Bin Zabbar)</a><br>
-							<input type="text" class="form-control" id="name" name="full-name"  value ="{{old('full-name')}}">
+							<input type="text" class="form-control" id="name" name="full-name"  value ="{{old('full-name', $student->full_name)}}">
 							<span style ="color: red">@error('full-name'){{$message}}@enderror </span>
 
 							<br>

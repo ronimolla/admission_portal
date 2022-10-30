@@ -44,7 +44,7 @@
                                     <!-- BBLTJ Form -->
                                     <button type="">
                                         <div class="shadow-lg p-1 mb-2 bg-white rounded">
-                                            <a href="{{ url('program/bbltj')}}" target="_blank">
+                                            <a href="{{ url('student/program/bbltj')}}" target="_blank">
                                                 <div class="target"><img class="target" src="{{asset('images/program_image/bbltj.png')}}" alt=" " class="rounded mx-auto d-block" style="width: 150; height:150"></div>
                                             </a>
                                         </div>

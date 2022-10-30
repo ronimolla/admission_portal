@@ -12,7 +12,7 @@
                     </div>
 
                     <div class="card-body">
-                        <form method="post" action="{{url('/testresult/edit/'.$studentinfo->student_id)}}"> {{csrf_field()}}
+                        <form method="post" action="{{url('/testresult/edit/'.$studentinfo->student_id.'/'.$assinfo->program_batch_id)}}"> {{csrf_field()}}
                             <div class="form-row">
                                 <div class="col-md-6 mb-3">
                                     <label for="validationServer03">Student ID</label>
@@ -27,11 +27,11 @@
                             <div class="form-row">
                                 <div class="col-md-6 mb-3">
                                     <label for="validationServer03">Program Name</label>
-                                    <input type="text" class="form-control" id="validationServer03" name="program_name" value="{{$studentinfo->program_name}}" readonly>
+                                    <input type="text" class="form-control" id="validationServer03" name="program_name" value="{{$assinfo->program_name}}" readonly>
                                 </div>
                                 <div class="col-md-6 mb-3">
                                     <label for="validationServer04">Batch ID</label>
-                                    <input type="text" class="form-control" id="validationServer04"  name="program_code" value="{{$studentinfo->program_batch_id}}" readonly>
+                                    <input type="text" class="form-control" id="validationServer04"  name="program_code" value="{{$assinfo->program_batch_id}}" readonly>
                                 </div>     
                             </div>
 

@@ -60,7 +60,7 @@
                                         <td>{{$std->present_district}}</td>
 										<td>{{$std->present_division}}</td>
 										<td>
-											<a href="{{ url('preselection/edit/'.$std->student_id)}}" class="btn btn-primary">Preselection</a>
+											<a href="{{ url('preselection/edit/'.$std->student_id.'/'.$std->program_batch_id)}}" class="btn btn-primary">Preselection</a>
 										</td>	
                                         <td>
 											<a href="{{ url('view-profile/'.$std->student_id)}}" class="btn btn-primary">view Profile</a>
@@ -114,10 +114,10 @@
 											<td>{{$pstage->email_address}}</td>
 											<td>{{$pstage->present_district}}</td>
 											<td>{{$pstage->present_division}}</td>
-											<td>{{$pstage->subtotal}}</td>
+											<td>{{$pstage->pre_subtotal}}</td>
 											<td>{{$pstage->select_for_writing_test}}</td>
 											<td>
-												<a href="{{ url('preselection/follow-up/'.$pstage->student_id)}}" class="btn btn-primary">Follow-Up</a>
+												<a href="{{ url('preselection/follow-up/'.$pstage->student_id.'/'.$pstage->program_batch_id)}}" class="btn btn-primary">Follow-Up</a>
 											</td>	
 											<td>
 												<a href="{{ url('view-profile/'.$pstage->student_id)}}" class="btn btn-primary">view Profile</a>
