@@ -22,7 +22,7 @@
                   }"
                   >
                 <div class="circle-content">
-                  <h6 class="text-uppercase text-dark font-weight-bold">{{$preselcetion->subtotal}}/10</h6>
+                  <h6 class="text-uppercase text-dark font-weight-bold">{{$preselcetion->pre_subtotal}}/10</h6>
 
                   <strong></strong>
                 </div>

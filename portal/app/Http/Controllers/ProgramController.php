@@ -20,6 +20,7 @@ use App\Models\Event;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Event_batch;
 use App\Models\StudentProgram;
+use App\Models\Assesment;
 use Session;
 
 
@@ -51,7 +52,7 @@ class ProgramController extends Controller
     public function bbltstore(Request $request)
     {     
         $request->validate([
-            'full-name'=>'required | max:10',
+            'full-name'=>'required | max:15',
             'email-address'=>'required | unique:student_contact_infos,email_address',
             'same_address'=>'required ',
             'nid'=>'required | unique:student_personal_infos,student_id'
@@ -190,27 +191,31 @@ class ProgramController extends Controller
             $questioninfo->program_batch_id = $program_batch_id;
             $questioninfo->justify_answer = $data['justify_ans'];
            
+            $assesment = new Assesment;
+            $assesment->student_id = $student_id;
+            $assesment->program_name =$programname; 
+            $assesment->program_batch_id = $program_batch_id;
 
-            $preselection = new AssesementPreselection;
-            $preselection->student_id = $student_id;
-            $preselection->program_name =$programname; 
-            $preselection->program_batch_id = $program_batch_id;
+            // $preselection = new AssesementPreselection;
+            // $preselection->student_id = $student_id;
+            // $preselection->program_name =$programname; 
+            // $preselection->program_batch_id = $program_batch_id;
 
 
-            $followup = new FollowUp;
-            $followup->student_id = $student_id;
-            $followup->program_name =$programname; 
-            $followup->program_batch_id = $program_batch_id;
+            // $followup = new FollowUp;
+            // $followup->student_id = $student_id;
+            // $followup->program_name =$programname; 
+            // $followup->program_batch_id = $program_batch_id;
 
-            $writing = new WritingTest;
-            $writing->student_id = $student_id;
-            $writing->program_name =$programname; 
-            $writing->program_batch_id = $program_batch_id;
+            // $writing = new WritingTest;
+            // $writing->student_id = $student_id;
+            // $writing->program_name =$programname; 
+            // $writing->program_batch_id = $program_batch_id;
 
-            $interview = new Interview;
-            $interview->student_id = $student_id;
-            $interview->program_name =$programname; 
-            $interview->program_batch_id = $program_batch_id;
+            // $interview = new Interview;
+            // $interview->student_id = $student_id;
+            // $interview->program_name =$programname; 
+            // $interview->program_batch_id = $program_batch_id;
 
             
 
@@ -220,10 +225,11 @@ class ProgramController extends Controller
             $addinfo->save();
             $marcominfo->save();
             $questioninfo->save();
-            $preselection->save();
-            $followup->save();
-            $writing->save();
-            $interview->save();
+            //$preselection->save();
+            //$followup->save();
+            // $writing->save();
+            // $interview->save();
+            $assesment->save();
             $student_batch->save();
 
             return redirect('/program/bblt');
@@ -379,25 +385,30 @@ class ProgramController extends Controller
             $questioninfo->justify_answer = $data['justify_ans'];
             //$questioninfo->save();
 
-            $preselection = new AssesementPreselection;
-            $preselection->student_id = $student_id;
-            $preselection->program_name =$programname; 
-            $preselection->program_batch_id = $program_batch_id;
+            // $preselection = new AssesementPreselection;
+            // $preselection->student_id = $student_id;
+            // $preselection->program_name =$programname; 
+            // $preselection->program_batch_id = $program_batch_id;
 
-            $followup = new FollowUp;
-            $followup->student_id = $student_id;
-            $followup->program_name =$programname; 
-            $followup->program_batch_id = $program_batch_id;
+            // $followup = new FollowUp;
+            // $followup->student_id = $student_id;
+            // $followup->program_name =$programname; 
+            // $followup->program_batch_id = $program_batch_id;
 
-            $writing = new WritingTest;
-            $writing->student_id = $student_id;
-            $writing->program_name =$programname; 
-            $writing->program_batch_id = $program_batch_id;
+            // $writing = new WritingTest;
+            // $writing->student_id = $student_id;
+            // $writing->program_name =$programname; 
+            // $writing->program_batch_id = $program_batch_id;
 
-            $interview = new Interview;
-            $interview->student_id = $student_id;
-            $interview->program_name =$programname; 
-            $interview->program_batch_id = $program_batch_id;
+            // $interview = new Interview;
+            // $interview->student_id = $student_id;
+            // $interview->program_name =$programname; 
+            // $interview->program_batch_id = $program_batch_id;
+
+            $assesment = new Assesment;
+            $assesment->student_id = $student_id;
+            $assesment->program_name =$programname; 
+            $assesment->program_batch_id = $program_batch_id;
 
             $info->save();
             $coninfo->save();
@@ -405,10 +416,11 @@ class ProgramController extends Controller
             $addinfo->save();
             $marcominfo->save();
             $questioninfo->save();
-            $preselection->save();
-            $followup->save();
-            $writing->save();
-            $interview->save();
+            // $preselection->save();
+            // $followup->save();
+            // $writing->save();
+            // $interview->save();
+            $assesment->save();
             $student_batch->save();
 
             return redirect('/program/bbltj'); 
@@ -565,25 +577,30 @@ class ProgramController extends Controller
            $questioninfo->narrative_writing_2 = $data['narrative_writing_2'];
            //$questioninfo->save();
 
-           $preselection = new AssesementPreselection;
-           $preselection->student_id = $student_id;
-            $preselection->program_name =$programname; 
-            $preselection->program_batch_id = $program_batch_id;
+        //    $preselection = new AssesementPreselection;
+        //    $preselection->student_id = $student_id;
+        //     $preselection->program_name =$programname; 
+        //     $preselection->program_batch_id = $program_batch_id;
 
-            $followup = new FollowUp;
-            $followup->student_id = $student_id;
-            $followup->program_name =$programname; 
-            $followup->program_batch_id = $program_batch_id;
+        //     $followup = new FollowUp;
+        //     $followup->student_id = $student_id;
+        //     $followup->program_name =$programname; 
+        //     $followup->program_batch_id = $program_batch_id;
 
-            $writing = new WritingTest;
-            $writing->student_id = $student_id;
-            $writing->program_name =$programname; 
-            $writing->program_batch_id = $program_batch_id;
+        //     $writing = new WritingTest;
+        //     $writing->student_id = $student_id;
+        //     $writing->program_name =$programname; 
+        //     $writing->program_batch_id = $program_batch_id;
 
-            $interview = new Interview;
-            $interview->student_id = $student_id;
-            $interview->program_name =$programname; 
-            $interview->program_batch_id = $program_batch_id;
+        //     $interview = new Interview;
+        //     $interview->student_id = $student_id;
+        //     $interview->program_name =$programname; 
+        //     $interview->program_batch_id = $program_batch_id;
+
+        $assesment = new Assesment;
+        $assesment->student_id = $student_id;
+        $assesment->program_name =$programname; 
+        $assesment->program_batch_id = $program_batch_id;
 
             $info->save();
             $coninfo->save();
@@ -591,10 +608,11 @@ class ProgramController extends Controller
             $addinfo->save();
             $marcominfo->save();
             $questioninfo->save();
-            $preselection->save();
-            $followup->save();
-            $writing->save();
-            $interview->save();
+            // $preselection->save();
+            // $followup->save();
+            // $writing->save();
+            // $interview->save();
+            $assesment->save();
             $student_batch->save();
 
             return redirect('/program/apl'); 
@@ -750,21 +768,25 @@ class ProgramController extends Controller
             $questioninfo->narrative_writing_2 = $data['narrative_writing_2'];
             //$questioninfo->save();
 
-            $preselection = new AssesementPreselection;
-            $preselection->program_name =$programname; 
-            $preselection->program_batch_id = $program_batch_id;
+            // $preselection = new AssesementPreselection;
+            // $preselection->program_name =$programname; 
+            // $preselection->program_batch_id = $program_batch_id;
 
-            $followup = new FollowUp;
-            $followup->program_name =$programname; 
-            $followup->program_batch_id = $program_batch_id;
+            // $followup = new FollowUp;
+            // $followup->program_name =$programname; 
+            // $followup->program_batch_id = $program_batch_id;
 
-            $writing = new WritingTest;
-            $writing->program_name =$programname; 
-            $writing->program_batch_id = $program_batch_id;
+            // $writing = new WritingTest;
+            // $writing->program_name =$programname; 
+            // $writing->program_batch_id = $program_batch_id;
 
-            $interview = new Interview;
-            $interview->program_name =$programname; 
-            $interview->program_batch_id = $program_batch_id;
+            // $interview = new Interview;
+            // $interview->program_name =$programname; 
+            // $interview->program_batch_id = $program_batch_id;
+            $assesment = new Assesment;
+            $assesment->student_id = $student_id;
+            $assesment->program_name =$programname; 
+            $assesment->program_batch_id = $program_batch_id;
 
             $info->save();
             $coninfo->save();
@@ -772,10 +794,11 @@ class ProgramController extends Controller
             $addinfo->save();
             $marconinfo->save();
             $questioninfo->save();
-            $preselection->save();
-            $followup->save();
-            $writing->save();
-            $interview->save();
+            // $preselection->save();
+            // $followup->save();
+            // $writing->save();
+            // $interview->save();
+            $assesment->save();
             $student_batch->save();
 
             return redirect('/program/yls'); 
@@ -954,21 +977,25 @@ class ProgramController extends Controller
             $questioninfo->program_batch_id = $program_batch_id;
             //$questioninfo->save();
             
-            $preselection = new AssesementPreselection;
-            $preselection->program_name =$programname; 
-            $preselection->program_batch_id = $program_batch_id;
+            // $preselection = new AssesementPreselection;
+            // $preselection->program_name =$programname; 
+            // $preselection->program_batch_id = $program_batch_id;
 
-            $followup = new FollowUp;
-            $followup->program_name =$programname; 
-            $followup->program_batch_id = $program_batch_id;
+            // $followup = new FollowUp;
+            // $followup->program_name =$programname; 
+            // $followup->program_batch_id = $program_batch_id;
 
-            $writing = new WritingTest;
-            $writing->program_name =$programname; 
-            $writing->program_batch_id = $program_batch_id;
+            // $writing = new WritingTest;
+            // $writing->program_name =$programname; 
+            // $writing->program_batch_id = $program_batch_id;
 
-            $interview = new Interview;
-            $interview->program_name =$programname; 
-            $interview->program_batch_id = $program_batch_id;
+            // $interview = new Interview;
+            // $interview->program_name =$programname; 
+            // $interview->program_batch_id = $program_batch_id;
+            $assesment = new Assesment;
+            $assesment->student_id = $student_id;
+            $assesment->program_name =$programname; 
+            $assesment->program_batch_id = $program_batch_id;
 
 
             $info->save();
@@ -977,10 +1004,11 @@ class ProgramController extends Controller
             $addinfo->save();
             $marconinfo->save();
             $questioninfo->save();
-            $preselection->save();
-            $followup->save();
-            $writing->save();
-            $interview->save();
+            // $preselection->save();
+            // $followup->save();
+            // $writing->save();
+            // $interview->save();
+            $assesment->save();
             $student_batch->save();
 
             return redirect('/program/careerx'); 

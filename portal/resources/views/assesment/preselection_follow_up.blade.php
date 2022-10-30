@@ -13,7 +13,7 @@
                     </div>
 
                     <div class="card-body">
-                        <form method="post" action="{{url('/preselection/follow-up/'.$studentinfo->student_id)}}"> {{csrf_field()}}
+                        <form method="post" action="{{url('/preselection/follow-up/'.$studentinfo->student_id.'/'.$assinfo->program_batch_id)}}"> {{csrf_field()}}
                             <div class="form-row">
                                 <div class="col-md-6 mb-3">
                                     <label for="validationServer03">Student ID</label>
@@ -27,27 +27,27 @@
                             <div class="form-row">
                                 <div class="col-md-6 mb-3">
                                     <label for="validationServer03">Program Name</label>
-                                    <input type="text" class="form-control" id="validationServer03" name="program_name" value="{{$studentinfo->program_name}}" readonly>
+                                    <input type="text" class="form-control" id="validationServer03" name="program_name" value="{{$assinfo->program_name}}" readonly>
                                 </div>
                                 <div class="col-md-6 mb-3">
                                     <label for="validationServer04">Program Code</label>
-                                    <input type="text" class="form-control" id="validationServer04"  name="program_code" value="{{$studentinfo->program_batch_id}}"  readonly>
+                                    <input type="text" class="form-control" id="validationServer04"  name="program_code" value="{{$assinfo->program_batch_id}}"  readonly>
                                 </div>     
                             </div>
                             <div class="form-row">
                                 <div class="col-md-6 mb-3">
                                     <label for="validationServer03">Preselection Score</label>
-                                    <input type="text" class="form-control" id="validationServer03" name="preselection_score" value="{{$studentinfo->subtotal}}" readonly>
+                                    <input type="text" class="form-control" id="validationServer03" name="preselection_score" value="{{$assinfo->pre_subtotal}}" readonly>
                                 </div>
                                 <div class="col-md-6 mb-3">
                                     <label for="validationServer03">Writting Exam Eligibility</label>
-                                    <input type="text" class="form-control" id="validationServer03"  name="eligible_writing_exam" value="{{$studentinfo->select_for_writing_test}}"readonly>
+                                    <input type="text" class="form-control" id="validationServer03"  name="eligible_writing_exam" value="{{$assinfo->select_for_writing_test}}"readonly>
                                 </div>     
                             </div>
                             <div class="form-row">
                                 <div class="col-md-4 mb-3">
                                     <label for="validationServer03">Assessor Name</label>
-                                    <input type="text" class="form-control" id="validationServer03" name="assessor_name" value= "{{$studentinfo->assessor}}" >
+                                    <input type="text" class="form-control" id="validationServer03" name="assessor_name" value= "{{$assinfo->pre_assessor}}" >
                                 </div>
                                 <div class="col-md-4 mb-3">
                                     <label for="validationServer04">Contact Media</label>

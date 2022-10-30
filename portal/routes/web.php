@@ -51,18 +51,18 @@ Route::group(['middleware' =>['adminlogin']],function(){
 
     //Assesment for applicaent pre-Selection
     Route::get('/assesment/preselection', [AssesmentController::class, 'preselection']);
-    Route:: match(['get','post'],'/preselection/edit/{student_id}',[AssesmentController::class, 'update']);
-    Route:: match(['get','post'],'/preselection/follow-up/{student_id}',[AssesmentController::class, 'follow_up']);
+    Route:: match(['get','post'],'/preselection/edit/{student_id}/{program_batch_id}',[AssesmentController::class, 'update']);
+    Route:: match(['get','post'],'/preselection/follow-up/{student_id}/{program_batch_id}',[AssesmentController::class, 'follow_up']);
 
     //Assesment for applicaent Writing test
     Route::get('/assesment/writing', [AssesmentController::class, 'writingtest']);
-    Route:: match(['get','post'],'/testresult/edit/{student_id}',[AssesmentController::class, 'testresult']);
-    Route:: match(['get','post'],'/writing/follow-up/{student_id}',[AssesmentController::class, 'writing_follow_up']);
+    Route:: match(['get','post'],'/testresult/edit/{student_id}/{program_batch_id}',[AssesmentController::class, 'testresult']);
+    Route:: match(['get','post'],'/writing/follow-up/{student_id}/{program_batch_id}',[AssesmentController::class, 'writing_follow_up']);
 
     //Assesment for applicaent Interview
     Route::get('/assesment/interview', [AssesmentController::class, 'interview']);
-    Route:: match(['get','post'],'/interviewresult/edit/{student_id}',[AssesmentController::class, 'interviewresult']);
-    Route:: match(['get','post'],'/interview/follow-up/{student_id}',[AssesmentController::class, 'interview_follow_up']);
+    Route:: match(['get','post'],'/interviewresult/edit/{student_id}/{program_batch_id}',[AssesmentController::class, 'interviewresult']);
+    Route:: match(['get','post'],'/interview/follow-up/{student_id}/{program_batch_id}',[AssesmentController::class, 'interview_follow_up']);
 
     //Financial Aid
 
@@ -158,6 +158,10 @@ Route::group(['middleware' =>['adminlogin']],function(){
     //BBLT program route
     Route::get('/student/program/bblt', [StudentProgramController::class, 'bblt']);
     Route::match(['get', 'post'], 'student/bblt/store',[StudentProgramController::class, 'bbltstore']);
+
+     //BBLTJ program route 
+    Route::get('/student/program/bbltj', [StudentProgramController::class, 'bbltj']);
+    Route::match(['get', 'post'], '/student/bbltj/store',[StudentProgramController::class, 'bbltjstore']);
 
     route:: match(['get','post'],'/financialaid-form',[AssesmentController::class, 'financialaid_form']);
     Route::get('/student/program', [UserController::class, 'program']);
