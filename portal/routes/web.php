@@ -87,7 +87,9 @@ Route::group(['middleware' =>['adminlogin']],function(){
 
     //Student Management Page 
     Route::get('/students/programs_info', [ProgramController::class, 'programs_info']);
+    Route::match(['get', 'post'], '/getStudentType',[ProgramController::class, 'getStudentType']);
     Route::match(['get', 'post'], '/getBatch',[ProgramController::class, 'getBatch']);
+    Route::match(['get', 'post'], '/getBatch2',[ProgramController::class, 'getBatch2']);
     Route::match(['get', 'post'], '/getBatchData',[ProgramController::class, 'getBatchData']);
     
     //Download CSV-(From Student Table)

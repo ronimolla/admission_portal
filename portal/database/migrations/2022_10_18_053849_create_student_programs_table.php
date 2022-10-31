@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('student_id')->nullable();
             $table->string('program_batch_id')->nullable();
             $table->string('program_batch_name')->nullable();
+            $table->string('application_status')->default('pending');
             $table->timestamps();
         });
     }

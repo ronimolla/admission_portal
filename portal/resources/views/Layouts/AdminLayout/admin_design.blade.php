@@ -120,8 +120,20 @@
                     
                 //-----------(Student  Management page)-------------------------
 
-                //Dropdown to select program
+                    //Dropdown to select student type
+                    jQuery('#student_type').change(function(){                       
+                        let type=jQuery(this).val();
+                        jQuery.ajax({
+                            url:'/getStudentType',
+                            type:'post',
+                            data:'type='+type+'&_token={{csrf_token()}}',
+                            success:function(result){
+                                jQuery('#basic-data-table').html(result)
+                            }
+                        });
+                    });   
 
+                    //Dropdown to select program and get table data
                     jQuery('#program_name').change(function(){                       
                         let cid=jQuery(this).val();
                         jQuery.ajax({
@@ -129,11 +141,23 @@
                             type:'post',
                             data:'cid='+cid+'&_token={{csrf_token()}}',
                             success:function(result){
-                                jQuery('#batch_name').html(result)
-                                //jQuery('#student_data_table').html(result)
+                                jQuery('#basic-data-table').html(result)
                             }
                         });
-                    });                    
+                    });    
+                    
+                    //Dropdown to select program and get program batch dropdown
+                    jQuery('#program_name').change(function(){                       
+                        let cid=jQuery(this).val();
+                        jQuery.ajax({
+                            url:'/getBatch2',
+                            type:'post',
+                            data:'cid='+cid+'&_token={{csrf_token()}}',
+                            success:function(result){
+                                jQuery('#batch_name').html(result)
+                            }
+                        });
+                    });  
 
                     
                     //Dropdown to select program-batch
@@ -150,7 +174,7 @@
                         });
                     });
 
-                    //Dropdown to select program-batch
+                    //Dropdown to select program-batch for Download CSV
                     jQuery('#batch_name').change(function(){                       
                         let bid=jQuery(this).val();
                         jQuery.ajax({

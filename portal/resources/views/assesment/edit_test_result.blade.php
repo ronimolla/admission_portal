@@ -59,7 +59,7 @@
                                         <label for="validationServer03">Interview Eligibility</label>
                                         <select class="form-control" id="writting_eligibility" name="select_for_interview">
                                             <option>Eligible</option>
-                                            <option> Incapable</option>
+                                            <option>Incapable</option>
                                         </select>   
                                 </div>    
                             </div>  
