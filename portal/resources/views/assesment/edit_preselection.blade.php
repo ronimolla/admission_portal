@@ -59,7 +59,7 @@
                                         <label for="exampleFormControlSelect12">Writting Exam Eligibility</label>
                                         <select class="form-control" id="writting_eligibility" name="writting_eligibility">
                                             <option>Eligible</option>
-                                            <option> Incapable</option>
+                                            <option>Incapable</option>
                                         </select>
                                     </div>
                                 </div>    

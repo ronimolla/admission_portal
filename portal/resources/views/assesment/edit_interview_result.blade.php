@@ -78,7 +78,7 @@
                                         <label for="validationServer03">Select For Registration</label>
                                         <select class="form-control" id="select_for_registration" name="select_for_registration">
                                             <option>Eligible</option>
-                                            <option> Incapable</option>
+                                            <option>Incapable</option>
                                         </select>   
                                 </div> 
                                 <!-- <div class="col-md-4 mb-3">
