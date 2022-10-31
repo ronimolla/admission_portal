@@ -11,6 +11,7 @@ use App\Models\User;
 use App\Models\Interview;
 use App\Models\Waiver;
 use App\Models\Program_batch;
+use App\Models\Assesment;
 class UserController extends Controller
 {
     //
@@ -28,11 +29,12 @@ class UserController extends Controller
             if($user > 0){
                 //echo "Success"; die;
                 Session::put('userSession', $data['email']);
+                //Session::put('userName', $data['email']);
                 
                 return redirect('/student/dashboard');
         	}else{
                // echo "failed"; die;
-                return redirect('/admin')->with('flash_message_error','Invalid Username or Password');
+                return redirect('/student/login')->with('flash_message_error','Invalid Username or Password');
         	}
         }    
     }
@@ -41,13 +43,14 @@ class UserController extends Controller
         $studentDetails = User::where(['email'=>Session::get('userSession')])->first();
         $student_id = $studentDetails->student_id;
         
-        $preselcetion = AssesementPreselection::where(['student_id'=>$student_id])->first();
-        $preselcetionpercentage = $preselcetion-> subtotal/10;
+       $preselcetion = Assesment::where(['student_id'=>$student_id])->first();
+        //$preselcetion = AssesementPreselection::all()->where(['student_id'=>$student_id])->last();
+        $preselcetionpercentage = $preselcetion-> pre_subtotal/10;
         
-        $testresult = WritingTest::where(['student_id'=>$student_id])->first();
+        $testresult = Assesment::where(['student_id'=>$student_id])->first();
         $testpercentage = $testresult->total_score/25;
 
-        $interviewresult = Interview::where(['student_id'=>$student_id])->first();
+        $interviewresult = Assesment::where(['student_id'=>$student_id])->first();
         $interviewpercentage = $interviewresult->total_interview_marks/40;
         //echo $testpercentage; die;
         return view('student.std_dashboard')->with(compact('studentDetails','preselcetionpercentage','preselcetion','testresult','testpercentage','interviewresult','interviewpercentage')); 
@@ -75,7 +78,7 @@ class UserController extends Controller
         $student_id = $studentDetails->student_id;
         $mywaiver = Waiver::where(['student_id'=> $student_id])->first();
         $prodramBatch =Program_batch::where(['batch_name'=> $mywaiver->program_batch_code])->first();
-        echo "<pre>"; print_r($prodramBatch); die;
+        echo "<pre>"; print_r($mywaiver); die;
     }
 
 }

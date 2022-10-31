@@ -58,7 +58,7 @@
                                         <td>{{$std->present_district}}</td>
 										<td>{{$std->present_division}}</td>
 										<td>
-											<a href="{{ url('interviewresult/edit/'.$std->student_id)}}" class="btn btn-primary">Update_Result</a>
+											<a href="{{ url('interviewresult/edit/'.$std->student_id.'/'.$std->program_batch_id)}}" class="btn btn-primary">Update_Result</a>
 										</td>	
                                         <td>
 											<a href="{{ url('view-profile/'.$std->student_id)}}" class="btn btn-primary">view Profile</a>
@@ -106,7 +106,7 @@
 											<td>{{$pstage->present_district}}</td>
 											<td>{{$pstage->present_division}}</td>
 											<td>
-												<a href="{{ url('interview/follow-up/'.$pstage->student_id)}}" class="btn btn-primary">Follow-Up</a>
+												<a href="{{ url('interview/follow-up/'.$pstage->student_id.'/'.$pstage->program_batch_id)}}" class="btn btn-primary">Follow-Up</a>
 											</td>	
 											<td>
 												<a href="{{ url('view-profile/'.$pstage->student_id)}}" class="btn btn-primary">view Profile</a>

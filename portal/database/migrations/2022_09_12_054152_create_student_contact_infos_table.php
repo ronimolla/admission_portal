@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('student_contact_infos', function (Blueprint $table) {
-            $table->increments('student_id');
+            $table->string('student_id');
             $table->string('email_address')->nullable();
             $table->integer('personal_phone_no')->nullable();
             $table->integer('emergency_contact_no')->nullable();
