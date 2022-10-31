@@ -22,6 +22,16 @@
 							<div class="card card-default">
 								<div class="card-header card-header-border-bottom d-flex justify-content-between">                                
                                 <h2>Student Data Table</h2>
+
+									<div class="form-group">
+										<a>Type</a>
+										<select class="form-control" id="student_type" style="font-size:13px">
+											<option value="0" disabled="true" selected="true">Select Type</option>											
+											<option value="pending">Pending</option>
+											<option value="selected">Selected</option>
+											<option value="rejected">Rejected</option>
+										</select>
+									</div>
 								
 									<div class="form-group">
 										<a>Program Name</a>

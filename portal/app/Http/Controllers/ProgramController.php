@@ -1043,69 +1043,117 @@ class ProgramController extends Controller
         return view('students.programs_info')->with(compact('student_info','program_name','program_batch_name'));
     }
 
-    // public function getBatch(Request $request)
-    // {
-    //     $cid=$request->post('cid');
-    //     $state = DB::table('student_personal_infos')
-    //     ->join('student_contact_infos', 'student_personal_infos.student_id', '=', 'student_contact_infos.student_id')
-    //     ->join('student_address_infos', 'student_personal_infos.student_id', '=', 'student_address_infos.student_id')
-    //     ->join('program_batches', 'program_batches.batch_id', '=', 'student_personal_infos.program_batch_id')
-    //     ->where('program_id',$cid)
-    //     // ->where([['follow_ups.want_attend_for_interview','=','Yes'],['interviews.interview_preselection_stage','=','pending']])
-    //     ->get();
-        
-    //     $dropdown='<option value="">Select Batch</option>';
-        
-    //     $table='  
-    //         <thead>
-    //             <tr>
-    //                 <th>Sl.No.</th>
-    //                 <th>Student ID</th>
-    //                 <th>Full name</th>
-    //                 <th>Email ID</th>
-    //                 <th>Phone No</th>
-    //                 <th>Address</th>
-    //                 <th>Batch</th>
-    //                 <th>Profile</th>													
-    //             </tr>
-    //         </thead>      
-    //     ';
 
-    //     foreach($state as $list){
-    //     $dropdown.='<option value="'.$list->batch_id.'">'.$list->batch_name.'</option>';
-    //     }
+        // Display table data based program-batch-name selected from dropdown
+        public function getStudentType(Request $request)
+        {
+            $tid = $request->post('type');
+
+            $state = DB::table('student_personal_infos')
+                ->join('student_contact_infos', 'student_personal_infos.student_id', '=', 'student_contact_infos.student_id')
+                ->join('student_address_infos', 'student_personal_infos.student_id', '=', 'student_address_infos.student_id')
+                ->join('student_programs', 'student_programs.student_id', '=', 'student_personal_infos.student_id')
+                ->join('program_batches', 'program_batches.batch_id', '=', 'student_programs.program_batch_id')
+                ->orderBy('program_batches.batch_name', 'ASC')
+                ->orderBy('student_personal_infos.full_name', 'ASC')
+                ->where('student_programs.application_status',$tid)
+                ->get();
+
+                
+            $html='  
+                <thead>
+                    <tr>
+                        <th>Sl.No.</th>
+                        <th>Student ID</th>
+                        <th>Full name</th>
+                        <th>Email ID</th>
+                        <th>Phone No</th>
+                        <th>Address</th>
+                        <th>Batch</th>
+                        <th>Profile</th>													
+                    </tr>
+                </thead>      
+            ';
     
-    //     $count=1;
-    //     foreach($state as $list){
-    //         $table.='
-    //         <tbody>                        
-    //             <tr>
-    //                 <td>'.$count++.'</td>
-    //                 <td>'.$list->student_id.'</td>
-    //                 <td>'.$list->full_name.'</td>
-    //                 <td>'.$list->email_address.'</td>
-    //                 <td>'.$list->personal_phone_no.'</td>
-    //                 <td>'.$list->present_district.'</td>
-    //                 <td>'.$list->batch_name.'</td>
-    //                 <td>
-    //                     <a href=" " class="btn btn-primary">View</a>
-    //                 </td>
-    //             </tr>	
-    //         </tbody>
-    //         ';
-    //     }
+            $count=1;
+            foreach($state as $list){
+                $html.='
+                <tbody>                        
+                    <tr>
+                        <td>'.$count++.'</td>
+                        <td>'.$list->student_id.'</td>
+                        <td>'.$list->full_name.'</td>
+                        <td>'.$list->email_address.'</td>
+                        <td>'.$list->personal_phone_no.'</td>
+                        <td>'.$list->present_district.'</td>
+                        <td>'.$list->batch_name.'</td>
+                        <td>
+                            <a href="/view-profile/'.$list->student_id.'" class="btn btn-primary">View</a>
+                        </td>
+                    </tr>	
+                </tbody>
+                ';
+            }
+            echo $html;
+        }
 
-    //     echo $dropdown;
-    //     echo $table;       
-    //     //echo "<pre>"; print_r($dropdown);
-    //     //echo "<pre>"; print_r($table);
-    // }
 
-    
-    //Get Batch Name in dropdown-menu when a program is selected
     public function getBatch(Request $request)
     {
         $cid=$request->post('cid');
+        $state = DB::table('student_personal_infos')
+        ->join('student_contact_infos', 'student_personal_infos.student_id', '=', 'student_contact_infos.student_id')
+        ->join('student_address_infos', 'student_personal_infos.student_id', '=', 'student_address_infos.student_id')
+        ->join('student_programs', 'student_programs.student_id', '=', 'student_personal_infos.student_id')
+        ->join('program_batches', 'program_batches.batch_id', '=', 'student_programs.program_batch_id')
+        ->where('program_batches.program_id',$cid)
+        ->get();
+        
+        // $dropdown='<option value="">Select Batch</option>';
+        
+        $table='  
+            <thead>
+                <tr>
+                    <th>Sl.No.</th>
+                    <th>Student ID</th>
+                    <th>Full name</th>
+                    <th>Email ID</th>
+                    <th>Phone No</th>
+                    <th>Address</th>
+                    <th>Batch</th>
+                    <th>Profile</th>													
+                </tr>
+            </thead>      
+        ';
+    
+        $count=1;
+        foreach($state as $list){
+            $table.='
+            <tbody>                        
+                <tr>
+                    <td>'.$count++.'</td>
+                    <td>'.$list->student_id.'</td>
+                    <td>'.$list->full_name.'</td>
+                    <td>'.$list->email_address.'</td>
+                    <td>'.$list->personal_phone_no.'</td>
+                    <td>'.$list->present_district.'</td>
+                    <td>'.$list->batch_name.'</td>
+                    <td>
+                        <a href="/view-profile/'.$list->student_id.'" class="btn btn-primary">View</a>
+                    </td>
+                </tr>	
+            </tbody>
+            ';
+        }
+        echo $table;
+    }
+
+    
+    //Get Batch Name in dropdown-menu when a program is selected
+    public function getBatch2(Request $request)
+    {
+        $cid=$request->post('cid');
+        
     	$state=DB::table('program_batches')->where('program_id',$cid)->get();
     	$html='<option value="">Select Batch</option>';
     	foreach($state as $list){
@@ -1158,7 +1206,7 @@ class ProgramController extends Controller
                     <td>'.$list->present_district.'</td>
                     <td>'.$list->batch_name.'</td>
                     <td>
-                        <a href=" " class="btn btn-primary">View</a>
+                        <a href="/view-profile/'.$list->student_id.'" class="btn btn-primary">View</a>
                     </td>
                 </tr>	
             </tbody>
