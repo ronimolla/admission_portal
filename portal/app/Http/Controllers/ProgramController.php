@@ -833,17 +833,20 @@ class ProgramController extends Controller
         
         if($request->isMethod('post')){
             $data = $request->input();
-            echo "<pre>"; print_r($data); die;
+          // echo "<pre>"; print_r($data); die;
             
-            $program_batch_id=$data['program_batch_id'];
-            $programname=$data['program_name'];
+          $program_batch_id=$data['program_batch_id'];
+          $programname=$data['program_name'];
+          $student_id = $data['nid'];
 
-            $batchinfo = Program_batch::where(['batch_id'=>$data['program_batch_id']])->first();
-            $student_batch= new StudentProgram;
-            $student_batch->program_batch_id = $batchinfo->batch_id ;
-            $student_batch->program_batch_name = $batchinfo->batch_name ;
+          $batchinfo = Program_batch::where(['batch_id'=>$data['program_batch_id']])->first();
+          $student_batch= new StudentProgram;
+          $student_batch->student_id = $student_id;
+          $student_batch->program_batch_id = $batchinfo->batch_id ;
+          $student_batch->program_batch_name = $batchinfo->batch_name ;
 
             $info = new StudentPersonalInfo;
+            $info->student_id =$student_id; 
             if(empty($data['gender'])){
                 $gender =' ';
             }else{
@@ -875,12 +878,14 @@ class ProgramController extends Controller
             //$info->save();
 
             $coninfo = new StudentContactInfo;
+            $coninfo->student_id =$student_id; 
             $coninfo->personal_phone_no = $data['mobile-number'];
             $coninfo->emergency_contact_no = $data['emergency-contact']; 
             $coninfo->email_address = $data['email-address'];            
             //$coninfo->save();
 
             $addinfo = new StudentAddressInfo;
+            $addinfo->student_id =$student_id; 
             $addinfo->present_apartment_no = $data['per_apartment'];
             $addinfo->present_house_no = $data['per_house'];
             $addinfo->present_road_no_OR_village = $data['per_road'];
@@ -910,6 +915,7 @@ class ProgramController extends Controller
             //$addinfo->save();
 
             $edinfo = new StudentEducationalInfo;
+            $edinfo->student_id =$student_id; 
             if(empty($data['medium'])){
                 $medium =' ';  
             }else{
@@ -928,32 +934,36 @@ class ProgramController extends Controller
             $edinfo->uni_passing_year = $data['graduation_year'];
             //$edinfo->save();
 
-            $marconinfo = new StudentMarcomInfo;
+            $marcominfo = new StudentMarcomInfo;
+            $marcominfo->student_id =$student_id; 
             if(empty($data['marketing_question'])){
             $knowing_media =' ';
             }else{
             $knowing_media = $data['marketing_question'];
             }
-            $marconinfo->knowing_media = $knowing_media;
+            $marcominfo->knowing_media = $knowing_media;
             if(empty($data['CareerX_program'])){
                 $careerx =' ';
             }else{
                 $careerx = $data['CareerX_program'];
             }
-            $marconinfo->bootcamp_program = $careerx;
-            $marconinfo->careerx_bach_no =$data['CareerX'];
+            
+            $marcominfo->careerx_program = $careerx;
+            $marcominfo->careerx_bach_no =$data['CareerX'];
             if(empty($data['BYLC_bootcamp'])){
                 $bootcamp =' ';
             }else{
                 $bootcamp = $data['BYLC_bootcamp'];
             }
-            $marconinfo->careerx_program = $bootcamp;
-            $marcominfo->program_name =$programname; 
+            $marcominfo->bootcamp_program = $bootcamp;
+            $marcominfo->bootcamp_bach_no =$data['bootcamp'];
+            $marcominfo->program_name = $programname; 
             $marcominfo->program_batch_id = $program_batch_id;
-            $marconinfo->bootcamp_bach_no =$data['bootcamp'];
+           
             //$marconinfo->save();
 
             $questioninfo = new StudentQuestionaryInfo;
+            $questioninfo->student_id =$student_id; 
             if(empty($data['mcq1'])){
                 $ans_mcq1 =' ';  
             }else{
@@ -1002,12 +1012,8 @@ class ProgramController extends Controller
             $coninfo->save();
             $edinfo->save();
             $addinfo->save();
-            $marconinfo->save();
+            $marcominfo->save();
             $questioninfo->save();
-            // $preselection->save();
-            // $followup->save();
-            // $writing->save();
-            // $interview->save();
             $assesment->save();
             $student_batch->save();
 

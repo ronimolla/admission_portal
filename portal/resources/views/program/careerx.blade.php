@@ -159,7 +159,7 @@
 									<a style="font-size: small ; font-weight: bold">Date of Birth (জন্ম তারিখ)</a><br>
 									<!-- DatePicker -->
 									<div class="input-group date" id="datepicker">
-										<input type="text" class="form-control" id="date" name="date-of-birth"  value ="{{old('date-of-birth')}}" />
+										<input type="date" class="form-control" id="date" name="date-of-birth"  value ="{{old('date-of-birth')}}" />
 										<span class="input-group-append">
 										  <span class="input-group-text bg-light d-block">
 											<i class="fa fa-calendar"></i>

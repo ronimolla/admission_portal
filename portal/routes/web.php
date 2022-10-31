@@ -155,13 +155,22 @@ Route::group(['middleware' =>['adminlogin']],function(){
 
     Route::get('/student/dashboard', [UserController::class, 'stddashboard']);
     Route::get('/student/logout', [UserController::class, 'logout']);
+
     //BBLT program route
     Route::get('/student/program/bblt', [StudentProgramController::class, 'bblt']);
     Route::match(['get', 'post'], 'student/bblt/store',[StudentProgramController::class, 'bbltstore']);
 
-     //BBLTJ program route 
+    //BBLTJ program route 
     Route::get('/student/program/bbltj', [StudentProgramController::class, 'bbltj']);
     Route::match(['get', 'post'], '/student/bbltj/store',[StudentProgramController::class, 'bbltjstore']);
+
+    //APL program route 
+    Route::get('/student/program/apl', [StudentProgramController::class, 'apl']);
+    Route::match(['get', 'post'], '/student/apl/store',[StudentProgramController::class, 'aplstore']);
+
+     //YLS program route 
+    Route::get('/student/program/careerx', [StudentProgramController::class, 'careerx']);
+    Route::match(['get', 'post'], '/student/careerx/store',[StudentProgramController::class, 'careerxstore']);
 
     route:: match(['get','post'],'/financialaid-form',[AssesmentController::class, 'financialaid_form']);
     Route::get('/student/program', [UserController::class, 'program']);

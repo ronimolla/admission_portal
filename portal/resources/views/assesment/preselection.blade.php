@@ -37,7 +37,7 @@
 										<th>Student ID</th>
 										<th>Full Name</th>
 										<th>Program Name</th>
-										<th>Program Code</th>
+										<th>Program Batch Code</th>
 										<th>Gender</th>
 										<th>Email</th>
 										<th>Present Destrict</th>
@@ -91,7 +91,7 @@
 									<th>Student ID</th>
 										<th>Full Name</th>
 										<th>Program Name</th>
-										<th>Program Code</th>
+										<th>Program Batch Code</th>
 										<th>Gender</th>
 										<th>Email</th>
 										<th>Present Destrict</th>

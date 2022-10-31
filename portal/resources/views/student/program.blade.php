@@ -68,7 +68,7 @@
                                     <!-- APL Form -->
                                     <button type="">
                                         <div class="shadow-lg p-1 mb-2 bg-white rounded">
-                                            <a href="{{ url('program/apl')}}" target="_blank">
+                                            <a href="{{ url('student/program/apl')}}" target="_blank">
                                                 <div class="target"><img class="target" src="{{asset('images/program_image/apl.png')}}" alt=" " class="rounded mx-auto d-block" style="width: 150; height:150"></div>
                                             </a>
                                         </div>
@@ -113,7 +113,7 @@
                                     <!-- CareerX Form -->
                                     <button type="">
                                         <div class="shadow-lg p-1 mb-2 bg-white rounded">
-                                            <a href="{{ url('program/careerx')}}" target="_blank">
+                                            <a href="{{ url('student/program/careerx')}}" target="_blank">
                                                 <div class="target"><img class="target" src="{{asset('images/no_image.png')}}" alt=" " class="rounded mx-auto d-block" style="width: 150; height:150"></div>
                                             </a>
                                         </div>

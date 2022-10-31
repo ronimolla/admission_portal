@@ -85,7 +85,7 @@ class AssesmentController extends Controller
             }
             $totall = $data['articulation'] + $data['logical_reasoning'] + $data['authemticity'] ;
             
-            Assesment::where(['student_id'=>$student_id],['program_batch_id'=>$program_batch_id])->update(['pre_assessor'=>$data['assessor_name'],'pre_authenticity'=>$data['authemticity'],
+            Assesment::where(['student_id'=>$student_id,'program_batch_id'=>$program_batch_id])->update(['pre_assessor'=>$data['assessor_name'],'pre_authenticity'=>$data['authemticity'],
                 'pre_articulation'=>$data['articulation'],'pre_logical_reasoning'=>$data['logical_reasoning'],'pre_subtotal'=>$totall,
                 'select_for_writing_test'=>$data['writting_eligibility'],'preselection_stage'=>'Done']);
             
@@ -110,7 +110,7 @@ class AssesmentController extends Controller
 		if($request->isMethod('post')){
             $data = $request->input();
            // echo "<pre>"; print_r($data); die;
-           Assesment::where(['student_id'=>$student_id],['program_batch_id'=>$program_batch_id])->update(
+           Assesment::where(['student_id'=>$student_id,'program_batch_id'=>$program_batch_id])->update(
                 ['pre_follow_up_assessor_name'=>$data['assessor_name'],'pre_contact_media'=>$data['conatct_media'],'want_attend_for_test'=>$data['Student_decision'],
                 'reason_for_not_attending_test'=>$data['reason'],'test_time'=>$data['time'],'pre_follow_up_stage'=>'Done']);
           
@@ -171,7 +171,8 @@ class AssesmentController extends Controller
         if($request->isMethod('post')){    
             $data = $request->input();
             $WAscore = $data['test_score'] + $presubtotal;
-            Assesment::where(['student_id'=>$student_id],['program_batch_id'=>$program_batch_id])->update(['writing_test_assessor'=>$data['assessor_name'],'writing_test_attended'=>$data['attended'],
+            
+            Assesment::where(['student_id'=>$student_id,'program_batch_id'=>$program_batch_id])->update(['writing_test_assessor'=>$data['assessor_name'],'writing_test_attended'=>$data['attended'],
                 'total_score'=>$data['test_score'],'writing_and_appication_score'=> $WAscore,'select_for_interview'=>$data['select_for_interview'],
                 'writing_preselection_stage'=>'Done']);
             return redirect('/assesment/writing'); 
@@ -190,7 +191,7 @@ class AssesmentController extends Controller
 		if($request->isMethod('post')){
             $data = $request->input();
             //echo "<pre>"; print_r($data); die;
-            Assesment::where(['student_id'=>$student_id],['program_batch_id'=>$program_batch_id])->update([
+            Assesment::where(['student_id'=>$student_id,'program_batch_id'=>$program_batch_id])->update([
                 'test_follow_up_assessor_name'=>$data['assessor_name'],'test_contact_media'=>$data['conatct_media'],'want_attend_for_interview'=>$data['Student_decision'],
                 'reason_for_not_attending_interview'=>$data['reason'],'interview_time'=>$data['time'],'writing_follow_up_stage'=>'Done']);
             return redirect('/assesment/writing');
@@ -237,7 +238,7 @@ class AssesmentController extends Controller
             $interviewtotal =$data['competence'] + $data['courage'] + $data['compassion'] + $data['commitment'] ;
             $alltotall = $totalresult + $interviewtotal ;
            
-            Assesment::where(['student_id'=>$student_id],['program_batch_id'=>$program_batch_id])->update(['interviewer'=>$data['interviewer'],'attend_interview'=>$data['attend'],'attend_group_discussion'=>$data['g_attend'],
+            Assesment::where(['student_id'=>$student_id,'program_batch_id'=>$program_batch_id])->update(['interviewer'=>$data['interviewer'],'attend_interview'=>$data['attend'],'attend_group_discussion'=>$data['g_attend'],
                 'competence'=>$data['competence'],'courage'=>$data['courage'],'compassion'=>$data['compassion'],'commitment'=>$data['commitment'],'total_interview_marks'=>$interviewtotal,
                 'all_totall_marks'=>$alltotall,'select_for_registration'=>$data['select_for_registration'],
                 'interview_preselection_stage'=>'Done']);
@@ -256,7 +257,7 @@ class AssesmentController extends Controller
 		if($request->isMethod('post')){
             $data = $request->input();
            // echo "<pre>"; print_r($data); die;
-           Assesment::where(['student_id'=>$student_id],['program_batch_id'=>$program_batch_id])->update([
+           Assesment::where(['student_id'=>$student_id,'program_batch_id'=>$program_batch_id])->update([
                 'interview_follow_up_assessor_name'=>$data['assessor_name'],'interview_followup_contact_media'=>$data['conatct_media'],'want_to_registration'=>$data['want_to_registration'],
                 'request_faq'=>$data['request_faq'],'sent_faq'=>$data['sent_fid'],'reason_for_not_registration'=>$data['reason'],'final_remark'=>$data['renark'],'interview_follow_up_stage'=>'Done']);
                 
