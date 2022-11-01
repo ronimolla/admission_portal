@@ -61,12 +61,26 @@
         .box:hover {
             box-shadow: 0 0 11px rgba(33,33,33,.2); 
         }
+
+        #chart_wrap {
+            position: relative;
+            padding-bottom: 100%;
+            height: 0;
+            overflow:hidden;
+        }
+        #piechart {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width:100%;
+            height:70%;
+        }
     </style>
 
     </head>
+    
 
     <body class="header-fixed sidebar-fixed sidebar-dark header-light" id="body">
-    
 
         <!-- ====================================
         ——— WRAPPER
@@ -80,17 +94,16 @@
                 <!--Header-part-->
                 @include('Layouts.AdminLayout.admin_header')
                 <!--close-Header-part-->
-
+                
                 @yield('content')
-
                 <!--Footer-part-->
-
+                
                 @include('Layouts.AdminLayout.admin_footer')
     
     
             </div> <!-- End Page Wrapper -->
         </div>
-
+        
         <!-- Javascript -->
         <script src="{{asset('assets/plugins/jquery/jquery.min.js')}}"></script>
         <script src="{{asset('assets/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
@@ -113,6 +126,7 @@
         <script src="{{asset('assets/js/sleek.js')}}"></script>
         <link href="{{asset('assets/options/optionswitch.css')}}" rel="stylesheet">
         <script src="{{asset('assets/options/optionswitcher.js')}}"></script>
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
         
         <!-- JS For Dependent Dropdown (Program_Batch_Name depends on Program_Name)-->
         <script>
@@ -176,21 +190,18 @@
 
                     //Dropdown to select program-batch for Download CSV
                     jQuery('#batch_name').change(function(){                       
-                        let bid=jQuery(this).val();
+                        let bid2=jQuery(this).val();
                         jQuery.ajax({
                             url:'/download-csv',
                             type:'post',
-                            data:'bid='+bid+'&_token={{csrf_token()}}',
+                            data:'bid2='+bid2+'&_token={{csrf_token()}}',
                             // success: function (result) {
-                            //     alert('Success');
-                            // },
-                            // error: function (result) {
-                            //     alert('Error');
+                            //     jQuery('product_row').html(result)
                             // }
                         });
                     });
 
-                    //-----------(Program Page)-------------------------
+                //-----------(Program Page)-------------------------
 
                     //Dropdown to select program name For showing table data 
                     jQuery('#category').change(function(){                       
@@ -205,7 +216,7 @@
                         });
                     }); 
 
-                    //-----------(Program-Batch-page)-------------------------
+                //-----------(Program-Batch-page)-------------------------
 
                     //Dropdown to select program name For showing table data 
                     jQuery('#programs').change(function(){                       
@@ -220,7 +231,7 @@
                         });
                     });     
 
-                    //-----------(Program Page)-----------------------------
+                //-----------(Event Page)-----------------------------
 
                     //Dropdown to select program name For showing table data 
                     jQuery('#category_event').change(function(){                       
@@ -236,7 +247,7 @@
                     }); 
               
                     
-                    //-----------(Event-Batch-page)-------------------------
+                //-----------(Event-Batch-page)-------------------------
                     
                     //Dropdown to select Event name For showing table data 
                     jQuery('#events').change(function(){                       
@@ -250,8 +261,153 @@
                             }
                         });
                     });   
-
             });
+        </script>
+
+
+        <!-------------------- Fetch Data for Pie Chart ------------------------->
+
+        <script>
+            //Fetch Educational Medium data from controller for Data Chart 
+            function load_data() {
+                $.ajax({
+                    url: 'fetchMedium',
+                    method: 'GET',
+                    data: {
+                        "_token": "{{ csrf_token() }}"
+                    },
+                    dataType: "JSON",
+                    success: function (data) {
+                        drawChart(data);
+                    }
+                });
+            }
+        
+            //Fetch Ethnicity data from controller for Data Chart 
+            function load_Eth_data() {
+                $.ajax({
+                    url: 'fetchEthnicity',
+                    method: 'GET',
+                    data: {
+                        "_token": "{{ csrf_token() }}"
+                    },
+                    dataType: "JSON",
+                    success: function (data) {
+                        drawChart2(data);
+                    }
+                });
+            }
+
+            //Fetch Disability data from controller for Data Chart 
+            function load_Dis_data() {
+                $.ajax({
+                    url: 'fetchEthnicity',
+                    method: 'GET',
+                    data: {
+                        "_token": "{{ csrf_token() }}"
+                    },
+                    dataType: "JSON",
+                    success: function (data) {
+                        drawChart3(data);
+                    }
+                });
+            }
+        </script>
+
+
+        <!-------------------- Google Data Chart for Dashboard ------------------->
+
+        <!-- Google Pie-Chart (Educational Medium) -->
+        <script type="text/javascript">
+           
+            google.charts.load('current', {'packages':['corechart']});
+            google.charts.setOnLoadCallback(function () {
+                load_data();
+            });
+
+            function drawChart(drawChart) {
+                let jsonData = drawChart;
+                let data = new google.visualization.arrayToDataTable([]);
+                data.addColumn({type: 'string', label: 'Education Medium'});
+                data.addColumn({type: 'number', label: 'Total Students'});
+            
+                $.each(jsonData, (i, jsonData) => {
+                    let educational_medium = jsonData.educational_medium;
+                    let total_student = jsonData.total_student;
+                    data.addRows([
+                        [educational_medium, total_student]
+                    ]);
+                });
+
+                var options = {
+                    title: 'Educational Medium',
+                };
+
+                var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+                chart.draw(data, options);
+            }
+        </script>
+
+
+        <!-- Google Pie-Chart (Ethnicity) -->
+        <script type="text/javascript">
+            google.charts.load('current', {'packages':['corechart']});
+            google.charts.setOnLoadCallback(function () {
+                load_Eth_data();
+            });
+
+            function drawChart2(drawChart) {
+                let jsonData = drawChart;
+                let data = new google.visualization.arrayToDataTable([]);
+                data.addColumn({type: 'string', label: 'Ethnicity'});
+                data.addColumn({type: 'number', label: 'Total Students'});
+            
+                $.each(jsonData, (i, jsonData) => {
+                    let ethnicity = jsonData.ethnicity;
+                    let total_student = jsonData.total_student;
+                    data.addRows([
+                        [ethnicity, total_student]
+                    ]);
+                });
+
+                var options = {
+                    title: 'Ethnicity',
+                };
+
+                var chart = new google.visualization.PieChart(document.getElementById('piechart-ethnicity'));
+                chart.draw(data, options);
+            }
+        </script>
+
+
+        <!-- Google Pie-Chart (Disability) -->
+        <script type="text/javascript">
+            google.charts.load('current', {'packages':['corechart']});
+            google.charts.setOnLoadCallback(function () {
+                load_Dis_data();
+            });
+
+            function drawChart3(drawChart) {
+                let jsonData = drawChart;
+                let data = new google.visualization.arrayToDataTable([]);
+                data.addColumn({type: 'string', label: 'Disability'});
+                data.addColumn({type: 'number', label: 'Total Students'});
+            
+                $.each(jsonData, (i, jsonData) => {
+                    let disability = jsonData.disability;
+                    let total_student = jsonData.total_student;
+                    data.addRows([
+                        [disability, total_student]
+                    ]);
+                });
+
+                var options = {
+                    title: 'Disability',
+                };
+
+                var chart = new google.visualization.PieChart(document.getElementById('piechart-disability'));
+                chart.draw(data, options);
+            }
         </script>
 
     </body>
