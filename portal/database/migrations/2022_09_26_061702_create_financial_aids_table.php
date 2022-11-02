@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('financial_aids', function (Blueprint $table) {
             $table->id();
-            $table->string('program_name');
-            $table->string('program_batch_code');
+            $table->string('program_batch_name')->nullable();
+            $table->string('program_batch_id');
             $table->string('student_id')->nullable();
 
             $table->string('full_name')->nullable();
@@ -65,6 +65,8 @@ return new class extends Migration
             $table->integer('total_resource')->nullable();
             $table->string('reason_for_apply')->nullable();
             $table->string('communicate_person')->nullable();
+            $table->string('update_request')->default('pending');
+            
             $table->timestamps();
         });
     }

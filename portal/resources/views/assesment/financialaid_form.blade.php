@@ -50,8 +50,8 @@
 			<div class="wizard-form">
 				<div class="wizard-header">
 					<img src="images/bylc-logo.png" alt="" width="280" height="50"> <br><br>
-					<div class="Heading" style="font-weight: bold ">BBLT 35 Financial Aid Application Form</div>
-					<div class="subHeading" >(বিবিএলটি ৩৫ আর্থিক সহায়তার আবেদনপত্র)</div>
+					<div class="Heading" style="font-weight: bold "> Financial Aid Application Form</div>
+					<div class="subHeading" >(আর্থিক সহায়তার আবেদনপত্র)</div>
 				</div>
 		      
 				<form class="form-register" method="post" action="{{url('financialaid-form')}}" name="add_school" id="add_school" novalidate="novalidate">{{csrf_field()}}
@@ -67,14 +67,21 @@
 								<a style="font-size: larger ; color: darkgreen; font-weight: bold">Section A — Applicant’s Information (আবেদনকারীর তথ্য)</a><br>
 							</center>
 							<br><br>
-							<input type="hidden" class="form-control" name="program_name" id="full_name" value ="BBLT" >
-							<input type="hidden" class="form-control" name="program_code" id="full_name" value ="{{$batchinfo->batch_name}}" >
+							
+							
                             <!-- Full name -->
 							<a style="font-size: small ; font-weight: bold">Full Name (পূর্ণ নাম)</a><br>
 							<a style="font-size: smaller ; color: gray; ">As per passport or national ID or academic certificate (পাসপোর্ট বা জাতীয় পরিচয়পত্র বা একাডেমিক সার্টিফিকেট অনুযায়ী) (ex. Zuhair Bin Zabbar)</a><br>
 							<input type="text" class="form-control" name="full_name" id="full_name" value ="{{$studentinfo->full_name}}" readonly>
 							<br>
-
+							<a style="font-size: small ; font-weight: bold">Program Batch-Name</a>
+							<div class="input-group mb-3">
+								<select class="form-select" id="division" name="program_code">
+								@foreach($batchinfo as $info)
+									<option value="{{ $info->batch_id }}">{{ $info->batch_name }}</option>
+								@endforeach
+								</select>
+							</div>
 							<!-- BGN Member or not -->
 							<a style="font-size: small ; font-weight: bold">If you are already a BGN member, please mention BGN membership ID (আপনি যদি বিজিএন মেম্বার হয়ে থাকেন অনুগ্রহ করে মেম্বারশীপ আইডি টি উল্লেখ করুন)</a><br>
 							<input type="text" class="form-control" name="bgn_id" id="bgn_id" >
@@ -96,7 +103,7 @@
 							<div class="row g-1">
 								<div class="col-md-6">
 									<a style="font-size: small ; font-weight: bold">Contact number (যোগাযোগ নাম্বার)</a><br>
-									<input type="text" class="form-control" name="contact" id="contact"  value ="{{$studentinfo->personal_phone_no}}" readonly>
+									<input type="text" class="form-control" name="contact" id="contact"  value ="{{$studentinfo->personal_phone_no}}" >
 								</div>
 							</div>
 							<br><br>

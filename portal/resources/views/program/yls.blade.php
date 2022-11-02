@@ -262,18 +262,15 @@
 									<input type="text" class="form-control" id="per_thana" name="per_thana" value ="{{old('per_thana')}}">
 								</div>	
 								<!-- District -->
+								<!-- District -->
 								<div class="col-md-4">
 									<a style="font-size: small ; font-weight: bold">District (জেলা)</a><br>
 									<div class="input-group mb-3" class="dropdown-menu">
 										<select class="form-select" id="per_district" name="per_district" >
 										  <option selected>Select District</option>
-										  <option value="Bagerhat" {{ old("per_district") == 'Bagerhat' ? 'selected' : '' }}>Bagerhat (বাগেরহাট)</option>
-										  <option value="Bandarban" {{ old("per_district") == 'Bandarban' ? 'selected' : '' }}>Bandarban (বান্দরবান)</option>
-										  <option value="Barguna" {{ old("per_district") == 'Barguna' ? 'selected' : '' }}>Barguna (বরগুনা)</option>
-										  <option value="Barishal" {{ old("per_district") == 'Barishal' ? 'selected' : '' }}>Barishal (বরিশাল)</option>
-										  <option value="Bhola" {{ old("per_district") == 'Bhola' ? 'selected' : '' }}>Bhola (ভোলা)</option>
-										  <option value="Bogura" {{ old("per_district") == 'Bogura' ? 'selected' : '' }}>Bogura (বগুড়া)</option>
-										  
+										  @foreach($district as $dis)
+												<option value="{{ $dis->name }}" {{ old("per_district") ==  $dis->name  ? 'selected' : '' }}>{{ $dis->name }}</option>
+											@endforeach	
 										</select>
 									</div>
 								</div>
@@ -283,14 +280,9 @@
 									<div class="input-group mb-3">
 										<select class="form-select" id="per_division" name="per_division">
 										  <option selected>Select Division</option>
-										  <option value="Chattagram">Chattagram (চট্টগ্রাম)</option>
-										  <option value="Rajshahi">Rajshahi (রাজশাহী)</option>
-										  <option value="Khulna">Khulna (খুলনা)</option>
-										  <option value="Barisal">Barisal (বরিশাল)</option>
-										  <option value="Sylhet">Sylhet (সিলেট)</option>
-										  <option value="Dhaka">Dhaka (ঢাকা)</option>
-										  <option value="Rangpur">Rangpur (রংপুর)</option>
-										  <option value="Mymensingh">Mymensingh (ময়মনসিংহ)</option>
+										   @foreach($division as $div)
+												<option value="{{ $div->name }}"{{ old("per_division") ==  $div->name  ? 'selected' : '' }}>{{ $div->name }}</option>
+											@endforeach									 
 										</select>
 									</div>
 								</div>
@@ -343,38 +335,29 @@
                                         <input type="text" class="form-control" id="thana" name="thana" value ="{{old('thana')}}">
                                     </div>	
                                     <!-- District -->
-                                    <div class="col-md-4">
-                                        <a style="font-size: small ; font-weight: bold">District (জেলা)</a><br>
-                                        <div class="input-group mb-3">
-                                            <select class="form-select" id="district" name="district">
-                                            <option selected>Select District</option>
-                                            <option value="Bagerhat">Bagerhat (বাগেরহাট)</option>
-                                            <option value="Bandarban">Bandarban (বান্দরবান)</option>
-                                            <option value="Barguna">Barguna (বরগুনা)</option>
-                                            <option value="Barishal">Barishal (বরিশাল)</option>
-                                            <option value="Bhola">Bhola (ভোলা)</option>
-                                            <option value="Barishal">Bogura (বগুড়া)</option>
-                                            <option value="Bhola">Brahmanbaria (ব্রাহ্মণবাড়িয়া)</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <!-- Division -->
-                                    <div class="col-md-4">
-                                        <a style="font-size: small ; font-weight: bold">Division (বিভাগ)</a>
-                                        <div class="input-group mb-3">
-                                            <select class="form-select" id="division" name="division">
-                                            <option selected>Select Division</option>
-                                            <option value="Chattagram">Chattagram (চট্টগ্রাম)</option>
-                                            <option value="Rajshahi">Rajshahi (রাজশাহী)</option>
-                                            <option value="Khulna">Khulna (খুলনা)</option>
-                                            <option value="Barisal">Barisal (বরিশাল)</option>
-                                            <option value="Sylhet">Sylhet (সিলেট)</option>
-                                            <option value="Dhaka">Dhaka (ঢাকা)</option>
-                                            <option value="Rangpur">Rangpur (রংপুর)</option>
-                                            <option value="Mymensingh">Mymensingh (ময়মনসিংহ)</option>
-                                            </select>
-                                        </div>
-                                    </div>
+									<div class="col-md-4">
+										<a style="font-size: small ; font-weight: bold">District (জেলা)</a><br>
+										<div class="input-group mb-3">
+											<select class="form-select" id="district" name="district">
+											<option selected>Select District</option>
+											@foreach($district as $dis)
+												<option value="{{ $dis->name }}" {{ old("district") ==  $dis->name  ? 'selected' : '' }}>{{ $dis->name }}</option>
+											@endforeach	
+											</select>
+										</div>
+									</div>
+									<!-- Division -->
+									<div class="col-md-4">
+										<a style="font-size: small ; font-weight: bold">Division (বিভাগ)</a>
+										<div class="input-group mb-3">
+											<select class="form-select" id="division" name="division">
+											<option selected>Select Division</option>
+											@foreach($division as $div)
+												<option value="{{ $div->name }}"{{ old("division") ==  $div->name  ? 'selected' : '' }}>{{ $div->name }}</option>
+											@endforeach
+											</select>
+										</div>
+									</div>
                                 </div>
                                 
                                 <div class="row g-3">
