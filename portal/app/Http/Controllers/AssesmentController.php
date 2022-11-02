@@ -16,6 +16,7 @@ use App\Models\WritingTest;
 use App\Models\FollowUp;
 use App\Models\Interview;
 use App\Models\Assesment;
+use App\Models\Payment;
 use App\Models\User;
 use Session;
 use App\Models\FinancialAid;
@@ -30,18 +31,7 @@ class AssesmentController extends Controller
     */
     public function preselection()
     {  
-        // $student = DB::table('student_personal_infos')
-        // ->join('student_contact_infos', 'student_personal_infos.student_id', '=', 'student_contact_infos.student_id')
-        // ->join('student_address_infos', 'student_personal_infos.student_id', '=', 'student_address_infos.student_id')
-        // ->join('assesement_preselections', 'student_personal_infos.student_id', '=', 'assesement_preselections.student_id')
-        // ->where('assesement_preselections.preselection_stage','=','pending')
-        // ->get();
-        // $preselection_stage = DB::table('student_personal_infos')
-        // ->join('student_contact_infos', 'student_personal_infos.student_id', '=', 'student_contact_infos.student_id')
-        // ->join('student_address_infos', 'student_personal_infos.student_id', '=', 'student_address_infos.student_id')
-        // ->join('assesement_preselections', 'student_personal_infos.student_id', '=', 'assesement_preselections.student_id')
-        // ->where([['assesement_preselections.follow_up_stage','=','pending'],['assesement_preselections.preselection_stage','=','Done'],
-        // ['assesement_preselections.select_for_writing_test','=','Eligible']])->get();
+        
         $student = DB::table('student_personal_infos') ->join('assesments', 'student_personal_infos.student_id', '=', 'assesments.student_id')
         ->join('student_contact_infos', 'student_personal_infos.student_id', '=', 'student_contact_infos.student_id')
         ->join('student_address_infos', 'student_personal_infos.student_id', '=', 'student_address_infos.student_id')
@@ -117,10 +107,6 @@ class AssesmentController extends Controller
             return redirect('/assesment/preselection');
         } 
 
-        // $studentinfo = DB::table('student_personal_infos')
-        // ->join('assesments', 'student_personal_infos.student_id', '=', 'assesments.student_id')
-        // ->where('student_personal_infos.student_id','=',$student_id)
-        // ->first();
         $studentinfo = DB::table('student_personal_infos')->where('student_personal_infos.student_id','=',$student_id)->first();
         $assinfo = Assesment::where(['student_id'=>$student_id],['program_batch_id'=>$program_batch_id])->first();
 
@@ -133,14 +119,7 @@ class AssesmentController extends Controller
     */
     public function writingtest()
     {    
-        // $student = DB::table('student_personal_infos')
-        // ->join('student_contact_infos', 'student_personal_infos.student_id', '=', 'student_contact_infos.student_id')
-        // ->join('student_address_infos', 'student_personal_infos.student_id', '=', 'student_address_infos.student_id')
-        // ->join('follow_ups', 'student_personal_infos.student_id', '=', 'follow_ups.student_id')
-        // ->join('writing_tests', 'student_personal_infos.student_id', '=', 'writing_tests.student_id')
-        // ->where([['follow_ups.want_attend_for_test','=','Yes'],['writing_tests.writing_preselection_stage','=','pending']])
-        // ->get();
-
+        
         $student = DB::table('student_personal_infos')
         ->join('student_contact_infos', 'student_personal_infos.student_id', '=', 'student_contact_infos.student_id')
         ->join('student_address_infos', 'student_personal_infos.student_id', '=', 'student_address_infos.student_id')
@@ -254,13 +233,25 @@ class AssesmentController extends Controller
     --------
     */
     public function interview_follow_up(Request $request,$student_id= null,$program_batch_id= null){
+        $info = Assesment::join('program_batches','assesments.program_batch_id', '=', 'program_batches.batch_id')
+        ->where(['student_id'=>$student_id],['program_batch_id'=>$program_batch_id])->first();
+        
 		if($request->isMethod('post')){
             $data = $request->input();
-           // echo "<pre>"; print_r($data); die;
+          
            Assesment::where(['student_id'=>$student_id,'program_batch_id'=>$program_batch_id])->update([
                 'interview_follow_up_assessor_name'=>$data['assessor_name'],'interview_followup_contact_media'=>$data['conatct_media'],'want_to_registration'=>$data['want_to_registration'],
                 'request_faq'=>$data['request_faq'],'sent_faq'=>$data['sent_fid'],'reason_for_not_registration'=>$data['reason'],'final_remark'=>$data['renark'],'interview_follow_up_stage'=>'Done']);
-                
+
+            $payment = new Payment;
+            $payment->student_id = $info->student_id; 
+            $payment->full_name = $data['full_name']; 
+            $payment->program_batch_name = $info->batch_name; 
+            $payment->program_batch_id = $info->batch_id; 
+            $payment->registration_fees = $info->registration_fees; 
+            $payment->final_registration_fees = $info->registration_fees; 
+            $payment->save(); 
+    
             return redirect('/assesment/interview');
         }  
         $studentinfo = DB::table('student_personal_infos')->where('student_personal_infos.student_id','=',$student_id)->first();
@@ -268,126 +259,55 @@ class AssesmentController extends Controller
          return view('assesment.interview_follow_up')->with(compact('studentinfo','assinfo'));  
     }
 
-    public function financialaid_form(Request $request){
-        
-		if($request->isMethod('post')){
-            $data = $request->input();
-            //echo "<pre>"; print_r($data); die;
-            $financila = new FinancialAid;
-            $financila->full_name = $data['full_name'];
-            $financila->bgn_member_id = $data['bgn_id'];
-            $financila->student_id = $data['student_id'];
-            $financila->email = $data['email'];
-            $financila->contact_number = $data['contact'];
-            $financila->program_name = $data['program_name'];
-            $financila->program_batch_code = $data['program_code'];
-            if(empty($data['father'])){
-                $father =' ';
-            }else{
-                $father = $data['father'];
-            }
-            if(empty($data['mother'])){
-                $mother =' ';
-            }else{
-                $mother = $data['mother'];
-            }
-            if(empty($data['others'])){
-                $others =' ';
-            }else{
-                $others = $data['others'];
-            }
-            $financila->family_members = $data['family_members'];
-            $financila->earning_person_number = $data['earning_person_number'];
-            $financila->earning_person_father = $father;
-            $financila->earning_person_mother = $mother;
-            $financila->earning_person_other  = $others;
-
-            $financila->father_name = $data['father_name'];
-            $financila->father_contact_number = $data['father_contact_number'];
-            $financila->father_occupation = $data['father_occupation'];
-            $financila->father_organization_name = $data['father_orgazation_name'];
-            $financila->father_monthly_income = $data['father_monthly_income'];
-
-            $financila->mother_name = $data['mother_name'];
-            $financila->mother_contact_number = $data['mother_contact_number'];
-            $financila->mother_occupation = $data['mother_occupation'];
-            $financila->mother_organization_name = $data['mother_orgazation_name'];
-            $financila->mother_monthly_income = $data['mother_monthly_income'];
-            
-            $financila->other_name = $data['other_name'];
-            $financila->relation = $data['relation'];
-            $financila->other_contact_number = $data['other_contact'];
-            $financila->other_occupation = $data['other_occupation'];
-            $financila->other_organization_name = $data['other_organization_name'];
-            $financila->other_monthly_income = $data['mother_monthly_income'];
-            $financila->income_from_asset = $data['monthly_fixedasset_income'];
-
-            $financila-> tuition_fees= $data['tution_fees'];
-            $financila->booking_supplies= $data['book&supply'];
-            $financila->living_expenses = $data['living_expenses'];
-            $financila->total_educational_expense = $data['total_educational_expense'];
-            $financila->personal_expenses = $data['personal_expenses'];
-            $financila->transportation_expenses = $data['transportation_expenses'];
-            $financila->parent_contribution = $data['parent_contribution'];
-            $financila->own_contribution = $data['own_contribution'];
-
-            $financila->total_earning = $data['total_earn'];
-            $financila->scholarship = $data['schlarship'];
-            $financila->other_member_contribution = $data['family_menber_contribution'];
-            $financila->total_resource = $data['total_resources'];
-            $financila-> reason_for_apply= $data['reasoning'];
-            $financila-> communicate_person= $data['verification_person'];
-            $financila->save();
-            
-            return redirect('/student/dashboard');
-        }  
-        $studentinfo = DB::table('student_personal_infos')
-        ->join('student_contact_infos', 'student_personal_infos.student_id', '=', 'student_contact_infos.student_id')
-        ->where(['email_address'=>Session::get('userSession')])
-        ->first();
-        $batchinfo = Program_batch::all()
-                       ->where('program_id', '= ','1')
-                       ->last();
-         return view('assesment.financialaid_form')->with(compact('studentinfo','batchinfo')); 
-    }
-
+   
 
     public function financialaid(){	
       
        // $finamce = FinancialAid::get();
         
-        $finamce = DB::table('student_personal_infos')
+        $finance = DB::table('student_personal_infos')
         ->join('student_contact_infos', 'student_personal_infos.student_id', '=', 'student_contact_infos.student_id')
         ->join('student_address_infos', 'student_personal_infos.student_id', '=', 'student_address_infos.student_id')
         ->join('financial_aids', 'student_personal_infos.student_id', '=', 'financial_aids.student_id')
+        ->join('program_batches', 'financial_aids.program_batch_id', '=', 'program_batches.batch_id')
         ->where('financial_aids.update_request','=','pending')
         ->get();
-        return view('assesment.financialaid')->with(compact('finamce'));   
+        //echo "<pre>"; print_r($finance); die;
+        return view('assesment.financialaid')->with(compact('finance'));   
     }
 
-    public function waiver(Request $request,$student_id= null){
+    public function waiver(Request $request,$student_id= null,$program_batch_id= null){
 		 if($request->isMethod('post')){
             $data = $request->input();
             //echo "<pre>"; print_r($data); die;
+            $finalfees = $data['registration_fees'] - $data['waiver_amount'] ;
+            //echo "<pre>"; print_r($finalfees); die;
             $waiver = new Waiver;
             $waiver->student_id = $data['std_id'];
             $waiver->full_name = $data['full_name'];
-            $waiver->program_name = $data['program_name'];
-            $waiver->program_batch_code = $data['program_code'];
+            $waiver->program_batch_name = $data['program_name'];
+            $waiver->program_batch_id = $data['program_code'];
             $waiver->educational_medium = $data['medium'];
             $waiver->waiver_percentage = $data['waiver_percentage'];
             $waiver->waiver_amount = $data['waiver_amount'];
             $waiver->waiver_reason = $data['reason'];
             $waiver->save();
+           
+                // FinancialAid::where(['student_id'=>$student_id,'program_batch_id'=>$program_batch_id])->update(['update_request'=>'Done']);
+                // return redirect('/assesment/financialaid');
 
-            FinancialAid::where(['student_id'=>$student_id])->update(['update_request'=>'Done']);
-            return redirect('/assesment/financialaid');
+                // Payment::where(['student_id'=>$student_id,'program_batch_id'=>$program_batch_id])->update(['final_registration_fees'=>$finalfees]);
+                // return redirect('/assesment/financialaid');
+                FinancialAid::join('payments','payments.student_id','=','financial_aids.student_id')
+                ->where(['financial_aids.student_id'=>$student_id,'financial_aids.program_batch_id'=>$program_batch_id])->update(['update_request'=>'Done','final_registration_fees'=>$finalfees]);
+                 return redirect('/assesment/financialaid');
+          
          }  
-        $applicaent = FinancialAid::where(['student_id'=>$student_id])->first();
-        $batch_name =  $applicaent->program_batch_code;
-        $batchdetails = Program_batch::where(['batch_name'=>$batch_name])->first();
-
-         return view('assesment.update_financial_status')->with(compact('applicaent','batchdetails'));  
+        $fastudent = FinancialAid::where(['student_id'=>$student_id,'program_batch_id'=>$program_batch_id])->first();
+        $edinfo = StudentEducationalInfo::where(['student_id'=>$student_id])->first();
+        $batchdetails = Program_batch::where(['batch_id'=> $fastudent->program_batch_id])->first();
+        
+         return view('assesment.update_financial_status')->with(compact('fastudent','batchdetails','edinfo'));  
     }
 
 

@@ -34,7 +34,11 @@ class ProgramController extends Controller
     */
     public function bblt() 
     { 
+        $division = DB::table('divisions')->get();
+        $district = DB::table('districts')->get();
         
+        
+
         $date = now()->format('Y-m-d');
         $batchinfo = Program_batch::all()
                        ->where('program_id', '= ','1')
@@ -43,7 +47,7 @@ class ProgramController extends Controller
         $application_start_date = $batchinfo->start_date;
         //echo "<pre>"; print_r($application_last_date); die;
         if($date <= $application_last_date && $date >= $application_start_date){
-            return view('program.bblt')->with(compact('batchinfo'));
+            return view('program.bblt')->with(compact('batchinfo','division','district'));
         }else{
             return view('program.blank');
         }
@@ -82,8 +86,7 @@ class ProgramController extends Controller
             $info = new StudentPersonalInfo;
             $info->student_id = $student_id;
             $info->full_name = $data['full-name'];
-            $info->program_name =$programname; 
-            $info->program_batch_id = $program_batch_id;
+        
             if(empty($data['gender'])){ 
                 $gender =' ';
             }else{
@@ -232,7 +235,7 @@ class ProgramController extends Controller
             $assesment->save();
             $student_batch->save();
 
-            return redirect('/program/bblt');
+            return redirect('/program/thank');
             
         }
       
@@ -243,6 +246,8 @@ class ProgramController extends Controller
     */
     public function bbltj()
     {  
+        $division = DB::table('divisions')->get();
+        $district = DB::table('districts')->get();
         $date = now()->format('Y-m-d');
         $batchinfo = Program_batch::all()
                        ->where('program_id', '= ','2')
@@ -250,7 +255,7 @@ class ProgramController extends Controller
         $application_last_date = $batchinfo->end_date;
         $application_start_date = $batchinfo->start_date;
         if($date <= $application_last_date && $date >= $application_start_date){
-            return view('program.bbltj')->with(compact('batchinfo'));
+            return view('program.bbltj')->with(compact('batchinfo','division','district'));
         }else{
             return view('program.blank');
         }
@@ -301,8 +306,6 @@ class ProgramController extends Controller
             }
             $info->student_id = $student_id;
             $info->full_name = $data['full-name'];
-            $info->program_name =$programname; 
-            $info->program_batch_id = $program_batch_id;
             $info->gender = $gender;
             $info->dob = $data['date-of-birth']; 
             $info->nationality = $data['nationality']; 
@@ -423,7 +426,7 @@ class ProgramController extends Controller
             $assesment->save();
             $student_batch->save();
 
-            return redirect('/program/bbltj'); 
+            return redirect('/program/thank'); 
         }
     }
     /*  application process of APL program
@@ -432,6 +435,8 @@ class ProgramController extends Controller
     */
     public function apl()
     {  
+        $division = DB::table('divisions')->get();
+        $district = DB::table('districts')->get();
         $date = now()->format('Y-m-d');
         $batchinfo = Program_batch::all()
                        ->where('program_id', '= ','3')
@@ -439,7 +444,7 @@ class ProgramController extends Controller
         $application_last_date = $batchinfo->end_date;
         $application_start_date = $batchinfo->start_date;
         if($date <= $application_last_date && $date >= $application_start_date){
-            return view('program.apl')->with(compact('batchinfo'));
+            return view('program.apl')->with(compact('batchinfo','district','division'));
         }else{
             return view('program.blank');
         }
@@ -487,8 +492,6 @@ class ProgramController extends Controller
             }
             $info->full_name = $data['full-name'];
             $info->student_id = $student_id;
-            $info->program_name =$programname; 
-            $info->program_batch_id = $program_batch_id;
             $info->gender = $gender;
             $info->dob = $data['date-of-birth']; 
             $info->nationality = $data['nationality']; 
@@ -615,7 +618,7 @@ class ProgramController extends Controller
             $assesment->save();
             $student_batch->save();
 
-            return redirect('/program/apl'); 
+            return redirect('/program/thank'); 
         }
     }
     /*  application process of YLS program
@@ -624,6 +627,8 @@ class ProgramController extends Controller
     */
     public function yls()
     {  
+        $division = DB::table('divisions')->get();
+        $district = DB::table('districts')->get();
         $date = now()->format('Y-m-d');
         $batchinfo = Program_batch::all()
                        ->where('program_id', '= ','4')
@@ -631,7 +636,7 @@ class ProgramController extends Controller
         $application_last_date = $batchinfo->end_date;
         $application_start_date = $batchinfo->start_date;
         if($date <= $application_last_date && $date >= $application_start_date){
-            return view('program.yls')->with(compact('batchinfo'));
+            return view('program.yls')->with(compact('batchinfo','district','division'));
         }else{
             return view('program.blank');
         }   
@@ -677,8 +682,7 @@ class ProgramController extends Controller
                 $disability = $data['disability'];
             }
             $info->full_name = $data['full-name'];
-            $info->program_name =$programname; 
-            $info->program_batch_id = $program_batch_id;
+          
             $info->gender = $gender;
             $info->dob = $data['date-of-birth']; 
             $info->nationality = $data['nationality']; 
@@ -801,13 +805,15 @@ class ProgramController extends Controller
             $assesment->save();
             $student_batch->save();
 
-            return redirect('/program/yls'); 
+            return redirect('/program/thank'); 
         }
     }
 
 
     public function careerx()
     {  
+        $division = DB::table('divisions')->get();
+        $district = DB::table('districts')->get();
         $date = now()->format('Y-m-d');
         $batchinfo = Program_batch::all()
                        ->where('program_id', '= ','5')
@@ -815,7 +821,7 @@ class ProgramController extends Controller
         $application_last_date = $batchinfo->end_date;
         $application_start_date = $batchinfo->start_date;
         if($date <= $application_last_date && $date >= $application_start_date){
-            return view('program.careerx')->with(compact('batchinfo'));
+            return view('program.careerx')->with(compact('batchinfo','division','district'));
         }else{
             return view('program.blank');
         }
@@ -863,8 +869,6 @@ class ProgramController extends Controller
                 $disability = $data['disability'];
             }
             $info->full_name = $data['full-name'];
-            $info->program_name =$programname; 
-            $info->program_batch_id = $program_batch_id;
             $info->gender = $gender;
             $info->dob = $data['date-of-birth']; 
             $info->nationality = $data['nationality']; 
@@ -1017,7 +1021,7 @@ class ProgramController extends Controller
             $assesment->save();
             $student_batch->save();
 
-            return redirect('/program/careerx'); 
+            return redirect('/program/thank'); 
         }
     }
 

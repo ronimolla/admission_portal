@@ -16,31 +16,26 @@
                             <div class="form-row">
                                 <div class="col-md-6 mb-3">
                                     <label for="validationServer03">Student ID</label>
-                                    <input type="text" class="form-control" id="validationServer03" name="std_id" value="{{$applicaent->student_id}}" readonly>  
+                                    <input type="text" class="form-control" id="validationServer03" name="std_id" value="{{$fastudent->student_id}}" readonly>  
                                 </div>
                                 <div class="col-md-6 mb-3">
                                     <label for="validationServer04">Student Full Name</label>
-                                    <input type="text" class="form-control" id="validationServer04" name="full_name" value="{{$applicaent->full_name}}" readonly>         
+                                    <input type="text" class="form-control" id="validationServer04" name="full_name" value="{{$fastudent->full_name}}" readonly>         
                                 </div>     
                             </div>
 
                             <div class="form-row">
                                 <div class="col-md-4 mb-3">
-                                    <label for="validationServer03">Program Name</label>
-                                    <input type="text" class="form-control" id="validationServer03" name="program_name" value="{{$applicaent->program_name}}" readonly>
+                                    <label for="validationServer03">Batch Name</label>
+                                    <input type="text" class="form-control" id="validationServer03" name="program_name" value="{{$batchdetails->batch_name}}" readonly>
                                 </div>
                                 <div class="col-md-4 mb-3">
-                                    <label for="validationServer04">Program Code</label>
-                                    <input type="text" class="form-control" id="validationServer04"  name="program_code" value="{{$applicaent->program_batch_code}}"  readonly>
+                                    <label for="validationServer04">Batch Code</label>
+                                    <input type="text" class="form-control" id="validationServer04"  name="program_code" value="{{$batchdetails->batch_id}}"  readonly>
                                 </div>
                                 <div class="col-md-4 mb-3">
                                     <label for="validationServer03">Educational Medium</label>
-                                    <select class="form-control" id="medium" name="medium">
-                                        <option value="Bengali Version">Bengali Version</option>
-                                        <option value="English Version">English Version</option>
-                                        <option value="English Medium">English Medium</option>
-                                        <option value="Madrassa">Madrassa</option>
-                                    </select>
+                                    <input type="text" class="form-control" id="validationServer04"  name="medium" value="{{$edinfo->educational_medium}}"  readonly>
                                 </div>     
                             </div>
 
@@ -49,7 +44,7 @@
                                 <div class="col-md-4 mb-3">
                                 
                                     <label for="validationServer03">registration fees</label>
-                                    <input type="text" class="form-control" id="waiver_percentage" name="registration_fees" value ="{{$batchdetails->registration_fees}}" readonly>
+                                    <input type="text" class="form-control" id="waiver_percentage" name="registration_fees" value="{{$batchdetails->registration_fees}}"   readonly>
                                 
                                 </div>
                                 <div class="col-md-4 mb-3">

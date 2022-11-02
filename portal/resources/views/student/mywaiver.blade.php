@@ -1,5 +1,5 @@
 
-@extends('layouts.adminLayout.admin_design')
+@extends('layouts.StudentLayout.student_design')
 @section('content')
 <div class="content-wrapper">
   	<div class="content">
@@ -37,33 +37,25 @@
 										<th>Student ID</th>
 										<th>Full Name</th>
 										<th>Program_batch Name</th>
-										<th>Program Batch ID</th>
-										<th>Gender</th>
-										<th>Email</th>
-										<th>Present Destrict</th>
-                                        <th>Present Devision</th>
-										<th>Edit</th>
-										<th>view</th>			
+										<th>Registration fees</th>
+										<th>Waiver Percentage</th>
+										<th>Waiver Amount</th>
+										<th>final Registration fees</th>
+                                			
 									</tr>
 								</thead>
 
 								<tbody>
-                                    @foreach($finance as $std)
+                                    @foreach($mywaiverdetails as $waiver)
 									<tr>
-										<td>{{$std->student_id}}</td>
-										<td>{{$std->full_name}}</td>
-                                        <td>{{$std->batch_name}}</td>
-										<td>{{$std->program_batch_id}}</td>
-                                        <td>{{$std->gender}}</td>
-										<td>{{$std->email_address}}</td>
-                                        <td>{{$std->present_district}}</td>
-										<td>{{$std->present_division}}</td>
-										<td>
-											<a href="{{ url('financialaid-status/'.$std->student_id.'/'.$std->program_batch_id)}}" class="btn btn-primary">Update_Result</a>
-										</td>	
-                                        <td>
-											<a href="{{ url('view-profile/'.$std->student_id)}}" class="btn btn-primary">view Profile</a>
-										</td>	
+										<td>{{$waiver->student_id}}</td>
+										<td>{{$waiver->full_name}}</td>
+                                        <td>{{$waiver->program_batch_name}}</td>
+										<td>{{$waiver->registration_fees}}</td>
+										<td>{{$waiver->waiver_percentage}}</td>
+                                        <td>{{$waiver->waiver_amount}}</td>
+                                        <td>{{$waiver->registration_fees - $waiver->waiver_amount }}</td>
+												
 									</tr>
 									@endforeach
 								</tbody>

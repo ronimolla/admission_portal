@@ -13,15 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('waivers', function (Blueprint $table) {
-            $table->string('student_id');
+        Schema::create('payments', function (Blueprint $table) {
+            $table->id();
+            $table->string('student_id')->nullable();
             $table->string('full_name')->nullable();
             $table->string('program_batch_name')->nullable();
-            $table->string('program_batch_id')->nullable();
-            $table->string('educational_medium')->nullable();
-            $table->string('waiver_percentage')->nullable();
-            $table->integer('waiver_amount')->nullable();
-            $table->string('waiver_reason')->nullable();
+            $table->string('program_batch_id');
+            $table->integer('registration_fees')->nullable();;
+            $table->string('final_registration_fees')->nullable();
+
             $table->timestamps();
         });
     }
@@ -33,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('waivers');
+        Schema::dropIfExists('payments');
     }
 };

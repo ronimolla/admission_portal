@@ -68,7 +68,7 @@ Route::group(['middleware' =>['adminlogin']],function(){
 
    
     Route::get('/assesment/financialaid', [AssesmentController::class, 'financialaid']);
-    Route:: match(['get','post'],'/financialaid-status/{student_id}',[AssesmentController::class, 'waiver']);
+    Route:: match(['get','post'],'/financialaid-status/{student_id}/{program_batch_id}',[AssesmentController::class, 'waiver']);
 
     //Settings for User controll
     Route::get('/admin/setings', [SettingController::class, 'settings']);
@@ -174,9 +174,16 @@ Route::group(['middleware' =>['adminlogin']],function(){
     Route::get('/student/program/careerx', [StudentProgramController::class, 'careerx']);
     Route::match(['get', 'post'], '/student/careerx/store',[StudentProgramController::class, 'careerxstore']);
 
-    route:: match(['get','post'],'/financialaid-form',[AssesmentController::class, 'financialaid_form']);
+    //FinancialAid form submission process
+    route:: match(['get','post'],'/financialaid-form',[UserController::class, 'financialaid_form']);
+    
+    //get the all program from for submission
     Route::get('/student/program', [UserController::class, 'program']);
+
+    //get all events form for submission
     Route::get('/student/event', [UserController::class, 'event']);
+
+    //show my waiver amount
     Route::get('/student/mywaiver', [UserController::class, 'mywaiver']);
     
 

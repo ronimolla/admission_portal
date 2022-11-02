@@ -28,6 +28,8 @@ class StudentProgramController extends Controller
     //
     public function bblt() 
     { 
+        $division = DB::table('divisions')->get();
+        $district = DB::table('districts')->get();
         $studentDetails = StudentContactInfo::where(['email_address'=>Session::get('userSession')])->first();
         $studentid = $studentDetails->student_id;
         // echo print_r($studentid); die;
@@ -47,7 +49,7 @@ class StudentProgramController extends Controller
         $application_start_date = $batchinfo->start_date;
         //echo "<pre>"; print_r($application_last_date); die;
         if($date <= $application_last_date && $date >= $application_start_date){
-            return view('student.program_application_form.bblt')->with(compact('batchinfo','student'));
+            return view('student.program_application_form.bblt')->with(compact('batchinfo','student','division','district'));
         }else{
             return view('student.program_application_form.blank');
         }
@@ -124,6 +126,8 @@ class StudentProgramController extends Controller
 
     public function bbltj()
     {  
+        $division = DB::table('divisions')->get();
+        $district = DB::table('districts')->get();
         $studentDetails = StudentContactInfo::where(['email_address'=>Session::get('userSession')])->first();
         $studentid = $studentDetails->student_id;
         // echo print_r($studentid); die;
@@ -141,7 +145,7 @@ class StudentProgramController extends Controller
         $application_last_date = $batchinfo->end_date;
         $application_start_date = $batchinfo->start_date;
         if($date <= $application_last_date && $date >= $application_start_date){
-            return view('student.program_application_form.bbltj')->with(compact('batchinfo','student'));
+            return view('student.program_application_form.bbltj')->with(compact('batchinfo','student','division','district'));
         }else{
             return view('program.blank');
         }
@@ -221,6 +225,8 @@ class StudentProgramController extends Controller
 
     public function apl()
     {  
+        $division = DB::table('divisions')->get();
+        $district = DB::table('districts')->get();
         $studentDetails = StudentContactInfo::where(['email_address'=>Session::get('userSession')])->first();
         $studentid = $studentDetails->student_id;
         // echo print_r($studentid); die;
@@ -238,7 +244,7 @@ class StudentProgramController extends Controller
         $application_last_date = $batchinfo->end_date;
         $application_start_date = $batchinfo->start_date;
         if($date <= $application_last_date && $date >= $application_start_date){
-            return view('student.program_application_form..apl')->with(compact('batchinfo','student'));
+            return view('student.program_application_form..apl')->with(compact('batchinfo','student','division','district'));
         }else{
             return view('student.program_application_form..blank');
         }
@@ -321,6 +327,8 @@ class StudentProgramController extends Controller
 
     public function careerx()
     {  
+        $division = DB::table('divisions')->get();
+        $district = DB::table('districts')->get();
         $studentDetails = StudentContactInfo::where(['email_address'=>Session::get('userSession')])->first();
         $studentid = $studentDetails->student_id;
         // echo print_r($studentid); die;
@@ -338,7 +346,7 @@ class StudentProgramController extends Controller
         $application_last_date = $batchinfo->end_date;
         $application_start_date = $batchinfo->start_date;
         if($date <= $application_last_date && $date >= $application_start_date){
-            return view('student.program_application_form.careerx')->with(compact('batchinfo','student'));
+            return view('student.program_application_form.careerx')->with(compact('batchinfo','student','division','district'));
         }else{
             return view('student.program_application_form.blank');
         }
