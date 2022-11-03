@@ -34,9 +34,8 @@
                     <label for="exampleFormControlInput1">Donor</label>
                     <input type="text" class="form-control" id="exampleFormControlInput1" name="donor" placeholder="Donor name">
                 </div>
-                <div class="form-footer pt-4 pt-5 mt-4 border-top">
-                    <button type="submit" class="btn btn-primary btn-default">Create</button>
-                    <button type="submit" class="btn btn-secondary btn-default">Cancel</button>
+                <div class="form-footer pt-4 pt-4 mt-4 border-top">
+                  <button type="submit" class="btn btn-primary btn-lg btn-block">Create</button>
                 </div>
             </form>
 

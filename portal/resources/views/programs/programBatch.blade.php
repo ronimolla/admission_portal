@@ -47,10 +47,17 @@
 												<thead>
 													<tr>
 														<th>SL.No.</th>
+														<th>State</th>
 														<th>Batch Name</th>
 														<th>Program</th>
 														<th>Duration</th>
-														<th>Total Students</th>									
+														<th>Total Students</th>	
+														<th>Program Start</th>
+														<th>Program End</th>
+														<th>Program Mode</th>
+														<th>Registration Fees</th>
+														<th>Action</th>
+																						
 													</tr>
 												</thead>
 												
@@ -68,12 +75,20 @@
 														@endforeach
 														<tr>
 															<td>{{$c++}}</td>
+															<td>{{$prg->current_state}}</td>
 															<td>{{$prg->batch_name}}</td>
 															<td>{{$prg->program_name}}</td>
 															<td>{{$prg->duration}}</td>
 															<td>{{$count}}</td>
+															<td>{{$prg->program_start_date}}</td>
+															<td>{{$prg->program_end_date}}</td>
+															<td>{{$prg->program_mode}}</td>
+															<td>{{$prg->registration_fees}}</td>
+															<td>
+																<a href="" class="btn btn-primary">Update</a>
+															</td>
 														</tr>
-														<?php $count=0;?>
+														<?php $count=0; ?>
 													@endforeach	
 												</tbody>
 										</table>

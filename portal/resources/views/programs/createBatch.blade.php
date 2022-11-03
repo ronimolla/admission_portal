@@ -24,26 +24,61 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="exampleFormControlInput1">Batch Name</label>
+                    <label for="exampleFormControlInput1">New Batch Name</label>
                     <input type="text" class="form-control" id="exampleFormControlInput1" name="batch_name" placeholder="BBLT5"> 
                 </div>
                 <div class="form-group">
-                    <label for="exampleFormControlInput1">registration fees</label>
-                    <input type="text" class="form-control" id="exampleFormControlInput1" name="registration_fees" placeholder ="BD5000" > 
-                </div>
-                <div class="form-row">
-                  <div class="col-md-4 mb-3">
-                    <label for="exampleFormControlInput1">Start Date</label>
-                    <input type="date" class="form-control" id="validationServer03" name="start_date" required> 
-                  </div>
-                  <div class="col-md-4 mb-3">
-                    <label for="exampleFormControlInput1">End Date</label>
-                    <input type="date" class="form-control" id="validationServer03" name="end_date" required>
+                  <div class="row d-flex justify-content-between">
+                    <div class="col-md-6 mb-2">
+                      <label for="exampleFormControlInput1">Application Start Date</label>
+                      <input type="date" class="form-control" id="validationServer03" name="application_start_date" required> 
+                    </div>
+                    <div class="col-md-6 mb-2">
+                      <label for="exampleFormControlInput1">Application End Date</label>
+                      <input type="date" class="form-control" id="validationServer03" name="application_end_date" required>
+                    </div>     
+                  </div>              
+                </div> 
+                <div class="form-group">
+                  <div class="row d-flex justify-content-between">
+                    <div class="col-md-6 mb-2">
+                      <label for="exampleFormControlInput1">Program Start Date</label>
+                      <input type="date" class="form-control" id="validationServer03" name="program_start_date" required> 
+                    </div>
+                    <div class="col-md-6 mb-2">
+                      <label for="exampleFormControlInput1">Program End Date</label>
+                      <input type="date" class="form-control" id="validationServer03" name="program_end_date" required>
+                    </div>  
                   </div>                   
                 </div> 
-                <div class="form-footer pt-4 pt-5 mt-4 border-top">
-                  <button type="submit" class="btn btn-primary btn-default">Create</button>
-                  <button type="submit" class="btn btn-secondary btn-default">Cancel</button>
+                <div class="form-group">
+                    <label for="exampleFormControlInput1">Program Duration (in months)</label>
+                    <input type="number" class="form-control" id="exampleFormControlInput1" name="program_duration" placeholder ="3" > 
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlInput1">Class Time (whatever you write will be visible in the form)</label>
+                    <input type="text" class="form-control" id="exampleFormControlInput1" name="class_time" placeholder ="Sunday through Thursday from 3:30 pm to 6:00 pm" > 
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlInput1">Mode of Program</label>
+                    <select class="form-control" name="program_mode" id="exampleFormControlSelect12">
+                      <option value="0" disabled="true" selected="true">Select Mode</option>
+                      <option value="online">Online</option>
+                      <option value="online">Offline</option>			
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlInput1">registration fees (in BDT)</label>
+                    <input type="number" class="form-control" id="exampleFormControlInput1" name="registration_fees" placeholder ="5000" > 
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlInput1">registration Deadline</label>
+                    <input type="date" class="form-control" id="exampleFormControlInput1" name="registration_deadline" > 
+                </div>
+
+
+                <div class="form-footer pt-4 pt-4 mt-4 border-top">
+                  <button type="submit" class="btn btn-primary btn-lg btn-block">Create</button>
                 </div>
             </form>
 

@@ -1418,9 +1418,15 @@ class ProgramController extends Controller
         
             $program_batch ->program_id = $data['category_program'];
             $program_batch ->batch_name = $data['batch_name'];
+            $program_batch ->program_start_date = $data['program_start_date'];
+            $program_batch ->program_end_date = $data['program_end_date'];
+            $program_batch ->application_start_date = $data['application_start_date'];
+            $program_batch ->application_end_date = $data['application_end_date'];
+            $program_batch ->program_duration = $data['program_duration'];
+            $program_batch ->program_mode = $data['program_mode'];
+            $program_batch ->class_time = $data['class_time'];
             $program_batch ->registration_fees = $data['registration_fees'];
-            $program_batch ->start_date = $data['start_date'];
-            $program_batch ->end_date = $data['end_date'];
+            $program_batch ->registration_deadline = $data['registration_deadline'];
             
             $program_batch->save();
             return redirect('/programs/programBatch');
