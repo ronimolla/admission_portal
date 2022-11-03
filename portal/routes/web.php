@@ -185,6 +185,12 @@ Route::group(['middleware' =>['adminlogin']],function(){
 
     //show my waiver amount
     Route::get('/student/mywaiver', [UserController::class, 'mywaiver']);
-    
+
+    //my pending Payment Info
+    Route::get('/student/my-payments', [UserController::class, 'mypayment']);
+   
+    //Update my pending Payment Info
+    Route::get('/student/update-payment/details/{student_id}/{program_batch_id}', [UserController::class, 'updatemypayment']);
 
 });
+ 

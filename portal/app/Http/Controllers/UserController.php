@@ -11,19 +11,23 @@ use App\Models\User;
 use App\Models\Interview;
 use App\Models\Waiver;
 use App\Models\Program_batch;
+use App\Models\Payment;
 use App\Models\Assesment;
 use App\Models\FinancialAid;
 class UserController extends Controller
 {
-    //
-
+    
+    /*------------view  login page where from
+     student can login for the portal----------*/
     public function stdlog()
     {
-       
         return view('student.stdlogin');
     }
+  
+    /*------------ sent the login request for
+     student dashboard ----------*/
     public function loginrequest(Request $request){
-        
+      
         if($request->isMethod('post')){
             $data = $request->input();
             $user = DB::table('users')->where(['email'=> $data['email'],'password' => $data['password']])->count(); 
@@ -39,6 +43,8 @@ class UserController extends Controller
         	}
         }    
     }
+    /*------------ First look for the 
+    student dashboard----------*/
     public function stddashboard()
     {
         $studentDetails = User::where(['email'=>Session::get('userSession')])->first();
@@ -47,24 +53,29 @@ class UserController extends Controller
         $preselcetion = Assesment::where(['student_id'=>$student_id])->get();
         return view('student.st_dashboard')->with(compact('studentDetails','preselcetion')); 
     }
-
+    /*------------ sent the logout request 
+    for student dashboard ----------*/
     public function logout(){
 		Session::flush();
 		return redirect('/student/login')->with('flash_message_error','Logout Successfully');
 	}
+    /*------------ show all program form
+     for the student ----------*/
     public function program()
     {
        
         return view('student.program');
     }
-
+    /*------------ show all event form 
+    for the student ----------*/
     public function event()
     {
        
         return view('student.event');
     }
 
-
+    /*------------ show the financial form and sent 
+    the request for financial application----------*/
     public function financialaid_form(Request $request){
         
 		if($request->isMethod('post')){
@@ -152,9 +163,8 @@ class UserController extends Controller
         
          return view('assesment.financialaid_form')->with(compact('studentinfo','batchinfo')); 
     }
-
-
-
+    /*------------ Display the waiver request result 
+    that was responce by the admintion team----------*/
     public function mywaiver()
     {
         $studentDetails = User::where(['email'=>Session::get('userSession')])->first();
@@ -166,5 +176,38 @@ class UserController extends Controller
        // echo "<pre>"; print_r($mywaiverdetails); die;
         return view('student.mywaiver')->with(compact('mywaiverdetails')); 
     }
+    /*------------ Show me the all program registration details those program
+     i applied and selected for registeration ----------*/
+    public function mypayment()
+    {
+        $studentDetails = User::where(['email'=>Session::get('userSession')])->first();
+        $student_id = $studentDetails->student_id;
+        $mywaiver = Waiver::where(['student_id'=> $student_id])->get();
+       $mywaiverdetails = DB::table('payments')
+       ->join('program_batches', 'payments.program_batch_id', '=', 'program_batches.batch_id')
+       ->where(['student_id'=> $student_id,['payment_status','=','pending']])->get();
+      // echo "<pre>"; print_r($mywaiverdetails); die;
+        return view('student.payment')->with(compact('mywaiverdetails')); 
+    }
+    /*------------ Update the payment details what 
+    was i paide for the program ----------*/
+    public function updatemypayment(Request $request,$student_id= null,$program_batch_id= null){
+       
+        if($request->isMethod('post')){
+           $data = $request->input();
+         
+         
+        }  
+       //$fastudent = FinancialAid::where(['student_id'=>$student_id,'program_batch_id'=>$program_batch_id])->first();
+       //$edinfo = StudentEducationalInfo::where(['student_id'=>$student_id])->first();
+      // $batchdetails = Program_batch::where(['batch_id'=> $fastudent->program_batch_id])->first();
+      $paymentdetails = Payment::where(['student_id'=>$student_id,'program_batch_id'=>$program_batch_id])->first();
+      echo "<pre>"; print_r($paymentdetails); die;
+        return view('assesment.update_financial_status');  
+   }
+
+
+
+
 
 }

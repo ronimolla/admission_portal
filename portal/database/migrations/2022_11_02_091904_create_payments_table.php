@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('program_batch_id');
             $table->integer('registration_fees')->nullable();;
             $table->string('final_registration_fees')->nullable();
+            $table->string('payment_status')->default('pending');
 
             $table->timestamps();
         });

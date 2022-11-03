@@ -78,7 +78,7 @@
                 </li>
 
                 <li class="">
-                    <a class="sidenav-item-link" href="#">
+                    <a class="sidenav-item-link" href="{{url('/student/my-payments')}}">
                         <i class="mdi mdi-book-open"></i>
                         <span class="nav-text">Update Payment Info</span> 
                     </a>
