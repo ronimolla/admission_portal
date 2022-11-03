@@ -50,7 +50,7 @@ class AssesmentController extends Controller
     Complite done Don't change the database and migration file
     ---------
     */
-    public function update(Request $request,$student_id= null,$program_batch_id= null){	
+    public function update(Request $request,$student_id= null,$program_batch_code= null){	
        //echo $program_batch_id ; die;
         $studentcontactinfo = StudentContactInfo::where(['student_id'=>$student_id])->first();
         $email_address = $studentcontactinfo ->email_address;
@@ -74,8 +74,8 @@ class AssesmentController extends Controller
                 $student->save(); 
             }
             $totall = $data['articulation'] + $data['logical_reasoning'] + $data['authemticity'] ;
-            
-            Assesment::where(['student_id'=>$student_id,'program_batch_id'=>$program_batch_id])->update(['pre_assessor'=>$data['assessor_name'],'pre_authenticity'=>$data['authemticity'],
+           
+            Assesment::where(['student_id'=>$student_id,'program_batch_id'=>$program_batch_code])->update(['pre_assessor'=>$data['assessor_name'],'pre_authenticity'=>$data['authemticity'],
                 'pre_articulation'=>$data['articulation'],'pre_logical_reasoning'=>$data['logical_reasoning'],'pre_subtotal'=>$totall,
                 'select_for_writing_test'=>$data['writting_eligibility'],'preselection_stage'=>'Done']);
             
@@ -85,8 +85,8 @@ class AssesmentController extends Controller
        // $studentinfo = StudentPersonalInfo::where(['student_id'=>$student_id])->first();
 
         $studentinfo = DB::table('student_personal_infos')->where('student_personal_infos.student_id','=',$student_id)->first();
-        $assinfo = Assesment::where(['student_id'=>$student_id],['program_batch_id'=>$program_batch_id])->first();
-
+        $assinfo = Assesment::where(['student_id'=>$student_id,'program_batch_id'=>$program_batch_code])->first();
+        //echo "<pre>"; print_r($assinfo) ; die;
 
         return view('assesment.edit_preselection')->with(compact('studentinfo','assinfo'));  
     }
@@ -108,7 +108,7 @@ class AssesmentController extends Controller
         } 
 
         $studentinfo = DB::table('student_personal_infos')->where('student_personal_infos.student_id','=',$student_id)->first();
-        $assinfo = Assesment::where(['student_id'=>$student_id],['program_batch_id'=>$program_batch_id])->first();
+        $assinfo = Assesment::where(['student_id'=>$student_id,'program_batch_id'=>$program_batch_id])->first();
 
          return view('assesment.preselection_follow_up')->with(compact('studentinfo','assinfo'));  
     }
@@ -157,7 +157,7 @@ class AssesmentController extends Controller
             return redirect('/assesment/writing'); 
         }  
         $studentinfo = StudentPersonalInfo::where(['student_id'=>$student_id])->first();
-        $assinfo = Assesment::where(['student_id'=>$student_id],['program_batch_id'=>$program_batch_id])->first();
+        $assinfo = Assesment::where(['student_id'=>$student_id,'program_batch_id'=>$program_batch_id])->first();
 
         return view('assesment.edit_test_result')->with(compact('studentinfo','assinfo'));   
     }
@@ -176,7 +176,7 @@ class AssesmentController extends Controller
             return redirect('/assesment/writing');
         }  
         $studentinfo = DB::table('student_personal_infos')->where('student_personal_infos.student_id','=',$student_id)->first();
-        $assinfo = Assesment::where(['student_id'=>$student_id],['program_batch_id'=>$program_batch_id])->first();
+        $assinfo = Assesment::where(['student_id'=>$student_id,'program_batch_id'=>$program_batch_id])->first();
          return view('assesment.writing_follow_up')->with(compact('studentinfo','assinfo'));  
     }
     /*-----------
@@ -224,7 +224,7 @@ class AssesmentController extends Controller
             return redirect('/assesment/interview'); 
         }  
         $studentinfo = StudentPersonalInfo::where(['student_id'=>$student_id])->first();
-        $assinfo = Assesment::where(['student_id'=>$student_id],['program_batch_id'=>$program_batch_id])->first();
+        $assinfo = Assesment::where(['student_id'=>$student_id,'program_batch_id'=>$program_batch_id])->first();
         return view('assesment.edit_interview_result')->with(compact('studentinfo','assinfo'));   
     }
     /*---------
@@ -234,7 +234,7 @@ class AssesmentController extends Controller
     */
     public function interview_follow_up(Request $request,$student_id= null,$program_batch_id= null){
         $info = Assesment::join('program_batches','assesments.program_batch_id', '=', 'program_batches.batch_id')
-        ->where(['student_id'=>$student_id],['program_batch_id'=>$program_batch_id])->first();
+        ->where(['student_id'=>$student_id,'program_batch_id'=>$program_batch_id])->first();
         
 		if($request->isMethod('post')){
             $data = $request->input();
@@ -255,7 +255,7 @@ class AssesmentController extends Controller
             return redirect('/assesment/interview');
         }  
         $studentinfo = DB::table('student_personal_infos')->where('student_personal_infos.student_id','=',$student_id)->first();
-        $assinfo = Assesment::where(['student_id'=>$student_id],['program_batch_id'=>$program_batch_id])->first();
+        $assinfo = Assesment::where(['student_id'=>$student_id,'program_batch_id'=>$program_batch_id])->first();
          return view('assesment.interview_follow_up')->with(compact('studentinfo','assinfo'));  
     }
 
@@ -278,10 +278,9 @@ class AssesmentController extends Controller
 
     public function waiver(Request $request,$student_id= null,$program_batch_id= null){
 		 if($request->isMethod('post')){
+
             $data = $request->input();
-            //echo "<pre>"; print_r($data); die;
             $finalfees = $data['registration_fees'] - $data['waiver_amount'] ;
-            //echo "<pre>"; print_r($finalfees); die;
             $waiver = new Waiver;
             $waiver->student_id = $data['std_id'];
             $waiver->full_name = $data['full_name'];
@@ -293,14 +292,9 @@ class AssesmentController extends Controller
             $waiver->waiver_reason = $data['reason'];
             $waiver->save();
            
-                // FinancialAid::where(['student_id'=>$student_id,'program_batch_id'=>$program_batch_id])->update(['update_request'=>'Done']);
-                // return redirect('/assesment/financialaid');
-
-                // Payment::where(['student_id'=>$student_id,'program_batch_id'=>$program_batch_id])->update(['final_registration_fees'=>$finalfees]);
-                // return redirect('/assesment/financialaid');
-                FinancialAid::join('payments','payments.student_id','=','financial_aids.student_id')
-                ->where(['financial_aids.student_id'=>$student_id,'financial_aids.program_batch_id'=>$program_batch_id])->update(['update_request'=>'Done','final_registration_fees'=>$finalfees]);
-                 return redirect('/assesment/financialaid');
+            FinancialAid::join('payments','payments.student_id','=','financial_aids.student_id')
+            ->where(['financial_aids.student_id'=>$student_id,'financial_aids.program_batch_id'=>$program_batch_id])->update(['update_request'=>'Done','final_registration_fees'=>$finalfees]);
+            return redirect('/assesment/financialaid');
           
          }  
         $fastudent = FinancialAid::where(['student_id'=>$student_id,'program_batch_id'=>$program_batch_id])->first();
