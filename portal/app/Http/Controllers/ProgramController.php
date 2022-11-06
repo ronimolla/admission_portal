@@ -27,6 +27,13 @@ use Session;
 
 class ProgramController extends Controller
 {
+    public function thankyou() 
+    { 
+        
+            return view('program.thank');
+        }
+   
+
     /*  
         application process of BBLT program
         show the form for the student
@@ -235,7 +242,7 @@ class ProgramController extends Controller
             $assesment->save();
             $student_batch->save();
 
-            return redirect('/program/thank');
+            return view('program.thank');
             
         }
       

@@ -73,7 +73,7 @@
         <!-- <div class="d-flex justify-content-center"> -->
             <div class="container">
                 <center>
-                <h3 style="color:green;">Hi, User ! Welcome To Admission Portal</h3><br><br><br> 
+                <h3 style="color:green;">Hi, {{Session::get('AdminName')}} ! Welcome To Admission Portal</h3><br><br><br> 
                 
                 <div class="row">
                     <div class="col">

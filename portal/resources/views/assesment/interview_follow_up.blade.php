@@ -51,7 +51,7 @@
                                 </div>
                                 <div class="col-md-4 mb-3">
                                     <label for="validationServer03">Assessor Name</label>
-                                    <input type="text" class="form-control" id="validationServer03" name="assessor_name">
+                                    <input type="text" class="form-control" id="validationServer03" name="assessor_name" value= "{{Session::get('AdminName')}}" readonly>
                                 </div>
                                 <div class="col-md-4 mb-3">
                                     <label for="validationServer04">Contact Media</label>

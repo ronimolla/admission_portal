@@ -50,7 +50,7 @@
                                     <span class="nav-text">Program</span> <b class="caret"></b>
                                 </a>
 
-                                <ul class="{{ request()->is('assesment/preselection') || request()->is('assesment/writing')|| request()->is('assesment/interview') || request()->is('assesment/financialaid') ? '' : 'collapse' }} " id="buttons">
+                                <ul class="{{ request()->is('assesment/preselection') || request()->is('assesment/writing')|| request()->is('assesment/interview') || request()->is('assesment/financialaid')|| request()->is('assesment/payment')  ? '' : 'collapse' }} " id="buttons">
                                     <div class="sub-menu">
                                         <li class="{{ request()->is('assesment/preselection') ? 'active' : '' }}">
                                              <a href="{{url('/assesment/preselection')}}">Pre Selection</a>
@@ -64,7 +64,10 @@
                                             <a href="{{url('/assesment/interview')}}">Interview</a>
                                         </li>
                                         <li class="{{ request()->is('assesment/financialaid') ? 'active' : '' }}">
-                                            <a href="{{url('/assesment/financialaid')}}">Financial Aid</a>
+                                            <a href="{{url('/assesment/financialaid')}}">Waiver Request</a>
+                                        </li>
+                                        <li class="{{ request()->is('assesment/payment') ? 'active' : '' }}">
+                                            <a href="{{url('/assesment/payment')}}">Registration Request</a>
                                         </li>
                                     </div>
                                 </ul>
