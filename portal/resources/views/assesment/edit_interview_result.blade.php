@@ -38,7 +38,7 @@
                             <div class="form-row">
                                 <div class="col-md-4 mb-3">
                                     <label for="validationServer03">Interviewer</label>
-                                    <input type="text" class="form-control" id="interviewer" name="interviewer" required>
+                                    <input type="text" class="form-control" id="interviewer" name="interviewer" value= "{{Session::get('AdminName')}}" >
                                 </div>
                                 <div class="col-md-4 mb-3">
                                     <label for="validationServer03">Attend interview</label>

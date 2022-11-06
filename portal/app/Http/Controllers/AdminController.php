@@ -33,7 +33,11 @@ class AdminController extends Controller
             $user = DB::table('admins')->where(['email'=> $data['email'],'password' => $data['password']])->count(); 
             if($user > 0){
                 //echo "Success"; die;
+                $user = DB::table('admins')->where(['email'=> $data['email']])->first(); 
+                $user_name = $user->first_name.' '.$user->last_name; 
+                //echo "<pre>"; print_r($user_name); die;
                 Session::put('adminSession', $data['email']);
+                Session::put('AdminName', $user_name);
                 
                 return redirect('/over-view');
         	}else{
