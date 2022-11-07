@@ -106,13 +106,14 @@
                         <span class="nav-text">Student management</span> 
                     </a>
                 </li>
+
+
                 <li class="has-sub {{ request()->is('programs/programBatch') || request()->is('programs/programsView') ? 'active' : '' }} ">
                   <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#icons"
                     aria-expanded="false" aria-controls="icons">
                     <i class="mdi mdi-diamond-stone"></i>
                     <span class="nav-text">Programs</span> <b class="caret"></b>
                   </a>
-
                   <ul class="{{ request()->is('programs/programBatch') || request()->is('programs/programsView') ? '' : 'collapse' }} " id="icons" data-parent="#sidebar-menu">
                     <div class="sub-menu">
                       <li class="{{ request()->is('programs/programsView') ? 'active' : '' }}">
@@ -120,7 +121,6 @@
                           <span class="nav-text">Program</span>
                         </a>
                       </li>
-
                       <li class="{{ request()->is('programs/programBatch') ? 'active' : '' }}">
                         <a class="sidenav-item-link" href="{{url('programs/programBatch')}}">
                           <span class="nav-text">Program-Batch</span>
@@ -151,53 +151,32 @@
                     </div>
                   </ul>
                 </li>
-                
 
-                <!-- <li class="has-sub {{ request()->is('programs/programBatch') || request()->is('programs/programsView') ? 'active' : '' }} ">
+
+                <li class="has-sub {{ request()->is('old_data/programs') || request()->is('old_data/events') ? 'active' : '' }} ">
                   <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#icons"
                     aria-expanded="false" aria-controls="icons">
                     <i class="mdi mdi-diamond-stone"></i>
-                    <span class="nav-text">Programs</span> <b class="caret"></b>
+                    <span class="nav-text">Old Student Data</span> <b class="caret"></b>
                   </a>
 
-                  <ul class="{{ request()->is('programs/programBatch') || request()->is('programs/programsView') ? '' : 'collapse' }} " id="icons" data-parent="#sidebar-menu">
+                  <ul class="{{ request()->is('old_data/programs') || request()->is('old_data/events') ? '' : 'collapse' }} " id="icons" data-parent="#sidebar-menu">
                     <div class="sub-menu">
-                      <li class="{{ request()->is('programs/programsView') ? 'active' : '' }}">
-                        <a class="sidenav-item-link   " href="{{url('programs/programsView')}}">
-                          <span class="nav-text">Program</span>
+                      <li class="{{ request()->is('old_data/programs') ? 'active' : '' }}">
+                        <a class="sidenav-item-link   " href="{{url('old_data/programs')}}">
+                          <span class="nav-text">Programs Data</span>
+
                         </a>
                       </li>
-
-                      <li class="{{ request()->is('programs/programBatch') ? 'active' : '' }}">
-                        <a class="sidenav-item-link" href="{{url('programs/programBatch')}}">
-                          <span class="nav-text">Program-Batch</span>
+                      <li class="{{ request()->is('old_data/events') ? 'active' : '' }}">
+                        <a class="sidenav-item-link" href="{{url('old_data/events')}}">
+                          <span class="nav-text">Events Data</span>
                         </a>
                       </li>
                     </div>
                   </ul>
                 </li>
 
-                <li class="has-sub {{ request()->is('events/eventsView') || request()->is('events/eventBatch') ? 'active' : '' }} ">
-                  <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#event"
-                    aria-expanded="false" aria-controls="event">
-                    <i class="mdi mdi-diamond-stone"></i>
-                    <span class="nav-text">Events</span> <b class="caret"></b>
-                  </a>
-                  <ul class="{{ request()->is('events/eventsView') || request()->is('events/eventBatch') ? '' : 'collapse' }} " id="event" data-parent="#sidebar-menu">
-                    <div class="sub-menu">
-                      <li class="{{ request()->is('events/eventsView') ? 'active' : '' }}">
-                        <a class="sidenav-item-link" href="{{url('events/eventsView')}}">
-                          <span class="nav-text">Event</span>
-                        </a>
-                      </li>
-                      <li class="{{ request()->is('events/eventBatch') ? 'active' : '' }}">
-                        <a class="sidenav-item-link" href="{{url('events/eventBatch')}}">
-                          <span class="nav-text">Event-Batch</span>
-                        </a>
-                      </li>
-                    </div>
-                  </ul>
-                </li> -->
 
                 <li class="{{ request()->is('admin/setings') ? 'active' : '' }}">
                     <a class="sidenav-item-link " href="{{url('admin/setings')}}">

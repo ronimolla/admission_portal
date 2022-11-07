@@ -5,18 +5,13 @@ $(function(){
         transitionEffect: "fade",
         enableAllSteps: true,
         autoFocus: true,
-        transitionEffectSpeed: 500,
+        transitionEffectSpeed: 100,
         titleTemplate : '<div class="title">#title#</div>',
         labels: {
             previous : 'Back ',
-            next : 'Next',
-            finish : '0',
-            current : ''
+            next : 'Next'
         },
+        
     });
-    $("#date").datepicker({
-        dateFormat: "MM - DD - yy",
-        showOn: "both",
-        buttonText : '<i class="zmdi zmdi-chevron-down"></i>',
-    });
+
 });

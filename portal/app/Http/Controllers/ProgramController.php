@@ -62,24 +62,24 @@ class ProgramController extends Controller
 
     public function bbltstore(Request $request)
     {     
-        $request->validate([
-            'full-name'=>'required | max:15',
-            'email-address'=>'required | unique:student_contact_infos,email_address',
-            'same_address'=>'required ',
-            'nid'=>'required | unique:student_personal_infos,student_id'
+        // $request->validate([
+        //     'full-name'=>'required | max:15',
+        //     'email-address'=>'required | unique:student_contact_infos,email_address',
+        //     'same_address'=>'required ',
+        //     'nid'=>'required | unique:student_personal_infos,student_id'
 
 
-        ]);
+        // ]);
 
         if($request->isMethod('post')){
             $data = $request->input();
             
-            //echo "<pre>"; print_r($data); die;
+            echo "<pre>"; print_r($data); die;
             // $usersCount = StudentPersonalInfo::where('student_id ',$data['email'])->count();
-            //echo $usersCount ; die;
-            //if($usersCount>0){
+            // // echo $usersCount ; die;
+            // if($usersCount>0){
             // return redirect()->back()->with('flash_message_error','Email already exists!');
-            //}
+            // }
             $program_batch_id=$data['program_batch_id'];
             $programname=$data['program_name'];
             $student_id = $data['nid'];
@@ -1056,7 +1056,7 @@ class ProgramController extends Controller
 
         $program_batch_name= DB::table('program_batches')
             ->get();
-        //echo "<pre>"; print_r($program_name); die;
+        
         return view('students.programs_info')->with(compact('student_info','program_name','program_batch_name'));
     }
 
@@ -1115,6 +1115,7 @@ class ProgramController extends Controller
         }
 
 
+    //Get Table data program-wise when a program is selected
     public function getBatch(Request $request)
     {
         $cid=$request->post('cid');
@@ -1125,8 +1126,6 @@ class ProgramController extends Controller
         ->join('program_batches', 'program_batches.batch_id', '=', 'student_programs.program_batch_id')
         ->where('program_batches.program_id',$cid)
         ->get();
-        
-        // $dropdown='<option value="">Select Batch</option>';
         
         $table='  
             <thead>
@@ -1235,8 +1234,8 @@ class ProgramController extends Controller
     // Display table data based program-batch-name selected from dropdown
     public function downloadCSVReport(Request $request)
     {   
-        $bid=$request->post('bid');
-        // echo $bid; die;
+        $bid2=$request->post('bid2');
+        // echo "<pre>"; print_r($bid); die;
 
         header('Content-Type: text/csv; charset=utf-8');
         header('Content-Disposition: attachment; filename=Student_Batch_Information-' . date("Y-m-d-h-i-s") . '.csv ');
@@ -1245,24 +1244,25 @@ class ProgramController extends Controller
         fputcsv($output, array('SL.NO.', 'PROGRAM BATCH NAME', 'STUDENT ID', 'FULL NAME ', 'GENGER', 'DATE OF BIRTH', 'EMAIL', 'PERSONAL PHONE NO.', 'EMERGENCY CONTACT NO.', 'PRESENT ADDRESS', 'PERMANENT ADDRESS', 'FATHER NAME', 'MOTHER NAME', 'GUARDIAN PHONE NUMBER', 'ETHNICITY', 'DISABILITY', 'EDUCATIONAL MEDIUM',  'SCHOOL NAME', 'PASSING YEAR', 'RESULT', 'COLLEGE', 'DEPARTMENT', 'PASSING YEAR', 'RESULT', 'UNIVERSITY', 'DEGREE', 'PASSING YEAR', 'CGPA'));
 
         $tweets = StudentPersonalInfo :: join('student_contact_infos', 'student_contact_infos.student_id', '=', 'student_personal_infos.student_id')
-                                    ->join('student_address_infos', 'student_personal_infos.student_id', '=', 'student_address_infos.student_id')   
-                                    ->join('student_programs', 'student_programs.student_id', '=', 'student_personal_infos.student_id')
-                                    ->where('student_programs.program_batch_id',$bid)
-                                    ->get();
-        
-        $count=1;                            
+                                        ->join('student_address_infos', 'student_personal_infos.student_id', '=', 'student_address_infos.student_id')   
+                                        ->join('student_programs', 'student_programs.student_id', '=', 'student_personal_infos.student_id')
+                                        ->join('program_batches', 'program_batches.batch_id', '=', 'student_programs.program_batch_id')
+                                        //->where('student_programs.program_batch_id','1')
+                                        ->get();
+                                        //echo "<pre>"; print_r($tweets); die;
+        $c=1;                            
         if (count($tweets) > 0) {
             foreach ($tweets as $product) 
             {
-                $product_row = [
-                    $count++,
+                $product_row = 
+                [
+                    $c++,
                     $product['program_batch_name'],
                     $product['student_id'],
                     $product['full_name'],
                     $product['email_address'],
                     $product['personal_phone_no'],
-                    $product['present_district'],
-                    $product['program_batch_name'],                 
+                    $product['present_district']            
                 ];
 
                 fputcsv($output, $product_row);
@@ -1435,9 +1435,15 @@ class ProgramController extends Controller
         
             $program_batch ->program_id = $data['category_program'];
             $program_batch ->batch_name = $data['batch_name'];
+            $program_batch ->program_start_date = $data['program_start_date'];
+            $program_batch ->program_end_date = $data['program_end_date'];
+            $program_batch ->application_start_date = $data['application_start_date'];
+            $program_batch ->application_end_date = $data['application_end_date'];
+            $program_batch ->program_duration = $data['program_duration'];
+            $program_batch ->program_mode = $data['program_mode'];
+            $program_batch ->class_time = $data['class_time'];
             $program_batch ->registration_fees = $data['registration_fees'];
-            $program_batch ->start_date = $data['start_date'];
-            $program_batch ->end_date = $data['end_date'];
+            $program_batch ->registration_deadline = $data['registration_deadline'];
             
             $program_batch->save();
             return redirect('/programs/programBatch');
@@ -1659,10 +1665,63 @@ class ProgramController extends Controller
         $total_programs = DB::table('program_batches')->count();
         $total_events = DB::table('event_batches')->count();
 
-
-
         return view('/dashboard')->with(compact('total_applicants','registered_students','total_programs','total_events'));
     }
+
+    public function fetchMedium() {
+        $medium = StudentEducationalInfo::select(DB::raw('COUNT(*) as total_student, educational_medium'))
+            ->groupBy('educational_medium')
+            ->get();
+
+        foreach($medium->toArray() as $row)
+        {
+            $output[] = array(
+            'educational_medium' => $row['educational_medium'],
+            'total_student' => $row['total_student']
+            );
+        }
+        echo json_encode($output);
+    }
+
+    public function fetchEthnicity() {
+        $ethnicity = StudentPersonalInfo::select(DB::raw('COUNT(*) as total_student, ethnicity'))
+            ->groupBy('ethnicity')
+            ->get();
+
+        foreach($ethnicity->toArray() as $row)
+        {
+            $output[] = array(
+            'ethnicity' => $row['ethnicity'],
+            'total_student' => $row['total_student']
+            );
+        }
+        echo json_encode($output);
+    }
+
+    public function fetchDisability() {
+        $disability = StudentPersonalInfo::select(DB::raw('COUNT(*) as total_student, disability'))
+            ->groupBy('disability')
+            ->get();
+
+        foreach($disability->toArray() as $row)
+        {
+            $output[] = array(
+                'disability' => $row['disability'],
+                'total_student' => $row['total_student']
+            );
+        }
+        echo json_encode($output);
+    }
+
+    public function fetchDivision() {
+        // $division = StudentAddressInfo::select(DB::raw('COUNT(*) as total_student, present_division'))
+        //     ->groupBy('present_division')
+        //     ->get();
+    }
+
+    
+
+
 
 
 }

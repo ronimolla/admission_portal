@@ -123,6 +123,10 @@ Route::group(['middleware' =>['adminlogin']],function(){
 
     //Dashboard
     Route::get('/dashboard', [ProgramController::class, 'dashboard']);
+    Route::get('/fetchMedium', [ProgramController::class, 'fetchMedium']);
+    Route::get('/fetchEthnicity', [ProgramController::class, 'fetchEthnicity']);
+    Route::get('/fetchDisability', [ProgramController::class, 'fetchDisability']);
+    Route::get('/fetchDivision', [ProgramController::class, 'fetchDivision']);
    
 
 });

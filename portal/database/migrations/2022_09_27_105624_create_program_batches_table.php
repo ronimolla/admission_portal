@@ -17,9 +17,16 @@ return new class extends Migration
             $table->id('batch_id');
             $table->integer('program_id');
             $table->string('batch_name')->unique();
-            $table->date('start_date');
-            $table->date('end_date');
-            $table->integer('registration_fees')->nullable();;
+            $table->date('application_start_date')->nullable();
+            $table->date('application_end_date')->nullable();
+            $table->date('program_start_date')->nullable();
+            $table->date('program_end_date')->nullable();
+            $table->integer('program_duration')->nullable();
+            $table->string('program_mode')->nullable();
+            $table->string('class_time')->nullable();
+            $table->integer('registration_fees')->nullable();
+            $table->string('current_state')->default('running');
+            $table->date('registration_deadline')->nullable();
             $table->timestamps();
         });
     }

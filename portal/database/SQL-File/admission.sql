@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 29, 2022 at 12:24 PM
--- Server version: 10.4.24-MariaDB
--- PHP Version: 8.1.6
+-- Generation Time: Nov 03, 2022 at 11:20 AM
+-- Server version: 10.4.25-MariaDB
+-- PHP Version: 8.0.23
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -85,6 +85,119 @@ INSERT INTO `assesement_preselections` (`student_id`, `program_name`, `program_b
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `assesments`
+--
+
+CREATE TABLE `assesments` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `student_id` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `program_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `program_batch_id` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `pre_assessor` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `pre_authenticity` int(11) DEFAULT NULL,
+  `pre_articulation` int(11) DEFAULT NULL,
+  `pre_logical_reasoning` int(11) DEFAULT NULL,
+  `pre_subtotal` int(11) DEFAULT NULL,
+  `select_for_writing_test` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `preselection_stage` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'pending',
+  `pre_follow_up_assessor_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `pre_follow_up_stage` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'pending',
+  `pre_contact_media` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `want_attend_for_test` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `reason_for_not_attending_test` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `test_time` datetime DEFAULT NULL,
+  `writing_test_assessor` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `writing_test_attended` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `total_score` int(11) DEFAULT NULL,
+  `writing_and_appication_score` int(11) DEFAULT NULL,
+  `select_for_interview` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `writing_preselection_stage` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'pending',
+  `writing_follow_up_stage` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'pending',
+  `test_follow_up_assessor_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `test_contact_media` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `want_attend_for_interview` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `reason_for_not_attending_interview` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `interview_time` datetime DEFAULT NULL,
+  `interviewer` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `attend_interview` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `attend_group_discussion` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `competence` int(11) DEFAULT NULL,
+  `courage` int(11) DEFAULT NULL,
+  `compassion` int(11) DEFAULT NULL,
+  `commitment` int(11) DEFAULT NULL,
+  `total_interview_marks` int(11) DEFAULT NULL,
+  `all_totall_marks` int(11) DEFAULT NULL,
+  `select_for_registration` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `interview_preselection_stage` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'pending',
+  `interview_follow_up_stage` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'pending',
+  `interview_follow_up_assessor_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `interview_followup_contact_media` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `want_to_registration` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `request_faq` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `sent_faq` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `reason_for_not_registration` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `final_remark` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `events`
+--
+
+CREATE TABLE `events` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `event_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `category` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `events`
+--
+
+INSERT INTO `events` (`id`, `event_name`, `category`, `created_at`, `updated_at`) VALUES
+(1, 'Career Expo', 'Professional Development', NULL, NULL),
+(2, 'Alumni Iftar', 'BGN', NULL, NULL),
+(3, 'Dare to Lead', 'Leadership', NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `event_batches`
+--
+
+CREATE TABLE `event_batches` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `batch_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `event_id` int(11) DEFAULT NULL,
+  `start_date` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `end_date` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `year` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `budget` int(11) DEFAULT NULL,
+  `sponser` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `event_batches`
+--
+
+INSERT INTO `event_batches` (`id`, `batch_name`, `event_id`, `start_date`, `end_date`, `year`, `budget`, `sponser`, `created_at`, `updated_at`) VALUES
+(1, 'Alumni Iftar 2', 2, '12/12/22', '12/12/22', '2022', 10000, 'BGN', NULL, NULL),
+(2, 'Alumni Iftar 3', 2, '12/12/22', '12/12/22', '2022', 10000, 'BGN', NULL, NULL),
+(3, 'Dare to Lead 5', 3, '12/12/22', '12/12/22', '2022', 30000, 'BYLC', NULL, NULL),
+(4, 'Dare to Lead 6', 3, '12/12/22', '12/12/22', '2022', 30000, 'BYLC', NULL, NULL),
+(5, 'Career Expo 4', 1, '12/12/22', '12/12/22', '2022', 50000, 'BYLC', NULL, NULL),
+(6, 'Career Expo 5', 1, '12/12/22', '12/12/22', '2022', 50000, 'BYLC', NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `failed_jobs`
 --
 
@@ -109,10 +222,12 @@ CREATE TABLE `financial_aids` (
   `program_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `program_batch_id` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `student_id` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `full_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `email` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `contact_number` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `bgn_member_id` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `family_members` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `earning_person_number` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `earning_person_father` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `father_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `father_contact_number` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -126,14 +241,19 @@ CREATE TABLE `financial_aids` (
   `mother_organization_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `mother_monthly_income` int(11) DEFAULT NULL,
   `earning_person_other` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `other_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `relation` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `other_contact_number` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `other_occupation` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `other_organization_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `other_monthly_income` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `income_from_asset` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `tuition_fees` int(11) DEFAULT NULL,
-  `booking&supplies` int(11) DEFAULT NULL,
+  `booking_supplies` int(11) DEFAULT NULL,
   `living_expenses` int(11) DEFAULT NULL,
   `total_educational_expense` int(11) DEFAULT NULL,
+  `personal_expenses` int(11) DEFAULT NULL,
+  `transportation_expenses` int(11) DEFAULT NULL,
   `parent_contribution` int(11) DEFAULT NULL,
   `own_contribution` int(11) DEFAULT NULL,
   `total_earning` int(11) DEFAULT NULL,
@@ -262,7 +382,145 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (16, '2022_09_22_045448_create_interviews_table', 1),
 (17, '2022_09_26_061702_create_financial_aids_table', 1),
 (18, '2022_09_27_105452_create_programs_table', 1),
-(19, '2022_09_27_105624_create_program_batches_table', 1);
+(19, '2022_09_27_105624_create_program_batches_table', 1),
+(20, '2022_10_03_033250_events', 1),
+(21, '2022_10_03_034038_event_batches', 1),
+(22, '2022_10_03_091919_create_waivers_table', 1),
+(23, '2022_10_18_051349_create_participants_table', 2),
+(24, '2022_10_18_053849_create_student_programs_table', 2),
+(25, '2022_10_18_054647_create_student_events_table', 2),
+(26, '2022_10_18_054819_create_participant_events_table', 2),
+(27, '2022_10_30_064417_create_assesments_table', 3),
+(28, '2022_11_02_072346_create_old_program_infos_table', 4);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `old_program_infos`
+--
+
+CREATE TABLE `old_program_infos` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `student_id` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `program_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `program_batch_id` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `full_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `gender` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `dob` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `nationality` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `father_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `mother_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `guardian_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `guardian_relation` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `ethnicity` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `ethnicity_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `disability` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `disability_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `email_address` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `personal_phone_no` int(11) DEFAULT NULL,
+  `emergency_contact_no` int(11) DEFAULT NULL,
+  `guardian_phone_no` int(11) DEFAULT NULL,
+  `guardian_phone_no2` int(11) DEFAULT NULL,
+  `guardian_email_address` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `present_apartment_no` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `present_house_no` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `present_road_no_OR_village` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `present_thana_OR_upazala` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `present_district` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `present_division` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `present_post_code` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `present_similar_to_permanent` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `permanent_apartment_no` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `permanent_house_no` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `permanent_road_no_OR_village` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `permanent_thana_OR_upazala` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `permanent_district` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `permanent_division` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `permanent_post_code` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `educational_medium` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `educational_lavel` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `secondary_educational_lavel` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `school` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `class` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `ssc_passing_year` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `ssc_result` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `higher_secondary_level` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `college` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `department` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `college_passing_year` int(11) DEFAULT NULL,
+  `college_current_year` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `gpa` double(8,2) DEFAULT NULL,
+  `admission_of_udergraduation` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `undergraduate_level` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `university` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `degree` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `uni_passing_year` int(11) DEFAULT NULL,
+  `uni_current_year` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `cgpa` double(8,2) DEFAULT NULL,
+  `extracurricular` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `waiver_percentage` int(11) DEFAULT NULL,
+  `waiver_amount` int(11) DEFAULT NULL,
+  `waiver_reason` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `participants`
+--
+
+CREATE TABLE `participants` (
+  `participant_id` int(10) UNSIGNED NOT NULL,
+  `full_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `gender` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `dob` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `nationality` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `nid` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `mother_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `blood_group` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `phone` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `emergency_contact` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `present_apartment_no` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `present_house_no` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `present_road_no_OR_village` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `present_thana_OR_upazala` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `present_district` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `present_division` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `present_post_code` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `occupation` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `organization_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `participant_events`
+--
+
+CREATE TABLE `participant_events` (
+  `participant_id` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `event_batch_id` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `event_batch_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `participant_events`
+--
+
+INSERT INTO `participant_events` (`participant_id`, `event_batch_id`, `event_batch_name`, `created_at`, `updated_at`) VALUES
+('1', '3', 'Dare to Lead 5', NULL, NULL),
+('2', '4', 'Dare to Lead 6', NULL, NULL),
+('3', '5', 'Career Expo 4', NULL, NULL),
+('4', '5', 'Career Expo 4', NULL, NULL),
+('5', '6', 'Career Expo 5', NULL, NULL),
+('6', '6', 'Career Expo 5', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -305,6 +563,8 @@ CREATE TABLE `programs` (
   `program_id` int(10) UNSIGNED NOT NULL,
   `program_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `duration` int(11) DEFAULT NULL,
+  `category` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `donor` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -313,42 +573,12 @@ CREATE TABLE `programs` (
 -- Dumping data for table `programs`
 --
 
-INSERT INTO `programs` (`program_id`, `program_name`, `duration`, `created_at`, `updated_at`) VALUES
-(1, 'BBLT', 3, NULL, NULL),
-(2, 'BBLTJ', 2, NULL, NULL),
-(3, 'APL', 3, NULL, NULL),
-(4, 'YLS', 2, NULL, NULL),
-(5, 'CareerX', 3, NULL, NULL);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `program_batches`
---
-
-CREATE TABLE `program_batches` (
-  `batch_id` bigint(20) UNSIGNED NOT NULL,
-  `program_id` int(11) NOT NULL,
-  `batch_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `program_batches`
---
-
-INSERT INTO `program_batches` (`batch_id`, `program_id`, `batch_name`, `created_at`, `updated_at`) VALUES
-(1, 1, 'BBLT5', NULL, NULL),
-(2, 1, 'BBLT6', NULL, NULL),
-(3, 2, 'BBLTJ20', NULL, NULL),
-(4, 2, 'BBLTJ21', NULL, NULL),
-(5, 3, 'APL5', NULL, NULL),
-(6, 3, 'APL6', NULL, NULL),
-(7, 4, 'YLS7', NULL, NULL),
-(8, 4, 'YLS8', NULL, NULL),
-(9, 5, 'CareerX12', NULL, NULL),
-(10, 5, 'CareerX13', NULL, NULL);
+INSERT INTO `programs` (`program_id`, `program_name`, `duration`, `category`, `donor`, `created_at`, `updated_at`) VALUES
+(1, 'BBLT', 3, NULL, NULL, NULL, NULL),
+(2, 'BBLTJ', 2, NULL, NULL, NULL, NULL),
+(3, 'APL', 3, NULL, NULL, NULL, NULL),
+(4, 'YLS', 2, NULL, NULL, NULL, NULL),
+(5, 'CareerX', 3, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -486,6 +716,34 @@ INSERT INTO `student_educational_infos` (`student_id`, `educational_medium`, `ed
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `student_events`
+--
+
+CREATE TABLE `student_events` (
+  `student_id` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `event_batch_id` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `event_batch_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `student_events`
+--
+
+INSERT INTO `student_events` (`student_id`, `event_batch_id`, `event_batch_name`, `created_at`, `updated_at`) VALUES
+('1', '1', 'Alumni Iftar 2', NULL, NULL),
+('2', '1', 'Alumni Iftar 2', NULL, NULL),
+('3', '2', 'Alumni Iftar 3', NULL, NULL),
+('4', '2', 'Alumni Iftar 3', NULL, NULL),
+('5', '3', 'Dare to Lead 5', NULL, NULL),
+('6', '4', 'Dare to Lead 6', NULL, NULL),
+('1', '5', 'Career Expo 4', NULL, NULL),
+('1', '6', 'Career Expo 5', NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `student_marcom_infos`
 --
 
@@ -526,7 +784,7 @@ INSERT INTO `student_marcom_infos` (`student_id`, `Knowing_media`, `careerx_prog
 --
 
 CREATE TABLE `student_personal_infos` (
-  `student_id` int(255) NOT NULL,
+  `student_id` int(10) UNSIGNED NOT NULL,
   `program_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `program_batch_id` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `full_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -558,6 +816,34 @@ INSERT INTO `student_personal_infos` (`student_id`, `program_name`, `program_bat
 (4, 'APL', '5', 'Jahidul Islam', 'male', 'September - Monday - 2022', 'bangladesh', 'Razzak Islam', 'female jalil', NULL, NULL, 'no', NULL, 'no', NULL, NULL, NULL, '2022-09-29 02:14:01', '2022-09-29 02:14:01'),
 (5, 'YLS', '8', 'Roni Molla', 'male', 'September - Friday - 2022', 'bangladesh', 'big jalil', 'Khatun', NULL, NULL, 'no', NULL, 'no', NULL, NULL, NULL, '2022-09-29 02:15:19', '2022-09-29 02:15:19'),
 (6, 'CareerX', '10', 'Jamal Sharker', 'female', 'September - Tuesday - 2022', 'bangladesh', 'Aquaib', 'Khatun', NULL, NULL, 'yes', 'dsfg', 'yes', 'xfgd', 12345, NULL, '2022-09-29 02:17:01', '2022-09-29 02:17:01');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `student_programs`
+--
+
+CREATE TABLE `student_programs` (
+  `student_id` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `program_batch_id` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `program_batch_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `application_status` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'pending',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `student_programs`
+--
+
+INSERT INTO `student_programs` (`student_id`, `program_batch_id`, `program_batch_name`, `application_status`, `created_at`, `updated_at`) VALUES
+('1', '1', 'BBLT5', 'pending', NULL, NULL),
+('2', '1', 'BBLT5', 'pending', NULL, NULL),
+('3', '3', 'BBLTJ20', 'pending', NULL, NULL),
+('4', '5', 'APL5', 'pending', NULL, NULL),
+('5', '8', 'YLS8', 'pending', NULL, NULL),
+('6', '10', 'CareerX13', 'rejected', NULL, NULL),
+('1', '3', 'BBLTJ20', 'pending', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -615,6 +901,26 @@ CREATE TABLE `users` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `waivers`
+--
+
+CREATE TABLE `waivers` (
+  `student_id` int(10) UNSIGNED NOT NULL,
+  `full_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `program_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `program_batch_id` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `educational_medium` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `request_Faq` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `waiver_percentage` int(11) DEFAULT NULL,
+  `waiver_amount` int(11) DEFAULT NULL,
+  `waiver_reason` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `writing_tests`
 --
 
@@ -663,6 +969,24 @@ ALTER TABLE `assesement_preselections`
   ADD PRIMARY KEY (`student_id`);
 
 --
+-- Indexes for table `assesments`
+--
+ALTER TABLE `assesments`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `events`
+--
+ALTER TABLE `events`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `event_batches`
+--
+ALTER TABLE `event_batches`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
@@ -694,6 +1018,18 @@ ALTER TABLE `migrations`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `old_program_infos`
+--
+ALTER TABLE `old_program_infos`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `participants`
+--
+ALTER TABLE `participants`
+  ADD PRIMARY KEY (`participant_id`);
+
+--
 -- Indexes for table `password_resets`
 --
 ALTER TABLE `password_resets`
@@ -712,12 +1048,6 @@ ALTER TABLE `personal_access_tokens`
 --
 ALTER TABLE `programs`
   ADD PRIMARY KEY (`program_id`);
-
---
--- Indexes for table `program_batches`
---
-ALTER TABLE `program_batches`
-  ADD PRIMARY KEY (`batch_id`);
 
 --
 -- Indexes for table `student_address_infos`
@@ -753,7 +1083,7 @@ ALTER TABLE `student_marcom_infos`
 -- Indexes for table `student_personal_infos`
 --
 ALTER TABLE `student_personal_infos`
-  ADD UNIQUE KEY `student_personal_infos_student_id_unique` (`student_id`);
+  ADD PRIMARY KEY (`student_id`);
 
 --
 -- Indexes for table `student_questionary_infos`
@@ -767,6 +1097,12 @@ ALTER TABLE `student_questionary_infos`
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `users_email_unique` (`email`);
+
+--
+-- Indexes for table `waivers`
+--
+ALTER TABLE `waivers`
+  ADD PRIMARY KEY (`student_id`);
 
 --
 -- Indexes for table `writing_tests`
@@ -789,6 +1125,24 @@ ALTER TABLE `admins`
 --
 ALTER TABLE `assesement_preselections`
   MODIFY `student_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `assesments`
+--
+ALTER TABLE `assesments`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `events`
+--
+ALTER TABLE `events`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `event_batches`
+--
+ALTER TABLE `event_batches`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -818,7 +1172,19 @@ ALTER TABLE `interviews`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+
+--
+-- AUTO_INCREMENT for table `old_program_infos`
+--
+ALTER TABLE `old_program_infos`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `participants`
+--
+ALTER TABLE `participants`
+  MODIFY `participant_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
@@ -831,12 +1197,6 @@ ALTER TABLE `personal_access_tokens`
 --
 ALTER TABLE `programs`
   MODIFY `program_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
--- AUTO_INCREMENT for table `program_batches`
---
-ALTER TABLE `program_batches`
-  MODIFY `batch_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `student_address_infos`
@@ -872,7 +1232,7 @@ ALTER TABLE `student_marcom_infos`
 -- AUTO_INCREMENT for table `student_personal_infos`
 --
 ALTER TABLE `student_personal_infos`
-  MODIFY `student_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `student_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `student_questionary_infos`
@@ -885,6 +1245,12 @@ ALTER TABLE `student_questionary_infos`
 --
 ALTER TABLE `users`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `waivers`
+--
+ALTER TABLE `waivers`
+  MODIFY `student_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `writing_tests`

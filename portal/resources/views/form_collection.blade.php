@@ -30,7 +30,7 @@
                             <div class="row">               
                                 <div class="col">
                                     <!-- BBLT Form -->
-                                    <button type="">
+                                    <button type="" target="_blank">
                                         <div class="shadow-lg p-1 mb-2 bg-white rounded">
                                             <a href="{{ url('admin/program/bblt')}}" target="_blank" >
                                                 <div class="target"><img class="target" src="{{asset('images/program_image/bblt.png')}}" alt=" " class="rounded mx-auto d-block" style="width: 150; height:150"></div>
@@ -42,7 +42,7 @@
                                             
                                 <div class="col">
                                     <!-- BBLTJ Form -->
-                                    <button type="">
+                                    <button type="" target="_blank">
                                         <div class="shadow-lg p-1 mb-2 bg-white rounded">
                                             <a href="{{ url('admin/program/bbltj')}}" target="_blank">
                                                 <div class="target"><img class="target" src="{{asset('images/program_image/bbltj.png')}}" alt=" " class="rounded mx-auto d-block" style="width: 150; height:150"></div>
@@ -54,7 +54,7 @@
                                             
                                 <div class="col">
                                     <!-- YLS Form -->
-                                    <button type="">
+                                    <button type="" target="_blank">
                                         <div class="shadow-lg p-1 mb-2 bg-white rounded">
                                             <a href="{{ url('admin/program/yls')}}" target="_blank">
                                                 <div class="target"><img class="target" src="{{asset('images/program_image/yls.png')}}" alt=" " class="rounded mx-auto d-block" style="width: 150; height:150"></div>
@@ -66,7 +66,7 @@
                                             
                                 <div class="col">
                                     <!-- APL Form -->
-                                    <button type="">
+                                    <button type="" target="_blank">
                                         <div class="shadow-lg p-1 mb-2 bg-white rounded">
                                             <a href="{{ url('admin/program/apl')}}" target="_blank">
                                                 <div class="target"><img class="target" src="{{asset('images/program_image/apl.png')}}" alt=" " class="rounded mx-auto d-block" style="width: 150; height:150"></div>
@@ -78,7 +78,7 @@
 
                                 <div class="col">
                                     <!-- LFK Form -->
-                                    <button type="">
+                                    <button type="" target="_blank">
                                         <div class="shadow-lg p-1 mb-2 bg-white rounded">
                                             <div class="target"><img class="target" src="{{asset('images/no_image.png')}}" alt=" " class="rounded mx-auto d-block" style="width: 150; height:150"></div>
                                         </div>
@@ -88,7 +88,7 @@
                                             
                                 <div class="col">
                                     <!-- YLB Form -->
-                                    <button type="">
+                                    <button type="" target="_blank">
                                         <div class="shadow-lg p-1 mb-2 bg-white rounded">
                                             <div class="target"><img class="target" src="{{asset('images/no_image.png')}}" alt=" " class="rounded mx-auto d-block" style="width: 150; height:150"></div>
                                         </div>
@@ -111,7 +111,7 @@
                             <div class="row">               
                                 <div class="col">
                                     <!-- CareerX Form -->
-                                    <button type="">
+                                    <button type="" target="_blank">
                                         <div class="shadow-lg p-1 mb-2 bg-white rounded">
                                             <a href="{{ url('admin/program/careerx')}}" target="_blank">
                                                 <div class="target"><img class="target" src="{{asset('images/no_image.png')}}" alt=" " class="rounded mx-auto d-block" style="width: 150; height:150"></div>
@@ -122,7 +122,7 @@
                                 </div>                                       
                                 <div class="col">
                                     <!-- ACE Form -->
-                                    <button type="">
+                                    <button type="" target="_blank">
                                         <div class="shadow-lg p-1 mb-2 bg-white rounded">
                                             <div class="target"><img class="target" src="{{asset('images/no_image.png')}}" alt=" " class="rounded mx-auto d-block" style="width: 150; height:150"></div>
                                         </div>
@@ -131,7 +131,7 @@
                                 </div>
                                 <div class="col">
                                     <!-- Bootcaps Form -->
-                                    <button type="">
+                                    <button type="" target="_blank">
                                         <div class="shadow-lg p-1 mb-2 bg-white rounded">
                                             <div class="target"><img class="target" src="{{asset('images/no_image.png')}}" alt=" " class="rounded mx-auto d-block" style="width: 150; height:150"></div>
                                         </div>
