@@ -303,12 +303,19 @@ $(document).ready(function () {
   }
 
   /*======== BASIC DATA TABLE ========*/
-  var basicDataTable = $("#basic-data-table");
+  var basicDataTable = $("#basic-data-table,#basic-data-table2");
   if (basicDataTable.length !== 0){
     basicDataTable.DataTable({
       "dom": '<"row justify-content-between top-information"lf>rt<"row justify-content-between bottom-information"ip><"clear">'
     });
   }
+  /*======== BASIC DATA TABLE ========*/
+  // var basicDataTable = $("#basic-data-table2");
+  // if (basicDataTable.length !== 0){
+  //   basicDataTable.DataTable({
+  //     "dom": '<"row justify-content-between top-information"lf>rt<"row justify-content-between bottom-information"ip><"clear">'
+  //   });
+  // }
 
   /*======== RESPONSIVE DATA TABLE ========*/
   var responsiveDataTable = $("#responsive-data-table");

@@ -8,7 +8,7 @@
       <div class="col-lg-6">
         <div class="card card-default">
           <div class="card-header card-header-border-bottom">
-            <h2>Basic Form Controls</h2>
+            <h2>Edit employ account</h2>
           </div>
 
           <div class="card-body">

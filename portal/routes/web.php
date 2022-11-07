@@ -80,9 +80,9 @@ Route::group(['middleware' =>['adminlogin']],function(){
 
    
     //All program data information
-    Route::resource('Students', StudentController::class);
-    Route::get('/view-profile/{student_id}', [StudentController::class, 'profile']);
-    Route::get('/edit-profile/{student_id}', [StudentController::class, 'editprofile']);
+   // Route::resource('Students', StudentController::class);
+   // Route::get('/view-profile/{student_id}', [StudentController::class, 'profile']);
+   // Route::get('/edit-profile/{student_id}', [StudentController::class, 'editprofile']);
 
     //Student Management Page 
     Route::get('/students/programs_info', [ProgramController::class, 'programs_info']);

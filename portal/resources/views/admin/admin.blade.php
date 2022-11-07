@@ -35,8 +35,8 @@
 										<table id="basic-data-table" class="table nowrap" style="width:100%">
 											<thead>
 												<tr>
-													<th>First name</th>
-													<th>Last name</th>
+													<th>First Name</th>
+													<th>Last Name</th>
 													<th>Email ID</th>
 													<th>Department</th>
 													<th>Position</th>

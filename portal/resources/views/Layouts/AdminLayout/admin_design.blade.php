@@ -41,6 +41,10 @@
             transition-property: height,width;
             transition-duration: 0.3s;
         }
+        .required:after {
+            content:" *";
+            color: red;
+        }
 
         .target:hover {
             height: 170px;
