@@ -45,7 +45,7 @@
 					<div class="Heading" style="font-weight: bold ">CareerX Application Form</div>
 				</div>
 		      
-				<form class="form-register" method="post" action="{{url('/careerx/store')}}"  novalidate="novalidate">{{csrf_field()}}
+				<form class="form-register" method="post" action="{{url('/student/careerx/store')}}"  novalidate="novalidate">{{csrf_field()}}
 		        	<div id="form-total">
 
 		        		<!-------------------------------- GUIDELINES ----------------------------------->
@@ -131,22 +131,22 @@
 							<br><br>
 							<a style="font-size: small ; font-weight: bold">Full Name (পূর্ণ নাম)</a><br>
 							<a style="font-size: smaller ; color: gray; ">As per passport or national ID or academic certificate (পাসপোর্ট বা জাতীয় পরিচয়পত্র বা একাডেমিক সার্টিফিকেট অনুযায়ী) (ex. Zuhair Bin Zabbar)</a><br>
-							<input type="text" class="form-control" id="name" name="full-name" alue ="{{old('full-name')}}">
+							<input type="text" class="form-control" id="name"  name="full-name" value ="{{old('full-name', $student->full_name)}}" readonly>
 							<span style ="color: red">@error('full-name'){{$message}}@enderror </span>
 							<br>
 							<!-- Gender -->
 							<a style="font-size: small ; font-weight: bold">Gender (লিঙ্গ)</a><br>
 							<div class="form-row">
 								<div id="radio">
-								<div class="row">
-										<div class="col-md-4">
-                                            <input type="radio" name="gender" value="male" {{ old("gender") == 'male' ? 'checked' : '' }}> <a style="font-size: small">Male (পুরুষ)</a>
+									<div class="row">
+                                        <div class="col-md-4">
+                                            <input type="radio" name="gender" value="male" {{ old("gender") == 'male' ||  $student->gender =='male'? 'checked' : 'disabled' }}> <a style="font-size: small">Male (পুরুষ)</a>
                                         </div>
                                         <div class="col-md-4">
-                                            <input type="radio" name="gender" value="female" {{ old("gender") == 'female' ? 'checked' : '' }}> <a style="font-size: small">Female (নারী)</a>
+                                            <input type="radio" name="gender" value="female" {{ old("gender") == 'female' ||  $student->gender =='female'? 'checked' : 'disabled' }}> <a style="font-size: small">Female (নারী)</a>
                                         </div>
                                         <div class="col-md-4">
-                                            <input type="radio" name="gender" value="other" {{ old("gender") == 'other' ? 'checked' : '' }}> <a style="font-size: small">Other (অন্যান্য)</a>
+                                            <input type="radio" name="gender" value="other" {{ old("gender") == 'other' ||  $student->gender =='other' ? 'checked' : 'disabled' }}> <a style="font-size: small">Other (অন্যান্য)</a>
                                         </div>
                                     </div>
 								</div>
@@ -159,34 +159,27 @@
 									<a style="font-size: small ; font-weight: bold">Date of Birth (জন্ম তারিখ)</a><br>
 									<!-- DatePicker -->
 									<div class="input-group date" id="datepicker">
-										<input type="text" class="form-control" id="date" name="date-of-birth"  value ="{{old('date-of-birth')}}" />
-										<span class="input-group-append">
-										  <span class="input-group-text bg-light d-block">
-											<i class="fa fa-calendar"></i>
-										  </span>
-										</span>
+										<input type="date" class="form-control" id="datetime" name="date-of-birth" value ="{{old('date-of-birth', $student->dob)}}" readonly/>	
 									</div>
-								
-								
 						        </div>
 								<div class="col-md-6">
 									<a style="font-size: small ; font-weight: bold">Nationality (জাতীয়তা)</a><br>
-									<input type="text" class="form-control" id="nationality" name="nationality" value ="{{old('nationality')}}">
+									<input type="text" class="form-control" id="nationality" name="nationality" value ="{{old('nationality', $student->nationality)}}" readonly>
 								</div>
 							</div>
-
 							<br>
 							<!-- Father and Mother Name -->
 							<div class="row g-3">
 								<div class="col-md-6">
 									<a style="font-size: small ; font-weight: bold">Father Name (বাবার নাম)</a><br>
-									<input type="text" class="form-control" id="father_name" name="father_name" value ="{{old('father_name')}}">
+									<input type="text" class="form-control" id="father_name" name="father_name" value ="{{old('father_name', $student->father_name)}}" readonly>
 								</div>
 								<div class="col-md-6">
 									<a style="font-size: small ; font-weight: bold">Mother Name (মায়ের নাম)</a><br>
-									<input type="text" class="form-control" id="mother_name" name="mother-name" value ="{{old('mother-name')}}">
+									<input type="text" class="form-control" id="mother_name" name="mother-name" value ="{{old('mother-name', $student->mother_name)}}" readonly>
 								</div>
 							</div>
+
 
 							<br>
 							<!-- Mobile and Emergency Contact -->
@@ -194,28 +187,30 @@
 								<div class="col-md-6">
 									<a style="font-size: small ; font-weight: bold">Mobile Number (মোবাইল নম্বর)</a><br>
 									<a style="font-size: smaller ; color: gray; ">01700000000</a><br>
-									<input type="text" class="form-control" id="mobile" name="mobile-number" value ="{{old('mobile-number')}}">
+									<input type="text" class="form-control" id="mobile" name="mobile-number" value ="{{old('mobile-number', $student->personal_phone_no)}}">
 								</div>
 								<div class="col-md-6">
 									<a style="font-size: small ; font-weight: bold">Emergency Contact Number (জরুরী প্রয়োজনে)</a><br>
 									<a style="font-size: smaller ; color: gray; ">01700000000</a><br>
-									<input type="text" class="form-control" id="emergency_contact" name="emergency-contact" value ="{{old('emergency-contact')}}">
+									<input type="text" class="form-control" id="emergency_contact" name="emergency-contact" value ="{{old('emergency-contact', $student->emergency_contact_no)}}">
 								</div>
 							</div>
 
 							<br>
 							
+							<!-- Email -->
 							<div class="row g-3">
 								<div class="col-md-6">
 									<!-- Email -->
 									<a style="font-size: small ; font-weight: bold">Email Address (ইমেইল)</a><br>
-									<input type="email" class="form-control" id="email"  name="email-address" value ="{{old('email-address')}}">
+									<input type="email" class="form-control" id="email"  name="email-address" value ="{{old('email-address', $student->email_address)}}" readonly>
 									<span style ="color: red">@error('email-address'){{$message}}@enderror </span>
 								</div>
 								<div class="col-md-6">
 									<!-- NID -->
 									<a style="font-size: small ; font-weight: bold">NID/Bith Certificate/Paport No</a><br>
-									<input type="text" class="form-control" name="nid" id="nid" name="nid" value ="{{old('nid')}}" >
+									<input type="text" class="form-control" name="nid" id="nid" name="nid" value ="{{old('nid',$student->student_id)}}" readonly>
+									<span style ="color: red">@error('nid'){{$message}}@enderror </span>
 								</div>
 							</div>
 							<br><br>
@@ -225,24 +220,23 @@
 							<a style="font-size: small ; font-weight: bold">Do you belong to any ethnic community, i.e.Chakma, Marma, etc? (আপনি কি কোন ক্ষুদ্র নৃগোষ্ঠীর অন্তর্ভুক্ত, যেমন চাকমা, মারমা ইত্যাদি?)</a><br>
 							<div class="form-row">
 								<div id="radio">
-									<input type="radio" name="ethnicity" onclick="javascript:ethnicityCheck();"  id="ethnicCheck" value="yes"  {{ old("ethnicity") == 'yes' ? 'checked' : '' }} > <a style="font-size: small">Yes (হ্যাঁ)</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-									<input type="radio" name="ethnicity" onclick="javascript:ethnicityCheck();"  id="not_ethnicCheck" value="no" {{ old("ethnicity") == 'no' ? 'checked' : '' }}> <a style="font-size: small">No (না)</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									<input type="radio" name="ethnicity" onclick="javascript:ethnicityCheck();"  id="ethnicCheck" value="yes"  {{ old("ethnicity") == 'yes' || $student->ethnicity == 'yes'? 'checked' : 'disabled' }} > <a style="font-size: small">Yes (হ্যাঁ)</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									<input type="radio" name="ethnicity" onclick="javascript:ethnicityCheck();"  id="not_ethnicCheck" value="no"  {{ old("ethnicity") == 'no' || $student->ethnicity =='no'? 'checked' : 'disabled' }}> <a style="font-size: small">No (না)</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 								</div>
 								<div id="ethnic" style="display:none">
-									<a style="font-size: small ; font-weight: bold">If yes, please mention below. (অনুগ্রহ করে উল্লেখ করুন)</a>
-									<input type="text" class="form-control" id="ethnicity_name" name="ethnicity_name"  value ="{{old('ethnicity_name')}}">
-								</div>
-							</div>
-							<br>
+                                    <a style="font-size: small ; font-weight: bold">If yes, please mention below. (অনুগ্রহ করে উল্লেখ করুন)</a>
+                                    <input type="text" class="form-control" id="ethnicity_name" name="ethnicity_name" value ="{{old('ethnicity_name',$student->ethnicity)}}">
+                                </div>
+							</div><br>
 							<a style="font-size: small ; font-weight: bold">Do you have any disability, i.e., visual or hearing disabilities, physical disability, etc.? (আপনার কি কোন প্রতিবন্ধিতা রয়েছে, যেমনঃ দৃষ্টি, শ্রবণ, শারীরিক প্রতিবন্ধিতা বা অন্যান্য?)</a><br>
 							<div class="form-row">
 								<div id="radio">
-									<input type="radio" name="disability" onclick="javascript:disabilityCheck();"  id="disableCheck" value="yes" {{ old("disability") == 'yes' ? 'checked' : '' }}> <a style="font-size: small">Yes (হ্যাঁ)</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-									<input type="radio" name="disability" onclick="javascript:disabilityCheck();"  id="not_disableCheck" value="no" {{ old("disability") == 'no' ? 'checked' : '' }}> <a style="font-size: small">No (না)</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									<input type="radio" name="disability" onclick="javascript:disabilityCheck();"  id="disableCheck" value="yes" {{ old("disability") == 'yes' || $student->disability == 'yes' ? 'checked' : 'disabled' }} > <a style="font-size: small">Yes (হ্যাঁ)</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									<input type="radio" name="disability" onclick="javascript:disabilityCheck();"  id="not_disableCheck" value="no" {{ old("disability") == 'no' || $student->disability =='no' ? 'checked' : 'disabled' }}> <a style="font-size: small">No (না)</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 								</div>
 								<div id="disable" style="display:none">
                                     <a style="font-size: small ; font-weight: bold">If yes, please mention below. (অনুগ্রহ করে উল্লেখ করুন)</a>
-                                    <input type="text" class="form-control" id="disability_name" name="disability_name"  value ="{{old('disability_name')}}">
+                                    <input type="text" class="form-control" id="disability_name" name="disability_name" value ="{{old('disability_name',$student->disability)}}">
                                 </div>
 							</div>
 
@@ -254,17 +248,17 @@
 								<!-- Apartment -->
 								<div class="col-md-4">
 									<a style="font-size: small ; font-weight: bold">Apartment No (এপার্টমেন্ট নং)</a><br>
-									<input type="text" class="form-control" id="per_apartment"  name="per_apartment" value ="{{old('per_apartment')}}">
+									<input type="text" class="form-control" id="per_apartment" name="per_apartment" value ="{{old('per_apartment',$student->present_apartment_no)}}">
 								</div>	
 								<!-- House -->
 								<div class="col-md-4">
 									<a style="font-size: small ; font-weight: bold">House/Holding No. (বাসা/হোল্ডিং নং)</a><br>
-									<input type="text" class="form-control" id="per_house" name="per_house" value ="{{old('per_house')}}">
+									<input type="text" class="form-control" id="per_house" name="per_house" value ="{{old('per_house',$student->present_house_no)}}">
 								</div>
 								<!-- Road -->
 								<div class="col-md-4">
 									<a style="font-size: small ; font-weight: bold">Road No./Village (রোড নং/গ্রাম)</a><br>
-									<input type="text" class="form-control" id="per_road" name="per_road" value ="{{old('per_road')}}">
+									<input type="text" class="form-control" id="per_road" name="per_road" value ="{{old('per_road',$student->present_road_no_OR_village)}}">
 								</div>
 							</div>
 							
@@ -272,20 +266,17 @@
 								<!-- Thana -->
 								<div class="col-md-4">
 									<a style="font-size: small ; font-weight: bold">Thana/Upazila (থানা/উপজেলা)</a><br>
-									<input type="text" class="form-control" id="per_thana" name="per_thana" value ="{{old('per_thana')}}">
+									<input type="text" class="form-control" id="per_thana" name="per_thana" value ="{{old('per_thana',$student->present_thana_OR_upazala)}}">
 								</div>	
 								<!-- District -->
 								<div class="col-md-4">
 									<a style="font-size: small ; font-weight: bold">District (জেলা)</a><br>
 									<div class="input-group mb-3" class="dropdown-menu">
-									<select class="form-select" id="per_district" name="per_district" >
+										<select class="form-select" id="per_district" name="per_district" >
 										  <option selected>Select District</option>
-										  <option value="Bagerhat" {{ old("per_district") == 'Bagerhat' ? 'selected' : '' }}>Bagerhat (বাগেরহাট)</option>
-										  <option value="Bandarban" {{ old("per_district") == 'Bandarban' ? 'selected' : '' }}>Bandarban (বান্দরবান)</option>
-										  <option value="Barguna" {{ old("per_district") == 'Barguna' ? 'selected' : '' }}>Barguna (বরগুনা)</option>
-										  <option value="Barishal" {{ old("per_district") == 'Barishal' ? 'selected' : '' }}>Barishal (বরিশাল)</option>
-										  <option value="Bhola" {{ old("per_district") == 'Bhola' ? 'selected' : '' }}>Bhola (ভোলা)</option>
-										  <option value="Bogura" {{ old("per_district") == 'Bogura' ? 'selected' : '' }}>Bogura (বগুড়া)</option>
+										  @foreach($district as $dis)
+												<option value="{{ $dis->name }}" {{ old("per_district") ==  $dis->name || $student->present_district ? 'selected' : '' }}>{{ $dis->name }}</option>
+											@endforeach	
 										  
 										</select>
 									</div>
@@ -296,14 +287,9 @@
 									<div class="input-group mb-3">
 										<select class="form-select" id="per_division" name="per_division">
 										  <option selected>Select Division</option>
-										  <option value="Chattagram">Chattagram (চট্টগ্রাম)</option>
-										  <option value="Rajshahi">Rajshahi (রাজশাহী)</option>
-										  <option value="Khulna">Khulna (খুলনা)</option>
-										  <option value="Barisal">Barisal (বরিশাল)</option>
-										  <option value="Sylhet">Sylhet (সিলেট)</option>
-										  <option value="Dhaka">Dhaka (ঢাকা)</option>
-										  <option value="Rangpur">Rangpur (রংপুর)</option>
-										  <option value="Mymensingh">Mymensingh (ময়মনসিংহ)</option>
+										  @foreach($division as $div)
+												<option value="{{ $div->name }}"{{ old("per_division") ==  $div->name || $student->present_division  ? 'selected' : '' }}>{{ $div->name }}</option>
+											@endforeach	
 										</select>
 									</div>
 								</div>
@@ -313,20 +299,20 @@
 								<!-- Post Code -->
 								<div class="col-md-4">
 									<a style="font-size: small ; font-weight: bold">Post code (পোস্ট কোড)</a><br>
-									<input type="text" class="form-control" id="per_pc" name="per_pc" value ="{{old('per_pc')}}">
+									<input type="text" class="form-control" id="per_pc" name="per_pc" value ="{{old('per_pc',$student->present_post_code)}}">
 								</div>	
 							</div>
 
+
 							<br><br>
-							<!-- Permanent Address -->
-							<!-- Permanent Address -->
 							<!-- Permanent Address -->
 							<a style="font-size: small ; font-weight: bold">Is your permanent address similar to the present address? (আপনার স্থায়ী ঠিকানা ও বর্তমান ঠিকানা কি একই?)</a><br>
 							<div class="form-row">
 								<div id="radio">
-									<input type="radio" name="same_address" onclick="javascript:yesnoCheck();"  id="yesCheck" value="yes" {{ old("same_address") == 'yes' ? 'checked' : '' }} > <a style="font-size: small">Yes (হ্যাঁ)</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-									<input type="radio" name="same_address" onclick="javascript:yesnoCheck();"  id="noCheck" value="no" {{ old("same_address") == 'no' ? 'checked' : '' }}> <a style="font-size: small">No (না)</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									<input type="radio" name="same_address" onclick="javascript:yesnoCheck();"  id="yesCheck" value="yes" {{ old("same_address") == 'yes' || $student->present_similar_to_permanent == 'yes' ? 'checked' : 'disabled' }}> <a style="font-size: small">Yes (হ্যাঁ)</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									<input type="radio" name="same_address" onclick="javascript:yesnoCheck();"  id="noCheck" value="no" {{ old("same_address") == 'no' || $student->present_similar_to_permanent == 'no'? 'checked' : 'disabled' }}> <a style="font-size: small">No (না)</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 								</div>
+								<span style ="color: red">@error('same_address'){{$message}}@enderror </span>
 							</div>
 
                             <div id="ifYes" style="display:none">
@@ -337,17 +323,17 @@
 										<!-- Apartment -->
 										<div class="col-md-4">
 											<a style="font-size: small ; font-weight: bold">Apartment No (এপার্টমেন্ট নং)</a><br>
-											<input type="text" class="form-control" id="apartment" name="apartment" value ="{{old('apartment')}}">
+											<input type="text" class="form-control" id="apartment" name="apartment" value ="{{old('apartment',$student->permanent_apartment_no)}}">
 										</div>	
 										<!-- House -->
 										<div class="col-md-4">
 											<a style="font-size: small ; font-weight: bold">House/Holding No. (বাসা/হোল্ডিং নং)</a><br>
-											<input type="text" class="form-control" id="house" name="house" value ="{{old('house')}}">
+											<input type="text" class="form-control" id="house" name="house" value ="{{old('house',$student->permanent_house_no)}}">
 										</div>
 										<!-- Road -->
 										<div class="col-md-4">
 											<a style="font-size: small ; font-weight: bold">Road No./Village (রোড নং/গ্রাম)</a><br>
-											<input type="text" class="form-control" id="road" name="road" value ="{{old('road')}}">
+											<input type="text" class="form-control" id="road" name="road" value ="{{old('road',$student->permanent_road_no_OR_village)}}">
 										</div>
 									</div>
 									
@@ -355,7 +341,7 @@
 										<!-- Thana -->
 										<div class="col-md-4">
 											<a style="font-size: small ; font-weight: bold">Thana/Upazila (থানা/উপজেলা)</a><br>
-											<input type="text" class="form-control" id="thana" name="thana" value ="{{old('thana')}}">
+											<input type="text" class="form-control" id="thana" name="thana" value ="{{old('thana',$student->permanent_thana_OR_upazala)}}">
 										</div>	
 										<!-- District -->
 										<div class="col-md-4">
@@ -363,13 +349,9 @@
 											<div class="input-group mb-3">
 												<select class="form-select" id="district" name="district">
 												<option selected>Select District</option>
-												<option value="Bagerhat">Bagerhat (বাগেরহাট)</option>
-												<option value="Bandarban">Bandarban (বান্দরবান)</option>
-												<option value="Barguna">Barguna (বরগুনা)</option>
-												<option value="Barishal">Barishal (বরিশাল)</option>
-												<option value="Bhola">Bhola (ভোলা)</option>
-												<option value="Barishal">Bogura (বগুড়া)</option>
-												<option value="Bhola">Brahmanbaria (ব্রাহ্মণবাড়িয়া)</option>
+												 @foreach($district as $dis)
+													<option value="{{ $dis->name }}" {{ old("district") ==  $dis->name || $student->permanent_district ? 'selected' : '' }}>{{ $dis->name }}</option>
+												@endforeach	
 												</select>
 											</div>
 										</div>
@@ -379,14 +361,9 @@
 											<div class="input-group mb-3">
 												<select class="form-select" id="division" name="division">
 												<option selected>Select Division</option>
-												<option value="Chattagram">Chattagram (চট্টগ্রাম)</option>
-												<option value="Rajshahi">Rajshahi (রাজশাহী)</option>
-												<option value="Khulna">Khulna (খুলনা)</option>
-												<option value="Barisal">Barisal (বরিশাল)</option>
-												<option value="Sylhet">Sylhet (সিলেট)</option>
-												<option value="Dhaka">Dhaka (ঢাকা)</option>
-												<option value="Rangpur">Rangpur (রংপুর)</option>
-												<option value="Mymensingh">Mymensingh (ময়মনসিংহ)</option>
+												@foreach($division as $div)
+													<option value="{{ $div->name }}" {{ old("division") ==  $div->name || $student->permanent_division ? 'selected' : '' }}>{{ $div->name }}</option>
+												@endforeach	
 												</select>
 											</div>
 										</div>
@@ -396,10 +373,10 @@
 										<!-- Post Code -->
 										<div class="col-md-4">
 											<a style="font-size: small ; font-weight: bold">Post code (পোস্ট কোড)</a><br>
-											<input type="text" class="form-control" id="pc" name="pc" value ="{{old('pc')}}">
+											<input type="text" class="form-control" id="pc" name="pc" value ="{{old('pc',$student->permanent_post_code)}}">
 										</div>	
 									</div>
-							</div>
+								</div>
 							<br><br>
 
 

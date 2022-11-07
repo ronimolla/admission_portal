@@ -63,15 +63,6 @@
                     </a>
                 </li>
 
-               
-
-                <li class="">
-                    <a class="sidenav-item-link" href="#">
-                        <i class="mdi mdi-book-open"></i>
-                        <span class="nav-text">Financial Aid</span> 
-                    </a>
-                </li>
-
                 <li class={{ request()->is('financialaid-form') ? 'active' : '' }}"">
                     <a class="sidenav-item-link" href="{{url('/financialaid-form')}}" target="_blank">
                         <i class="mdi mdi-book-open"></i>
@@ -87,7 +78,7 @@
                 </li>
 
                 <li class="">
-                    <a class="sidenav-item-link" href="#">
+                    <a class="sidenav-item-link" href="{{url('/student/my-payments')}}">
                         <i class="mdi mdi-book-open"></i>
                         <span class="nav-text">Update Payment Info</span> 
                     </a>

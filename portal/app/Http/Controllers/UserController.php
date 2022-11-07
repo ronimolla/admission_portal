@@ -11,18 +11,23 @@ use App\Models\User;
 use App\Models\Interview;
 use App\Models\Waiver;
 use App\Models\Program_batch;
+use App\Models\Payment;
 use App\Models\Assesment;
+use App\Models\FinancialAid;
 class UserController extends Controller
 {
-    //
-
+    
+    /*------------view  login page where from
+     student can login for the portal----------*/
     public function stdlog()
     {
-       
         return view('student.stdlogin');
     }
+  
+    /*------------ sent the login request for
+     student dashboard ----------*/
     public function loginrequest(Request $request){
-        
+      
         if($request->isMethod('post')){
             $data = $request->input();
             $user = DB::table('users')->where(['email'=> $data['email'],'password' => $data['password']])->count(); 
@@ -38,47 +43,41 @@ class UserController extends Controller
         	}
         }    
     }
+    /*------------ First look for the 
+    student dashboard----------*/
     public function stddashboard()
     {
         $studentDetails = User::where(['email'=>Session::get('userSession')])->first();
-        $student_id = $studentDetails->student_id;
-        
-       $preselcetion = Assesment::where(['student_id'=>$student_id])->first();
-        //$preselcetion = AssesementPreselection::all()->where(['student_id'=>$student_id])->last();
-        $preselcetionpercentage = $preselcetion-> pre_subtotal/10;
-        
-        $testresult = Assesment::where(['student_id'=>$student_id])->first();
-        $testpercentage = $testresult->total_score/25;
+        $student_id = $studentDetails->student_id;    
 
-        $interviewresult = Assesment::where(['student_id'=>$student_id])->first();
-        $interviewpercentage = $interviewresult->total_interview_marks/40;
-        //echo $testpercentage; die;
-        return view('student.std_dashboard')->with(compact('studentDetails','preselcetionpercentage','preselcetion','testresult','testpercentage','interviewresult','interviewpercentage')); 
+        $preselcetion = Assesment::where(['student_id'=>$student_id])->get();
+        return view('student.st_dashboard')->with(compact('studentDetails','preselcetion')); 
     }
-
+    /*------------ sent the logout request 
+    for student dashboard ----------*/
     public function logout(){
 		Session::flush();
 		return redirect('/student/login')->with('flash_message_error','Logout Successfully');
 	}
+    /*------------ show all program form
+     for the student ----------*/
     public function program()
     {
        
         return view('student.program');
     }
-
+    /*------------ show all event form 
+    for the student ----------*/
     public function event()
     {
        
         return view('student.event');
     }
 
-    public function mywaiver()
-    {
-        $studentDetails = User::where(['email'=>Session::get('userSession')])->first();
-        $student_id = $studentDetails->student_id;
-        $mywaiver = Waiver::where(['student_id'=> $student_id])->first();
-        $prodramBatch =Program_batch::where(['batch_name'=> $mywaiver->program_batch_code])->first();
-        echo "<pre>"; print_r($mywaiver); die;
-    }
+   
+
+
+
+
 
 }

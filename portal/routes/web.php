@@ -9,6 +9,7 @@ use App\Http\Controllers\AssesmentController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\ViewController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\StudentProgramController;
 Auth::routes();
 /*
@@ -48,33 +49,31 @@ Route::group(['middleware' =>['adminlogin']],function(){
     Route::get('/view-profile/{student_id}', [StudentController::class, 'profile']);
     Route::get('/edit-profile/{student_id}', [StudentController::class, 'editprofile']);
 
-
+//---------------------------------------------- Assesment Pare ----------------------------------------------------//
     //Assesment for applicaent pre-Selection
     Route::get('/assesment/preselection', [AssesmentController::class, 'preselection']);
     Route:: match(['get','post'],'/preselection/edit/{student_id}/{program_batch_id}',[AssesmentController::class, 'update']);
     Route:: match(['get','post'],'/preselection/follow-up/{student_id}/{program_batch_id}',[AssesmentController::class, 'follow_up']);
-
     //Assesment for applicaent Writing test
     Route::get('/assesment/writing', [AssesmentController::class, 'writingtest']);
     Route:: match(['get','post'],'/testresult/edit/{student_id}/{program_batch_id}',[AssesmentController::class, 'testresult']);
     Route:: match(['get','post'],'/writing/follow-up/{student_id}/{program_batch_id}',[AssesmentController::class, 'writing_follow_up']);
-
     //Assesment for applicaent Interview
     Route::get('/assesment/interview', [AssesmentController::class, 'interview']);
     Route:: match(['get','post'],'/interviewresult/edit/{student_id}/{program_batch_id}',[AssesmentController::class, 'interviewresult']);
     Route:: match(['get','post'],'/interview/follow-up/{student_id}/{program_batch_id}',[AssesmentController::class, 'interview_follow_up']);
-
-    //Financial Aid
-
-   
+    //Financial Stage
     Route::get('/assesment/financialaid', [AssesmentController::class, 'financialaid']);
-    Route:: match(['get','post'],'/financialaid-status/{student_id}',[AssesmentController::class, 'waiver']);
+    Route:: match(['get','post'],'/financialaid-status/{student_id}/{program_batch_id}',[AssesmentController::class, 'waiver']);
+    //Payment stage
+    Route::get('/assesment/payment', [AssesmentController::class, 'payment']);
+    Route:: match(['get','post'],'/registration/accepted/{student_id}/{program_batch_id}',[AssesmentController::class, 'acceptregistration']);
+    Route:: match(['get','post'],'/registration/refuse/{student_id}/{program_batch_id}',[AssesmentController::class, 'refuseregistration']);
 
+    
+//----------------------------------------------End Assesment Pare ----------------------------------------------------//
     //Settings for User controll
     Route::get('/admin/setings', [SettingController::class, 'settings']);
-
-
-
 
 
     //---------------------------------------------- JUBAIR ----------------------------------------------------//
@@ -134,8 +133,8 @@ Route::group(['middleware' =>['adminlogin']],function(){
 
 
 
-//--------------Student side where student need not to loging at the system----------------------//
-
+//--------------Student side where student need not to loging at the system for application for a perticullar program---------------------//
+Route::get('/program/thank', [ProgramController::class, 'thankyou']);
  //BBLT program route 
  Route::get('/program/bblt', [ProgramController::class, 'bblt']);
  Route::match(['get', 'post'], '/bblt/store',[ProgramController::class, 'bbltstore']);
@@ -161,18 +160,40 @@ Route::group(['middleware' =>['adminlogin']],function(){
 
     Route::get('/student/dashboard', [UserController::class, 'stddashboard']);
     Route::get('/student/logout', [UserController::class, 'logout']);
+
+/*------------------------Application Porecess from student for all existing program-------------------------------------*/
     //BBLT program route
     Route::get('/student/program/bblt', [StudentProgramController::class, 'bblt']);
     Route::match(['get', 'post'], 'student/bblt/store',[StudentProgramController::class, 'bbltstore']);
-
-     //BBLTJ program route 
+    //BBLTJ program route 
     Route::get('/student/program/bbltj', [StudentProgramController::class, 'bbltj']);
     Route::match(['get', 'post'], '/student/bbltj/store',[StudentProgramController::class, 'bbltjstore']);
+    //APL program route 
+    Route::get('/student/program/apl', [StudentProgramController::class, 'apl']);
+    Route::match(['get', 'post'], '/student/apl/store',[StudentProgramController::class, 'aplstore']);
+     //Careerx program route 
+    Route::get('/student/program/careerx', [StudentProgramController::class, 'careerx']);
+    Route::match(['get', 'post'], '/student/careerx/store',[StudentProgramController::class, 'careerxstore']);
+/*------------------------EndApplication Porecess from student for all existing program-------------------------------------*/
 
-    route:: match(['get','post'],'/financialaid-form',[AssesmentController::class, 'financialaid_form']);
+    //get the all program from for submission
     Route::get('/student/program', [UserController::class, 'program']);
+
+    //get all events form for submission
     Route::get('/student/event', [UserController::class, 'event']);
-    Route::get('/student/mywaiver', [UserController::class, 'mywaiver']);
-    
+
+/*-------------------------Payment proces form student side----------------------------------------------*/
+    //FinancialAid form submission process
+    route:: match(['get','post'],'/financialaid-form',[PaymentController::class, 'financialaid_form']);
+    //show my waiver amount
+    Route::get('/student/mywaiver', [PaymentController::class, 'mywaiver']);
+    //my pending Payment Info
+    Route::get('/student/my-payments', [PaymentController::class, 'mypayment']);
+    //Update my pending Payment Info
+    Route::match(['get','post'],'/student/update-payment/details/{student_id}/{program_batch_id}', [PaymentController::class, 'updatemypayment']);
+    //  Route::get('/student/update-payment/details/{student_id}/{program_batch_id}', [PaymentController::class, 'updatemypayment']);
+    //  Route::post('/student/update-payment/details/save/{student_id}/{program_batch_id}', [PaymentController::class, 'saveemypayment']);
+/*-------------------------End Payment proces form student side----------------------------------------------*/
 
 });
+ 

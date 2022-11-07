@@ -1,5 +1,5 @@
 
-@extends('layouts.adminLayout.admin_design')
+@extends('layouts.StudentLayout.student_design')
 @section('content')
 <div class="content-wrapper">
   	<div class="content">
@@ -20,7 +20,6 @@
 			</nav>
 		</div>
 
-
         <div class="row">
 			<div class="col-12">
 				<div class="card card-default">
@@ -37,33 +36,23 @@
 										<th>Student ID</th>
 										<th>Full Name</th>
 										<th>Program_batch Name</th>
-										<th>Program Batch ID</th>
-										<th>Gender</th>
-										<th>Email</th>
-										<th>Present Destrict</th>
-                                        <th>Present Devision</th>
-										<th>Edit</th>
-										<th>view</th>			
+										<th>Registration fees</th>
+										<th>Update Payment Details</th>
+                                			
 									</tr>
 								</thead>
 
 								<tbody>
-                                    @foreach($finance as $std)
+                                    @foreach($mywaiverdetails as $waiver)
 									<tr>
-										<td>{{$std->student_id}}</td>
-										<td>{{$std->full_name}}</td>
-                                        <td>{{$std->batch_name}}</td>
-										<td>{{$std->program_batch_id}}</td>
-                                        <td>{{$std->gender}}</td>
-										<td>{{$std->email_address}}</td>
-                                        <td>{{$std->present_district}}</td>
-										<td>{{$std->present_division}}</td>
+										<td>{{$waiver->student_id}}</td>
+										<td>{{$waiver->full_name}}</td>
+                                        <td>{{$waiver->program_batch_name}}</td>
+                                        <td>{{$waiver->final_registration_fees }}</td>
 										<td>
-											<a href="{{ url('financialaid-status/'.$std->student_id.'/'.$std->program_batch_id)}}" class="btn btn-primary">Update_Result</a>
-										</td>	
-                                        <td>
-											<a href="{{ url('view-profile/'.$std->student_id)}}" class="btn btn-primary">view Profile</a>
-										</td>	
+											<a href="{{ url('student/update-payment/details/'.$waiver->student_id.'/'.$waiver->program_batch_id)}}" class="btn btn-primary">Update_details</a>
+										</td>
+												
 									</tr>
 									@endforeach
 								</tbody>

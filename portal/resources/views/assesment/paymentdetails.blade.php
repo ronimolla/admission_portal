@@ -1,4 +1,3 @@
-
 @extends('layouts.adminLayout.admin_design')
 @section('content')
 <div class="content-wrapper">
@@ -37,33 +36,33 @@
 										<th>Student ID</th>
 										<th>Full Name</th>
 										<th>Program_batch Name</th>
-										<th>Program Batch ID</th>
-										<th>Gender</th>
-										<th>Email</th>
-										<th>Present Destrict</th>
-                                        <th>Present Devision</th>
-										<th>Edit</th>
-										<th>view</th>			
+										<th>Registration fees</th>
+										<th>Payment Media</th>
+										<th>Reference Code</th>
+                                        <th>Mobile No</th>
+										<th>Accept Registration</th>
+                                        <th>Reject Registration</th>
+													
 									</tr>
 								</thead>
 
 								<tbody>
-                                    @foreach($finance as $std)
+                                    @foreach($paymentdetails as $details)
 									<tr>
-										<td>{{$std->student_id}}</td>
-										<td>{{$std->full_name}}</td>
-                                        <td>{{$std->batch_name}}</td>
-										<td>{{$std->program_batch_id}}</td>
-                                        <td>{{$std->gender}}</td>
-										<td>{{$std->email_address}}</td>
-                                        <td>{{$std->present_district}}</td>
-										<td>{{$std->present_division}}</td>
+										<td>{{$details->student_id}}</td>
+										<td>{{$details->full_name}}</td>
+                                        <td>{{$details->batch_name}}</td>
+										<td>{{$details->final_registration_fees}}</td>
+                                        <td>{{$details->payment_media}}</td>
+										<td>{{$details->reference}}</td>
+                                        <td>{{$details->payment_mobileno}}</td>
+										
 										<td>
-											<a href="{{ url('financialaid-status/'.$std->student_id.'/'.$std->program_batch_id)}}" class="btn btn-primary">Update_Result</a>
-										</td>	
+                                            <a href="{{ url('registration/accepted/'.$details->student_id.'/'.$details->program_batch_id)}}" class="btn btn-primary">Accept</a>
+										</td>
                                         <td>
-											<a href="{{ url('view-profile/'.$std->student_id)}}" class="btn btn-primary">view Profile</a>
-										</td>	
+                                            <a href="{{ url('registration/refuse/'.$details->student_id.'/'.$details->program_batch_id)}}" class="btn btn-danger">Reject</a>
+                                        </td>	    
 									</tr>
 									@endforeach
 								</tbody>

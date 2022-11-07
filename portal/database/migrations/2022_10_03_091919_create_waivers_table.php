@@ -16,11 +16,10 @@ return new class extends Migration
         Schema::create('waivers', function (Blueprint $table) {
             $table->string('student_id');
             $table->string('full_name')->nullable();
-            $table->string('program_name')->nullable();
+            $table->string('program_batch_name')->nullable();
             $table->string('program_batch_id')->nullable();
             $table->string('educational_medium')->nullable();
-            $table->string('request_Faq')->nullable();
-            $table->integer('waiver_percentage')->nullable();
+            $table->string('waiver_percentage')->nullable();
             $table->integer('waiver_amount')->nullable();
             $table->string('waiver_reason')->nullable();
             $table->timestamps();

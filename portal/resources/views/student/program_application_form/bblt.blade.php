@@ -155,13 +155,13 @@
 								<div id="radio">
                                     <div class="row">
                                         <div class="col-md-4">
-                                            <input type="radio" name="gender" value="male" {{ old("gender") == 'male' ||  $student->gender =='male'? 'checked' : '' }}> <a style="font-size: small">Male (পুরুষ)</a>
+                                            <input type="radio" name="gender" value="male" {{ old("gender") == 'male' ||  $student->gender =='male'? 'checked' : 'disabled' }}> <a style="font-size: small">Male (পুরুষ)</a>
                                         </div>
                                         <div class="col-md-4">
-                                            <input type="radio" name="gender" value="female" {{ old("gender") == 'female' ||  $student->gender =='female'? 'checked' : '' }}> <a style="font-size: small">Female (নারী)</a>
+                                            <input type="radio" name="gender" value="female" {{ old("gender") == 'female' ||  $student->gender =='female'? 'checked' : 'disabled' }}> <a style="font-size: small">Female (নারী)</a>
                                         </div>
                                         <div class="col-md-4">
-                                            <input type="radio" name="gender" value="other" {{ old("gender") == 'other' ||  $student->gender =='other' ? 'checked' : '' }}> <a style="font-size: small">Other (অন্যান্য)</a>
+                                            <input type="radio" name="gender" value="other" {{ old("gender") == 'other' ||  $student->gender =='other' ? 'checked' : 'disabled' }}> <a style="font-size: small">Other (অন্যান্য)</a>
                                         </div>
                                     </div>
 								</div>
@@ -234,8 +234,8 @@
 							<a style="font-size: small ; font-weight: bold">Do you belong to any ethnic community, i.e.Chakma, Marma, etc? (আপনি কি কোন ক্ষুদ্র নৃগোষ্ঠীর অন্তর্ভুক্ত, যেমন চাকমা, মারমা ইত্যাদি?)</a><br>
 							<div class="form-row">
 								<div id="radio">
-									<input type="radio" name="ethnicity" onclick="javascript:ethnicityCheck();"  id="ethnicCheck" value="yes"  {{ old("ethnicity") == 'yes' || $student->ethnicity == 'yes'? 'checked' : '' }} > <a style="font-size: small">Yes (হ্যাঁ)</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-									<input type="radio" name="ethnicity" onclick="javascript:ethnicityCheck();"  id="not_ethnicCheck" value="no"  {{ old("ethnicity") == 'no' || $student->ethnicity =='no'? 'checked' : '' }}> <a style="font-size: small">No (না)</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									<input type="radio" name="ethnicity" onclick="javascript:ethnicityCheck();"  id="ethnicCheck" value="yes"  {{ old("ethnicity") == 'yes' || $student->ethnicity == 'yes'? 'checked' : 'disabled' }} > <a style="font-size: small">Yes (হ্যাঁ)</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									<input type="radio" name="ethnicity" onclick="javascript:ethnicityCheck();"  id="not_ethnicCheck" value="no"  {{ old("ethnicity") == 'no' || $student->ethnicity =='no'? 'checked' : 'disabled' }}> <a style="font-size: small">No (না)</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 								</div>
 								<div id="ethnic" style="display:none">
                                     <a style="font-size: small ; font-weight: bold">If yes, please mention below. (অনুগ্রহ করে উল্লেখ করুন)</a>
@@ -245,8 +245,8 @@
 							<a style="font-size: small ; font-weight: bold">Do you have any disability, i.e., visual or hearing disabilities, physical disability, etc.? (আপনার কি কোন প্রতিবন্ধিতা রয়েছে, যেমনঃ দৃষ্টি, শ্রবণ, শারীরিক প্রতিবন্ধিতা বা অন্যান্য?)</a><br>
 							<div class="form-row">
 								<div id="radio">
-									<input type="radio" name="disability" onclick="javascript:disabilityCheck();"  id="disableCheck" value="yes" {{ old("disability") == 'yes' || $student->disability == 'yes' ? 'checked' : '' }} > <a style="font-size: small">Yes (হ্যাঁ)</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-									<input type="radio" name="disability" onclick="javascript:disabilityCheck();"  id="not_disableCheck" value="no" {{ old("disability") == 'no' || $student->disability =='no' ? 'checked' : '' }}> <a style="font-size: small">No (না)</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									<input type="radio" name="disability" onclick="javascript:disabilityCheck();"  id="disableCheck" value="yes" {{ old("disability") == 'yes' || $student->disability == 'yes' ? 'checked' : 'disabled' }} > <a style="font-size: small">Yes (হ্যাঁ)</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									<input type="radio" name="disability" onclick="javascript:disabilityCheck();"  id="not_disableCheck" value="no" {{ old("disability") == 'no' || $student->disability =='no' ? 'checked' : 'disabled' }}> <a style="font-size: small">No (না)</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 								</div>
 								<div id="disable" style="display:none">
                                     <a style="font-size: small ; font-weight: bold">If yes, please mention below. (অনুগ্রহ করে উল্লেখ করুন)</a>
@@ -289,12 +289,9 @@
 									<div class="input-group mb-3" class="dropdown-menu">
 										<select class="form-select" id="per_district" name="per_district" >
 										  <option selected>Select District</option>
-										  <option value="Bagerhat" {{ old("per_district") == 'Bagerhat' ? 'selected' : '' }}>Bagerhat (বাগেরহাট)</option>
-										  <option value="Bandarban" {{ old("per_district") == 'Bandarban' ? 'selected' : '' }}>Bandarban (বান্দরবান)</option>
-										  <option value="Barguna" {{ old("per_district") == 'Barguna' ? 'selected' : '' }}>Barguna (বরগুনা)</option>
-										  <option value="Barishal" {{ old("per_district") == 'Barishal' ? 'selected' : '' }}>Barishal (বরিশাল)</option>
-										  <option value="Bhola" {{ old("per_district") == 'Bhola' ? 'selected' : '' }}>Bhola (ভোলা)</option>
-										  <option value="Bogura" {{ old("per_district") == 'Bogura' ? 'selected' : '' }}>Bogura (বগুড়া)</option>
+										  @foreach($district as $dis)
+												<option value="{{ $dis->name }}" {{ old("per_district") ==  $dis->name || $student->present_district ? 'selected' : '' }}>{{ $dis->name }}</option>
+											@endforeach	
 										  
 										</select>
 									</div>
@@ -305,14 +302,9 @@
 									<div class="input-group mb-3">
 										<select class="form-select" id="per_division" name="per_division">
 										  <option selected>Select Division</option>
-										  <option value="Chattagram" >Chattagram (চট্টগ্রাম)</option>
-										  <option value="Rajshahi">Rajshahi (রাজশাহী)</option>
-										  <option value="Khulna">Khulna (খুলনা)</option>
-										  <option value="Barisal">Barisal (বরিশাল)</option>
-										  <option value="Sylhet">Sylhet (সিলেট)</option>
-										  <option value="Dhaka">Dhaka (ঢাকা)</option>
-										  <option value="Rangpur">Rangpur (রংপুর)</option>
-										  <option value="Mymensingh">Mymensingh (ময়মনসিংহ)</option>
+										  @foreach($division as $div)
+												<option value="{{ $div->name }}"{{ old("per_division") ==  $div->name || $student->present_division  ? 'selected' : '' }}>{{ $div->name }}</option>
+											@endforeach	
 										</select>
 									</div>
 								</div>
@@ -332,8 +324,8 @@
 							<a style="font-size: small ; font-weight: bold">Is your permanent address similar to the present address? (আপনার স্থায়ী ঠিকানা ও বর্তমান ঠিকানা কি একই?)</a><br>
 							<div class="form-row">
 								<div id="radio">
-									<input type="radio" name="same_address" onclick="javascript:yesnoCheck();"  id="yesCheck" value="yes" {{ old("same_address") == 'yes' || $student->present_similar_to_permanent == 'yes' ? 'checked' : '' }}> <a style="font-size: small">Yes (হ্যাঁ)</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-									<input type="radio" name="same_address" onclick="javascript:yesnoCheck();"  id="noCheck" value="no" {{ old("same_address") == 'no' || $student->present_similar_to_permanent == 'no'? 'checked' : '' }}> <a style="font-size: small">No (না)</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									<input type="radio" name="same_address" onclick="javascript:yesnoCheck();"  id="yesCheck" value="yes" {{ old("same_address") == 'yes' || $student->present_similar_to_permanent == 'yes' ? 'checked' : 'disabled' }}> <a style="font-size: small">Yes (হ্যাঁ)</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									<input type="radio" name="same_address" onclick="javascript:yesnoCheck();"  id="noCheck" value="no" {{ old("same_address") == 'no' || $student->present_similar_to_permanent == 'no'? 'checked' : 'disabled' }}> <a style="font-size: small">No (না)</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 								</div>
 								<span style ="color: red">@error('same_address'){{$message}}@enderror </span>
 							</div>
@@ -372,13 +364,9 @@
 											<div class="input-group mb-3">
 												<select class="form-select" id="district" name="district">
 												<option selected>Select District</option>
-												<option value="Bagerhat">Bagerhat (বাগেরহাট)</option>
-												<option value="Bandarban">Bandarban (বান্দরবান)</option>
-												<option value="Barguna">Barguna (বরগুনা)</option>
-												<option value="Barishal">Barishal (বরিশাল)</option>
-												<option value="Bhola">Bhola (ভোলা)</option>
-												<option value="Barishal">Bogura (বগুড়া)</option>
-												<option value="Bhola">Brahmanbaria (ব্রাহ্মণবাড়িয়া)</option>
+												 @foreach($district as $dis)
+													<option value="{{ $dis->name }}" {{ old("district") ==  $dis->name || $student->permanent_district ? 'selected' : '' }}>{{ $dis->name }}</option>
+												@endforeach	
 												</select>
 											</div>
 										</div>
@@ -388,14 +376,9 @@
 											<div class="input-group mb-3">
 												<select class="form-select" id="division" name="division">
 												<option selected>Select Division</option>
-												<option value="Chattagram">Chattagram (চট্টগ্রাম)</option>
-												<option value="Rajshahi">Rajshahi (রাজশাহী)</option>
-												<option value="Khulna">Khulna (খুলনা)</option>
-												<option value="Barisal">Barisal (বরিশাল)</option>
-												<option value="Sylhet">Sylhet (সিলেট)</option>
-												<option value="Dhaka">Dhaka (ঢাকা)</option>
-												<option value="Rangpur">Rangpur (রংপুর)</option>
-												<option value="Mymensingh">Mymensingh (ময়মনসিংহ)</option>
+												@foreach($division as $div)
+													<option value="{{ $div->name }}" {{ old("division") ==  $div->name || $student->permanent_division ? 'selected' : '' }}>{{ $div->name }}</option>
+												@endforeach	
 												</select>
 											</div>
 										</div>
