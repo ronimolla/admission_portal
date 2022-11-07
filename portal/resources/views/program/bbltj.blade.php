@@ -54,7 +54,7 @@
 					<div class="subHeading" >বিল্ডিং ব্রিজেস থ্রু লিডারশিপ ট্রেনিং জুনিয়র (বিবিএলটিজে) আবেদনপত্র </div>
 				</div>
 		      
-				<form class="form-register"  method="post" action="{{url('/bbltj/store')}}" name="add_school" id="add_school" novalidate="novalidate">{{csrf_field()}}
+				<form class="form-register"  method="post" action="{{url('/bbltj/store')}}" name="add_school" id="sellingFormSave" novalidate="novalidate">{{csrf_field()}}
 		        	<div id="form-total">
 					<input type="hidden" class="form-control" id="program_name"  name="program_name" value="BBLTJ" >
 					<input type="hidden" class="form-control" id="program_name"  name="program_batch_id" value="{{$batchinfo->batch_id}}">
@@ -578,6 +578,99 @@
         }
 
     </script>
+
+
+<script>
+		$('#sellingFormSave').on("submit", function(e) {
+			$('.form_error').remove();
+			if ($('[name=full-name]').val() == '') {
+				e.preventDefault()
+				$('[name=full-name]').focus().after('<label class="form_error" style="color:red; font-size:14px">Pease fill the empty field</label>');
+			}
+			if ($('[name=gender]').val() == '') {
+				e.preventDefault()
+				$('[name=gender]').focus().after('<label class="form_error" style="color:red; font-size:14px">Pease fill the empty field</label>');
+			}
+			if ($('[name=date-of-birth]').val() == '') {
+				e.preventDefault()
+				$('[name=date-of-birth]').focus().after('<label class="form_error" style="color:red; font-size:14px">Pease fill the empty field</label>');
+			}
+			if ($('[name=nationality]').val() == '') {
+				e.preventDefault()
+				$('[name=nationality]').focus().after('<label class="form_error" style="color:red; font-size:14px">Pease fill the empty field</label>');
+			}
+			if ($('[name=father_name]').val() == '') {
+				e.preventDefault()
+				$('[name=father_name]').focus().after('<label class="form_error" style="color:red; font-size:14px">Pease fill the empty field</label>');
+			}
+			if ($('[name=mother_name]').val() == '') {
+				e.preventDefault()
+				$('[name=mother_name]').focus().after('<label class="form_error" style="color:red; font-size:14px">Pease fill the empty field</label>');
+			}
+			if ($('[name=father_name]').val() == '') {
+				e.preventDefault()
+				$('[name=mobile-number]').focus().after('<label class="form_error" style="color:red; font-size:14px">Pease fill the empty field</label>');
+			}
+			if ($('[name=mother_name]').val() == '') {
+				e.preventDefault()
+				$('[name=emergency_contact]').focus().after('<label class="form_error" style="color:red; font-size:14px">Pease fill the empty field</label>');
+			}
+			if ($('[name=email-address]').val() == '') {
+				e.preventDefault()
+				$('[name=email-address]').focus().after('<label class="form_error" style="color:red; font-size:14px">Pease fill the empty field</label>');
+			}
+			if ($('[name=nid]').val() == '') {
+				e.preventDefault()
+				$('[name=nid]').focus().after('<label class="form_error" style="color:red; font-size:14px">Pease fill the empty field</label>');
+			}
+
+			if (!$('[name=gender]:checked').val()) {
+				$('.gender').after('<label class="form_error" style="color:red">Select the condition of the trucks.</label>');
+			}
+			if (!$('[name=disability]:checked').val()) {
+				$('.disability.wrapper').after('<label class="form_error" style="color:red">Select the condition of the trucks.</label>');
+			}
+
+
+			if ($('[name=per_thana]').val() == '') {
+				e.preventDefault()
+				$('[name=per_thana]').focus().after('<label class="form_error" style="color:red; font-size:14px">Pease fill the empty field</label>');
+			}
+			if ($('[name=per_district]').val() == 'Select District') {
+				e.preventDefault()
+				$('[name=per_district]').focus().after('<label class="form_error" style="color:red; font-size:14px">Pease fill the empty field</label>');
+			}
+			if ($('[name=per_division]').val() == 'Select Division') {
+				e.preventDefault()
+				$('[name=per_division]').focus().after('<label class="form_error" style="color:red; font-size:14px">Pease fill the empty field</label>');
+			}
+			if ($('[name=per_pc]').val() == '') {
+				e.preventDefault()
+				$('[name=per_pc]').focus().after('<label class="form_error" style="color:red; font-size:14px">Pease fill the empty field</label>');
+			}
+
+			if ($('[name=edu_level]').val() == '') {
+				e.preventDefault()
+				$('[name=edu_level]').focus().after('<label class="form_error" style="color:red; font-size:14px">Pease fill the empty field</label>');
+			}
+			if ($('[name=institution]').val() == '') {
+				e.preventDefault()
+				$('[name=institution]').focus().after('<label class="form_error" style="color:red; font-size:14px">Pease fill the empty field</label>');
+			}
+			if ($('[name=cgpa]').val() == '') {
+				e.preventDefault()
+				$('[name=cgpa]').focus().after('<label class="form_error" style="color:red; font-size:14px">Pease fill the empty field</label>');
+			}
+			if ($('[name=extracurricular]').val() == '') {
+				e.preventDefault()
+				$('[name=extracurricular]').focus().after('<label class="form_error" style="color:red; font-size:14px">Pease fill the empty field</label>');
+			}
+			if ($('[name=justify_ans]').val() == '') {
+				e.preventDefault()
+				$('[name=justify_ans]').focus().after('<label class="form_error" style="color:red; font-size:14px">Pease fill the empty field</label>');
+			}
+		});
+	</script>
 
 
 </body>

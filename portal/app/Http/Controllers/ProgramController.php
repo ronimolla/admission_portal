@@ -51,24 +51,24 @@ class ProgramController extends Controller
 
     public function bbltstore(Request $request)
     {     
-        $request->validate([
-            'full-name'=>'required | max:15',
-            'email-address'=>'required | unique:student_contact_infos,email_address',
-            'same_address'=>'required ',
-            'nid'=>'required | unique:student_personal_infos,student_id'
+        // $request->validate([
+        //     'full-name'=>'required | max:15',
+        //     'email-address'=>'required | unique:student_contact_infos,email_address',
+        //     'same_address'=>'required ',
+        //     'nid'=>'required | unique:student_personal_infos,student_id'
 
 
-        ]);
+        // ]);
 
         if($request->isMethod('post')){
             $data = $request->input();
             
-            //echo "<pre>"; print_r($data); die;
+            echo "<pre>"; print_r($data); die;
             // $usersCount = StudentPersonalInfo::where('student_id ',$data['email'])->count();
-            //echo $usersCount ; die;
-            //if($usersCount>0){
+            // // echo $usersCount ; die;
+            // if($usersCount>0){
             // return redirect()->back()->with('flash_message_error','Email already exists!');
-            //}
+            // }
             $program_batch_id=$data['program_batch_id'];
             $programname=$data['program_name'];
             $student_id = $data['nid'];

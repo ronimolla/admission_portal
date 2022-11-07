@@ -32,8 +32,7 @@ body {
 	-ms-box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
 	-moz-box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
 	-webkit-box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
-
-	margin: 110px 0;
+	margin: 40px 0;
 	font-family: 'Open Sans', sans-serif;
 	position: relative;
 	display: flex;
@@ -150,6 +149,7 @@ body {
     background-image: -webkit-linear-gradient( 136deg, rgb(242,113,33) 0%, rgb(233,64,87) 50%, rgb(138,35,135) 100%);
     background-image: -ms-linear-gradient( 136deg, rgb(242,113,33) 0%, rgb(233,64,87) 50%, rgb(138,35,135) 100%);
     box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.25);
+    
 	-o-box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.25);
     -ms-box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.25);
     -moz-box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.25);
@@ -382,9 +382,9 @@ body {
     -ms-align-items: center;
     -moz-align-items: center;
     -webkit-align-items: center;
-    background-image: -moz-linear-gradient( 0deg, rgb(242,113,33) 0%, rgb(233,64,87) 50%, rgb(138,35,135) 100%);
-    background-image: -webkit-linear-gradient( 0deg, rgb(242,113,33) 0%, rgb(233,64,87) 50%, rgb(138,35,135) 100%);
-    background-image: -ms-linear-gradient( 0deg, rgb(242,113,33) 0%, rgb(233,64,87) 50%, rgb(138,35,135) 100%);
+    background-image: -moz-linear-gradient( 0deg, rgb(0,113,33) 0%, rgb(0,113,33) 50%, rgb(0,113,33) 100%);
+    background-image: -webkit-linear-gradient( 0deg, rgb(0,113,33) 0%, rgb(0,113,33) 50%, rgb(0,113,33) 100%);
+    background-image: -ms-linear-gradient( 0deg, rgb(0,113,33) 0%, rgb(0,113,33) 50%, rgb(0,113,33) 100%);
     box-shadow: 0px 3px 10px 0px rgba(0, 0, 0, 0.15);
     -o-box-shadow: 0px 3px 10px 0px rgba(0, 0, 0, 0.15);
     -ms-box-shadow: 0px 3px 10px 0px rgba(0, 0, 0, 0.15);
@@ -396,9 +396,9 @@ body {
     cursor: pointer;
 }
 .actions ul li:hover {
-	background-image: -moz-linear-gradient( 0deg, rgb(212,103,23) 0%, rgb(203,34,57) 50%, rgb(128,25,105) 100%);
-    background-image: -webkit-linear-gradient( 0deg, rgb(212,103,23) 0%, rgb(203,34,57) 50%, rgb(128,25,105) 100%);
-    background-image: -ms-linear-gradient( 0deg, rgb(212,103,23) 0%, rgb(203,34,57) 50%, rgb(128,25,105) 100%);
+    background-image: -moz-linear-gradient( 0deg, rgb(0,150,33) 0%, rgb(0,150,33) 50%, rgb(0,150,33) 100%);
+    background-image: -webkit-linear-gradient( 0deg, rgb(0,150,33) 0%, rgb(0,150,33) 50%, rgb(0,150,33) 100%);
+    background-image: -ms-linear-gradient( 0deg, rgb(0,150,33) 0%, rgb(0,150,33) 50%, rgb(0,150,33) 100%);
 }
 .actions ul li:first-child {
 	background: #999;

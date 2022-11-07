@@ -791,9 +791,9 @@ function paginationClickHandler(event)
             cancel(wizard);
             break;
 
-        case "finish":
-            finishStep(wizard, state);
-            break;
+        // case "finish":
+        //     finishStep(wizard, state);
+        //     break;
 
         case "next":
             goToNextStep(wizard, options, state);
@@ -1352,12 +1352,13 @@ $.fn.steps.destroy = function ()
 /**
  * Triggers the onFinishing and onFinished event.
  *
- * @method finish
+  @method finish
  **/
-$.fn.steps.finish = function ()
-{
-    finishStep(this, getState(this));
-};
+
+// $.fn.steps.finish = function ()
+// {
+//     finishStep(this, getState(this));
+// };
 
 /**
  * Gets the current step index.
@@ -1802,7 +1803,7 @@ var defaults = $.fn.steps.defaults = {
      * @default true
      * @for defaults
      **/
-    enableFinishButton: true,
+    enableFinishButton: false,
 
     /**
      * Not yet implemented.
