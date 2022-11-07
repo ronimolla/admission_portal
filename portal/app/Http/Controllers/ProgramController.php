@@ -60,6 +60,7 @@ class ProgramController extends Controller
         }
     }
 
+
     public function bbltstore(Request $request)
     {     
         // $request->validate([
@@ -67,8 +68,6 @@ class ProgramController extends Controller
         //     'email-address'=>'required | unique:student_contact_infos,email_address',
         //     'same_address'=>'required ',
         //     'nid'=>'required | unique:student_personal_infos,student_id'
-
-
         // ]);
 
         if($request->isMethod('post')){
@@ -1435,10 +1434,12 @@ class ProgramController extends Controller
         
             $program_batch ->program_id = $data['category_program'];
             $program_batch ->batch_name = $data['batch_name'];
+
+            $program_batch ->start_date = $data['application_start_date'];
+            $program_batch ->end_date = $data['application_end_date'];
             $program_batch ->program_start_date = $data['program_start_date'];
             $program_batch ->program_end_date = $data['program_end_date'];
-            $program_batch ->application_start_date = $data['application_start_date'];
-            $program_batch ->application_end_date = $data['application_end_date'];
+
             $program_batch ->program_duration = $data['program_duration'];
             $program_batch ->program_mode = $data['program_mode'];
             $program_batch ->class_time = $data['class_time'];
@@ -1697,6 +1698,7 @@ class ProgramController extends Controller
         }
         echo json_encode($output);
     }
+
 
     public function fetchDisability() {
         $disability = StudentPersonalInfo::select(DB::raw('COUNT(*) as total_student, disability'))
