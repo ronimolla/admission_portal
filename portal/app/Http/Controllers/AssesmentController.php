@@ -103,6 +103,8 @@ class AssesmentController extends Controller
     -------
     */
     public function follow_up(Request $request,$student_id= null,$program_batch_id= null){	
+       
+      
 
 		if($request->isMethod('post')){
             $data = $request->input();
@@ -333,6 +335,7 @@ class AssesmentController extends Controller
 
     public function acceptregistration($student_id= null,$program_batch_id= null){
         Payment::where(['student_id'=>$student_id,'program_batch_id'=>$program_batch_id])->update(['payment_status'=>'Accept']);
+        StudentProgram::where(['student_id'=>$student_id,'program_batch_id'=>$program_batch_id])->update(['application_status'=>'selected']); 
         return redirect()->back();
        
     }

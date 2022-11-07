@@ -3,16 +3,16 @@
 <div class="content-wrapper">
   	<div class="content">
 	    <div class="breadcrumb-wrapper">
-			<h1>Tables</h1>
+			<h1>Assesment</h1>
 			<nav aria-label="breadcrumb">
 				<ol class="breadcrumb p-0">
 					<li class="breadcrumb-item">
-						<a href="index.html">
+						<a href="{{url('/dashboard')}}">
 						    <span class="mdi mdi-home"></span>                
 						</a>
 					</li>
 					<li class="breadcrumb-item">
-						Data Table
+						Writing Test
 					</li>
 								
 				</ol>
@@ -42,7 +42,7 @@
 										<th>Date of Birth</th>
 										<th>Present Destrict</th>
                                         <th>Present Devision</th>
-										<th>Edit</th>
+										<th>Update</th>
 										<th>view</th>
 													
 									</tr>
@@ -83,12 +83,13 @@
 
                     <div class="card-body">
                         <div class="basic-data-table">
-                            <table id="basic-data-table" class="table nowrap" style="width:100%">
+                            <table id="basic-data-table2" class="table nowrap" style="width:100%">
                                 <thead>
                                     <tr>
 									<th>Student ID</th>
 										<th>Full Name</th>
 										<th>Program Name</th>
+										<th>Email ID</th>
 										<th>Program Code</th>
 										<th>Application & writing Score</th>
 										<th>Interview Eligibility</th>
@@ -103,9 +104,10 @@
                                             <td>{{$pstage->student_id}}</td>
 											<td>{{$pstage->full_name}}</td>
 											<td>{{$pstage->program_name}}</td>
+											<td>{{$pstage->email_address}}</td>
 											<td>{{$pstage->program_batch_id}}</td>
-											<td>{{$pstage->present_district}}</td>
-											<td>{{$pstage->present_division}}</td>
+											<td>{{$pstage->writing_and_appication_score}}</td>
+											<td>{{$pstage->select_for_interview}}</td>
 											<td>
 												<a href="{{ url('writing/follow-up/'.$pstage->student_id.'/'.$pstage->program_batch_id)}}" class="btn btn-primary">Follow-Up</a>
 											</td>	

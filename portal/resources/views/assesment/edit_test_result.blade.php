@@ -8,7 +8,7 @@
             <div class="col-lg-10">
                 <div class="card card-default">
                     <div class="card-header card-header-border-bottom">
-                        <h2>Basic Validation</h2>
+                        <h2>Update writing test result</h2>
                     </div>
 
                     <div class="card-body">
@@ -41,14 +41,14 @@
                                     <input type="text" class="form-control" id="validationServer03" name="assessor_name" value= "{{Session::get('AdminName')}}" readonly>
                                 </div>
                                 <div class="col-md-4 mb-3">
-                                    <label for="validationServer03">Attend writing test</label>
+                                    <label for="validationServer03" class="required">Attend writing test</label>
                                     <select class="form-control" id="writting_eligibility" name="attended">
                                         <option>Yes</option>
                                         <option> No</option>
                                     </select>
                                 </div>
                                 <div class="col-md-4 mb-3">
-                                    <label for="validationServer04">Writing Test Score(25)</label>
+                                    <label for="validationServer04" class="required">Writing Test Score(25)</label>
                                     <input type="number" class="form-control" id="validationServer04" name="test_score" required>
                                 </div>    
                             </div> 
@@ -56,7 +56,7 @@
                             <div class="form-row">
                                 
                                 <div class="col-md-4 mb-3">
-                                        <label for="validationServer03">Interview Eligibility</label>
+                                        <label for="validationServer03" class="required">Interview Eligibility</label>
                                         <select class="form-control" id="writting_eligibility" name="select_for_interview">
                                             <option>Eligible</option>
                                             <option>Incapable</option>

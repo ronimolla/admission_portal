@@ -9,7 +9,7 @@
             <div class="col-lg-10">
                 <div class="card card-default">
                     <div class="card-header card-header-border-bottom">
-                        <h2>Basic Validation</h2>
+                        <h2>Update pre selction result</h2>
                     </div>
 
                     <div class="card-body">
@@ -55,13 +55,11 @@
                                 </div>
                                 
                                 <div class="col-md-4 mb-3">
-                                    <div class="form-group">
-                                        <label for="exampleFormControlSelect12">Writting Exam Eligibility</label>
-                                        <select class="form-control" id="writting_eligibility" name="writting_eligibility">
-                                            <option>Eligible</option>
-                                            <option>Incapable</option>
-                                        </select>
-                                    </div>
+                                    <label for="validationServer03">Writting Exam Eligibility</label>
+                                    <select class="form-control" id="writting_eligibility" name="writting_eligibility">
+                                        <option>Eligible</option>
+                                        <option>Incapable</option>
+                                    </select>    
                                 </div>    
                             </div>  
                             <button class="btn btn-primary" type="submit">Update</button>

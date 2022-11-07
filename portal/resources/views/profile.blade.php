@@ -9,13 +9,14 @@
                     <div class="profile-content-left profile-left-spacing pt-5 pb-3 px-3 px-xl-5">
                         <div class="card text-center widget-profile px-0 border-0">
                             <div class="card-img mx-auto rounded-circle">
-                                <img src="{{asset('assets/img/user/u6.jpg')}}" alt="user image">
+                                <!-- <img src="{{asset('assets/img/user/u6.jpg')}}" alt="user image"> -->
+                                <img src="{{asset('assets/img/user/img.png')}}" alt="user image">
                             </div>
 
                             <div class="card-body">
                                 <h4 class="py-2 text-dark">{{$personalinfo->full_name}}</h4>
                                 <p>{{$contactinfo->email_address}}</p><br>
-                                <a   class="btn btn-primary" href="{{ url('edit-profile/'.$personalinfo->student_id)}}">Edit</a>
+                                <!-- <a   class="btn btn-primary" href="{{ url('edit-profile/'.$personalinfo->student_id)}}">Edit</a> -->
                             </div>
                         </div>
 

@@ -4,16 +4,16 @@
 <div class="content-wrapper">
   	<div class="content">
 	    <div class="breadcrumb-wrapper">
-			<h1>Tables</h1>
+			<h1>Assesment</h1>
 			<nav aria-label="breadcrumb">
 				<ol class="breadcrumb p-0">
 					<li class="breadcrumb-item">
-						<a href="index.html">
+						<a href="{{url('/dashboard')}}">
 						    <span class="mdi mdi-home"></span>                
 						</a>
 					</li>
 					<li class="breadcrumb-item">
-						Data Table
+						Waiver request
 					</li>
 								
 				</ol>

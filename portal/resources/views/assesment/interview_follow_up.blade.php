@@ -54,28 +54,28 @@
                                     <input type="text" class="form-control" id="validationServer03" name="assessor_name" value= "{{Session::get('AdminName')}}" readonly>
                                 </div>
                                 <div class="col-md-4 mb-3">
-                                    <label for="validationServer04">Contact Media</label>
+                                    <label for="validationServer04" class="required">Contact Media</label>
                                     <input type="text" class="form-control" id="validationServer04" name="conatct_media" required>
                                 </div>  
                                    
                             </div>  
                             <div class="form-row">
                                <div class="col-md-4 mb-3">
-                                    <label for="exampleFormControlSelect12">Want to register</label>
+                                    <label for="exampleFormControlSelect12" class="required">Want to register</label>
                                     <select class="form-control" id="want_to_registration" name="want_to_registration">
                                         <option>Yes</option>
                                         <option> No</option>
                                     </select>    
                                 </div>   
                                 <div class="col-md-4 mb-3">
-                                    <label for="exampleFormControlSelect12">Request for Financial AID</label>
+                                    <label for="exampleFormControlSelect12" class="required">Request for Financial AID</label>
                                     <select class="form-control" id="request_faq" name="request_faq">
                                         <option>Yes</option>
                                         <option> No</option>
                                     </select>                              
                                 </div>  
                                 <div class="col-md-4 mb-3">                          
-                                    <label for="exampleFormControlSelect12">Sent Financial AID Form</label>
+                                    <label for="exampleFormControlSelect12" class="required">Sent Financial AID Form</label>
                                     <select class="form-control" id="sent_fid" name="sent_fid">
                                         <option>Yes</option>
                                         <option> No</option>
@@ -88,7 +88,7 @@
                                     <textarea class="form-control" id="validationServer03" name ="reason"rows="4" cols="50"></textarea>                                   
                                 </div>
                                 <div class="col-md-4 mb-3">
-                                    <label for="validationServer04">Fiman remark</label>
+                                    <label for="validationServer04" class="required">Fiman remark</label>
                                     <textarea class="form-control" id="validationServer03" name ="renark"rows="4" cols="50"></textarea>
                                 </div>     
                             </div>  
