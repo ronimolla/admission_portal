@@ -3,7 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
+
 -- Generation Time: Nov 07, 2022 at 10:34 AM
+
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.0.23
 
@@ -144,6 +146,7 @@ CREATE TABLE `assesments` (
 -- --------------------------------------------------------
 
 --
+
 -- Table structure for table `districts`
 --
 
@@ -255,6 +258,7 @@ INSERT INTO `divisions` (`id`, `name`, `bn_name`) VALUES
 -- --------------------------------------------------------
 
 --
+
 -- Table structure for table `events`
 --
 
@@ -505,6 +509,7 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (28, '2022_11_02_072346_create_old_program_infos_table', 4),
 (29, '2022_11_02_091904_create_payments_table', 5);
 
+
 -- --------------------------------------------------------
 
 --
@@ -715,6 +720,7 @@ INSERT INTO `programs` (`program_id`, `program_name`, `duration`, `category`, `d
 (4, 'YLS', 2, NULL, NULL, NULL, NULL),
 (5, 'CareerX', 3, NULL, NULL, NULL, NULL);
 
+
 -- --------------------------------------------------------
 
 --
@@ -746,6 +752,7 @@ CREATE TABLE `program_batches` (
 INSERT INTO `program_batches` (`batch_id`, `program_id`, `batch_name`, `application_start_date`, `application_end_date`, `program_start_date`, `program_end_date`, `program_duration`, `program_mode`, `class_time`, `registration_fees`, `registration_deadline`, `current_state`, `created_at`, `updated_at`) VALUES
 (1, 1, 'BBLT7', '2022-11-03', '2022-11-05', '2022-11-10', '2022-12-10', 1, 'online', '3pm - 4pm', 5000, '2022-11-06', NULL, '2022-11-03', '2022-11-03'),
 (2, 3, 'APL2', '2022-11-04', '2022-11-06', '2022-11-11', '2022-12-08', 1, 'online', '3pm - 4pm', 2000, '2022-11-07', 'running', '2022-11-03', '2022-11-03');
+
 
 -- --------------------------------------------------------
 
@@ -1142,6 +1149,7 @@ ALTER TABLE `assesments`
   ADD PRIMARY KEY (`id`);
 
 --
+
 -- Indexes for table `districts`
 --
 ALTER TABLE `districts`
@@ -1155,6 +1163,7 @@ ALTER TABLE `divisions`
   ADD PRIMARY KEY (`id`);
 
 --
+
 -- Indexes for table `events`
 --
 ALTER TABLE `events`
@@ -1234,12 +1243,6 @@ ALTER TABLE `personal_access_tokens`
 --
 ALTER TABLE `programs`
   ADD PRIMARY KEY (`program_id`);
-
---
--- Indexes for table `program_batches`
---
-ALTER TABLE `program_batches`
-  ADD PRIMARY KEY (`batch_id`);
 
 --
 -- Indexes for table `student_address_infos`
@@ -1325,6 +1328,7 @@ ALTER TABLE `assesments`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
+
 -- AUTO_INCREMENT for table `districts`
 --
 ALTER TABLE `districts`
@@ -1337,6 +1341,7 @@ ALTER TABLE `divisions`
   MODIFY `id` int(2) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
+
 -- AUTO_INCREMENT for table `events`
 --
 ALTER TABLE `events`
@@ -1378,6 +1383,7 @@ ALTER TABLE `interviews`
 ALTER TABLE `migrations`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
+
 --
 -- AUTO_INCREMENT for table `old_program_infos`
 --
@@ -1390,11 +1396,13 @@ ALTER TABLE `old_program_infos`
 ALTER TABLE `participants`
   MODIFY `participant_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
+
 --
 -- AUTO_INCREMENT for table `payments`
 --
 ALTER TABLE `payments`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
@@ -1409,12 +1417,14 @@ ALTER TABLE `programs`
   MODIFY `program_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
+
 -- AUTO_INCREMENT for table `program_batches`
 --
 ALTER TABLE `program_batches`
   MODIFY `batch_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+
 -- AUTO_INCREMENT for table `student_address_infos`
 --
 ALTER TABLE `student_address_infos`

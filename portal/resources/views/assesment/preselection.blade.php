@@ -3,7 +3,7 @@
 <div class="content-wrapper">
   	<div class="content">
 	    <div class="breadcrumb-wrapper">
-			<h1>Tables</h1>
+			<h1>Assesment</h1>
 			<nav aria-label="breadcrumb">
 				<ol class="breadcrumb p-0">
 					<li class="breadcrumb-item">
@@ -12,7 +12,7 @@
 						</a>
 					</li>
 					<li class="breadcrumb-item">
-						Data Table
+						Pre Selection
 					</li>
 								
 				</ol>
@@ -25,7 +25,7 @@
 			<div class="col-12">
 				<div class="card card-default">
 					<div class="card-header card-header-border-bottom d-flex justify-content-between">
-						<h2>All Applicants Who are Waiting for Pre-Selection</h2>
+						<h2>All Applicants Who are Waiting for Pre Selection</h2>
 						
 					</div>
 
@@ -85,7 +85,7 @@
 
                     <div class="card-body">
                         <div class="basic-data-table">
-                            <table id="basic-data-table" class="table nowrap" style="width:100%">
+                            <table id="basic-data-table2" class="table nowrap" style="width:100%">
                                 <thead>
                                     <tr>
 									<th>Student ID</th>
@@ -94,12 +94,10 @@
 										<th>Program Batch Code</th>
 										<th>Gender</th>
 										<th>Email</th>
-										<th>Present Destrict</th>
-										<th>Present Devision</th>
                                         <th>Preselection Score</th>
 										<th>Writting Exam Eligibility</th>
 										<th>Follow-Up</th>
-										<th>view</th>                               
+										                              
                                     </tr>
                                 </thead>
 
@@ -112,16 +110,12 @@
 											<td>{{$pstage->program_batch_id}}</td>
 											<td>{{$pstage->gender}}</td>
 											<td>{{$pstage->email_address}}</td>
-											<td>{{$pstage->present_district}}</td>
-											<td>{{$pstage->present_division}}</td>
 											<td>{{$pstage->pre_subtotal}}</td>
 											<td>{{$pstage->select_for_writing_test}}</td>
 											<td>
 												<a href="{{ url('preselection/follow-up/'.$pstage->student_id.'/'.$pstage->program_batch_id)}}" class="btn btn-primary">Follow-Up</a>
 											</td>	
-											<td>
-												<a href="{{ url('view-profile/'.$pstage->student_id)}}" class="btn btn-primary">view Profile</a>
-											</td>	
+											
 												
                                         </tr>
 									@endforeach

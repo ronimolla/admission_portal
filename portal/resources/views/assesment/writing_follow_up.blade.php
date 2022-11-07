@@ -9,7 +9,7 @@
             <div class="col-lg-10">
                 <div class="card card-default">
                     <div class="card-header card-header-border-bottom">
-                        <h2>Basic Validation</h2>
+                        <h2>Update follow-up result after writing test result selection</h2>
                     </div>
 
                     <div class="card-body">
@@ -50,17 +50,15 @@
                                     <input type="text" class="form-control" id="validationServer03" name="assessor_name" value= "{{Session::get('AdminName')}}" readonly>
                                 </div>
                                 <div class="col-md-4 mb-3">
-                                    <label for="validationServer04">Contact Media</label>
+                                    <label for="validationServer04" class="required">Contact Media</label>
                                     <input type="text" class="form-control" id="validationServer04" name="conatct_media" required>
                                 </div>  
                                 <div class="col-md-4 mb-3">
-                                    <div class="form-group">
-                                        <label for="exampleFormControlSelect12">Want to Attend Interview</label>
-                                        <select class="form-control" id="writting_eligibility" name="Student_decision">
-                                            <option>Yes</option>
-                                            <option> No</option>
-                                        </select>
-                                    </div>
+                                    <label for="exampleFormControlSelect12" class="required">Want to Attend Interview</label>
+                                    <select class="form-control" id="writting_eligibility" name="Student_decision">
+                                        <option>Yes</option>
+                                        <option> No</option>
+                                    </select>    
                                 </div>    
                             </div>  
                             <div class="form-row">
