@@ -142,32 +142,32 @@ class PaymentController extends Controller
         if($request->isMethod('post')){
             
            $data = $request->input();
-            if($request->hasFile('img')){
-                $image_temp = $request->file('img');
+            //if($request->hasFile('img')){
+                //$image_temp = $request->file('img');
                
                  
                 
-                   if($image_temp->isValid()){
-                        $extension = $image_temp->getClientOriginalExtension();
-                        $filename = rand(111,99999).'.'.$extension;
+                  // if($image_temp->isValid()){
+                       // $extension = $image_temp->getClientOriginalExtension();
+                       // $filename = rand(111,99999).'.'.$extension;
                        // $filename->store('images');
                         //echo $filename; die;
-                         $large_image_path = 'images/payment/'.$filename;
+                         //$large_image_path = 'images/payment/'.$filename;
             //             $medium_image_path = 'images/backend_images/products/medium/'.$filename;
             //             $small_image_path = 'images/backend_images/products/small/'.$filename;
                         
-                        Image::make($image_temp)->save($large_image_path );
+                       // Image::make($image_temp)->save($large_image_path );
             //             Image::make($image_temp)->resize(600,600)->save($medium_image_path );
             //             Image::make($image_temp)->resize(300,300)->save($small_image_path );
                         
             //             $product->image=$filename;
-                    }
-                }
+                  //  }
+               // }
 
-            //    Payment::where(['student_id'=>$student_id,'program_batch_id'=>$program_batch_id])->update(['payment_media'=>$data['pay_method'],
-            //    'reference'=>$data['referenceid'],'payment_mobileno'=>$data['mobileno'],'payment_status'=>'Sent']);
+                Payment::where(['student_id'=>$student_id,'program_batch_id'=>$program_batch_id])->update(['payment_media'=>$data['pay_method'],
+                'reference'=>$data['referenceid'],'payment_mobileno'=>$data['mobileno'],'payment_status'=>'Sent']);
 
-          // return redirect('/student/my-payments');
+           return redirect('/student/my-payments');
            
         }  
         $updatepayment = Payment::where(['student_id'=>$student_id,'program_batch_id'=>$program_batch_id])->first();

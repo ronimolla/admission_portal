@@ -42,7 +42,7 @@
 			<div class="wizard-form">
 				<div class="wizard-header">
 					<img src="{{asset('images/bylc-logo.png')}}" alt="" width="280" height="50"> <br><br>
-					<div class="Heading" style="font-weight: bold ">CareerX Application Form</div>
+					<div class="Heading" style="font-weight: bold ">{{$batchinfo->batch_name}} Application Form</div>
 				</div>
 		      
 				<form class="form-register" method="post" action="{{url('/careerx/store')}}"  novalidate="novalidate">{{csrf_field()}}

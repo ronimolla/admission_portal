@@ -22,7 +22,7 @@
     @foreach($preselcetion as $selcetion)
     <div class="card card-default">
       <div class="content">
-      <h2>Reasault of <strong>{{$selcetion->program_name}}<strong> Program<h2>
+      <h2>Result of <strong>{{$selcetion->program_name}}<strong> Program<h2>
         <br>
       <div class="row">
         <div class="col-xl-3">

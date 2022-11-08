@@ -122,7 +122,7 @@
                 <li class="has-sub {{ request()->is('events/eventsView') || request()->is('events/eventBatch') ? 'active' : '' }} ">
                   <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#event"
                     aria-expanded="false" aria-controls="event">
-                    <i class="mdi mdi-diamond-stone"></i>
+                    <i class="mdi mdi-drag-variant"></i>
                     <span class="nav-text">Events</span> <b class="caret"></b>
                   </a>
                   <ul class="{{ request()->is('events/eventsView') || request()->is('events/eventBatch') ? '' : 'collapse' }} " id="event" data-parent="#sidebar-menu">
@@ -145,7 +145,7 @@
                 <li class="has-sub {{ request()->is('old_data/programs') || request()->is('old_data/events') ? 'active' : '' }} ">
                   <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#icons"
                     aria-expanded="false" aria-controls="icons">
-                    <i class="mdi mdi-diamond-stone"></i>
+                    <i class="mdi mdi-account-group"></i>
                     <span class="nav-text">Old Student Data</span> <b class="caret"></b>
                   </a>
 

@@ -42,8 +42,8 @@
 										<th>Email</th>
 										<th>Present Destrict</th>
                                         <th>Present Devision</th>
-										<th>Edit</th>
-										<th>view</th>			
+										<th>Update</th>
+										<!-- <th>view</th>			 -->
 									</tr>
 								</thead>
 
@@ -59,11 +59,11 @@
                                         <td>{{$std->present_district}}</td>
 										<td>{{$std->present_division}}</td>
 										<td>
-											<a href="{{ url('financialaid-status/'.$std->student_id.'/'.$std->program_batch_id)}}" class="btn btn-primary">Update_Result</a>
+											<a href="{{ url('financialaid-status/'.$std->student_id.'/'.$std->program_batch_id)}}" class="btn btn-primary">Update Result</a>
 										</td>	
-                                        <td>
+                                        <!-- <td>
 											<a href="{{ url('view-profile/'.$std->student_id)}}" class="btn btn-primary">view Profile</a>
-										</td>	
+										</td>	 -->
 									</tr>
 									@endforeach
 								</tbody>

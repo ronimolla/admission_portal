@@ -32,7 +32,7 @@ class ViewController extends Controller
         $division = DB::table('divisions')->get();
         $district = DB::table('districts')->get();
         $batchinfo = Program_batch::all()
-                       ->where('program_id', '= ','3')
+                       ->where('program_id', '= ','4')
                        ->last();
         return view('program.apl')->with(compact('batchinfo','district','division'));
     }
@@ -52,7 +52,7 @@ class ViewController extends Controller
         $division = DB::table('divisions')->get();
         $district = DB::table('districts')->get();
         $batchinfo = Program_batch::all()
-                       ->where('program_id', '= ','5')
+                       ->where('program_id', '= ','3')
                        ->last();
         return view('program.careerx')->with(compact('batchinfo','district','division'));
     }

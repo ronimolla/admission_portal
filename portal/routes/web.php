@@ -127,6 +127,9 @@ Route::group(['middleware' =>['adminlogin']],function(){
     Route::get('/fetchEthnicity', [ProgramController::class, 'fetchEthnicity']);
     Route::get('/fetchDisability', [ProgramController::class, 'fetchDisability']);
     Route::get('/fetchDivision', [ProgramController::class, 'fetchDivision']);
+
+    //Old Student Data
+    Route::get('/old_data/programs', [ProgramController::class, 'old_data']);
    
 
 });

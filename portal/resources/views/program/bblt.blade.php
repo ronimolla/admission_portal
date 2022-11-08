@@ -62,7 +62,7 @@
 			<div class="wizard-form">
 				<div class="wizard-header">
 					<img src="{{asset('images/bylc-logo.png')}}" alt="" width="280" height="50"> <br><br>
-					<div class="Heading" style="font-weight: bold ">Building Bridges through Leadership Training (BBLT) Application Form</div>
+					<div class="Heading" style="font-weight: bold ">Building Bridges through Leadership Training ({{$batchinfo->batch_name}}) Application Form</div>
 					<div class="subHeading" >বিল্ডিং ব্রিজেস থ্রূ লিডারশিপ ট্রেনিং (বিবিএলটি) আবেদনপত্র</div>
 				</div>
 
@@ -119,11 +119,11 @@
 								  <br><br>
 								  <center><div class="subHeading" style="font-weight: bold ; color: darkgreen">Program Details (প্রোগ্রামের বিবরণ)</div></center>
 								  <br><br>
-								  <a style="font-weight: bold ; font-size: small">Program Duration (প্রোগ্রামের ব্যপ্তিকাল):</a> <a style="font-size: small">March 6 - May 12, 2022 (৬ মার্চ - ১২ মে, ২০২২)</a> 
+								  <a style="font-weight: bold ; font-size: small">Program Duration (প্রোগ্রামের ব্যপ্তিকাল):</a> <a style="font-size: small">{{$batchinfo->program_start_date}} To {{$batchinfo->program_end_date}}</a> 
 								  <br><br>
 								  <a style="font-weight: bold ; font-size: small">Class Time (ক্লাসের সময়সূচি):</a> <a style="font-size: small">Sunday through Thursday from 3:30 pm to 6:00 pm (রবি থেকে বৃহস্পতিবার, বিকাল ৩ঃ৩০ থেকে সন্ধ্যা ৬ঃ০০ টা)</a>
 								  <br><br>
-								  <a style="font-weight: bold ; font-size: small">Mode of the Program (প্রোগ্রামের ধরণ):</a> <a style="font-size: small">Online (অনলাইন)</a> <br>
+								  <a style="font-weight: bold ; font-size: small">Mode of the Program (প্রোগ্রামের ধরণ):</a> <a style="font-size: small">{{$batchinfo->program_mode}}</a> <br>
 								  <a style="font-size: small">*registration fee has been reduced from BDT 6,000 to BDT 4,000 due to the current pandemic situation. However, need-based financial aid will be provided to a limited number of students (বর্তমান মহামারী পরিস্থিতি বিবেচনায় রেজিস্ট্রেশন ফি ৬,০০০ টাকার পরিবর্তে ৪,০০০ টাকা নির্ধারণ করা হয়েছে। উল্লেখ্য, আর্থিক অবস্থা ও চাহিদা বিবেচনা করে সীমিত সংখ্যক শিক্ষার্থীকে আর্থিক সহায়তা প্রদান করা হবে)</a>
 								  <br><br>
 								  <a style="font-weight: bold ; font-size: small">Application Deadline (আবেদনের শেষ তারিখ):</a> <a style="font-size: small">January 29, 2022 (২৯ শে জানুয়ারী, ২০২২)</a>
@@ -224,7 +224,7 @@
 								<div class="col-md-6">
 									<!-- NID -->
 									<a style="font-size: small ; font-weight: bold">NID/Bith Certificate/Paport No</a><br>
-									<input type="text" class="form-control" name="nid" id="nid" name="nid" value ="{{old('nid')}}" >
+									<input type="text" class="form-control" id="nid" name="nid" value ="{{old('nid')}}" >
 									<span style ="color: red">@error('nid'){{$message}}@enderror </span>
 								</div>
 							</div>
@@ -553,11 +553,13 @@
 
 			            </section>
 		        	</div>
+					
 		        </form>
+
 			</div>
-			
 		</div>
 	</div>
+
 
 
 

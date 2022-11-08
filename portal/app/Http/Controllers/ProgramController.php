@@ -62,19 +62,16 @@ class ProgramController extends Controller
 
     public function bbltstore(Request $request)
     {     
-        // $request->validate([
-        //     'full-name'=>'required | max:15',
-        //     'email-address'=>'required | unique:student_contact_infos,email_address',
-        //     'same_address'=>'required ',
-        //     'nid'=>'required | unique:student_personal_infos,student_id'
-
-
-        // ]);
+        $request->validate([
+            'email-address'=>'required | unique:student_contact_infos,email_address',
+            'same_address'=>'required ',
+            'nid'=>'required | unique:student_personal_infos,student_id'
+        ]);
 
         if($request->isMethod('post')){
             $data = $request->input();
             
-            echo "<pre>"; print_r($data); die;
+            //echo "<pre>"; print_r($data); die;
             // $usersCount = StudentPersonalInfo::where('student_id ',$data['email'])->count();
             // // echo $usersCount ; die;
             // if($usersCount>0){
@@ -83,7 +80,6 @@ class ProgramController extends Controller
             $program_batch_id=$data['program_batch_id'];
             $programname=$data['program_name'];
             $student_id = $data['nid'];
-            //echo "<pre>"; print_r($student_id); die;
             $batchinfo = Program_batch::where(['batch_id'=>$data['program_batch_id']])->first();
             $student_batch= new StudentProgram;
             $student_batch->student_id = $student_id;
@@ -228,13 +224,13 @@ class ProgramController extends Controller
             // $interview->program_batch_id = $program_batch_id;
 
             
-
+            $questioninfo->save();
             $info->save();
             $coninfo->save();
             $edinfo->save();
             $addinfo->save();
             $marcominfo->save();
-            $questioninfo->save();
+            
             //$preselection->save();
             //$followup->save();
             // $writing->save();
@@ -271,7 +267,6 @@ class ProgramController extends Controller
     public function bbltjstore(Request $request)
     {
         $request->validate([
-            'full-name'=>'required | max:10',
             'email-address'=>'required | unique:student_contact_infos,email_address',
             'same_address'=>'required ',
             'nid'=>'required ',
@@ -446,7 +441,7 @@ class ProgramController extends Controller
         $district = DB::table('districts')->get();
         $date = now()->format('Y-m-d');
         $batchinfo = Program_batch::all()
-                       ->where('program_id', '= ','3')
+                       ->where('program_id', '= ','4')
                        ->last();
         $application_last_date = $batchinfo->end_date;
         $application_start_date = $batchinfo->start_date;
@@ -460,7 +455,6 @@ class ProgramController extends Controller
     public function aplstore(Request $request)
     { 
         $request->validate([
-            'full-name'=>'required | max:10',
             'email-address'=>'required | unique:student_contact_infos,email_address',
             'same_address'=>'required ',
             'nid'=>'required ','nid'=>'required | unique:student_personal_infos,student_id'
@@ -652,7 +646,6 @@ class ProgramController extends Controller
     public function ylsstore(Request $request)
     { 
         $request->validate([
-            'full-name'=>'required | max:10',
             'email-address'=>'required | unique:student_contact_infos,email_address',
             'same_address'=>'required ',
             'nid'=>'required ','nid'=>'required | unique:student_personal_infos,student_id'
@@ -819,12 +812,14 @@ class ProgramController extends Controller
 
     public function careerx()
     {  
+       
         $division = DB::table('divisions')->get();
         $district = DB::table('districts')->get();
         $date = now()->format('Y-m-d');
         $batchinfo = Program_batch::all()
-                       ->where('program_id', '= ','5')
+                       ->where('program_id', '= ','3')
                        ->last();
+       
         $application_last_date = $batchinfo->end_date;
         $application_start_date = $batchinfo->start_date;
         if($date <= $application_last_date && $date >= $application_start_date){
@@ -837,7 +832,6 @@ class ProgramController extends Controller
     public function careerxstore(Request $request)
     { 
         $request->validate([
-            'full-name'=>'required | max:10',
             'email-address'=>'required | unique:student_contact_infos,email_address',
             'same_address'=>'required ',
             'nid'=>'required ','nid'=>'required | unique:student_personal_infos,student_id'
@@ -1361,15 +1355,18 @@ class ProgramController extends Controller
         //Table Data Fetch
         $program_info = DB::table('programs')
             ->join('program_batches', 'programs.program_id', '=', 'program_batches.program_id')
+            ->orderBy('end_date', 'DESC')
             ->get();
 
         $totalStudents = DB::table('student_programs')
             ->join('program_batches', 'student_programs.program_batch_id', '=', 'program_batches.batch_id')
+            ->orderBy('end_date', 'DESC')
             ->get();    
 
         //Programs Dropdown
         $program_name= DB::table('programs')->get();
 
+        
         return view('programs.programBatch')->with(compact('program_name','program_info','totalStudents'));
     }
 
@@ -1437,8 +1434,8 @@ class ProgramController extends Controller
             $program_batch ->batch_name = $data['batch_name'];
             $program_batch ->program_start_date = $data['program_start_date'];
             $program_batch ->program_end_date = $data['program_end_date'];
-            $program_batch ->application_start_date = $data['application_start_date'];
-            $program_batch ->application_end_date = $data['application_end_date'];
+            $program_batch ->start_date = $data['application_start_date'];
+            $program_batch ->end_date = $data['application_end_date'];
             $program_batch ->program_duration = $data['program_duration'];
             $program_batch ->program_mode = $data['program_mode'];
             $program_batch ->class_time = $data['class_time'];
@@ -1717,6 +1714,11 @@ class ProgramController extends Controller
         // $division = StudentAddressInfo::select(DB::raw('COUNT(*) as total_student, present_division'))
         //     ->groupBy('present_division')
         //     ->get();
+    }
+
+
+    public function old_data(){
+        return view('old_data.programs');
     }
 
     

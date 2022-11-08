@@ -73,9 +73,24 @@
 																<?php $count++;?>
 															@endif
 														@endforeach
+
+														<?php
+														        $state="";
+																$todayDate = now()->format('Y-m-d');
+														
+																if($todayDate > $prg->start_date && $todayDate < $prg->end_date){
+																	$state="Running";
+																}
+																elseif( $todayDate > $prg->end_date){
+																	$state="Closed";
+																}
+																else{
+																	$state="Upcoming";
+																}
+														?>
 														<tr>
 															<td>{{$c++}}</td>
-															<td>{{$prg->current_state}}</td>
+															<td>{{$state}}</td>
 															<td>{{$prg->batch_name}}</td>
 															<td>{{$prg->program_name}}</td>
 															<td>{{$prg->duration}}</td>

@@ -43,7 +43,7 @@
 			<div class="wizard-form">
 				<div class="wizard-header">
 					<img src="{{asset('images/bylc-logo.png')}}" alt="" width="280" height="50"> <br><br>
-					<div class="Heading" style="font-weight: bold ">The Art and Practice of Leadership (APL 28) Application Form</div>
+					<div class="Heading" style="font-weight: bold ">The Art and Practice of Leadership ({{$batchinfo->batch_name}}) Application Form</div>
 					<div class="subHeading" >দ্যা আর্ট অ্যান্ড প্র্যাকটিস অফ লিডারশিপ (এপিএল) আবেদনপত্র</div>
 				</div>
 		      

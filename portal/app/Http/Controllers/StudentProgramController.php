@@ -120,7 +120,7 @@ class StudentProgramController extends Controller
             $assesment->save();
            
            
-            return redirect('/program/bblt');
+            return redirect('/program/thank'); 
         }
     }
 
@@ -219,7 +219,7 @@ class StudentProgramController extends Controller
             $assesment->save();
             $student_batch->save();
 
-            return redirect('/program/bbltj'); 
+            return redirect('/program/thank'); 
         }
     }
 
@@ -239,7 +239,7 @@ class StudentProgramController extends Controller
       
         $date = now()->format('Y-m-d');
         $batchinfo = Program_batch::all()
-                       ->where('program_id', '= ','3')
+                       ->where('program_id', '= ','4')
                        ->last();
         $application_last_date = $batchinfo->end_date;
         $application_start_date = $batchinfo->start_date;
@@ -321,7 +321,7 @@ class StudentProgramController extends Controller
            $assesment->save();
            $student_batch->save();
 
-           return redirect('/program/apl'); 
+           return redirect('/program/thank'); 
         }
     }
 
@@ -341,7 +341,7 @@ class StudentProgramController extends Controller
 
         $date = now()->format('Y-m-d');
         $batchinfo = Program_batch::all()
-                       ->where('program_id', '= ','5')
+                       ->where('program_id', '= ','3')
                        ->last();
         $application_last_date = $batchinfo->end_date;
         $application_start_date = $batchinfo->start_date;
@@ -454,7 +454,7 @@ class StudentProgramController extends Controller
             $assesment->save();
             $student_batch->save();
 
-            return redirect('/program/careerx'); 
+            return redirect('/program/thank'); 
         }
     }
 

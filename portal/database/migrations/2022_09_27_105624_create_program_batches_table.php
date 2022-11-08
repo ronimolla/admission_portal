@@ -17,8 +17,8 @@ return new class extends Migration
             $table->id('batch_id');
             $table->integer('program_id');
             $table->string('batch_name')->unique();
-            $table->date('application_start_date')->nullable();
-            $table->date('application_end_date')->nullable();
+            $table->date('start_date')->nullable();
+            $table->date('end_date')->nullable();
             $table->date('program_start_date')->nullable();
             $table->date('program_end_date')->nullable();
             $table->integer('program_duration')->nullable();
