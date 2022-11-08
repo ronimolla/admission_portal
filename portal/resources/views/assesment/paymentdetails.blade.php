@@ -3,7 +3,7 @@
 <div class="content-wrapper">
   	<div class="content">
 	    <div class="breadcrumb-wrapper">
-			<h1>Tables</h1>
+			<h1>Assesment</h1>
 			<nav aria-label="breadcrumb">
 				<ol class="breadcrumb p-0">
 					<li class="breadcrumb-item">
@@ -12,7 +12,7 @@
 						</a>
 					</li>
 					<li class="breadcrumb-item">
-						Data Table
+						Registration request
 					</li>
 								
 				</ol>
@@ -51,7 +51,7 @@
 									<tr>
 										<td>{{$details->student_id}}</td>
 										<td>{{$details->full_name}}</td>
-                                        <td>{{$details->batch_name}}</td>
+                                        <td>{{$details->program_batch_name}}</td>
 										<td>{{$details->final_registration_fees}}</td>
                                         <td>{{$details->payment_media}}</td>
 										<td>{{$details->reference}}</td>
