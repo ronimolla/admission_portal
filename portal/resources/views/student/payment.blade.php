@@ -4,7 +4,7 @@
 <div class="content-wrapper">
   	<div class="content">
 	    <div class="breadcrumb-wrapper">
-			<h1>Tables</h1>
+			<h1>Payment</h1>
 			<nav aria-label="breadcrumb">
 				<ol class="breadcrumb p-0">
 					<li class="breadcrumb-item">
@@ -13,7 +13,7 @@
 						</a>
 					</li>
 					<li class="breadcrumb-item">
-						Data Table
+						pending registration fees
 					</li>
 								
 				</ol>
@@ -50,7 +50,7 @@
                                         <td>{{$waiver->program_batch_name}}</td>
                                         <td>{{$waiver->final_registration_fees }}</td>
 										<td>
-											<a href="{{ url('student/update-payment/details/'.$waiver->student_id.'/'.$waiver->program_batch_id)}}" class="btn btn-primary">Update_details</a>
+											<a href="{{ url('student/update-payment/details/'.$waiver->student_id.'/'.$waiver->program_batch_id)}}" class="btn btn-primary">Update details</a>
 										</td>
 												
 									</tr>

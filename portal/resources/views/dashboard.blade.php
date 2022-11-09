@@ -155,16 +155,16 @@
             <div class="col-6">
               <div class="py-4 px-4">
                 <ul class="d-flex flex-column justify-content-between">
-                  <li class="mb-2"><i class="mdi mdi-checkbox-blank-circle-outline mr-2" style="color: #4c84ff"></i>Order Completed</li>
-                  <li><i class="mdi mdi-checkbox-blank-circle-outline mr-2" style="color: #80e1c1 "></i>Order Unpaid</li>
+                  <!-- <li class="mb-2"><i class="mdi mdi-checkbox-blank-circle-outline mr-2" style="color: #4c84ff"></i>Order Completed</li>
+                  <li><i class="mdi mdi-checkbox-blank-circle-outline mr-2" style="color: #80e1c1 "></i>Order Unpaid</li> -->
                 </ul>
               </div>
             </div>
             <div class="col-6 border-left">
               <div class="py-4 px-4 ">
                 <ul class="d-flex flex-column justify-content-between">
-                  <li class="mb-2"><i class="mdi mdi-checkbox-blank-circle-outline mr-2" style="color: #8061ef"></i>Order Pending</li>
-                  <li><i class="mdi mdi-checkbox-blank-circle-outline mr-2" style="color: #ffa128"></i>Order Canceled</li>
+                  <!-- <li class="mb-2"><i class="mdi mdi-checkbox-blank-circle-outline mr-2" style="color: #8061ef"></i>Order Pending</li>
+                  <li><i class="mdi mdi-checkbox-blank-circle-outline mr-2" style="color: #ffa128"></i>Order Canceled</li> -->
                 </ul>
               </div>
             </div>
@@ -177,7 +177,7 @@
       
     <div class="row">
         
-          <!-- Google Pie Chart -->
+        <!-- Google Pie Chart -->
         <div class="col-md-4">
           <div class="card card-default">
                 <div id="piechart" style="width: 100%; height: 100%; object-fit: cover;"></div>

@@ -128,9 +128,9 @@ class PaymentController extends Controller
         $studentDetails = User::where(['email'=>Session::get('userSession')])->first();
         $student_id = $studentDetails->student_id;
         $mywaiver = Waiver::where(['student_id'=> $student_id])->get();
-       $mywaiverdetails = DB::table('payments')
-       ->join('program_batches', 'payments.program_batch_id', '=', 'program_batches.batch_id')
-       ->where(['student_id'=> $student_id,['payment_status','=','pending']])->get();
+        $mywaiverdetails = DB::table('payments')
+            ->join('program_batches', 'payments.program_batch_id', '=', 'program_batches.batch_id')
+            ->where(['student_id'=> $student_id,['payment_status','=','pending']])->get();
       // echo "<pre>"; print_r($mywaiverdetails); die;
         return view('student.payment')->with(compact('mywaiverdetails')); 
     }

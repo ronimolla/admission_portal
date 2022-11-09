@@ -79,7 +79,7 @@
 
                 <li class="">
                     <a class="sidenav-item-link" href="{{url('/student/my-payments')}}">
-                        <i class="mdi mdi-book-open"></i>
+                        <i class="mdi mdi-currency-bdt"></i>
                         <span class="nav-text">Update Payment Info</span> 
                     </a>
                 </li>

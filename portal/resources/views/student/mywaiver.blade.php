@@ -4,7 +4,7 @@
 <div class="content-wrapper">
   	<div class="content">
 	    <div class="breadcrumb-wrapper">
-			<h1>Tables</h1>
+			<h1>My Waiver</h1>
 			<nav aria-label="breadcrumb">
 				<ol class="breadcrumb p-0">
 					<li class="breadcrumb-item">
@@ -13,7 +13,7 @@
 						</a>
 					</li>
 					<li class="breadcrumb-item">
-						Data Table
+						All Data
 					</li>
 								
 				</ol>

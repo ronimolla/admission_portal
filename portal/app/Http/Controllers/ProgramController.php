@@ -1235,10 +1235,11 @@ class ProgramController extends Controller
         header('Content-Disposition: attachment; filename=Student_Batch_Information-' . date("Y-m-d-h-i-s") . '.csv ');
         $output = fopen('php://output', 'w');
     
-        fputcsv($output, array('SL.NO.', 'PROGRAM BATCH NAME', 'STUDENT ID', 'FULL NAME ', 'GENGER', 'DATE OF BIRTH', 'EMAIL', 'PERSONAL PHONE NO.', 'EMERGENCY CONTACT NO.', 'PRESENT ADDRESS', 'PERMANENT ADDRESS', 'FATHER NAME', 'MOTHER NAME', 'GUARDIAN PHONE NUMBER', 'ETHNICITY', 'DISABILITY', 'EDUCATIONAL MEDIUM',  'SCHOOL NAME', 'PASSING YEAR', 'RESULT', 'COLLEGE', 'DEPARTMENT', 'PASSING YEAR', 'RESULT', 'UNIVERSITY', 'DEGREE', 'PASSING YEAR', 'CGPA'));
-
+        fputcsv($output, array('SL.NO.', 'PROGRAM BATCH NAME', 'STUDENT ID', 'FULL NAME ', 'GENGER', 'EMAIL', 'PERSONAL PHONE NO.', 'EMERGENCY CONTACT NO.', 'PRESENT ADDRESS', 'FATHER NAME', 'MOTHER NAME', 'GUARDIAN PHONE NUMBER', 'ETHNICITY', 'DISABILITY', 'EDUCATIONAL MEDIUM','SCHOOL'));
+        // fputcsv($output, array('SL.NO.', 'PROGRAM BATCH NAME', 'STUDENT ID', 'FULL NAME ', 'GENGER', 'EMAIL', 'PERSONAL PHONE NO.', 'EMERGENCY CONTACT NO.', 'PRESENT ADDRESS', 'FATHER NAME', 'MOTHER NAME', 'GUARDIAN PHONE NUMBER', 'ETHNICITY', 'DISABILITY', 'EDUCATIONAL MEDIUM',  'SCHOOL NAME', 'PASSING YEAR', 'RESULT', 'COLLEGE', 'DEPARTMENT', 'PASSING YEAR', 'RESULT', 'UNIVERSITY', 'DEGREE', 'PASSING YEAR', 'CGPA'));
         $tweets = StudentPersonalInfo :: join('student_contact_infos', 'student_contact_infos.student_id', '=', 'student_personal_infos.student_id')
                                         ->join('student_address_infos', 'student_personal_infos.student_id', '=', 'student_address_infos.student_id')   
+                                        ->join('student_educational_infos', 'student_personal_infos.student_id', '=', 'student_educational_infos.student_id')  
                                         ->join('student_programs', 'student_programs.student_id', '=', 'student_personal_infos.student_id')
                                         ->join('program_batches', 'program_batches.batch_id', '=', 'student_programs.program_batch_id')
                                         //->where('student_programs.program_batch_id','1')
@@ -1254,9 +1255,20 @@ class ProgramController extends Controller
                     $product['program_batch_name'],
                     $product['student_id'],
                     $product['full_name'],
+                    $product['gender'],
+                    // $product['dob'],
                     $product['email_address'],
                     $product['personal_phone_no'],
-                    $product['present_district']            
+                    $product['present_district'],
+                    $product['permanent_district'],           
+                    $product['father_name'],
+                    $product['mother_name'], 
+                    $product['guardian_phone_no'],
+                    $product['ethnicity'],
+                    $product['disability'], 
+                    $product['educational_medium'],
+                    $product['school']
+
                 ];
 
                 fputcsv($output, $product_row);
@@ -1334,7 +1346,8 @@ class ProgramController extends Controller
     // Create new program (Programs Page)
     public function createProgram(Request $request){
 
-        if($request->isMethod('post')){
+        if($request->isMethod('post'))
+        {
             $data = $request->input();
             $program = new Program;
         

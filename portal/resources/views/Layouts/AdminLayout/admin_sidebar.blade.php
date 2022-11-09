@@ -143,13 +143,13 @@
 
 
                 <li class="has-sub {{ request()->is('old_data/programs') || request()->is('old_data/events') ? 'active' : '' }} ">
-                  <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#icons"
-                    aria-expanded="false" aria-controls="icons">
+                  <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#old"
+                    aria-expanded="false" aria-controls="old">
                     <i class="mdi mdi-account-group"></i>
                     <span class="nav-text">Old Student Data</span> <b class="caret"></b>
                   </a>
 
-                  <ul class="{{ request()->is('old_data/programs') || request()->is('old_data/events') ? '' : 'collapse' }} " id="icons" data-parent="#sidebar-menu">
+                  <ul class="{{ request()->is('old_data/programs') || request()->is('old_data/events') ? '' : 'collapse' }} " id="old" data-parent="#sidebar-menu">
                     <div class="sub-menu">
                       <li class="{{ request()->is('old_data/programs') ? 'active' : '' }}">
                         <a class="sidenav-item-link   " href="{{url('old_data/programs')}}">
