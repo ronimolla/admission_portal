@@ -1391,11 +1391,13 @@ class ProgramController extends Controller
         
         $state = DB::table('programs')
             ->join('program_batches', 'program_batches.program_id', '=', 'programs.program_id')
+            ->orderBy('end_date', 'DESC')
             ->where('programs.program_id',$pnid)
             ->get();
 
         $totalStudents = DB::table('student_programs')
             ->join('program_batches', 'student_programs.program_batch_id', '=', 'program_batches.batch_id')
+            ->orderBy('end_date', 'DESC')
             ->get(); 
         
         $html=
@@ -1403,10 +1405,16 @@ class ProgramController extends Controller
             <thead>
                 <tr>
                     <th>Sl.No.</th>
+                    <th>State</th>
                     <th>Batch Name</th>
                     <th>Program</th>
-                    <th>Duration</th>
-                    <th>Total Students</th>													
+                    <th>Total Students</th>
+                    <th>Application Start</th>
+                    <th>Application End</th>
+                    <th>Program Start</th>
+                    <th>Program End</th>
+                    <th>Registration Fees</th>
+                    <th>Action</th>													
                 </tr>
             </thead>      
         ';
@@ -1419,15 +1427,44 @@ class ProgramController extends Controller
                     $count++;
                 }
             }
+
+            $currentState="";
+            $stateColor="";
+            $otherColor="";
+            $todayDate = now()->format('Y-m-d');
+            $weight="";
+    
+            if($todayDate > $list->start_date && $todayDate < $list->end_date){
+                $currentState="Running";
+                $stateColor = "red";
+                $weight = "bold";
+                $otherColor= "black";
+            }
+            elseif( $todayDate > $list->end_date){
+                $currentState="Closed";
+            }
+            else{
+                $currentState="Upcoming";
+                $stateColor = "blue";
+                $otherColor = "black";
+            }
                 
             $html.='
             <tbody>                        
                 <tr>
-                    <td>'.$c++.'</td>
-                    <td>'.$list->batch_name.'</td>
-                    <td>'.$list->program_name.'</td>
-                    <td>'.$list->duration.'</td>
-                    <td>'.$count.'</td>              
+                    <td style="font-weight:'.$weight.'">'.$c++.'</td>
+                    <td style="color: '.$stateColor.';font-weight:'.$weight.'">'.$currentState.'</td>
+                    <td style="color:'.$otherColor.'">'.$list->batch_name.'</td>
+                    <td style="color:'.$otherColor.'">'.$list->program_name.'</td>
+                    <td style="color:'.$otherColor.'">'.$count.'</td>
+                    <td style="color:'.$otherColor.'">'.$list->start_date.'</td>
+                    <td style="color:'.$otherColor.'">'.$list->end_date.'</td>
+                    <td style="color:'.$otherColor.'">'.$list->program_start_date.'</td>
+                    <td style="color:'.$otherColor.'">'.$list->program_end_date.'</td>
+                    <td style="color:'.$otherColor.'">'.$list->registration_fees.'</td>
+                    <td>
+                        <a href="" class="btn btn-primary">Update</a>
+                    </td>              
                 </tr>	
             </tbody>
             ';
