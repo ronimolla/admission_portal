@@ -106,6 +106,7 @@ Route::group(['middleware' =>['adminlogin']],function(){
     Route::get('/programs/programBatch', [ProgramController::class, 'programBatch']); //View Page
     Route::match(['get', 'post'], '/getProgramData',[ProgramController::class, 'getProgramData']); //Dropdown
     Route::match(['get', 'post'], '/programs/createBatch',[ProgramController::class, 'createProgramBatch']);
+    Route::match(['get', 'post'], '/programs/editBatch/{program_batch_id}',[ProgramController::class, 'editProgramBatch']);
 
     //Event Page
     Route::get('/events/eventsView', [ProgramController::class, 'eventsView']); //View Page
@@ -194,8 +195,7 @@ Route::get('/program/thank', [ProgramController::class, 'thankyou']);
     Route::get('/student/my-payments', [PaymentController::class, 'mypayment']);
     //Update my pending Payment Info
     Route::match(['get','post'],'/student/update-payment/details/{student_id}/{program_batch_id}', [PaymentController::class, 'updatemypayment']);
-    //  Route::get('/student/update-payment/details/{student_id}/{program_batch_id}', [PaymentController::class, 'updatemypayment']);
-    //  Route::post('/student/update-payment/details/save/{student_id}/{program_batch_id}', [PaymentController::class, 'saveemypayment']);
+  
 /*-------------------------End Payment proces form student side----------------------------------------------*/
 
 });

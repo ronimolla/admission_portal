@@ -108,7 +108,7 @@
 															<td style="color:<?php echo $otherColor; ?>">{{$prg->program_mode}}</td>
 															<td style="color:<?php echo $otherColor; ?>">{{$prg->registration_fees}}</td>
 															<td>
-																<a href="" class="btn btn-primary">Update</a>
+																<a href="{{ url('programs/editBatch/'.$prg->batch_id)}}"  class="btn btn-primary">Update</a>
 															</td>
 														</tr>
 														<?php $count=0; ?>
