@@ -50,11 +50,11 @@
 														<th>State</th>
 														<th>Batch Name</th>
 														<th>Program</th>
-														<th>Duration</th>
-														<th>Total Students</th>	
+														<th>Total Students</th>
+														<th>Application Start</th>
+														<th>Application End</th>	
 														<th>Program Start</th>
 														<th>Program End</th>
-														<th>Program Mode</th>
 														<th>Registration Fees</th>
 														<th>Action</th>
 																						
@@ -76,29 +76,37 @@
 
 														<?php
 														        $state="";
+																$stateColor="";
+																$otherColor="";
 																$todayDate = now()->format('Y-m-d');
+																$weight="";
 														
 																if($todayDate > $prg->start_date && $todayDate < $prg->end_date){
 																	$state="Running";
+																	$stateColor = "red";
+																	$weight = "bold";
+																	$otherColor= "black";
 																}
 																elseif( $todayDate > $prg->end_date){
 																	$state="Closed";
 																}
 																else{
 																	$state="Upcoming";
+																	$stateColor = "blue";
+																	$otherColor= "black";
 																}
 														?>
 														<tr>
-															<td>{{$c++}}</td>
-															<td>{{$state}}</td>
-															<td>{{$prg->batch_name}}</td>
-															<td>{{$prg->program_name}}</td>
-															<td>{{$prg->duration}}</td>
-															<td>{{$count}}</td>
-															<td>{{$prg->program_start_date}}</td>
-															<td>{{$prg->program_end_date}}</td>
-															<td>{{$prg->program_mode}}</td>
-															<td>{{$prg->registration_fees}}</td>
+															<td style="font-weight:<?php echo $weight; ?>">{{$c++}}</td>
+															<td style="color:<?php echo $stateColor; ?>; font-weight:<?php echo $weight; ?>">{{$state}}</td>
+															<td style="color:<?php echo $otherColor; ?>">{{$prg->batch_name}}</td>
+															<td style="color:<?php echo $otherColor; ?>">{{$prg->program_name}}</td>
+															<td style="color:<?php echo $otherColor; ?>">{{$prg->duration}}</td>
+															<td style="color:<?php echo $otherColor; ?>">{{$count}}</td>
+															<td style="color:<?php echo $otherColor; ?>">{{$prg->program_start_date}}</td>
+															<td style="color:<?php echo $otherColor; ?>">{{$prg->program_end_date}}</td>
+															<td style="color:<?php echo $otherColor; ?>">{{$prg->program_mode}}</td>
+															<td style="color:<?php echo $otherColor; ?>">{{$prg->registration_fees}}</td>
 															<td>
 																<a href="" class="btn btn-primary">Update</a>
 															</td>
