@@ -1503,6 +1503,26 @@ class ProgramController extends Controller
         return view('programs.createBatch')->with(compact('program_name'));
     }
 
+    //edit program batch details
+    public function editProgramBatch(Request $request,$program_batch_id= null){
+        //echo $program_batch_id ;die;
+
+        $program_batch= Program_batch:: where(['batch_id'=>$program_batch_id])->first();
+        
+             if($request->isMethod('post')){
+             $data = $request->input();
+             //echo "<pre>"; print_r($data); die;
+             Program_batch::where(['batch_id'=>$program_batch_id])->update([
+                'start_date'=>$data['application_start_date'],'end_date'=>$data['application_end_date'],'program_start_date'=>$data['program_start_date'],
+                'program_end_date'=>$data['program_end_date'],'program_duration'=>$data['program_duration'],'program_mode'=>$data['program_mode'],'class_time'=>$data['class_time'],
+                'registration_deadline'=>$data['registration_deadline'],'registration_fees'=>$data['registration_fees']]);
+
+            return redirect('/programs/programBatch');
+        }
+         return view('programs.editBatch')->with(compact('program_batch'));
+    }
+
+
 
     //-----------Events------------------
 
