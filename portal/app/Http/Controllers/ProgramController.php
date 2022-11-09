@@ -1380,7 +1380,6 @@ class ProgramController extends Controller
         //Programs Dropdown
         $program_name= DB::table('programs')->get();
 
-        
         return view('programs.programBatch')->with(compact('program_name','program_info','totalStudents'));
     }
 
@@ -1463,7 +1462,9 @@ class ProgramController extends Controller
                     <td style="color:'.$otherColor.'">'.$list->program_end_date.'</td>
                     <td style="color:'.$otherColor.'">'.$list->registration_fees.'</td>
                     <td>
-                        <a href="" class="btn btn-primary">Update</a>
+
+                        <a href="/programs/editBatch/'.$list->batch_id.'" class="btn btn-primary">Update</a>
+
                     </td>              
                 </tr>	
             </tbody>
