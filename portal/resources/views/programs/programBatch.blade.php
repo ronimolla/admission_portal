@@ -55,7 +55,8 @@
 														<th>Application End</th>	
 														<th>Program Start</th>
 														<th>Program End</th>
-														<th>Registration Fees</th>
+														<th>
+															Registration Fees</th>
 														<th>Action</th>
 																						
 													</tr>
@@ -101,11 +102,11 @@
 															<td style="color:<?php echo $stateColor; ?>; font-weight:<?php echo $weight; ?>">{{$state}}</td>
 															<td style="color:<?php echo $otherColor; ?>">{{$prg->batch_name}}</td>
 															<td style="color:<?php echo $otherColor; ?>">{{$prg->program_name}}</td>
-															<td style="color:<?php echo $otherColor; ?>">{{$prg->duration}}</td>
 															<td style="color:<?php echo $otherColor; ?>">{{$count}}</td>
+															<td style="color:<?php echo $otherColor; ?>">{{$prg->start_date}}</td>
+															<td style="color:<?php echo $otherColor; ?>">{{$prg->end_date}}</td>
 															<td style="color:<?php echo $otherColor; ?>">{{$prg->program_start_date}}</td>
 															<td style="color:<?php echo $otherColor; ?>">{{$prg->program_end_date}}</td>
-															<td style="color:<?php echo $otherColor; ?>">{{$prg->program_mode}}</td>
 															<td style="color:<?php echo $otherColor; ?>">{{$prg->registration_fees}}</td>
 															<td>
 																<a href="" class="btn btn-primary">Update</a>
