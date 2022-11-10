@@ -1480,7 +1480,7 @@ class ProgramController extends Controller
                 'program_end_date'=>$data['program_end_date'],'program_duration'=>$data['program_duration'],'program_mode'=>$data['program_mode'],'class_time'=>$data['class_time'],
                 'registration_deadline'=>$data['registration_deadline'],'registration_fees'=>$data['registration_fees']]);
 
-            return redirect('/programs/programBatch');
+            return redirect('/programs/programBatch')->with('flash_message_error','Program Batch edided successfully');;
         }
          return view('programs.editBatch')->with(compact('program_batch'));
     }

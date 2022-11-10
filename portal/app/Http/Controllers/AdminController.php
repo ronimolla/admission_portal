@@ -22,7 +22,7 @@ class AdminController extends Controller
 
     public function logout(){
 		Session::flush();
-		return redirect('/admin')->with('flash_message_error','Logout Successfully');
+		return redirect('/admin');
 	}
 
 
@@ -41,7 +41,7 @@ class AdminController extends Controller
                 
                 return redirect('/over-view');
         	}else{
-                echo "failed"; die;
+                
                 return redirect('/admin')->with('flash_message_error','Invalid Username or Password');
         	}
         }    
