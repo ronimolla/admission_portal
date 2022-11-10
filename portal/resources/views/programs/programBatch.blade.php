@@ -84,7 +84,7 @@
 														
 																if($todayDate > $prg->start_date && $todayDate < $prg->end_date){
 																	$state="Running";
-																	$stateColor = "red";
+																	$stateColor = "btn-success";
 																	$weight = "bold";
 																	$otherColor= "black";
 																}
@@ -93,13 +93,26 @@
 																}
 																else{
 																	$state="Upcoming";
-																	$stateColor = "blue";
+																	$stateColor = "btn-danger";
 																	$otherColor= "black";
 																}
+																$red = "btn-danger";
+																$green = "btn-success";
+																$blue = "btn-info";
 														?>
 														<tr>
 															<td style="font-weight:<?php echo $weight; ?>">{{$c++}}</td>
-															<td style="color:<?php echo $stateColor; ?>; font-weight:<?php echo $weight; ?>">{{$state}}</td>
+															<td >
+															@if($state == "Running")
+																<button type="button" class="btn <?php echo $green;?> btn-sm rounded-pill" data-toggle="button" aria-pressed="false" autocomplete="off">{{$state}}</button>	
+															@endif
+															@if($state == "Closed")
+																<button type="button" class="btn <?php echo $red;?> btn-sm rounded-pill" data-toggle="button" aria-pressed="false" autocomplete="off">{{$state}}</button>	
+															@endif
+															@if($state == "Upcoming")
+																<button type="button" class="btn <?php echo $blue;?> btn-sm rounded-pill" data-toggle="button" aria-pressed="false" autocomplete="off">{{$state}}</button>	
+															@endif
+															</td>
 															<td style="color:<?php echo $otherColor; ?>">{{$prg->batch_name}}</td>
 															<td style="color:<?php echo $otherColor; ?>">{{$prg->program_name}}</td>
 															<td style="color:<?php echo $otherColor; ?>">{{$count}}</td>

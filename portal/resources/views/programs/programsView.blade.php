@@ -36,7 +36,7 @@
 
                                     <h2>Program Data Table</h2>
                                     
-									<a href="{{ url('programs/createProgram')}}"  class="btn btn-success">Create New Program</a>
+									<a href="{{ url('programs/createProgram')}}"  class="btn btn-success"><i class="mdi mdi-plus"></i>&nbsp; Create Program</a>
 
 								</div>
 

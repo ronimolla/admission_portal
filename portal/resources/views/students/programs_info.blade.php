@@ -53,7 +53,7 @@
 										</select>
 									</div>
                              
-                                    <a href="{{url('/download-csv')}}" class="btn btn-success">Download as CSV</a>
+                                    <a href="{{url('/download-csv')}}" class="btn btn-success"><i class="mdi mdi-download"></i>&nbsp;   Download as CSV</a>
 
 								</div>
 

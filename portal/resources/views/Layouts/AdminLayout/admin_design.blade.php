@@ -32,6 +32,7 @@
     
         
         <script src="{{asset('assets/plugins/nprogress/nprogress.js')}}"></script>
+        <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
 
         
         <style>
@@ -79,6 +80,7 @@
             width:100%;
             height:70%;
         }
+
     </style>
 
     </head>

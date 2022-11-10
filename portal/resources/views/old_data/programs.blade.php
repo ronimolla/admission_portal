@@ -42,7 +42,7 @@
 									</div>
 
                                     <input type="file" id="myFile" name="filename">
-                                    <button type="submit" href="" class="btn btn-success">Import Data</button>
+                                    <button type="submit" href="" class="btn btn-success"><i class="mdi mdi-file-upload-outline"></i>&nbsp; Import Data</button>
                                     
                                     
 

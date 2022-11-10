@@ -25,9 +25,7 @@
 								<div class="card-header card-header-border-bottom d-flex justify-content-between">
 									<h2>All Admins Data Table</h2>
 
-									<a href="{{ route('Admins.create') }}"  class="btn btn-outline-primary btn-sm text-uppercase">
-										 Create User
-									</a>
+									<a href="{{ route('Admins.create') }}" class="btn btn-success"><i class="mdi mdi-account-plus"></i>&nbsp; Create User</a>
 								</div>
 
 								<div class="card-body">
