@@ -36,7 +36,7 @@
 
                                     <h2>Program-Batch Table</h2>
 
-									<a href="{{url('/programs/createBatch')}}"  class="btn btn-success">Create New Batch</a>
+									<a href="{{url('/programs/createBatch')}}"  class="btn btn-success"><i class="mdi mdi-plus"></i>&nbsp; Create Batch</a>
 
 								</div>
 
