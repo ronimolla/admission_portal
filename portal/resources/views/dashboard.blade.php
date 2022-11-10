@@ -111,7 +111,7 @@
 
     <div class="row">
       
-      <div class="col-xl-8 col-md-12">  
+      <div class="col-md-6">  
         <div class="card card-default">
           <div class="card-header">
             <h2>Graduates Amount Of The Year</h2>
@@ -140,9 +140,8 @@
         </div>
       </div>
 
-      
-      <div class="col-xl-4 col-md-12">
-        <!-- Doughnut Chart -->
+      <!-- Doughnut Chart -->
+      <!-- <div class="col-xl-4 col-md-12">
         <div class="card card-default">
           <div class="card-header justify-content-center">
             <h2>Division</h2>
@@ -155,22 +154,22 @@
             <div class="col-6">
               <div class="py-4 px-4">
                 <ul class="d-flex flex-column justify-content-between">
-                  <!-- <li class="mb-2"><i class="mdi mdi-checkbox-blank-circle-outline mr-2" style="color: #4c84ff"></i>Order Completed</li>
-                  <li><i class="mdi mdi-checkbox-blank-circle-outline mr-2" style="color: #80e1c1 "></i>Order Unpaid</li> -->
+                  <li class="mb-2"><i class="mdi mdi-checkbox-blank-circle-outline mr-2" style="color: #4c84ff"></i>Order Completed</li>
+                  <li><i class="mdi mdi-checkbox-blank-circle-outline mr-2" style="color: #80e1c1 "></i>Order Unpaid</li>
                 </ul>
               </div>
             </div>
             <div class="col-6 border-left">
               <div class="py-4 px-4 ">
                 <ul class="d-flex flex-column justify-content-between">
-                  <!-- <li class="mb-2"><i class="mdi mdi-checkbox-blank-circle-outline mr-2" style="color: #8061ef"></i>Order Pending</li>
-                  <li><i class="mdi mdi-checkbox-blank-circle-outline mr-2" style="color: #ffa128"></i>Order Canceled</li> -->
+                  <li class="mb-2"><i class="mdi mdi-checkbox-blank-circle-outline mr-2" style="color: #8061ef"></i>Order Pending</li>
+                  <li><i class="mdi mdi-checkbox-blank-circle-outline mr-2" style="color: #ffa128"></i>Order Canceled</li>
                 </ul>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
     
     </div>
       
