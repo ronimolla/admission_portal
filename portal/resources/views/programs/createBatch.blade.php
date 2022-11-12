@@ -78,7 +78,7 @@
 
 
                 <div class="form-footer pt-4 pt-4 mt-4 border-top">
-                  <button type="submit" class="btn btn-primary btn-lg btn-block">Create</button>
+                  <button type="submit" class="btn btn-success btn-lg btn-block">Create</button>
                 </div>
             </form>
 
