@@ -41,10 +41,22 @@
 										</select>
 									</div>
 
-                                    <input type="file" id="myFile" name="filename">
-                                    <button type="submit" href="" class="btn btn-success"><i class="mdi mdi-file-upload-outline"></i>&nbsp; Import Data</button>
-                                    
-                                    
+									<div class="form-group">
+										<div class="container px-4">
+											<div class="row gx-5">
+												<div class="col">
+													<div class="p-2 border bg-dark">
+														<a style="font-weight:bold; color:lightgreen;">Import Old Student data / Only CSV format</a><br>
+														<input type="file" id="myFile" name="filename">
+														<button type="submit" href="" class="btn-sm btn-light"><a style="font-weight:bold"><i class="mdi mdi-file-upload-outline"></i>&nbsp; Import</a></button>	
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+
+									<a href="{{url('/download-csv')}}" class="btn btn-success"><i class="mdi mdi-download"></i>&nbsp;  Download as CSV</a>
+                        
 
 								</div>
 

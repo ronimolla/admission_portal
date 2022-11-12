@@ -81,6 +81,143 @@
             height:70%;
         }
 
+
+
+        /* Dashboard- Forms */
+        .w{
+            width: 500px;
+            height: 100%;
+            background: #fff;
+            margin: 15px auto 0;
+        }
+
+        .w .title{
+            padding: 30px 20px;
+            text-align: center;
+            font-size: 24px;
+            font-weight: 700;
+            border-bottom: 1px solid #ebedec;
+        }
+
+        .w .tabs_wrap{
+            padding: 20px;
+            border-bottom: 1px solid #ebedec;
+        }
+
+        .w .tabs_wrap ul{
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-pack: center;
+                -ms-flex-pack: center;
+                    justify-content: center;
+        }
+
+        .w .tabs_wrap ul li{
+            width: 600px;
+            text-align: center;
+            background: #e9ecf1;
+            border-right: 1px solid #c1c4c9;
+            padding: 13px 15px;
+            cursor: pointer;
+            -webkit-transition: all 0.2s ease;
+            -o-transition: all 0.2s ease;
+            transition: all 0.2s ease;
+        }
+
+        .w .tabs_wrap ul li:first-child{
+            border-top-left-radius: 0px;
+            border-bottom-left-radius: 25px;
+        }
+
+        .w .tabs_wrap ul li:last-child{
+            border-right: 0px;
+            border-top-right-radius: 25px;
+            border-bottom-right-radius: 0px;
+        }
+
+        .w .tabs_wrap ul li:hover,
+        .w .tabs_wrap ul li.active{
+            background: #7fc469;
+            color: #fff;
+        }
+
+        .w .container .item_wrap{
+            padding: 10px 20px;
+            border-bottom: 1px solid #ebedec;
+            cursor: pointer;
+        }
+
+        .w .container .item_wrap:hover{
+            background: #e9ecf1;
+        }
+
+        .w .container .item{
+            position: relative;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: center;
+                -ms-flex-align: center;
+                    align-items: center;
+            -webkit-box-pack: justify;
+                -ms-flex-pack: justify;
+                    justify-content: space-between;
+        }
+
+        .item_wrap .item .item_left{
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: center;
+                -ms-flex-align: center;
+                    align-items: center;
+        }
+
+        .item_wrap .item_left img{
+            width: 70px;
+            height: 70px;
+            display: block;
+        }
+
+        .item_wrap .item_left .data{
+            margin-left: 20px;
+        }
+
+        .item_wrap .item_left .data .name{
+            font-weight: 600;
+        }
+
+        .item_wrap .item_left .data .distance{
+            color: #7f8b9b;
+            font-size: 14px;
+            margin-top: 3px;
+        }
+
+        .item_wrap .item_right .status{
+            position: relative;
+            color: #77818d;
+        }
+
+        .item_wrap .item_right .status:before{
+            content: "";
+            position: absolute;
+            top: 5px;
+            left: -12px;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #b3bbc8;
+        }
+
+        .item_wrap.offline .item_right .status{
+            color: #b3bbc8;	
+        }
+
+        .item_wrap.online .item_right .status:before{
+            background: #7fc469;
+        }
+
     </style>
 
     </head>
@@ -414,6 +551,45 @@
                 var chart = new google.visualization.PieChart(document.getElementById('piechart-disability'));
                 chart.draw(data, options);
             }
+        </script>
+
+
+        <script>
+            var tabs = document.querySelectorAll(".tabs_wrap ul li");
+            var males = document.querySelectorAll(".male");
+            var females = document.querySelectorAll(".female");
+            var all = document.querySelectorAll(".item_wrap");
+
+            tabs.forEach((tab)=>{
+                tab.addEventListener("click", ()=>{
+                    tabs.forEach((tab)=>{
+                        tab.classList.remove("active");
+                    })
+                    tab.classList.add("active");
+                    var tabval = tab.getAttribute("data-tabs");
+
+                    all.forEach((item)=>{
+                        item.style.display = "none";
+                    })
+
+                    if(tabval == "male"){
+                        males.forEach((male)=>{
+                            male.style.display = "block";
+                        })
+                    }
+                    else if(tabval == "female"){
+                        females.forEach((female)=>{
+                            female.style.display = "block";
+                        })
+                    }
+                    else{
+                        all.forEach((item)=>{
+                            item.style.display = "block";
+                        })
+                    }
+
+                })
+            })
         </script>
 
     </body>
