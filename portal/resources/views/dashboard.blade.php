@@ -158,8 +158,8 @@
                       <div class="item">
                         <div class="item_left">
                           <div class="data">
-                            <p class="name">Alex, 21</p>
-                            <p class="distance">0.95Km</p>
+                            <p class="name">BBLT-15</p>
+                            <p class="distance">23 Submissions</p>
                           </div>
                         </div>
                         <div class="item_right">
@@ -171,8 +171,8 @@
                       <div class="item">
                         <div class="item_left">
                           <div class="data">
-                            <p class="name">Alisa Cha, 27</p>
-                            <p class="distance">2.42Km</p>
+                            <p class="name">BBLT-16</p>
+                            <p class="distance">21 Submissions</p>
                           </div>
                         </div>
                         <div class="item_right">
@@ -184,8 +184,8 @@
                       <div class="item">
                         <div class="item_left">
                           <div class="data">
-                            <p class="name">Mike Lane, 29</p>
-                            <p class="distance">1.90Km</p>
+                            <p class="name">APL-2</p>
+                            <p class="distance">13 Submissions</p>
                           </div>
                         </div>
                         <div class="item_right">
@@ -197,8 +197,8 @@
                       <div class="item">
                         <div class="item_left">
                           <div class="data">
-                            <p class="name">Scarlett Wilson, 23</p>
-                            <p class="distance">3.01Km</p>
+                            <p class="name">APL-4</p>
+                            <p class="distance">18 Submissions</p>
                           </div>
                         </div>
                         <div class="item_right">
@@ -210,8 +210,8 @@
                       <div class="item">
                         <div class="item_left">
                           <div class="data">
-                            <p class="name">Rose Mary, 26</p>
-                            <p class="distance">2.58Km</p>
+                            <p class="name">BBLTJ-12</p>
+                            <p class="distance">21 Submissions</p>
                           </div>
                         </div>
                         <div class="item_right">

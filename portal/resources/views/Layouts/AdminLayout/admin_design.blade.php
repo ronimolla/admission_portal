@@ -85,7 +85,7 @@
 
         /* Dashboard- Forms */
         .w{
-            width: 500px;
+            width: 100%;
             height: 100%;
             background: #fff;
             margin: 15px auto 0;
