@@ -36,7 +36,7 @@
 
                                     <h2>Program-Batch Table</h2>
 
-									<a href="{{url('/programs/createBatch')}}"  class="btn btn-success">Create New Batch</a>
+									<a href="{{url('/programs/createBatch')}}"  class="shadow btn btn-outline-success"><i class="mdi mdi-plus"></i>&nbsp; Create Batch</a>
 
 								</div>
 
@@ -55,16 +55,14 @@
 														<th>Application End</th>	
 														<th>Program Start</th>
 														<th>Program End</th>
-														<th>
-															Registration Fees</th>
-														<th>Action</th>
-																						
+														<th>Registration Fees</th>
+														<th>Action</th>							
 													</tr>
 												</thead>
 												
 												<?php 
-												$c = 1; 
-											 	$count = 0; 
+													$c = 1; 
+											 		$count = 0; 
 												?>
 
 												<tbody>
