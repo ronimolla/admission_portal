@@ -123,7 +123,6 @@
           <div class="card-footer d-flex flex-wrap bg-white p-0">
             <div class="col-6 px-0">
               <div class="text-center p-4">
-
                 <h4>6,308</h4>
                 <p class="mt-2">Total graduates of this year</p>
 
@@ -141,57 +140,91 @@
       </div>
 
       <div class="col-md-6">  
-      <div class="card card-default">
-			<div class="card-header card-header-border-bottom">
-				<h2>Pill Tabs </h2>
-			</div>
+        <div class="card card-default">
 
-			<div class="card-body">
-				<p class="mb-5">Take that same HTML, but use <code>.nav-pills</code> instead: Read Bootstrap Documention <a href="https://getbootstrap.com/docs/4.6/components/navs/#pills"
-						target="_blank">more details.</a></p>
+          <!-- <div class="card-body"> -->
 
-				<ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-					<li class="nav-item">
-						<a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home"
-							aria-selected="true">Home</a>
-					</li>
-
-					<li class="nav-item">
-						<a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile"
-							aria-selected="false">Profile</a>
-					</li>
-
-					<li class="nav-item">
-						<a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact"
-							aria-selected="false">Contact</a>
-					</li>
-
-					<li class="nav-item">
-						<a class="nav-link disabled" href="javascript:void(0)">Disabled</a>
-					</li>
-				</ul>
-
-				<div class="tab-content" id="pills-tabContent">
-					<div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-						Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-						Ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-						irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-					</div>
-
-					<div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-						Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-						Ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-						irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-					</div>
-
-					<div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
-						Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-						Ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-						irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-					</div>
-				</div>
-			</div>
-		</div>
+            <div class="w">
+                <div class="tabs_wrap">
+                  <ul>
+                    <li data-tabs="male" class="active">Recent Forms</li>
+                    <li data-tabs="female">Recent Submissions</li>
+                  </ul>
+                </div>
+                
+                <div class="container">
+                  <ul>
+                    <li class="item_wrap male online">
+                      <div class="item">
+                        <div class="item_left">
+                          <div class="data">
+                            <p class="name">Alex, 21</p>
+                            <p class="distance">0.95Km</p>
+                          </div>
+                        </div>
+                        <div class="item_right">
+                          <div class="status">Online</div>
+                        </div>
+                      </div>
+                    </li>
+                    <li class="item_wrap female online">
+                      <div class="item">
+                        <div class="item_left">
+                          <div class="data">
+                            <p class="name">Alisa Cha, 27</p>
+                            <p class="distance">2.42Km</p>
+                          </div>
+                        </div>
+                        <div class="item_right">
+                          <div class="status">Online</div>
+                        </div>
+                      </div>
+                    </li>
+                    <li class="item_wrap female offline">
+                      <div class="item">
+                        <div class="item_left">
+                          <div class="data">
+                            <p class="name">Mike Lane, 29</p>
+                            <p class="distance">1.90Km</p>
+                          </div>
+                        </div>
+                        <div class="item_right">
+                          <div class="status">Offline</div>
+                        </div>
+                      </div>
+                    </li>
+                    <li class="item_wrap female online">
+                      <div class="item">
+                        <div class="item_left">
+                          <div class="data">
+                            <p class="name">Scarlett Wilson, 23</p>
+                            <p class="distance">3.01Km</p>
+                          </div>
+                        </div>
+                        <div class="item_right">
+                          <div class="status">Online</div>
+                        </div>
+                      </div>
+                    </li>
+                    <li class="item_wrap female online">
+                      <div class="item">
+                        <div class="item_left">
+                          <div class="data">
+                            <p class="name">Rose Mary, 26</p>
+                            <p class="distance">2.58Km</p>
+                          </div>
+                        </div>
+                        <div class="item_right">
+                          <div class="status">Online</div>
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+<!-- 
+          </div> -->
+        </div>
       </div>
 
       <!-- Doughnut Chart -->
