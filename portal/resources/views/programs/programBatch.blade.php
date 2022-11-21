@@ -80,7 +80,7 @@
 																$todayDate = now()->format('Y-m-d');
 																$weight="";
 														
-																if($todayDate > $prg->start_date && $todayDate < $prg->end_date){
+																if($todayDate >= $prg->start_date && $todayDate <= $prg->end_date){
 																	$state="Running";
 																	$stateColor = "btn-success";
 																	$weight = "bold";
@@ -101,15 +101,15 @@
 														<tr>
 															<td style="font-weight:<?php echo $weight; ?>">{{$c++}}</td>
 															<td >
-															@if($state == "Running")
-																<button type="button" class="btn <?php echo $green;?> btn-sm rounded-pill" data-toggle="button" aria-pressed="false" autocomplete="off">{{$state}}</button>	
-															@endif
-															@if($state == "Closed")
-																<button type="button" class="btn <?php echo $red;?> btn-sm rounded-pill" data-toggle="button" aria-pressed="false" autocomplete="off">{{$state}}</button>	
-															@endif
-															@if($state == "Upcoming")
-																<button type="button" class="btn <?php echo $blue;?> btn-sm rounded-pill" data-toggle="button" aria-pressed="false" autocomplete="off">{{$state}}</button>	
-															@endif
+																@if($state == "Running")
+																	<button type="button" class="btn <?php echo $green;?> btn-sm rounded-pill" data-toggle="button" aria-pressed="false" autocomplete="off">{{$state}}</button>	
+																@endif
+																@if($state == "Closed")
+																	<button type="button" class="btn <?php echo $red;?> btn-sm rounded-pill" data-toggle="button" aria-pressed="false" autocomplete="off">{{$state}}</button>	
+																@endif
+																@if($state == "Upcoming")
+																	<button type="button" class="btn <?php echo $blue;?> btn-sm rounded-pill" data-toggle="button" aria-pressed="false" autocomplete="off">{{$state}}</button>	
+																@endif
 															</td>
 															<td style="color:<?php echo $otherColor; ?>">{{$prg->batch_name}}</td>
 															<td style="color:<?php echo $otherColor; ?>">{{$prg->program_name}}</td>

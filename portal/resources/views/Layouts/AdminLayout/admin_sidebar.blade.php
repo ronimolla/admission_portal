@@ -44,10 +44,8 @@
                                         <li class="{{ request()->is('assesment/preselection') ? 'active' : '' }}">
                                              <a href="{{url('/assesment/preselection')}}">Pre Selection</a>
                                         </li>
-
                                         <li class="{{ request()->is('assesment/writing') ? 'active' : '' }}">
                                             <a href="{{url('/assesment/writing')}}">Writing test</a>
-
                                         </li>
                                         <li class="{{ request()->is('assesment/interview') ? 'active' : '' }}">
                                             <a href="{{url('/assesment/interview')}}">Interview</a>
@@ -56,7 +54,7 @@
                                             <a href="{{url('/assesment/financialaid')}}">Waiver Request</a>
                                         </li>
                                         <li class="{{ request()->is('assesment/payment') ? 'active' : '' }}">
-                                            <a href="{{url('/assesment/payment')}}">Registration Request</a>
+                                            <a href="{{url('/assesment/payment')}}">Payment & Registration</a>
                                         </li>
                                     </div>
                                 </ul>

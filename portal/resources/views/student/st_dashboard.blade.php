@@ -14,7 +14,6 @@
           </div>
         </div>
 
-      
     </div>
 
     <br><br>
@@ -42,7 +41,6 @@
                   >
                 <div class="circle-content">
                   <h6 class="text-uppercase text-dark font-weight-bold">{{$selcetion->pre_subtotal}}/10</h6>
-
                   <strong></strong>
                 </div>
               </div>
@@ -107,7 +105,8 @@
                   data-size="170"
                   data-value=".0"
                   data-thickness="20"
-                  data-fill="{
+                  data-fill=
+                  "{
                     &quot;color&quot;: &quot;#35D00E&quot;
                   }"
                   >

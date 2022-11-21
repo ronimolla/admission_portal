@@ -1115,12 +1115,12 @@ class ProgramController extends Controller
     {
         $cid=$request->post('cid');
         $state = DB::table('student_personal_infos')
-        ->join('student_contact_infos', 'student_personal_infos.student_id', '=', 'student_contact_infos.student_id')
-        ->join('student_address_infos', 'student_personal_infos.student_id', '=', 'student_address_infos.student_id')
-        ->join('student_programs', 'student_programs.student_id', '=', 'student_personal_infos.student_id')
-        ->join('program_batches', 'program_batches.batch_id', '=', 'student_programs.program_batch_id')
-        ->where('program_batches.program_id',$cid)
-        ->get();
+            ->join('student_contact_infos', 'student_personal_infos.student_id', '=', 'student_contact_infos.student_id')
+            ->join('student_address_infos', 'student_personal_infos.student_id', '=', 'student_address_infos.student_id')
+            ->join('student_programs', 'student_programs.student_id', '=', 'student_personal_infos.student_id')
+            ->join('program_batches', 'program_batches.batch_id', '=', 'student_programs.program_batch_id')
+            ->where('program_batches.program_id',$cid)
+            ->get();
         
         $table='  
             <thead>
@@ -1167,7 +1167,8 @@ class ProgramController extends Controller
         
     	$state=DB::table('program_batches')->where('program_id',$cid)->get();
     	$html='<option value="">Select Batch</option>';
-    	foreach($state as $list){
+    	foreach($state as $list)
+        {
     		$html.='<option value="'.$list->batch_id.'">'.$list->batch_name.'</option>';
     	}
     	echo $html;
