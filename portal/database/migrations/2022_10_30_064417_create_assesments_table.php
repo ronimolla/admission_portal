@@ -62,6 +62,7 @@ return new class extends Migration
             $table->string('sent_faq')->nullable();
             $table->string('reason_for_not_registration')->nullable();
             $table->string('final_remark')->nullable();
+            $table->string('registration_status')->default('pending');
             $table->timestamps();
         });
     }

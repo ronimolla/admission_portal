@@ -24,6 +24,9 @@ return new class extends Migration
             $table->string('payment_media')->nullable();
             $table->string('reference')->nullable();
             $table->string('payment_mobileno')->nullable();
+            $table->string('2nd_payment_media')->nullable();
+            $table->string('2nd_reference')->nullable();
+            $table->string('2nd_payment_mobileno')->nullable();
             $table->string('image')->nullable();
             $table->string('payment_status')->default('pending');
 

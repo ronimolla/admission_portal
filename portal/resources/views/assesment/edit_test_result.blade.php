@@ -49,7 +49,7 @@
                                 </div>
                                 <div class="col-md-4 mb-3">
                                     <label for="validationServer04" class="required">Writing Test Score(25)</label>
-                                    <input type="number" class="form-control" id="validationServer04" name="test_score" required>
+                                    <input type="number" class="form-control" id="validationServer04" name="test_score" min="1" max="25" required>
                                 </div>    
                             </div> 
 

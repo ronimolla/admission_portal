@@ -68,7 +68,7 @@ Route::group(['middleware' =>['adminlogin']],function(){
     //Payment stage
     Route::get('/assesment/payment', [AssesmentController::class, 'payment']);
     Route:: match(['get','post'],'/registration/accepted/{student_id}/{program_batch_id}',[AssesmentController::class, 'acceptregistration']);
-    Route:: match(['get','post'],'/registration/refuse/{student_id}/{program_batch_id}',[AssesmentController::class, 'refuseregistration']);
+    Route:: match(['get','post'],'/registration/update/{student_id}/{program_batch_id}',[AssesmentController::class, 'update_payment']);
 
     
 //----------------------------------------------End Assesment Pare ----------------------------------------------------//

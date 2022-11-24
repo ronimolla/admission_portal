@@ -35,14 +35,19 @@
                                 </div>     
                             </div>
                             <div class="form-row">
-                                <div class="col-md-6 mb-3">
+                                <div class="col-md-4 mb-3">
+                                    <label for="validationServer03">Comtact No</label>
+                                    <input type="text" class="form-control" id="validationServer03"  name="eligible_writing_exam" value="{{$coninfo->personal_phone_no}}"readonly>
+                                </div>  
+                                <div class="col-md-4 mb-3">
                                     <label for="validationServer03">Preselection Score</label>
                                     <input type="text" class="form-control" id="validationServer03" name="preselection_score" value="{{$assinfo->pre_subtotal}}" readonly>
                                 </div>
-                                <div class="col-md-6 mb-3">
-                                    <label for="validationServer03">Writting Exam Eligibility</label>
+                                <div class="col-md-4 mb-3">
+                                    <label for="validationServer03"> @if( $program_name =="BBLTJ" || $program_name == "BBLT") Writting Exam Eligibility @else Interview Eligibility @endif </label>
                                     <input type="text" class="form-control" id="validationServer03"  name="eligible_writing_exam" value="{{$assinfo->select_for_writing_test}}"readonly>
-                                </div>     
+                                </div>  
+                                
                             </div>
                             <div class="form-row">
                                 <div class="col-md-4 mb-3">
@@ -55,7 +60,7 @@
                                 </div>  
                                 <div class="col-md-4 mb-3">
                                     
-                                        <label for="exampleFormControlSelect12" class="required">Want to Attend Exam</label>
+                                        <label for="exampleFormControlSelect12" class="required">@if( $program_name =="BBLTJ" || $program_name == "BBLT") Want to Attend Exam @else Want to Attend Interview  @endif</label>
                                         <select class="form-control" id="writting_eligibility" name="Student_decision">
                                             <option>Yes</option>
                                             <option> No</option>
@@ -65,14 +70,14 @@
                             </div>  
                             <div class="form-row">
                                 <div class="col-md- mb-3">
-                                    <label for="validationServer03" >Reason For not Attending Test</label>
+                                    <label for="validationServer03" > @if( $program_name =="BBLTJ" || $program_name == "BBLT") Reason For not Attending Test @else Reason For not Attending interview @endif</label>
                                     <textarea class="form-control" id="validationServer03" name ="reason"rows="4" cols="50"></textarea>
                                     
                                 </div>
-                                <div class="col-md-4 mb-3">
+                                <!-- <div class="col-md-4 mb-3">
                                     <label for="validationServer04" >Set Writing Test Time</label>
                                     <input type="datetime-local" class="form-control" id="validationServer03" name="time" >
-                                </div>  
+                                </div>   -->
                                 
                                     
                             </div>  

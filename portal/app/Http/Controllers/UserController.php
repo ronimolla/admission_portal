@@ -31,6 +31,8 @@ class UserController extends Controller
         if($request->isMethod('post')){
             $data = $request->input();
             $user = DB::table('users')->where(['email'=> $data['email'],'password' => $data['password']])->count(); 
+            //$faq =  DB::table('assesments')->where(['student_id'=> $user->student_id])->first(); 
+            //echo $faq; die;
             if($user > 0){
                 //echo "Success"; die;
                 Session::put('userSession', $data['email']);
