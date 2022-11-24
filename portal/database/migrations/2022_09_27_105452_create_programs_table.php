@@ -16,7 +16,6 @@ return new class extends Migration
         Schema::create('programs', function (Blueprint $table) {
             $table->increments('program_id');
             $table->string('program_name')->nullable();
-            $table->integer('duration')->nullable();
             $table->string('category')->nullable();
             $table->string('donor')->nullable();
             $table->timestamps();
