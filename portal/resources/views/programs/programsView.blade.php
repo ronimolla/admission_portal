@@ -23,10 +23,18 @@
 							<div class="card card-default">
 								<div class="card-header card-header-border-bottom d-flex justify-content-between">
 
+									<div class="form-group">
+										<a>Project Name</a>
+										<select class="form-control" id="project" style="font-size:13px">
+											<option value="0" disabled="true" selected="true">Select Project</option>
+                                            <option value="CSF">CSF</option>
+                                            <option value="EKN">EKN</option>												
+										</select>
+									</div>
+
                                     <div class="form-group">
 										<a>Category</a>
 										<select class="form-control" id="category" style="font-size:13px">
-
 											<option value="0" disabled="true" selected="true">Select Category</option>
                                             <option value="Leadership">Leadership</option>
                                             <option value="Professional Development">Professional Development</option>
@@ -48,9 +56,8 @@
 													<th>SL.No.</th>
 													<th>Program Name</th>
 													<th>Category</th>
-													<th>Program Duration (months)</th>
                                                     <th>Total Batches</th>
-													<th>Donor</th>												
+													<th>Project</th>												
 												</tr>
 											</thead>
                                             
@@ -61,7 +68,6 @@
                                                 
 											<tbody>	
 												@foreach($program_name as $prg)
-
 													@foreach($totalBatch as $tb)
 														@if($prg->program_id == $tb->program_id)
 															<?php $count++;?>
@@ -71,7 +77,6 @@
                                                         <td>{{$c++}}</td>
                                                         <td>{{$prg->program_name}}</td>
                                                         <td>{{$prg->category}}</td>
-                                                        <td>{{$prg->duration}}</td>
                                                         <td>{{$count}}</td>
                                                         <td>{{$prg->donor}}</td>
                                                     </tr>
@@ -84,8 +89,6 @@
 							</div><!-- End card card-default -->
 						</div>
 					</div>
-
-
  	 </div>
 </div>
 @endsection

@@ -15,6 +15,13 @@
             
             <form method="post" action="{{url('programs/createProgram')}}" name="add_school" id="add_school" novalidate="novalidate">{{csrf_field()}}
                 <div class="form-group">
+                    <label for="exampleFormControlSelect12">Project</label>
+                    <select class="form-control" name="donor" id="project">
+                        <option value="CSF">CSF</option>
+                        <option value="EKN">EKN</option>
+                    </select>
+                </div>
+                <div class="form-group">
                     <label for="exampleFormControlSelect12">Category</label>
                     <select class="form-control" name="category" id="exampleFormControlSelect12">
                         <option value="Leadership">Leadership</option>
@@ -26,14 +33,7 @@
                     <label for="exampleFormControlInput1">Program Name</label>
                     <input type="text" class="form-control" id="exampleFormControlInput1" name="program_name" placeholder="BBLT"> 
                 </div>
-                <div class="form-group">
-                    <label for="exampleFormControlInput1">Duration (in months)</label>
-                    <input type="text" class="form-control" id="exampleFormControlInput1" name="duration" placeholder="3">
-                </div>
-                <div class="form-group">
-                    <label for="exampleFormControlInput1">Donor</label>
-                    <input type="text" class="form-control" id="exampleFormControlInput1" name="donor" placeholder="Donor name">
-                </div>
+                
                 <div class="form-footer pt-4 pt-4 mt-4 border-top">
                   <button type="submit" class="btn btn-success btn-lg btn-block">Create</button>
                 </div>

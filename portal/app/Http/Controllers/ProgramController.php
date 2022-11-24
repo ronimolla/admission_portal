@@ -1115,12 +1115,12 @@ class ProgramController extends Controller
     {
         $cid=$request->post('cid');
         $state = DB::table('student_personal_infos')
-        ->join('student_contact_infos', 'student_personal_infos.student_id', '=', 'student_contact_infos.student_id')
-        ->join('student_address_infos', 'student_personal_infos.student_id', '=', 'student_address_infos.student_id')
-        ->join('student_programs', 'student_programs.student_id', '=', 'student_personal_infos.student_id')
-        ->join('program_batches', 'program_batches.batch_id', '=', 'student_programs.program_batch_id')
-        ->where('program_batches.program_id',$cid)
-        ->get();
+            ->join('student_contact_infos', 'student_personal_infos.student_id', '=', 'student_contact_infos.student_id')
+            ->join('student_address_infos', 'student_personal_infos.student_id', '=', 'student_address_infos.student_id')
+            ->join('student_programs', 'student_programs.student_id', '=', 'student_personal_infos.student_id')
+            ->join('program_batches', 'program_batches.batch_id', '=', 'student_programs.program_batch_id')
+            ->where('program_batches.program_id',$cid)
+            ->get();
         
         $table='  
             <thead>
@@ -1167,7 +1167,8 @@ class ProgramController extends Controller
         
     	$state=DB::table('program_batches')->where('program_id',$cid)->get();
     	$html='<option value="">Select Batch</option>';
-    	foreach($state as $list){
+    	foreach($state as $list)
+        {
     		$html.='<option value="'.$list->batch_id.'">'.$list->batch_name.'</option>';
     	}
     	echo $html;
@@ -1217,7 +1218,7 @@ class ProgramController extends Controller
                     <td>'.$list->present_district.'</td>
                     <td>'.$list->batch_name.'</td>
                     <td>
-                        <a href="/view-profile/'.$list->student_id.'" class="btn btn-primary">View</a>
+                         <a href="/view-profile/'.$list->student_id.'" class="btn btn-primary">View</a>
                     </td>
                 </tr>	
             </tbody>
@@ -1311,7 +1312,6 @@ class ProgramController extends Controller
                     <th>SL.No.</th>
                     <th>Program Name</th>
                     <th>Category</th>
-                    <th>Program Duration (months)</th>
                     <th>Total Batches</th>
                     <th>Donor</th>													
                 </tr>
@@ -1333,7 +1333,6 @@ class ProgramController extends Controller
                     <td>'.$count++.'</td>
                     <td>'.$list->program_name.'</td>
                     <td>'.$list->category.'</td>
-                    <td>'.$list->duration.'</td>
                     <td>'.$batch.'</td>
                     <td>'.$list->donor.'</td>              
                 </tr>	
@@ -1344,6 +1343,59 @@ class ProgramController extends Controller
         echo $html;
     }
 
+        // Display table data based category selected from dropdown (Program Page)
+        public function getProgramDatabyProject(Request $request)
+        {
+            $proj=$request->post('proj');
+            
+            $state = DB::table('programs')
+                ->where('donor',$proj)
+                ->get();
+            
+            $totalBatch = DB::table('programs')
+                ->join('program_batches', 'programs.program_id', '=', 'program_batches.program_id')
+                ->where('donor',$proj)
+                ->get();
+            
+            $html=
+            '  
+                <thead>
+                    <tr>
+                        <th>SL.No.</th>
+                        <th>Program Name</th>
+                        <th>Category</th>
+                        <th>Total Batches</th>
+                        <th>Donor</th>													
+                    </tr>
+                </thead>      
+            ';
+    
+            $count=1;
+            $batch=0;
+            foreach($state as $list){
+                foreach($totalBatch as $tb)
+                {
+                    if($list->program_id == $tb->program_id){
+                        $batch++;
+                    }
+                }
+    
+                $html.='
+                <tbody>                        
+                    <tr>
+                        <td>'.$count++.'</td>
+                        <td>'.$list->program_name.'</td>
+                        <td>'.$list->category.'</td>
+                        <td>'.$batch.'</td>
+                        <td>'.$list->donor.'</td>              
+                    </tr>	
+                </tbody>
+                ';
+                $batch=0;
+            }
+            echo $html;
+        }
+
     // Create new program (Programs Page)
     public function createProgram(Request $request){
 
@@ -1353,7 +1405,6 @@ class ProgramController extends Controller
             $program = new Program;
         
             $program ->program_name = $data['program_name'];
-            $program ->duration = $data['duration'];
             $program ->category = $data['category'];  
             $program ->donor = $data['donor'];  
                    
@@ -1771,16 +1822,33 @@ class ProgramController extends Controller
         echo json_encode($output);
     }
 
-
-    public function fetchDisability() {
-        $disability = StudentPersonalInfo::select(DB::raw('COUNT(*) as total_student, disability'))
-            ->groupBy('disability')
+    public function fetchGender() {
+        $gender = StudentPersonalInfo::select(DB::raw('COUNT(*) as total_student, gender'))
+            ->groupBy('gender')
             ->get();
 
-        foreach($disability->toArray() as $row)
+        foreach($gender->toArray() as $row)
         {
             $output[] = array(
-                'disability' => $row['disability'],
+                'gender' => $row['gender'],
+                'total_student' => $row['total_student']
+            );
+        }
+        echo json_encode($output);
+    }
+
+    public function fetchStudyear() {
+        $edu =  DB::table('student_educational_infos')->get();
+
+        
+        $gender = StudentEducationalInfo::select(DB::raw('COUNT(*) as total_student, gender'))
+            ->groupBy('gender')
+            ->get();
+
+        foreach($gender->toArray() as $row)
+        {
+            $output[] = array(
+                'gender' => $row['gender'],
                 'total_student' => $row['total_student']
             );
         }
