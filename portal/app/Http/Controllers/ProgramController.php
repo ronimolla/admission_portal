@@ -1838,21 +1838,7 @@ class ProgramController extends Controller
     }
 
     public function fetchStudyear() {
-        $edu =  DB::table('student_educational_infos')->get();
-
         
-        $gender = StudentEducationalInfo::select(DB::raw('COUNT(*) as total_student, gender'))
-            ->groupBy('gender')
-            ->get();
-
-        foreach($gender->toArray() as $row)
-        {
-            $output[] = array(
-                'gender' => $row['gender'],
-                'total_student' => $row['total_student']
-            );
-        }
-        echo json_encode($output);
     }
 
     public function fetchDivision() {
