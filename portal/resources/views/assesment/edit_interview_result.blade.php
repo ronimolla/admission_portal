@@ -58,21 +58,21 @@
                             <div class="form-row">
                                 <div class="col-md-4 mb-3">
                                     <label for="validationServer03" class="required">Competence(10)</label>
-                                    <input type="number" class="form-control" id="competence" name="competence" required>
+                                    <input type="number" class="form-control" id="competence" name="competence" min="1" max="10" required>
                                 </div>
                                 <div class="col-md-4 mb-3">
                                     <label for="validationServer04" class="required">Courage(10)</label>
-                                    <input type="number" class="form-control" id="courage" name="courage" required>
+                                    <input type="number" class="form-control" id="courage" name="courage" min="1" max="10" required>
                                 </div>  
                                 <div class="col-md-4 mb-3">
                                     <label for="validationServer04" class="required">Compassion(10)</label>
-                                    <input type="number" class="form-control" id="compassion" name="compassion" required>
+                                    <input type="number" class="form-control" id="compassion" name="compassion" min="1" max="10" required>
                                 </div>    
                             </div>  
                             <div class="form-row">
                                 <div class="col-md-4 mb-3">
                                     <label for="validationServer03" class="required">Commitment(10)</label>
-                                    <input type="number" class="form-control" id="commitment" name="commitment" required>
+                                    <input type="number" class="form-control" id="commitment" name="commitment" min="1" max="10" required>
                                 </div>
                                 <div class="col-md-4 mb-3">
                                         <label for="validationServer03" class="required">Select For Registration</label>

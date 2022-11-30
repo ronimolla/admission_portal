@@ -1,4 +1,4 @@
-@extends('layouts.studentLayout.student_design')
+@extends('layouts.AdminLayout.admin_design')
 @section('content')
 <div class="content-wrapper">
     <div class="content">
@@ -8,11 +8,11 @@
             <div class="col-lg-10">
                 <div class="card card-default">
                     <div class="card-header card-header-border-bottom">
-                        <h2>Payment Details</h2>
+                        <h2>Update Payment Details by admission team</h2>
                     </div>
 
                     <div class="card-body">
-                        <form method="post" enctype="multipart/form-data" action="{{url('/student/update-payment/details/'.$updatepayment->student_id.'/'.$updatepayment->program_batch_id)}}"> {{csrf_field()}}
+                        <form method="post" enctype="multipart/form-data" action="{{url('/registration/update/'.$updatepayment->student_id.'/'.$updatepayment->program_batch_id)}}"> {{csrf_field()}}
                             <div class="form-row">
                                 <div class="col-md-6 mb-3">
                                     <label for="validationServer03">Student ID</label>

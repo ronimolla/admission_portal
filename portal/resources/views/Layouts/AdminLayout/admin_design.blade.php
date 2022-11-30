@@ -273,6 +273,16 @@
         
         <!-- JS For Dependent Dropdown (Program_Batch_Name depends on Program_Name)-->
         <script>
+            function mult(value){
+                var x,y,z;
+                y = document.getElementById('registration_fees').value;
+                z = document.getElementById('waiver_amount').value;
+                x=(z * 100)/y;
+                const ex3 =(Math.round(x * 100) / 100).toFixed(2);
+
+                document.getElementById('waiver_percentage').value =ex3 + "%";
+            }
+
             jQuery(document).ready(function(){
                     
                 //-----------(Student  Management page)-------------------------

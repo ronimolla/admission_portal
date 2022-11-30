@@ -24,6 +24,7 @@ return new class extends Migration
             $table->string('select_for_interview')->nullable();
             $table->string('writing_preselection_stage')->default('pending');
             $table->string('writing_follow_up_stage')->default('pending');
+            $table->string('writing_test')->nullable();
             $table->timestamps();
         });
     }

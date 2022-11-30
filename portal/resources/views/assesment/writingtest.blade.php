@@ -25,9 +25,21 @@
 			<div class="col-12">
 				<div class="card card-default">
 					<div class="card-header card-header-border-bottom d-flex justify-content-between">
-					<h2>All Student who are Selected for Writing Test and Waiting for Update their resut</h2>
-					
+						<h2>All Student who are Selected for Writing Test and Waiting for Update their resut</h2>	
 					</div>
+
+					@if($message = Session::get('flash_message_error'))
+						<div class="alert alert-danger alert-block">
+							<button type="button" class="close" data-dismiss="alert">×</button>	
+							<strong>{{ $message }}</strong>
+						</div>
+					@endif
+					@if($message = Session::get('flash_message_success'))
+						<div class="alert alert-success alert-block">
+							<button type="button" class="close" data-dismiss="alert">×</button>	
+							<strong>{{ $message }}</strong>
+						</div>
+					@endif
 
 					<div class="card-body">
 						<div class="basic-data-table">
@@ -40,10 +52,11 @@
 										<th>Batch Code</th>
 										<th>Gender</th>
 										<th>Date of Birth</th>
+										<th>Contact Number</th>
 										<th>Present Destrict</th>
                                         <th>Present Devision</th>
 										<th>Update</th>
-										<th>view</th>
+										
 													
 									</tr>
 								</thead>
@@ -57,14 +70,13 @@
 										<td>{{$std->program_batch_id}}</td>
                                         <td>{{$std->gender}}</td>
                                         <td>{{$std->dob}}</td>
+										<td>{{$std->personal_phone_no}}</td>
                                         <td>{{$std->present_district}}</td>
 										<td>{{$std->present_division}}</td>
 										<td>
 											<a href="{{ url('testresult/edit/'.$std->student_id.'/'.$std->program_batch_id)}}" class="btn btn-primary">Test Resut</a>
 										</td>	
-                                        <td>
-											<a href="{{ url('view-profile/'.$std->student_id)}}" class="btn btn-primary">view Profile</a>
-										</td>	
+                                     
 									</tr>
 									@endforeach
 								</tbody>
@@ -81,6 +93,19 @@
                         <h2>All Applicants Who are Waiting for Follow-Up</h2>
                     </div>
 
+					@if($message = Session::get('flash_message_error'))
+						<div class="alert alert-danger alert-block">
+							<button type="button" class="close" data-dismiss="alert">×</button>	
+							<strong>{{ $message }}</strong>
+						</div>
+					@endif
+					@if($message = Session::get('flash_message_success_follow_up'))
+						<div class="alert alert-success alert-block">
+							<button type="button" class="close" data-dismiss="alert">×</button>	
+							<strong>{{ $message }}</strong>
+						</div>
+					@endif
+
                     <div class="card-body">
                         <div class="basic-data-table">
                             <table id="basic-data-table2" class="table nowrap" style="width:100%">
@@ -90,11 +115,12 @@
 										<th>Full Name</th>
 										<th>Program Name</th>
 										<th>Email ID</th>
+										<th>Contact Number</th>
 										<th>Program Code</th>
 										<th>Application & writing Score</th>
 										<th>Interview Eligibility</th>
 										<th>Follow-Up</th>
-										<th>view</th>                               
+										                              
                                     </tr>
                                 </thead>
 
@@ -105,15 +131,14 @@
 											<td>{{$pstage->full_name}}</td>
 											<td>{{$pstage->program_name}}</td>
 											<td>{{$pstage->email_address}}</td>
+											<td>{{$pstage->personal_phone_no}}</td>
 											<td>{{$pstage->program_batch_id}}</td>
 											<td>{{$pstage->writing_and_appication_score}}</td>
 											<td>{{$pstage->select_for_interview}}</td>
 											<td>
 												<a href="{{ url('writing/follow-up/'.$pstage->student_id.'/'.$pstage->program_batch_id)}}" class="btn btn-primary">Follow-Up</a>
 											</td>	
-											<td>
-												<a href="{{ url('view-profile/'.$pstage->student_id)}}" class="btn btn-primary">view Profile</a>
-											</td>			
+													
                                         </tr>
 									@endforeach
                                 </tbody>
