@@ -21,6 +21,7 @@ use App\Models\Assesment;
 use App\Models\Payment;
 use App\Models\User;
 use App\Mail\SigmUp;
+use App\Mail\PreselectionStaus;
 use Session;
 use App\Models\FinancialAid;
 use App\Models\Waiver;
@@ -87,14 +88,15 @@ class AssesmentController extends Controller
             }
 
             $totall = $data['articulation'] + $data['logical_reasoning'] + $data['authemticity'] ;
+            Mail:: to ($email_address)->send(new PreselectionStaus($email_address,$totall));
             if( $program_name =='BBLT' || $program_name =='BBLTJ'  ){
             Assesment::where(['student_id'=>$student_id,'program_batch_id'=>$program_batch_code])->update(['pre_assessor'=>$data['assessor_name'],'pre_authenticity'=>$data['authemticity'],
                 'pre_articulation'=>$data['articulation'],'pre_logical_reasoning'=>$data['logical_reasoning'],'pre_subtotal'=>$totall,
-                'select_for_writing_test'=>$data['writting_eligibility'],'preselection_stage'=>'Done']);
+                'select_for_writing_test'=>$data['writting_eligibility'],'pre_selection_remark'=>$data['pre_remark'],'preselection_stage'=>'Done']);
             }else{
-                Assesment::where(['student_id'=>$student_id,'program_batch_id'=>$program_batch_code])->update(['pre_assessor'=>$data['assessor_name'],'pre_authenticity'=>$data['authemticity'],
+            Assesment::where(['student_id'=>$student_id,'program_batch_id'=>$program_batch_code])->update(['pre_assessor'=>$data['assessor_name'],'pre_authenticity'=>$data['authemticity'],
                 'pre_articulation'=>$data['articulation'],'pre_logical_reasoning'=>$data['logical_reasoning'],'pre_subtotal'=>$totall,
-                'select_for_interview'=>$data['writting_eligibility'],'select_for_writing_test'=>$data['writting_eligibility'],'preselection_stage'=>'Done']);
+                'select_for_interview'=>$data['writting_eligibility'],'select_for_writing_test'=>$data['writting_eligibility'],'pre_selection_remark'=>$data['pre_remark'],'preselection_stage'=>'Done']);
             }
 
             return redirect('/assesment/preselection')->with('flash_message_success','Preselection result updated');

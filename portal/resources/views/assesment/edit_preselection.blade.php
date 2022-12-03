@@ -60,8 +60,15 @@
                                         <option>Eligible</option>
                                         <option>Incapable</option>
                                     </select>    
-                                </div>    
+                                </div> 
+
                             </div>  
+                            <div class="form-row">
+                                <div class="col-md-4 mb-3">
+                                    <label for="validationServer03" class="required">Remark</label>
+                                    <textarea class="form-control" id="validationServer03" name ="pre_remark"rows="4" cols="50" required></textarea>    
+                                </div> 
+                            </div> 
                             <button class="btn btn-primary" type="submit">Update</button>
                         </form>
                     </div>

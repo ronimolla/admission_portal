@@ -46,10 +46,10 @@ Route::group(['middleware' =>['adminlogin']],function(){
 
     //All program data(Applicant data) information
     Route::resource('Students', StudentController::class);
-    Route::get('/view-profile/{student_id}', [StudentController::class, 'profile']);
+    Route::get('/view-profile/{student_id}/{program_batch_id}', [StudentController::class, 'profile']);
     Route::get('/edit-profile/{student_id}', [StudentController::class, 'editprofile']);
 
-//---------------------------------------------- Assesment Pare ----------------------------------------------------//
+//---------------------------------------------- Assesment Part ----------------------------------------------------//
     //Assesment for applicaent pre-Selection
     Route::get('/assesment/preselection', [AssesmentController::class, 'preselection']);
     Route:: match(['get','post'],'/preselection/edit/{student_id}/{program_batch_id}',[AssesmentController::class, 'update']);
@@ -71,7 +71,7 @@ Route::group(['middleware' =>['adminlogin']],function(){
     Route:: match(['get','post'],'/registration/update/{student_id}/{program_batch_id}',[AssesmentController::class, 'update_payment']);
 
     
-//----------------------------------------------End Assesment Pare ----------------------------------------------------//
+//----------------------------------------------End Assesment Part ----------------------------------------------------//
     //Settings for User controll
     Route::get('/admin/setings', [SettingController::class, 'settings']);
 
