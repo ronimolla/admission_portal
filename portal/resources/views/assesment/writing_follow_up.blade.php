@@ -66,7 +66,7 @@
                                 </div>    
                             </div>  
                             <div class="form-row">
-                                <div class="col-md- mb-3">
+                                <div class="col-md-4 mb-3">
                                     <label for="validationServer03">Reason For not Attending Interview</label>
                                     <textarea class="form-control" id="validationServer03" name ="reason"rows="4" cols="50"></textarea>
                                     
@@ -75,8 +75,7 @@
                                     <label for="validationServer04">Set Interview Time</label>
                                     <input type="datetime-local" class="form-control" id="validationServer03" name="time" >
                                 </div>   -->
-                                
-                                    
+                                                                   
                             </div>  
                             <button class="btn btn-primary" type="submit">Update</button>
                         </form>

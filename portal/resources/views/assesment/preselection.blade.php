@@ -80,7 +80,7 @@
 											<a href="{{ url('preselection/edit/'.$std->student_id.'/'.$std->program_batch_id)}}" class="btn btn-primary">Preselection</a>
 										</td>	
                                         <td>
-											<a href="{{ url('view-profile/'.$std->student_id)}}" class="btn btn-primary">view Profile</a>
+											<a href="{{ url('view-profile/'.$std->student_id.'/'.$std->program_batch_id)}}" class="btn btn-primary">view Profile</a>
 										</td>	
 									</tr>
 									@endforeach
@@ -89,8 +89,8 @@
 						</div><!-- End basic-data-table -->
 					</div><!-- End card body -->
 				</div><!-- End card card-default -->
-			</div>
-		</div>
+			</div><!-- End  col-12-->
+		</div><!-- End row-->
         <div class="row">
             <div class="col-12">
                 <div class="card card-default">

@@ -26,14 +26,18 @@ class StudentController extends Controller
     }
 
 
-    public function profile($std_id)
+    public function profile($std_id,$program_batch_code)
     {
         $personalinfo = StudentPersonalInfo::where('student_id',$std_id)->first();
         $contactinfo = StudentContactInfo::where('student_id',$std_id)->first();
         $eduinfo = StudentEducationalInfo::where('student_id',$std_id)->first();
-        $addressinfo = StudentAddressInfo::where('student_id',$std_id)->first();
+        $addressinfo = StudentAddressInfo::where('student_id',$std_id)->first(); 
+        //['student_id'=>$std_id,'program_batch_id'=>$program_batch_code]
+        $questionaryinfo = StudentQuestionaryInfo::where(['student_id'=>$std_id,'program_batch_id'=>$program_batch_code])->first(); 
+ 
+
         //echo "<pre>"; print_r($orderDetails); die;
-        return view('profile')->with(compact('personalinfo','contactinfo','eduinfo','addressinfo'));
+        return view('profile')->with(compact('personalinfo','contactinfo','eduinfo','addressinfo','questionaryinfo'));
     }
     public function editprofile($std_id)
     {
