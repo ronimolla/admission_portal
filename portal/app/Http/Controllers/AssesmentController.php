@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use \Illuminate\Support\Facades\DB;
+use \Illuminate\Support\Facades\Mail;
 use App\Models\StudentPersonalInfo;
 use App\Models\StudentContactInfo;
 use App\Models\StudentEducationalInfo;
@@ -19,6 +20,8 @@ use App\Models\Interview;
 use App\Models\Assesment;
 use App\Models\Payment;
 use App\Models\User;
+use App\Mail\SigmUp;
+use App\Mail\PreselectionStaus;
 use Session;
 use App\Models\FinancialAid;
 use App\Models\Waiver;
@@ -52,20 +55,24 @@ class AssesmentController extends Controller
     Complite done Don't change the database and migration file
     ---------
     */
-    public function update(Request $request,$student_id= null,$program_batch_code= null){	
-       //echo $program_batch_id ; die;
+    public function update(Request $request,$student_id= null,$program_batch_code= null){
+
+        $program_info = DB::table('program_batches') ->join('programs', 'program_batches.program_id', '=', 'programs.program_id')
+        ->where('program_batches.batch_id','=',$program_batch_code)->first();
+        $program_name =$program_info->program_name;	
+        //echo "<pre>"; print_r($program_name); die;
+
         $studentcontactinfo = StudentContactInfo::where(['student_id'=>$student_id])->first();
         $email_address = $studentcontactinfo ->email_address;
         $password = random_int(100000, 999999);	
 
         $usersCount = User::where('email',$email_address)->count();
-        //echo $usersCount ; die;
             
 		if($request->isMethod('post')){ 
-
-            $data = $request->input();
+            $data = $request->input(); 
             $totall = 0; 
 
+            Mail:: to ($email_address)->send(new SigmUp($email_address));
             if($data['writting_eligibility'] == 'Incapable'){
                 StudentProgram::where(['student_id'=>$student_id,'program_batch_id'=>$program_batch_code])->update(['application_status'=>'rejected']);     
             }
@@ -76,25 +83,31 @@ class AssesmentController extends Controller
                 $student->student_id = $data['std_id'];
                 $student->name = $data['full_name'];
                 $student->email  = $email_address;
-                $student->password =  $password; 
+                $student->password =  $password;
                 $student->save(); 
             }
 
             $totall = $data['articulation'] + $data['logical_reasoning'] + $data['authemticity'] ;
+            Mail:: to ($email_address)->send(new PreselectionStaus($email_address,$totall));
+            if( $program_name =='BBLT' || $program_name =='BBLTJ'  ){
             Assesment::where(['student_id'=>$student_id,'program_batch_id'=>$program_batch_code])->update(['pre_assessor'=>$data['assessor_name'],'pre_authenticity'=>$data['authemticity'],
                 'pre_articulation'=>$data['articulation'],'pre_logical_reasoning'=>$data['logical_reasoning'],'pre_subtotal'=>$totall,
-                'select_for_writing_test'=>$data['writting_eligibility'],'preselection_stage'=>'Done']);
+                'select_for_writing_test'=>$data['writting_eligibility'],'pre_selection_remark'=>$data['pre_remark'],'preselection_stage'=>'Done']);
+            }else{
+            Assesment::where(['student_id'=>$student_id,'program_batch_id'=>$program_batch_code])->update(['pre_assessor'=>$data['assessor_name'],'pre_authenticity'=>$data['authemticity'],
+                'pre_articulation'=>$data['articulation'],'pre_logical_reasoning'=>$data['logical_reasoning'],'pre_subtotal'=>$totall,
+                'select_for_interview'=>$data['writting_eligibility'],'select_for_writing_test'=>$data['writting_eligibility'],'pre_selection_remark'=>$data['pre_remark'],'preselection_stage'=>'Done']);
+            }
 
-           
-
-            return redirect('/assesment/preselection');
+            return redirect('/assesment/preselection')->with('flash_message_success','Preselection result updated');
         }  
 
         $studentinfo = DB::table('student_personal_infos')->where('student_personal_infos.student_id','=',$student_id)->first();
         $assinfo = Assesment::where(['student_id'=>$student_id,'program_batch_id'=>$program_batch_code])->first();
+       
         //echo "<pre>"; print_r($assinfo) ; die;
 
-        return view('assesment.edit_preselection')->with(compact('studentinfo','assinfo'));  
+        return view('assesment.edit_preselection')->with(compact('studentinfo','assinfo','program_name'));  
     }
     /*
     -------
@@ -104,22 +117,32 @@ class AssesmentController extends Controller
     */
     public function follow_up(Request $request,$student_id= null,$program_batch_id= null){	
        
-      
+        $program_info = DB::table('program_batches') ->join('programs', 'program_batches.program_id', '=', 'programs.program_id')
+        ->where('program_batches.batch_id','=',$program_batch_id)->first();
+        $program_name =$program_info->program_name;	
+        //echo "<pre>"; print_r($program_name); die;
 
 		if($request->isMethod('post')){
             $data = $request->input();
            // echo "<pre>"; print_r($data); die;
-           Assesment::where(['student_id'=>$student_id,'program_batch_id'=>$program_batch_id])->update(
+           if( $program_name =='BBLT' || $program_name =='BBLTJ'  ){
+            Assesment::where(['student_id'=>$student_id,'program_batch_id'=>$program_batch_id])->update(
                 ['pre_follow_up_assessor_name'=>$data['assessor_name'],'pre_contact_media'=>$data['conatct_media'],'want_attend_for_test'=>$data['Student_decision'],
-                'reason_for_not_attending_test'=>$data['reason'],'test_time'=>$data['time'],'pre_follow_up_stage'=>'Done']);
+                'reason_for_not_attending_test'=>$data['reason'],'pre_follow_up_stage'=>'Done']);
+           }else{
+            Assesment::where(['student_id'=>$student_id,'program_batch_id'=>$program_batch_id])->update(
+                ['pre_follow_up_assessor_name'=>$data['assessor_name'],'pre_contact_media'=>$data['conatct_media'],'want_attend_for_interview'=>$data['Student_decision'],
+                'reason_for_not_attending_interview'=>$data['reason'],'writing_follow_up_stage'=>'Done','pre_follow_up_stage'=>'Done']);
+
+           }
           
-            return redirect('/assesment/preselection');
+            return redirect('/assesment/preselection')->with('flash_message_success_follow_up','Preselection follow up updated');
         } 
 
         $studentinfo = DB::table('student_personal_infos')->where('student_personal_infos.student_id','=',$student_id)->first();
         $assinfo = Assesment::where(['student_id'=>$student_id,'program_batch_id'=>$program_batch_id])->first();
-
-         return view('assesment.preselection_follow_up')->with(compact('studentinfo','assinfo'));  
+        $coninfo = StudentContactInfo::where(['student_id'=>$student_id])->first();
+         return view('assesment.preselection_follow_up')->with(compact('studentinfo','assinfo','coninfo','program_name'));  
     }
 
     /*------
@@ -187,12 +210,13 @@ class AssesmentController extends Controller
             //echo "<pre>"; print_r($data); die;
             Assesment::where(['student_id'=>$student_id,'program_batch_id'=>$program_batch_id])->update([
                 'test_follow_up_assessor_name'=>$data['assessor_name'],'test_contact_media'=>$data['conatct_media'],'want_attend_for_interview'=>$data['Student_decision'],
-                'reason_for_not_attending_interview'=>$data['reason'],'interview_time'=>$data['time'],'writing_follow_up_stage'=>'Done']);
+                'reason_for_not_attending_interview'=>$data['reason'],'writing_follow_up_stage'=>'Done']);
             return redirect('/assesment/writing');
         }  
         $studentinfo = DB::table('student_personal_infos')->where('student_personal_infos.student_id','=',$student_id)->first();
+        $coninfo = StudentContactInfo::where(['student_id'=>$student_id])->first();
         $assinfo = Assesment::where(['student_id'=>$student_id,'program_batch_id'=>$program_batch_id])->first();
-         return view('assesment.writing_follow_up')->with(compact('studentinfo','assinfo'));  
+         return view('assesment.writing_follow_up')->with(compact('studentinfo','assinfo','coninfo'));  
     }
 
     /*-----------
@@ -278,8 +302,9 @@ class AssesmentController extends Controller
             return redirect('/assesment/interview');
         }  
         $studentinfo = DB::table('student_personal_infos')->where('student_personal_infos.student_id','=',$student_id)->first();
+        $coninfo = StudentContactInfo::where(['student_id'=>$student_id])->first();
         $assinfo = Assesment::where(['student_id'=>$student_id,'program_batch_id'=>$program_batch_id])->first();
-         return view('assesment.interview_follow_up')->with(compact('studentinfo','assinfo'));  
+         return view('assesment.interview_follow_up')->with(compact('studentinfo','assinfo','coninfo'));  
     }
 
     /*-----------------------All application for wqaiver request 
@@ -336,17 +361,29 @@ class AssesmentController extends Controller
     public function acceptregistration($student_id= null,$program_batch_id= null){
         Payment::where(['student_id'=>$student_id,'program_batch_id'=>$program_batch_id])->update(['payment_status'=>'Accept']);
         StudentProgram::where(['student_id'=>$student_id,'program_batch_id'=>$program_batch_id])->update(['application_status'=>'selected']); 
+        Assesment::where(['student_id'=>$student_id,'program_batch_id'=>$program_batch_id])->update(['registration_status'=>'selected']); 
         return redirect()->back();
        
     }
 
-    public function refuseregistration(Request $request,$student_id= null,$program_batch_id= null){
-
+    public function update_payment(Request $request,$student_id= null,$program_batch_id= null){
+        
         if($request->isMethod('post')){
-           
             
-        }
-    }
+            $data = $request->input();
+           //echo "<pre>"; print_r($data); die;
+            Payment::where(['student_id'=>$student_id,'program_batch_id'=>$program_batch_id])->update(['2nd_payment_media'=>$data['pay_method'],
+            '2nd_reference'=>$data['referenceid'],'2nd_payment_mobileno'=>$data['mobileno'],'payment_status'=>'Accept']);
+            StudentProgram::where(['student_id'=>$student_id,'program_batch_id'=>$program_batch_id])->update(['application_status'=>'selected']); 
+            Assesment::where(['student_id'=>$student_id,'program_batch_id'=>$program_batch_id])->update(['registration_status'=>'selected']); 
+
+           return redirect('/assesment/payment');
+           
+        }  
+        $updatepayment = Payment::where(['student_id'=>$student_id,'program_batch_id'=>$program_batch_id])->first();
+       
+        return view('assesment.updatepayment_details')->with(compact('updatepayment'));  
+   }
 
 
 }

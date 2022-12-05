@@ -40,28 +40,35 @@
                                     <input type="text" class="form-control" id="validationServer03" name="assessor_name" value= "{{Session::get('AdminName')}}" readonly>
                                 </div>
                                 <div class="col-md-4 mb-3">
-                                    <label for="validationServer04">Authenticity</label>
-                                    <input type="number" class="form-control" id="validationServer04" name="authemticity" required>
+                                    <label for="validationServer04" class="required">Authenticity(3)</label>
+                                    <input type="number" class="form-control" id="validationServer04" name="authemticity" min="0" max="3" required>
                                 </div>  
                                 <div class="col-md-4 mb-3">
-                                    <label for="validationServer04">Articulation</label>
-                                    <input type="number" class="form-control" id="validationServer04" name="articulation" required>
+                                    <label for="validationServer04" class="required">Articulation(3) </label>
+                                    <input type="number" class="form-control" id="validationServer04" name="articulation" min="0" max="3" required>
                                 </div>    
                             </div>  
                             <div class="form-row">
                                 <div class="col-md-4 mb-3">
-                                    <label for="validationServer03">Logical_reasoning</label>
-                                    <input type="number" class="form-control" id="validationServer03" name="logical_reasoning" required>
+                                    <label for="validationServer03" class="required">Logical_reasoning(4)</label>
+                                    <input type="number" class="form-control" id="validationServer03" name="logical_reasoning" min="0" max="4" required>
                                 </div>
                                 
                                 <div class="col-md-4 mb-3">
-                                    <label for="validationServer03">Writting Exam Eligibility</label>
+                                    <label for="validationServer03" class="required">@if( $program_name =="BBLTJ" || $program_name == "BBLT") Writting Exam Eligibility @else Interview Eligibility @endif</label>
                                     <select class="form-control" id="writting_eligibility" name="writting_eligibility">
                                         <option>Eligible</option>
                                         <option>Incapable</option>
                                     </select>    
-                                </div>    
+                                </div> 
+
                             </div>  
+                            <div class="form-row">
+                                <div class="col-md-4 mb-3">
+                                    <label for="validationServer03" class="required">Remark</label>
+                                    <textarea class="form-control" id="validationServer03" name ="pre_remark"rows="4" cols="50" required></textarea>    
+                                </div> 
+                            </div> 
                             <button class="btn btn-primary" type="submit">Update</button>
                         </form>
                     </div>

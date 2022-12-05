@@ -22,6 +22,7 @@
     <div class="card card-default">
       <div class="content">
       <h2>Result of <strong>{{$selcetion->program_name}}<strong> Program<h2>
+<hr>
         <br>
       <div class="row">
         <div class="col-xl-3">
@@ -38,7 +39,7 @@
                   data-fill="{
                     &quot;color&quot;: &quot;#35D00E&quot;
                   }"
-                  >
+                >
                 <div class="circle-content">
                   <h6 class="text-uppercase text-dark font-weight-bold">{{$selcetion->pre_subtotal}}/10</h6>
                   <strong></strong>
@@ -47,6 +48,7 @@
             </div>
           </div>
         </div>
+        @if( $selcetion->program_name =="BBLTJ" || $selcetion->program_name == "BBLT")
         <div class="col-xl-3">
           <div class="card card-default">
             <div class="card-header card-header-border-bottom">
@@ -61,7 +63,7 @@
                   data-fill="{
                     &quot;color&quot;: &quot;#35D00E&quot;
                   }"
-                  >
+                >
                 <div class="circle-content">
                   <h6 class="text-uppercase text-dark font-weight-bold">{{$selcetion->total_score}}/25</h6>
 
@@ -71,6 +73,7 @@
             </div>
           </div>
         </div>
+        @endif
         <div class="col-xl-3">
           <div class="card card-default">
             <div class="card-header card-header-border-bottom">
@@ -85,7 +88,7 @@
                   data-fill="{
                     &quot;color&quot;: &quot;#35D00E&quot;
                   }"
-                  >
+                >
                 <div class="circle-content">
                   <h6 class="text-uppercase text-dark font-weight-bold">{{$selcetion->total_interview_marks}}/40</h6>
                 </div>
@@ -103,18 +106,27 @@
               <div class="card-body p-4 py-xl-6 px-xl-2">
                 <div class="circle circle-lg"
                   data-size="170"
-                  data-value=".0"
+                  @if( $selcetion->registration_status =="selected")
+                    data-value="1."
+                  @endif
+                  data-value="0.0"
                   data-thickness="20"
                   data-fill=
                   "{
                     &quot;color&quot;: &quot;#35D00E&quot;
                   }"
-                  >
+                >
+                @if( $selcetion->registration_status =="selected")
                 <div class="circle-content">
-                  <h6 class="text-uppercase text-dark font-weight-bold">00%</h6>
-
+                  <h6 class="text-uppercase text-dark font-weight-bold"> 100%</h6>
                   <strong></strong>
                 </div>
+                @else
+                <div class="circle-content">
+                  <h6 class="text-uppercase text-dark font-weight-bold"> 00%</h6>
+                  <strong></strong>
+                </div>
+                @endif
               </div>
             </div>
           </div>

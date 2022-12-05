@@ -21,6 +21,18 @@
 					<div class="row">
 						<div class="col-12">
 							<div class="card card-default">
+								@if($message = Session::get('flash_message_error'))
+								<div class="alert alert-danger alert-block">
+									<button type="button" class="close" data-dismiss="alert">×</button>	
+									<strong>{{ $message }}</strong>
+								</div>
+								@endif
+								@if($message = Session::get('flash_message_success'))
+								<div class="alert alert-success alert-block">
+									<button type="button" class="close" data-dismiss="alert">×</button>	
+									<strong>{{ $message }}</strong>
+								</div>
+								@endif
 								<div class="card-header card-header-border-bottom d-flex justify-content-between">
 
                                     <div class="form-group">

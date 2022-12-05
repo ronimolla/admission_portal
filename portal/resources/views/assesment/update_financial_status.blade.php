@@ -44,16 +44,16 @@
                                 <div class="col-md-4 mb-3">
                                 
                                     <label for="validationServer03">registration fees</label>
-                                    <input type="text" class="form-control" id="waiver_percentage" name="registration_fees" value="{{$batchdetails->registration_fees}}"   readonly>
+                                    <input type="text" class="form-control" id="registration_fees" name="registration_fees" value="{{$batchdetails->registration_fees}}"   readonly>
                                 
                                 </div>
                                 <div class="col-md-4 mb-3">
                                     <label for="validationServer03">Waiver Amount</label>
-                                    <input type="text" class="form-control" id="waiver_amount" name="waiver_amount" required>
+                                    <input type="text" class="form-control" id="waiver_amount" name="waiver_amount" onkeyup="mult(this.value);" required>
                                 </div>  
                                 <div class="col-md-4 mb-6">
                                     <label for="validationServer03">Waiver Percentage</label>
-                                    <input type="text" class="form-control" id="waiver_percentage" name="waiver_percentage" >
+                                    <input type="text" class="form-control" id="waiver_percentage" name="waiver_percentage" required>
                                 </div> 
                             </div> 
                             <div class="form-row">

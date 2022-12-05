@@ -24,9 +24,21 @@
 			<div class="col-12">
 				<div class="card card-default">
 					<div class="card-header card-header-border-bottom d-flex justify-content-between">
-						<h2>All Student who are applied for waiver and waiting update their request</h2>
-						
+						<h2>All Student's who pay for their registration fees</h2>	
 					</div>
+
+					@if($message = Session::get('flash_message_error'))
+						<div class="alert alert-danger alert-block">
+							<button type="button" class="close" data-dismiss="alert">×</button>	
+							<strong>{{ $message }}</strong>
+						</div>
+					@endif
+					@if($message = Session::get('flash_message_success_follow_up'))
+						<div class="alert alert-success alert-block">
+							<button type="button" class="close" data-dismiss="alert">×</button>	
+							<strong>{{ $message }}</strong>
+						</div>
+					@endif
 
 					<div class="card-body">
 						<div class="basic-data-table">
@@ -41,7 +53,7 @@
 										<th>Reference Code</th>
                                         <th>Mobile No</th>
 										<th>Accept Registration</th>
-                                        <th>Reject Registration</th>
+                                        <th>Update Payment</th>
 													
 									</tr>
 								</thead>
@@ -61,7 +73,7 @@
                                             <a href="{{ url('registration/accepted/'.$details->student_id.'/'.$details->program_batch_id)}}" class="btn btn-primary">Accept</a>
 										</td>
                                         <td>
-                                            <a href="{{ url('registration/refuse/'.$details->student_id.'/'.$details->program_batch_id)}}" class="btn btn-danger">Reject</a>
+                                            <a href="{{ url('registration/update/'.$details->student_id.'/'.$details->program_batch_id)}}" class="btn btn-primary">Update</a>
                                         </td>	    
 									</tr>
 									@endforeach

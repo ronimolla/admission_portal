@@ -16,7 +16,7 @@
                             <div class="card-body">
                                 <h4 class="py-2 text-dark">{{$personalinfo->full_name}}</h4>
                                 <p>{{$contactinfo->email_address}}</p><br>
-                                <!-- <a   class="btn btn-primary" href="{{ url('edit-profile/'.$personalinfo->student_id)}}">Edit</a> -->
+                                 <a   class="btn btn-primary" href="{{ url('preselection/edit/'.$questionaryinfo->student_id.'/'.$questionaryinfo->program_batch_id)}}">Preselection</a> 
                             </div>
                         </div>
 
@@ -27,7 +27,7 @@
                             <p class="text-dark font-weight-medium pt-4 mb-2">Student ID</p>
                             <p>{{$personalinfo->student_id}}</p>
                             <p class="text-dark font-weight-medium pt-4 mb-2">Program Name</p>
-                            <p>{{$personalinfo->program_name}}</p>
+                            <p>{{$questionaryinfo->program_name }}</p>
                             <p class="text-dark font-weight-medium pt-4 mb-2">Email address</p>
                             <p>{{$contactinfo->email_address}}</p>
                             <p class="text-dark font-weight-medium pt-4 mb-2">Phone Number</p>
@@ -58,6 +58,10 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" id="educational-info" data-toggle="tab" href="#educational" role="tab" aria-controls="education" aria-selected="true">Educational Information</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" id="answer" data-toggle="tab" href="#ans" role="tab" aria-controls="ans" aria-selected="true">Questionarry Answer</a>
                         </li>
 
                         </ul>
@@ -147,6 +151,26 @@
                                     </div>
                                 </div>        
                             </div>
+
+                            <div class="tab-pane fade" id="ans" role="tabpanel" aria-labelledby="timeline-tab"><br/>
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="form-group">
+                                            @if($questionaryinfo->program_name =='BBLT' || $questionaryinfo->program_name =='BBLTJ'  )
+                                                <label for="FullName"><b>Justification Answer :</b> {{$questionaryinfo->justify_answer}}</label><br/>
+                                            
+                                            @elseif($questionaryinfo->program_name =='APL' || $questionaryinfo->program_name =='YLS' )
+                                                <label for="FullName"><b>Narrative Writing-1 Answer :</b> {{$questionaryinfo->narrative_writing_1}}</label><br/>
+                                                <label for="FullName"><b>Narrative Writing-2 Answer :</b> {{$questionaryinfo->narrative_writing_2}}</label><br/>                                  
+                                            
+                                            @endif
+                                            
+                                            
+                                        </div>
+                                    </div>  
+                                </div>        
+                            </div>
+                            
                             <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                                 
                             </div>

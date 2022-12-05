@@ -24,9 +24,21 @@
 			<div class="col-12">
 				<div class="card card-default">
 					<div class="card-header card-header-border-bottom d-flex justify-content-between">
-						<h2>All Student who are Selected for Interview and Waiting for Update their result</h2>
-						
+						<h2>All Student who are Selected for Interview and Waiting for Update their result</h2>						
 					</div>
+
+					@if($message = Session::get('flash_message_error'))
+						<div class="alert alert-danger alert-block">
+							<button type="button" class="close" data-dismiss="alert">×</button>	
+							<strong>{{ $message }}</strong>
+						</div>
+					@endif
+					@if($message = Session::get('flash_message_success'))
+						<div class="alert alert-success alert-block">
+							<button type="button" class="close" data-dismiss="alert">×</button>	
+							<strong>{{ $message }}</strong>
+						</div>
+					@endif
 
 					<div class="card-body">
 						<div class="basic-data-table">
@@ -39,10 +51,11 @@
 										<th>Program Code</th>
 										<th>Gender</th>
 										<th>Email</th>
+										<th>Contact Number</th>
 										<th>Present Destrict</th>
                                         <th>Present Devision</th>
 										<th>Update</th>
-										<th>view</th>			
+													
 									</tr>
 								</thead>
 
@@ -55,14 +68,13 @@
 										<td>{{$std->program_batch_id}}</td>
                                         <td>{{$std->gender}}</td>
 										<td>{{$std->email_address}}</td>
+										<td>{{$std->personal_phone_no}}</td>
                                         <td>{{$std->present_district}}</td>
 										<td>{{$std->present_division}}</td>
 										<td>
 											<a href="{{ url('interviewresult/edit/'.$std->student_id.'/'.$std->program_batch_id)}}" class="btn btn-primary">Update Result</a>
 										</td>	
-                                        <td>
-											<a href="{{ url('view-profile/'.$std->student_id)}}" class="btn btn-primary">view Profile</a>
-										</td>	
+                                       
 									</tr>
 									@endforeach
 								</tbody>
@@ -76,9 +88,21 @@
             <div class="col-12">
                 <div class="card card-default">
                     <div class="card-header card-header-border-bottom d-flex justify-content-between">
-                        <h2>All Applicants Who are Waiting for Follow-Up</h2>
-                        
+                        <h2>All Applicants Who are Waiting for Follow-Up</h2>  
                     </div>
+
+					@if($message = Session::get('flash_message_error'))
+						<div class="alert alert-danger alert-block">
+							<button type="button" class="close" data-dismiss="alert">×</button>	
+							<strong>{{ $message }}</strong>
+						</div>
+					@endif
+					@if($message = Session::get('flash_message_success_follow_up'))
+						<div class="alert alert-success alert-block">
+							<button type="button" class="close" data-dismiss="alert">×</button>	
+							<strong>{{ $message }}</strong>
+						</div>
+					@endif
 
                     <div class="card-body">
                         <div class="basic-data-table">
@@ -89,10 +113,12 @@
 										<th>Full Name</th>
 										<th>Program Name</th>
 										<th>Program Code</th>
+										<th>Email</th>
+										<th>Contact Number</th>
 										<th>All Total Score</th>
 										<th>Registration Eligibility</th>
 										<th>Follow-Up</th>
-										<th>view</th>                               
+										                              
                                     </tr>
                                 </thead>
 
@@ -104,13 +130,13 @@
 											<td>{{$pstage->program_name}}</td>
 											<td>{{$pstage->program_batch_id}}</td>
 											<td>{{$pstage->all_totall_marks}}</td>
+											<td>{{$pstage->email_address}}</td>
+											<td>{{$pstage->personal_phone_no}}</td>
 											<td>{{$pstage->present_division}}</td>
 											<td>
 												<a href="{{ url('interview/follow-up/'.$pstage->student_id.'/'.$pstage->program_batch_id)}}" class="btn btn-primary">Follow-Up</a>
 											</td>	
-											<td>
-												<a href="{{ url('view-profile/'.$pstage->student_id)}}" class="btn btn-primary">view Profile</a>
-											</td>			
+													
                                         </tr>
 									@endforeach
                                 </tbody>
@@ -118,8 +144,8 @@
                         </div><!-- End basic-data-table -->
                     </div><!-- End card body -->
                 </div><!-- End card card-default -->
-            </div>
-        </div>
- 	</div>
-</div>
+            </div><!-- End col-12 row -->
+        </div><!-- End row -->
+ 	</div><!-- End content -->
+</div><!-- End content-wrapper -->
 @endsection

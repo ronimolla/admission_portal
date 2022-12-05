@@ -35,11 +35,15 @@
                                 </div>     
                             </div>
                             <div class="form-row">
-                                <div class="col-md-6 mb-3">
+                                <div class="col-md-4 mb-3">
+                                    <label for="validationServer03">Comtact No</label>
+                                    <input type="text" class="form-control" id="validationServer03"  name="eligible_writing_exam" value="{{$coninfo->personal_phone_no}}"readonly>
+                                </div> 
+                                <div class="col-md-4 mb-3">
                                     <label for="validationServer03">Application & Test Score</label>
                                     <input type="text" class="form-control" id="validationServer03" name="preselection_score" value="{{$assinfo->all_totall_marks}}" readonly>
                                 </div>
-                                <div class="col-md-6 mb-3">
+                                <div class="col-md-4 mb-3">
                                     <label for="validationServer03">Registration Eligibility</label>
                                     <input type="text" class="form-control" id="validationServer03"  name="registration_eligibility" value="{{$assinfo->select_for_registration}}"readonly>
                                 </div>     
@@ -89,7 +93,7 @@
                                 </div>
                                 <div class="col-md-4 mb-3">
                                     <label for="validationServer04" class="required">Fiman remark</label>
-                                    <textarea class="form-control" id="validationServer03" name ="renark"rows="4" cols="50"></textarea>
+                                    <textarea class="form-control" id="validationServer03" name ="renark"rows="4" cols="50" required></textarea>
                                 </div>     
                             </div>  
                             <button class="btn btn-primary" type="submit">Update</button>

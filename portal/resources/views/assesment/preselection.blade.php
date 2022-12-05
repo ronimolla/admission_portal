@@ -14,20 +14,35 @@
 					<li class="breadcrumb-item">
 						Pre Selection
 					</li>
+					<li class="breadcrumb-item">
+						<a href="{{ url('/dashboard')}}" >
+						    <span class="mdi-chevron-left-box"></span>                
+						</a>
+					</li>
+					
 								
 				</ol>
 			</nav>
 		</div>
 
-
-
         <div class="row">
 			<div class="col-12">
 				<div class="card card-default">
 					<div class="card-header card-header-border-bottom d-flex justify-content-between">
-						<h2>All Applicants Who are Waiting for Pre Selection</h2>
-						
+						<h2>All Applicants Who are Waiting for Pre Selection</h2>						
 					</div>
+					@if($message = Session::get('flash_message_error'))
+						<div class="alert alert-danger alert-block">
+							<button type="button" class="close" data-dismiss="alert">×</button>	
+							<strong>{{ $message }}</strong>
+						</div>
+					@endif
+					@if($message = Session::get('flash_message_success'))
+						<div class="alert alert-success alert-block">
+							<button type="button" class="close" data-dismiss="alert">×</button>	
+							<strong>{{ $message }}</strong>
+						</div>
+					@endif
 
 					<div class="card-body">
 						<div class="basic-data-table">
@@ -40,6 +55,7 @@
 										<th>Program Batch Code</th>
 										<th>Gender</th>
 										<th>Email</th>
+										<th>Contact Number</th>
 										<th>Present Destrict</th>
                                         <th>Present Devision</th>
 										<th>Edit</th>
@@ -57,13 +73,14 @@
 										<td>{{$std->program_batch_id}}</td>
                                         <td>{{$std->gender}}</td>
 										<td>{{$std->email_address}}</td>
+										<td>{{$std->personal_phone_no}}</td>
                                         <td>{{$std->present_district}}</td>
 										<td>{{$std->present_division}}</td>
 										<td>
 											<a href="{{ url('preselection/edit/'.$std->student_id.'/'.$std->program_batch_id)}}" class="btn btn-primary">Preselection</a>
 										</td>	
                                         <td>
-											<a href="{{ url('view-profile/'.$std->student_id)}}" class="btn btn-primary">view Profile</a>
+											<a href="{{ url('view-profile/'.$std->student_id.'/'.$std->program_batch_id)}}" class="btn btn-primary">view Profile</a>
 										</td>	
 									</tr>
 									@endforeach
@@ -72,16 +89,27 @@
 						</div><!-- End basic-data-table -->
 					</div><!-- End card body -->
 				</div><!-- End card card-default -->
-			</div>
-		</div>
+			</div><!-- End  col-12-->
+		</div><!-- End row-->
         <div class="row">
             <div class="col-12">
                 <div class="card card-default">
                     <div class="card-header card-header-border-bottom d-flex justify-content-between">
-                        <h2>All Applicants Who are Waiting for Follow-Up</h2>
-
-                        
+                        <h2>All Applicants Who are Waiting for Follow-Up</h2>                      
                     </div>
+
+					@if($message = Session::get('flash_message_error'))
+						<div class="alert alert-danger alert-block">
+							<button type="button" class="close" data-dismiss="alert">×</button>	
+							<strong>{{ $message }}</strong>
+						</div>
+					@endif
+					@if($message = Session::get('flash_message_success_follow_up'))
+						<div class="alert alert-success alert-block">
+							<button type="button" class="close" data-dismiss="alert">×</button>	
+							<strong>{{ $message }}</strong>
+						</div>
+					@endif
 
                     <div class="card-body">
                         <div class="basic-data-table">
@@ -94,6 +122,7 @@
 										<th>Program Batch Code</th>
 										<th>Gender</th>
 										<th>Email</th>
+										<th>Contact Number</th>
                                         <th>Preselection Score</th>
 										<th>Writting Exam Eligibility</th>
 										<th>Follow-Up</th>
@@ -110,6 +139,7 @@
 											<td>{{$pstage->program_batch_id}}</td>
 											<td>{{$pstage->gender}}</td>
 											<td>{{$pstage->email_address}}</td>
+											<td>{{$pstage->personal_phone_no}}</td>
 											<td>{{$pstage->pre_subtotal}}</td>
 											<td>{{$pstage->select_for_writing_test}}</td>
 											<td>

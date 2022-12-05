@@ -633,7 +633,7 @@ class ProgramController extends Controller
         $district = DB::table('districts')->get();
         $date = now()->format('Y-m-d');
         $batchinfo = Program_batch::all()
-                       ->where('program_id', '= ','4')
+                       ->where('program_id', '= ','5')
                        ->last();
         $application_last_date = $batchinfo->end_date;
         $application_start_date = $batchinfo->start_date;
@@ -1569,7 +1569,7 @@ class ProgramController extends Controller
                 'program_end_date'=>$data['program_end_date'],'program_duration'=>$data['program_duration'],'program_mode'=>$data['program_mode'],'class_time'=>$data['class_time'],
                 'registration_deadline'=>$data['registration_deadline'],'registration_fees'=>$data['registration_fees']]);
 
-            return redirect('/programs/programBatch');
+            return redirect('/programs/programBatch')->with('flash_message_error','Program Batch edited successfully');
         }
          return view('programs.editBatch')->with(compact('program_batch'));
     }
