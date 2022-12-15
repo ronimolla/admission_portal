@@ -65,22 +65,22 @@ class AssesmentController extends Controller
         $studentcontactinfo = StudentContactInfo::where(['student_id'=>$student_id])->first();
         $email_address = $studentcontactinfo ->email_address;
         $password = random_int(100000, 999999);	
-
+ 
         $usersCount = User::where('email',$email_address)->count();
             
 		if($request->isMethod('post')){ 
             $data = $request->input(); 
             $totall = 0; 
 
-            Mail:: to ($email_address)->send(new SigmUp($email_address));
-            if($data['writting_eligibility'] == 'Incapable'){
+            Mail:: to ($email_address)->send(new SigmUp($email_address,$password));
+            if($data['writting_eligibility'] == 'Ineligible'){
                 StudentProgram::where(['student_id'=>$student_id,'program_batch_id'=>$program_batch_code])->update(['application_status'=>'rejected']);     
             }
 
             if($data['writting_eligibility'] == 'Eligible' && $usersCount==0 ){
                 
                 $student = new User;
-                $student->student_id = $data['std_id'];
+                $student->student_id = $data['std_id']; 
                 $student->name = $data['full_name'];
                 $student->email  = $email_address;
                 $student->password =  $password;
@@ -178,18 +178,21 @@ class AssesmentController extends Controller
         
         //echo"$student_id";die;
         $prescore = Assesment::where(['student_id'=>$student_id])->first();
+        $studentcontactinfo = StudentContactInfo::where(['student_id'=>$student_id])->first();
+        $email_address = $studentcontactinfo ->email_address;
         $presubtotal = $prescore->pre_subtotal;
         $WAscore = 0;
         if($request->isMethod('post')){    
             $data = $request->input();
             $WAscore = $data['test_score'] + $presubtotal;
 
-            if($data['select_for_interview'] == 'Incapable'){
+            if($data['select_for_interview'] == 'Ineligible'){
                 StudentProgram::where(['student_id'=>$student_id,'program_batch_id'=>$program_batch_id])->update(['application_status'=>'rejected']);     
             }
-            
+           
+            Mail:: to ($email_address)->send(new PreselectionStaus($email_address,$WAscore));
             Assesment::where(['student_id'=>$student_id,'program_batch_id'=>$program_batch_id])->update(['writing_test_assessor'=>$data['assessor_name'],'writing_test_attended'=>$data['attended'],
-                'total_score'=>$data['test_score'],'writing_and_appication_score'=> $WAscore,'select_for_interview'=>$data['select_for_interview'],
+                'total_score'=>$data['test_score'],'writing_and_appication_score'=> $WAscore,'select_for_interview'=>$data['select_for_interview'],'writing_remark'=>$data['test_remark'],
                 'writing_preselection_stage'=>'Done']);
             return redirect('/assesment/writing'); 
         }  
@@ -252,6 +255,9 @@ class AssesmentController extends Controller
         $writing_result = Assesment::where(['student_id'=>$student_id])->first();
         $totalresult = $writing_result->writing_and_appication_score;
         $interviewtotal = 0;
+
+        $studentcontactinfo = StudentContactInfo::where(['student_id'=>$student_id])->first();
+        $email_address = $studentcontactinfo ->email_address;
          
         if($request->isMethod('post')){    
             $data = $request->input();
@@ -259,13 +265,13 @@ class AssesmentController extends Controller
             $interviewtotal =$data['competence'] + $data['courage'] + $data['compassion'] + $data['commitment'] ;
             $alltotall = $totalresult + $interviewtotal ;
 
-            if($data['select_for_registration'] == 'Incapable'){
+            if($data['select_for_registration'] == 'Ineligible'){
                 StudentProgram::where(['student_id'=>$student_id,'program_batch_id'=>$program_batch_id])->update(['application_status'=>'rejected']);     
             }
-
+            Mail:: to ($email_address)->send(new PreselectionStaus($email_address,$interviewtotal));
             Assesment::where(['student_id'=>$student_id,'program_batch_id'=>$program_batch_id])->update(['interviewer'=>$data['interviewer'],'attend_interview'=>$data['attend'],'attend_group_discussion'=>$data['g_attend'],
                 'competence'=>$data['competence'],'courage'=>$data['courage'],'compassion'=>$data['compassion'],'commitment'=>$data['commitment'],'total_interview_marks'=>$interviewtotal,
-                'all_totall_marks'=>$alltotall,'select_for_registration'=>$data['select_for_registration'],
+                'all_totall_marks'=>$alltotall,'select_for_registration'=>$data['select_for_registration'],'interview_remark'=>$data['interview_remark'],
                 'interview_preselection_stage'=>'Done']);
             return redirect('/assesment/interview'); 
         }  
@@ -337,12 +343,14 @@ class AssesmentController extends Controller
             $waiver->program_batch_id = $data['program_code'];
             $waiver->educational_medium = $data['medium'];
             $waiver->waiver_percentage = $data['waiver_percentage'];
+            $waiver->bgn_waiver = $data['bgn_waaiver'];
+            $waiver->course_waiver = $data['course_waiver'];
             $waiver->waiver_amount = $data['waiver_amount'];
             $waiver->waiver_reason = $data['reason'];
             $waiver->save();
             FinancialAid::where(['student_id'=>$student_id,'program_batch_id'=>$program_batch_id])
             ->update(['update_request'=>'Done']);
-            
+            return redirect('/assesment/financialaid');
          }  
         $fastudent = FinancialAid::where(['student_id'=>$student_id,'program_batch_id'=>$program_batch_id])->first();
         $edinfo = StudentEducationalInfo::where(['student_id'=>$student_id])->first();

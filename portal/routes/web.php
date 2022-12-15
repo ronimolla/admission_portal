@@ -178,9 +178,14 @@ Route::get('/program/thank', [ProgramController::class, 'thankyou']);
     //APL program route 
     Route::get('/student/program/apl', [StudentProgramController::class, 'apl']);
     Route::match(['get', 'post'], '/student/apl/store',[StudentProgramController::class, 'aplstore']);
-     //Careerx program route 
+    //Careerx program route 
     Route::get('/student/program/careerx', [StudentProgramController::class, 'careerx']);
     Route::match(['get', 'post'], '/student/careerx/store',[StudentProgramController::class, 'careerxstore']);
+
+     //YLS program route 
+     Route::get('/student/program/yls', [StudentProgramController::class, 'yls']);
+     Route::match(['get', 'post'], '/student/yls/store',[StudentProgramController::class, 'ylsstore']);
+ 
 /*------------------------EndApplication Porecess from student for all existing program-------------------------------------*/
 
     //get the all program from for submission

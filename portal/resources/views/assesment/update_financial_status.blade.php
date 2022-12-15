@@ -8,7 +8,7 @@
             <div class="col-lg-10">
                 <div class="card card-default">
                     <div class="card-header card-header-border-bottom">
-                        <h2>Basic Validation</h2>
+                        <h2>Update Waiver Request</h2>
                     </div>
 
                     <div class="card-body">
@@ -38,17 +38,24 @@
                                     <input type="text" class="form-control" id="validationServer04"  name="medium" value="{{$edinfo->educational_medium}}"  readonly>
                                 </div>     
                             </div>
-
                             <div class="form-row">
-                                
-                                <div class="col-md-4 mb-3">
-                                
+                                <div class="col-md-4 mb-3">                              
                                     <label for="validationServer03">registration fees</label>
                                     <input type="text" class="form-control" id="registration_fees" name="registration_fees" value="{{$batchdetails->registration_fees}}"   readonly>
-                                
                                 </div>
                                 <div class="col-md-4 mb-3">
-                                    <label for="validationServer03">Waiver Amount</label>
+                                    <label for="validationServer04">Waiver from BGN fee</label>
+                                    <input type="text" class="form-control" id="bgn_waaiver"  name="bgn_waaiver" >
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <label for="validationServer03">Waiver from Course fee</label>
+                                    <input type="text" class="form-control" id="course_waiver"  name="course_waiver" >
+                                </div>     
+                            </div>
+
+                            <div class="form-row"> 
+                                <div class="col-md-4 mb-3">
+                                    <label for="validationServer03">Total Waiver</label>
                                     <input type="text" class="form-control" id="waiver_amount" name="waiver_amount" onkeyup="mult(this.value);" required>
                                 </div>  
                                 <div class="col-md-4 mb-6">
@@ -56,6 +63,7 @@
                                     <input type="text" class="form-control" id="waiver_percentage" name="waiver_percentage" required>
                                 </div> 
                             </div> 
+                            
                             <div class="form-row">
                                 <div class="col-md-6 mb-3">
                                     <textarea id="w3review" placeholder = "descride the for giving waiver" name="reason" rows="4" cols="50"></textarea>

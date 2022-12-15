@@ -14,6 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('student_educational_infos', function (Blueprint $table) {
+            $table->id();
             $table->string('student_id');
             $table->string('educational_medium')->nullable();
             $table->string('educational_lavel')->nullable();

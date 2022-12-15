@@ -19,11 +19,13 @@ return new class extends Migration
             $table->string('full_name')->nullable();
             $table->string('program_batch_name')->nullable();
             $table->string('program_batch_id');
-            $table->integer('registration_fees')->nullable();;
+            $table->integer('registration_fees')->nullable();
             $table->integer('final_registration_fees')->nullable();
+            $table->integer('payment_amount')->nullable();
             $table->string('payment_media')->nullable();
             $table->string('reference')->nullable();
             $table->string('payment_mobileno')->nullable();
+            $table->integer('2nd_payment_amount')->nullable();
             $table->string('2nd_payment_media')->nullable();
             $table->string('2nd_reference')->nullable();
             $table->string('2nd_payment_mobileno')->nullable();

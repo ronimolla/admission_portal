@@ -282,6 +282,8 @@
 
                 document.getElementById('waiver_percentage').value =ex3 + "%";
             }
+           
+           
 
             jQuery(document).ready(function(){
                     

@@ -655,13 +655,15 @@ class ProgramController extends Controller
 
         if($request->isMethod('post')){
             $data = $request->input();
-            echo "<pre>"; print_r($data); die;
+            //echo "<pre>"; print_r($data); die;
             
             $program_batch_id=$data['program_batch_id'];
             $programname=$data['program_name'];
+            $student_id= $data['nid'];
 
             $batchinfo = Program_batch::where(['batch_id'=>$data['program_batch_id']])->first();
             $student_batch= new StudentProgram;
+            $student_batch->student_id = $student_id;
             $student_batch->program_batch_id = $batchinfo->batch_id ;
             $student_batch->program_batch_name = $batchinfo->batch_name ;
 
@@ -683,7 +685,7 @@ class ProgramController extends Controller
                 $disability = $data['disability'];
             }
             $info->full_name = $data['full-name'];
-          
+            $info->student_id = $student_id;
             $info->gender = $gender;
             $info->dob = $data['date-of-birth']; 
             $info->nationality = $data['nationality']; 
@@ -697,12 +699,14 @@ class ProgramController extends Controller
             //$info->save();
           
             $coninfo = new StudentContactInfo;
+            $coninfo->student_id = $student_id;
             $coninfo->personal_phone_no = $data['mobile-number'];
             $coninfo->emergency_contact_no = $data['emergency-contact']; 
             $coninfo->email_address = $data['email-address'];            
             //$coninfo->save();
 
             $addinfo = new StudentAddressInfo;
+            $addinfo->student_id = $student_id;
             $addinfo->present_apartment_no = $data['per_apartment'];
             $addinfo->present_house_no = $data['per_house'];
             $addinfo->present_road_no_OR_village = $data['per_road'];
@@ -742,6 +746,7 @@ class ProgramController extends Controller
             }else{
                 $undergrad_level = $data['undergrad_level'];
             }
+            $edinfo->student_id = $student_id;
             $edinfo->educational_medium = $medium;
             $edinfo->secondary_educational_lavel = $data['secondary_level'];
             $edinfo->school = $data['school_name']; 
@@ -755,39 +760,26 @@ class ProgramController extends Controller
             $edinfo->undergraduate_level = $undergrad_level;
             //$edinfo->save();
 
-            $marconinfo = new StudentMarcomInfo;
+            $marcominfo = new StudentMarcomInfo;
+            $marcominfo->student_id = $student_id;
             if(empty($data['marketing_question'])){
             $knowing_media =' ';
             }else{
             $knowing_media = $data['marketing_question'];
             }
-            $marconinfo->knowing_media = $knowing_media;
+            $marcominfo->knowing_media = $knowing_media;
             $marcominfo->program_name =$programname; 
             $marcominfo->program_batch_id = $program_batch_id;
             //$marconinfo->save();
 
             $questioninfo = new StudentQuestionaryInfo;
+            $questioninfo->student_id = $student_id;
             $questioninfo->program_name =$programname; 
             $questioninfo->program_batch_id = $program_batch_id;
             $questioninfo->narrative_writing_1 = $data['narrative_writing_1'];
             $questioninfo->narrative_writing_2 = $data['narrative_writing_2'];
             //$questioninfo->save();
-
-            // $preselection = new AssesementPreselection;
-            // $preselection->program_name =$programname; 
-            // $preselection->program_batch_id = $program_batch_id;
-
-            // $followup = new FollowUp;
-            // $followup->program_name =$programname; 
-            // $followup->program_batch_id = $program_batch_id;
-
-            // $writing = new WritingTest;
-            // $writing->program_name =$programname; 
-            // $writing->program_batch_id = $program_batch_id;
-
-            // $interview = new Interview;
-            // $interview->program_name =$programname; 
-            // $interview->program_batch_id = $program_batch_id;
+            
             $assesment = new Assesment;
             $assesment->student_id = $student_id;
             $assesment->program_name =$programname; 
@@ -797,12 +789,8 @@ class ProgramController extends Controller
             $coninfo->save();
             $edinfo->save();
             $addinfo->save();
-            $marconinfo->save();
+            $marcominfo->save();
             $questioninfo->save();
-            // $preselection->save();
-            // $followup->save();
-            // $writing->save();
-            // $interview->save();
             $assesment->save();
             $student_batch->save();
 

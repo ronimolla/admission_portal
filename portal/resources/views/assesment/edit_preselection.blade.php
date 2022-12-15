@@ -58,7 +58,7 @@
                                     <label for="validationServer03" class="required">@if( $program_name =="BBLTJ" || $program_name == "BBLT") Writting Exam Eligibility @else Interview Eligibility @endif</label>
                                     <select class="form-control" id="writting_eligibility" name="writting_eligibility">
                                         <option>Eligible</option>
-                                        <option>Incapable</option>
+                                        <option>Ineligible</option>
                                     </select>    
                                 </div> 
 

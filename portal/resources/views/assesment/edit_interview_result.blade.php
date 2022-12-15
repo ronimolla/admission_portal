@@ -78,9 +78,11 @@
                                         <label for="validationServer03" class="required">Select For Registration</label>
                                         <select class="form-control" id="select_for_registration" name="select_for_registration">
                                             <option>Eligible</option>
-                                            <option>Incapable</option>
+                                            <option>Ineligible</option>
                                         </select>   
                                 </div> 
+
+                                
                                 <!-- <div class="col-md-4 mb-3">
                                     <label for="validationServer04">Total_Interview_marks(40)</label>
                                     <input type="number" class="form-control" id="courage" name="t_i_mark" required>
@@ -90,6 +92,12 @@
                                     <input type="number" class="form-control" id="compassion" name="t_mark" required>
                                 </div>     -->
                             </div>  
+                            <div class="form-row">
+                                <div class="col-md-4 mb-3">
+                                    <label for="validationServer03" class="required">Remark</label>
+                                    <textarea class="form-control" id="validationServer03" name ="interview_remark"rows="4" cols="50" required></textarea>    
+                                </div>    
+                            </div> 
 
                             <!-- <div class="form-row"> 
                                 <div class="col-md-4 mb-3">

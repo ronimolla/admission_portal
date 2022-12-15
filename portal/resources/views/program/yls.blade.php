@@ -153,15 +153,8 @@
 									<a style="font-size: small ; font-weight: bold">Date of Birth (জন্ম তারিখ)</a><br>
 									<!-- DatePicker -->
 									<div class="input-group date" id="datepicker">
-										<input type="text" class="form-control" id="date" name="date-of-birth"  value ="{{old('date-of-birth')}}" />
-										<span class="input-group-append">
-										  <span class="input-group-text bg-light d-block">
-											<i class="fa fa-calendar"></i>
-										  </span>
-										</span>
+										<input type="date" class="form-control" id="datetime" name="date-of-birth" value ="{{old('date-of-birth')}}"/>	
 									</div>
-								
-								
 						        </div>
 								<div class="col-md-6">
 									<a style="font-size: small ; font-weight: bold">Nationality (জাতীয়তা)</a><br>
@@ -199,11 +192,19 @@
 
 							<br>
 							<!-- Email -->
+							
 							<div class="row g-3">
 								<div class="col-md-6">
+									<!-- Email -->
 									<a style="font-size: small ; font-weight: bold">Email Address (ইমেইল)</a><br>
 									<input type="email" class="form-control" id="email"  name="email-address" value ="{{old('email-address')}}">
 									<span style ="color: red">@error('email-address'){{$message}}@enderror </span>
+								</div>
+								<div class="col-md-6">
+									<!-- NID -->
+									<a style="font-size: small ; font-weight: bold">NID/Bith Certificate/Paport No</a><br>
+									<input type="text" class="form-control" id="nid" name="nid" value ="{{old('nid')}}" >
+									<span style ="color: red">@error('nid'){{$message}}@enderror </span>
 								</div>
 							</div>
 							<br><br>

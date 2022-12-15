@@ -52,13 +52,13 @@
                                     <input type="text" class="form-control" id="interviewer" name="mobileno" required>
                                 </div>     
                             </div> 
-                            <!-- <div class="form-row"> 
-                                <div class="col-md-6 mb-3">
-                                    <label for="validationServer03">Upoad the image of Payment details</label><br>
-                                    <input type="file" id="img" name="img"/>
+                             <div class="form-row"> 
+                                <div class="col-md-4 mb-3">
+                                    <label for="validationServer03">Payment Amount</label><br>
+                                    <input type="number" class="form-control" id="amount" name="amount" required>
                                 </div>    
                                 
-                            </div>   -->
+                            </div>   
                             
                         
                             <button class="btn btn-primary" type="submit">Update</button> 

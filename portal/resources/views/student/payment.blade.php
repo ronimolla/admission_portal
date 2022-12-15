@@ -24,7 +24,7 @@
 			<div class="col-12">
 				<div class="card card-default">
 					<div class="card-header card-header-border-bottom d-flex justify-content-between">
-						<h2>All Student who are applied for waiver and waiting update their request</h2>
+						<h2>My pending Payment List </h2>
 						
 					</div>
 
@@ -36,7 +36,7 @@
 										<th>Student ID</th>
 										<th>Full Name</th>
 										<th>Program_batch Name</th>
-										<th>Registration fees</th>
+										<th>My Registration fees</th>
 										<th>Update Payment Details</th>
                                 			
 									</tr>

@@ -180,7 +180,7 @@
 						        </div>
 								<div class="col-md-6">
 									<a style="font-size: small ; font-weight: bold">Nationality (জাতীয়তা)</a><br>
-									<input type="text" class="form-control" id="nationality" name="nationality" value ="{{old('nationality', $student->nationality)}}" readonly>
+									<input type="text" class="form-control" id="nationality" name="nationality" value ="{{old('nationality', $student->nationality)}}" readonly/>
 								</div>
 							</div>
 
@@ -189,11 +189,11 @@
 							<div class="row g-3">
 								<div class="col-md-6">
 									<a style="font-size: small ; font-weight: bold">Father Name (বাবার নাম)</a><br>
-									<input type="text" class="form-control" id="father_name" name="father_name" value ="{{old('father_name', $student->father_name)}}" readonly>
+									<input type="text" class="form-control" id="father_name" name="father_name" value ="{{old('father_name', $student->father_name)}}" readonly/>
 								</div>
 								<div class="col-md-6">
 									<a style="font-size: small ; font-weight: bold">Mother Name (মায়ের নাম)</a><br>
-									<input type="text" class="form-control" id="mother_name" name="mother-name" value ="{{old('mother-name', $student->mother_name)}}" readonly>
+									<input type="text" class="form-control" id="mother_name" name="mother-name" value ="{{old('mother-name', $student->mother_name)}}" readonly/>
 								</div>
 							</div>
 
