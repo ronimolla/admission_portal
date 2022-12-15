@@ -52,6 +52,7 @@
 										<th>Payment Media</th>
 										<th>Reference Code</th>
                                         <th>Mobile No</th>
+										<th>Payment Amount</th>
 										<th>Accept Registration</th>
                                         <th>Update Payment</th>
 													
@@ -68,7 +69,7 @@
                                         <td>{{$details->payment_media}}</td>
 										<td>{{$details->reference}}</td>
                                         <td>{{$details->payment_mobileno}}</td>
-										
+										<td>{{$details->payment_amount}}</td>
 										<td>
                                             <a href="{{ url('registration/accepted/'.$details->student_id.'/'.$details->program_batch_id)}}" class="btn btn-primary">Accept</a>
 										</td>

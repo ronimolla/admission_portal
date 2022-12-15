@@ -14,6 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('student_marcom_infos', function (Blueprint $table) {
+            $table->id();
             $table->string('student_id');
             $table->string('program_name');
             $table->string('program_batch_id');
@@ -24,6 +25,8 @@ return new class extends Migration
             $table->string('bootcamp_bach_no')->nullable();
             $table->string('campus_ambassador')->nullable();
             $table->string('university_name')->nullable();
+            $table->string('attend_bylc_program_before')->nullable();
+            $table->string('programs_name')->nullable();
             $table->string('quest_1')->nullable();
             $table->string('quest_2')->nullable();
             $table->string('quest_3')->nullable();

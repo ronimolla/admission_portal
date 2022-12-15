@@ -9,23 +9,22 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class SigmUp extends Mailable
+class TestStaus extends Mailable
 {
     use Queueable, SerializesModels;
     public $email_address;
-    public $password;
+    public $WAscore;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($email_address,$passwrd)
-    
+    public function __construct($email_address,$WAscore)
     {
         //
         $this->email_address = $email_address;
-        $this->password = $passwrd;
+        $this->WAscore = $WAscore;
     }
 
     /**
@@ -36,7 +35,7 @@ class SigmUp extends Mailable
     public function envelope()
     {
         return new Envelope(
-            subject: 'Sigm Up',
+            subject: 'Test Staus',
         );
     }
 
@@ -48,7 +47,7 @@ class SigmUp extends Mailable
     public function content()
     {
         return new Content(
-            markdown: 'assesment.sendmail',
+            view: 'view.name',
         );
     }
 

@@ -36,32 +36,36 @@
                             </div>
 
                             <div class="form-row">
-                                <div class="col-md-4 mb-3">
+                                <div class="col-md-3 mb-3">
                                     <label for="validationServer03">Assessor Name</label>
                                     <input type="text" class="form-control" id="validationServer03" name="assessor_name" value= "{{Session::get('AdminName')}}" readonly>
                                 </div>
-                                <div class="col-md-4 mb-3">
+                                <div class="col-md-3 mb-3">
                                     <label for="validationServer03" class="required">Attend writing test</label>
                                     <select class="form-control" id="writting_eligibility" name="attended">
                                         <option>Yes</option>
                                         <option> No</option>
                                     </select>
                                 </div>
-                                <div class="col-md-4 mb-3">
+                                <div class="col-md-3 mb-3">
                                     <label for="validationServer04" class="required">Writing Test Score(25)</label>
                                     <input type="number" class="form-control" id="validationServer04" name="test_score" min="1" max="25" required>
-                                </div>    
+                                </div>  
+                                <div class="col-md-3 mb-3">
+                                    <label for="validationServer03" class="required">Interview Eligibility</label>
+                                        <select class="form-control" id="writting_eligibility" name="select_for_interview">
+                                            <option>Eligible</option>
+                                            <option>Ineligible</option>
+                                        </select>   
+                                </div>  
                             </div> 
 
                             <div class="form-row">
-                                
                                 <div class="col-md-4 mb-3">
-                                        <label for="validationServer03" class="required">Interview Eligibility</label>
-                                        <select class="form-control" id="writting_eligibility" name="select_for_interview">
-                                            <option>Eligible</option>
-                                            <option>Incapable</option>
-                                        </select>   
-                                </div>    
+                                    <label for="validationServer03" class="required">Remark</label>
+                                    <textarea class="form-control" id="validationServer03" name ="test_remark"rows="4" cols="50" required></textarea>    
+                                </div> 
+                                
                             </div>  
                             <button class="btn btn-primary" type="submit">Update</button> 
                         </form>

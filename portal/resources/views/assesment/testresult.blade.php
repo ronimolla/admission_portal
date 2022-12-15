@@ -1,6 +1,6 @@
 @component('mail::message')
 
-Preselectin Stage result {{$totall}} ,Your email Address {{$email_address}} 
+Test Stage result {{$WAscore}} ,Your email Address {{$email_address}} 
  @component('mail::button', ['url' => 'www.google.com'])
  click Here
  @endcomponent

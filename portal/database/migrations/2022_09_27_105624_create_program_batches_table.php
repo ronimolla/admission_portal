@@ -14,6 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('program_batches', function (Blueprint $table) {
+            $table->id();
             $table->id('batch_id');
             $table->integer('program_id');
             $table->string('batch_name')->unique();

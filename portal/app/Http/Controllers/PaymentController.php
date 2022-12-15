@@ -165,7 +165,7 @@ class PaymentController extends Controller
                // }
 
                 Payment::where(['student_id'=>$student_id,'program_batch_id'=>$program_batch_id])->update(['payment_media'=>$data['pay_method'],
-                'reference'=>$data['referenceid'],'payment_mobileno'=>$data['mobileno'],'payment_status'=>'Sent']);
+                'reference'=>$data['referenceid'],'payment_mobileno'=>$data['mobileno'],'Payment_amount'=>$data['amount'],'payment_status'=>'Sent']);
 
            return redirect('/student/my-payments');
            
