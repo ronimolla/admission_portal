@@ -63,8 +63,9 @@
                     <label for="exampleFormControlInput1">Mode of Program</label>
                     <select class="form-control" name="program_mode" id="exampleFormControlSelect12">
                       <option value="0" disabled="true" selected="true">Select Mode</option>
-                      <option value="online">Online</option>
-                      <option value="Offline">Offline</option>			
+                      <option value="Online">Online</option>
+                      <option value="Offline">Offline</option>
+                      <option value="Hybrid">Hybrid</option>			
                     </select>
                 </div>
                 <div class="form-group">
@@ -78,8 +79,9 @@
 
 
                 <div class="form-footer pt-4 pt-4 mt-4 border-top">
-                  <button type="submit" class="btn btn-primary btn-lg btn-block">Create</button>
+                  <button type="submit" class="btn btn-success btn-lg btn-block">Create</button>
                 </div>
+
             </form>
 
           </div>

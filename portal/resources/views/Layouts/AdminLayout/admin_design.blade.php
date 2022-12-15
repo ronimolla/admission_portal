@@ -32,6 +32,7 @@
     
         
         <script src="{{asset('assets/plugins/nprogress/nprogress.js')}}"></script>
+        <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
 
         
         <style>
@@ -79,6 +80,144 @@
             width:100%;
             height:70%;
         }
+
+
+
+        /* Dashboard- Forms */
+        .w{
+            width: 100%;
+            height: 100%;
+            background: #fff;
+            margin: 15px auto 0;
+        }
+
+        .w .title{
+            padding: 30px 20px;
+            text-align: center;
+            font-size: 24px;
+            font-weight: 700;
+            border-bottom: 1px solid #ebedec;
+        }
+
+        .w .tabs_wrap{
+            padding: 20px;
+            border-bottom: 1px solid #ebedec;
+        }
+
+        .w .tabs_wrap ul{
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-pack: center;
+                -ms-flex-pack: center;
+                    justify-content: center;
+        }
+
+        .w .tabs_wrap ul li{
+            width: 600px;
+            text-align: center;
+            background: #e9ecf1;
+            border-right: 1px solid #c1c4c9;
+            padding: 13px 15px;
+            cursor: pointer;
+            -webkit-transition: all 0.2s ease;
+            -o-transition: all 0.2s ease;
+            transition: all 0.2s ease;
+        }
+
+        .w .tabs_wrap ul li:first-child{
+            border-top-left-radius: 0px;
+            border-bottom-left-radius: 25px;
+        }
+
+        .w .tabs_wrap ul li:last-child{
+            border-right: 0px;
+            border-top-right-radius: 25px;
+            border-bottom-right-radius: 0px;
+        }
+
+        .w .tabs_wrap ul li:hover,
+        .w .tabs_wrap ul li.active{
+            background: #7fc469;
+            color: #fff;
+        }
+
+        .w .container .item_wrap{
+            padding: 10px 20px;
+            border-bottom: 1px solid #ebedec;
+            cursor: pointer;
+        }
+
+        .w .container .item_wrap:hover{
+            background: #e9ecf1;
+        }
+
+        .w .container .item{
+            position: relative;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: center;
+                -ms-flex-align: center;
+                    align-items: center;
+            -webkit-box-pack: justify;
+                -ms-flex-pack: justify;
+                    justify-content: space-between;
+        }
+
+        .item_wrap .item .item_left{
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: center;
+                -ms-flex-align: center;
+                    align-items: center;
+        }
+
+        .item_wrap .item_left img{
+            width: 70px;
+            height: 70px;
+            display: block;
+        }
+
+        .item_wrap .item_left .data{
+            margin-left: 20px;
+        }
+
+        .item_wrap .item_left .data .name{
+            font-weight: 600;
+        }
+
+        .item_wrap .item_left .data .distance{
+            color: #7f8b9b;
+            font-size: 14px;
+            margin-top: 3px;
+        }
+
+        .item_wrap .item_right .status{
+            position: relative;
+            color: #77818d;
+        }
+
+        .item_wrap .item_right .status:before{
+            content: "";
+            position: absolute;
+            top: 5px;
+            left: -12px;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #b3bbc8;
+        }
+
+        .item_wrap.offline .item_right .status{
+            color: #b3bbc8;	
+        }
+
+        .item_wrap.online .item_right .status:before{
+            background: #7fc469;
+        }
+
     </style>
 
     </head>
@@ -174,7 +313,7 @@
                                 jQuery('#basic-data-table').html(result)
                             }
                         });
-                    });    
+                    });     
                     
                     //Dropdown to select program and get program batch dropdown
                     jQuery('#program_name').change(function(){                       
@@ -205,12 +344,12 @@
                     });
 
                     //Dropdown to select program-batch for Download CSV
-                    jQuery('#batch_name').change(function(){                       
+                    jQuery('#batch_name').change(function(){                
                         let bid2=jQuery(this).val();
                         jQuery.ajax({
                             url:'/download-csv',
                             type:'post',
-                            data:'bid2='+bid2+'&_token={{csrf_token()}}',
+                            data:'bid2='+bid2+'&_token={{csrf_token()}}'
                             // success: function (result) {
                             //     jQuery('product_row').html(result)
                             // }
@@ -231,6 +370,19 @@
                             }
                         });
                     }); 
+
+                    //Dropdown to select project and get table data
+                    jQuery('#project').change(function(){                       
+                        let proj=jQuery(this).val();
+                        jQuery.ajax({
+                            url:'/getProgramDatabyProject',
+                            type:'post',
+                            data:'proj='+proj+'&_token={{csrf_token()}}',
+                            success:function(result){
+                                jQuery('#basic-data-table').html(result)
+                            }
+                        });
+                    });  
 
                 //-----------(Program-Batch-page)-------------------------
 
@@ -328,6 +480,21 @@
                     }
                 });
             }
+
+            //Fetch Gender data from controller for Data Chart 
+            function load_Gen_data() {
+                $.ajax({
+                    url: 'fetchGender',
+                    method: 'GET',
+                    data: {
+                        "_token": "{{ csrf_token() }}"
+                    },
+                    dataType: "JSON",
+                    success: function (data) {
+                        drawChart4(data);
+                    }
+                });
+            }
         </script>
 
 
@@ -341,7 +508,8 @@
                 load_data();
             });
 
-            function drawChart(drawChart) {
+            function drawChart(drawChart) 
+            {
                 let jsonData = drawChart;
                 let data = new google.visualization.arrayToDataTable([]);
                 data.addColumn({type: 'string', label: 'Education Medium'});
@@ -424,6 +592,78 @@
                 var chart = new google.visualization.PieChart(document.getElementById('piechart-disability'));
                 chart.draw(data, options);
             }
+        </script>
+
+
+        <!-- Google Pie-Chart (Gender) -->
+        <script type="text/javascript">
+            google.charts.load('current', {'packages':['corechart']});
+            google.charts.setOnLoadCallback(function () {
+                load_Gen_data();
+            });
+
+            function drawChart4(drawChart) {
+                let jsonData = drawChart;
+                let data = new google.visualization.arrayToDataTable([]);
+                data.addColumn({type: 'string', label: 'Gender'});
+                data.addColumn({type: 'number', label: 'Total Students'});
+            
+                $.each(jsonData, (i, jsonData) => {
+                    let gender = jsonData.gender;
+                    let total_student = jsonData.total_student;
+                    data.addRows([
+                        [gender, total_student]
+                    ]);
+                });
+
+                var options = {
+                    title: 'Gender',
+                };
+
+                var chart = new google.visualization.PieChart(document.getElementById('piechart-gender'));
+                chart.draw(data, options);
+            }
+        </script>
+
+        
+
+        <!-- Tab View for form submission -->
+        <script>
+            var tabs = document.querySelectorAll(".tabs_wrap ul li");
+            var males = document.querySelectorAll(".male");
+            var females = document.querySelectorAll(".female");
+            var all = document.querySelectorAll(".item_wrap");
+
+            tabs.forEach((tab)=>{
+                tab.addEventListener("click", ()=>{
+                    tabs.forEach((tab)=>{
+                        tab.classList.remove("active");
+                    })
+                    tab.classList.add("active");
+                    var tabval = tab.getAttribute("data-tabs");
+
+                    all.forEach((item)=>{
+                        item.style.display = "none";
+                    })
+
+                    if(tabval == "male"){
+                        males.forEach((male)=>{
+                            male.style.display = "block";
+                        })
+                    }
+                    else if(tabval == "female"){
+                        females.forEach((female)=>{
+                            female.style.display = "block";
+                        })
+                    }
+                    else{
+                        all.forEach((item)=>{
+                            item.style.display = "block";
+                        })
+                    }
+
+                })
+            })
         </script>
 
     </body>

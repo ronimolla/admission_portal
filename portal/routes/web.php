@@ -100,6 +100,7 @@ Route::group(['middleware' =>['adminlogin']],function(){
     //Programs Page
     Route::get('/programs/programsView', [ProgramController::class, 'programsView']); //View Page
     Route::match(['get', 'post'], '/getProgramDatabyCategory',[ProgramController::class, 'getProgramDatabyCategory']); //Dropdown
+    Route::match(['get', 'post'], '/getProgramDatabyProject',[ProgramController::class, 'getProgramDatabyProject']); //Dropdown
     Route::match(['get', 'post'], '/programs/createProgram',[ProgramController::class, 'createProgram']);
 
     //Program-Batch Page
@@ -128,6 +129,8 @@ Route::group(['middleware' =>['adminlogin']],function(){
     Route::get('/fetchEthnicity', [ProgramController::class, 'fetchEthnicity']);
     Route::get('/fetchDisability', [ProgramController::class, 'fetchDisability']);
     Route::get('/fetchDivision', [ProgramController::class, 'fetchDivision']);
+    Route::get('/fetchGender', [ProgramController::class, 'fetchGender']);
+    Route::get('/fetchStudyear', [ProgramController::class, 'fetchStudyear']);
 
     //Old Student Data
     Route::get('/old_data/programs', [ProgramController::class, 'old_data']);
