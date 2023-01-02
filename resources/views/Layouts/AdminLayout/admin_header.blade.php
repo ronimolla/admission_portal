@@ -39,7 +39,20 @@
                     </button>
                     <ul class="dropdown-menu dropdown-menu-right">
                         <!-- User image -->
-
+                        <li class="dropdown-header">
+                        <img src="{{asset('images/brand.png')}}" class="img-circle" alt="User Image" />
+                        <div class="d-inline-block">
+                        {{Session::get('AdminName')}}<small class="pt-1"> {{Session::get('adminSession')}}</small>
+                        </div>
+                        <li>
+                        <a href="#">
+                          <i class="mdi mdi-account"></i> My Profile
+                        </a>
+                      </li>
+                      <li class="right-sidebar-in">
+                        <a href="#"> <i class="mdi mdi-settings"></i> Setting </a>
+                      </li>
+                      </li>
                         <li class="dropdown-footer">
                             <a href="{{ route('logout') }}"> <i class="mdi mdi-logout"></i> Log Out </a>
                         </li>
