@@ -1,8 +1,8 @@
 <header class="main-header " id="header">
     <nav class="navbar navbar-static-top navbar-expand-lg">
         <!-- Sidebar toggle button -->
-        <button id="sidebar-toggler" class="sidebar-toggle">
-            <span class="sr-only">Toggle navigation</span>
+        <button class="rtbrand">
+        <img src="{{asset('images/brand.png')}}" class="r-image" alt="User Image" />
         </button>
         <!-- search form -->
         <div class="search-form d-none d-lg-inline-block">
@@ -19,7 +19,7 @@
 
         <div class="navbar-right ">
             <ul class="nav navbar-nav">
-                <li class="dropdown notifications-menu custom-dropdown">
+                <!-- <li class="dropdown notifications-menu custom-dropdown">
                     <button class="dropdown-toggle notify-toggler custom-dropdown-toggler">
                         <i class="mdi mdi-bell-outline"></i>
                     </button>
@@ -29,8 +29,7 @@
                             <h2>Notifications</h2>
                         </div>
                     </div>
-                </li>
-               
+                </li> -->              
                 <!-- User Account -->
                 <li class="dropdown user-menu">
                     <button href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
@@ -38,21 +37,7 @@
                         <span class="d-none d-lg-inline-block">{{Session::get('AdminName')}}</span>
                     </button>
                     <ul class="dropdown-menu dropdown-menu-right">
-                        <!-- User image -->
-                        <li class="dropdown-header">
-                        <img src="{{asset('images/brand.png')}}" class="img-circle" alt="User Image" />
-                        <div class="d-inline-block">
-                        {{Session::get('AdminName')}}<small class="pt-1"> {{Session::get('adminSession')}}</small>
-                        </div>
-                        <li>
-                        <a href="#">
-                          <i class="mdi mdi-account"></i> My Profile
-                        </a>
-                      </li>
-                      <li class="right-sidebar-in">
-                        <a href="#"> <i class="mdi mdi-settings"></i> Setting </a>
-                      </li>
-                      </li>
+                        <!-- User Image -->
                         <li class="dropdown-footer">
                             <a href="{{ route('logout') }}"> <i class="mdi mdi-logout"></i> Log Out </a>
                         </li>

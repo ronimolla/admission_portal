@@ -26,7 +26,7 @@
         <link id="sleek-css" rel="stylesheet" href="{{asset('assets/css/sleek.css')}}" />
     
         <!-- FAVICON -->
-        <link href="{{asset('images/brand.png')}}" rel="shortcut icon" />
+        <link href="{{asset('assets/img/favicon.png')}}" rel="shortcut icon" />
            
         <script src="{{asset('assets/plugins/nprogress/nprogress.js')}}"></script>
 
@@ -66,6 +66,7 @@
 
 
     <body>
+        
     @include('Layouts.OverviewLayout.admin_header')
 
         <br><br><br><br><br><br>
@@ -162,27 +163,5 @@
         <!-- </div> -->
 
     </body>
-        <script src="{{asset('assets/plugins/jquery/jquery.min.js')}}"></script>
-        <script src="{{asset('assets/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-        <script src="{{asset('assets/plugins/simplebar/simplebar.min.js')}}"></script>
-    
-        <script src="{{asset('assets/plugins/charts/Chart.min.js')}}"></script>
-        <script src="{{asset('assets/js/chart.js')}}"></script>
-
-        <script src="{{asset('assets/plugins/jvectormap/jquery-jvectormap-2.0.3.min.js')}}"></script>
-        <script src="{{asset('assets/plugins/jvectormap/jquery-jvectormap-world-mill.js')}}"></script>
-        <script src="{{asset('assets/js/vector-map.js')}}"></script>
-
-        <script src="{{asset('assets/plugins/daterangepicker/moment.min.js')}}"></script>
-        <script src="{{asset('assets/plugins/daterangepicker/daterangepicker.js')}}"></script>
-        <script src="{{asset('assets/js/date-range.js')}}"></script>
-
-        <script src="{{asset('assets/plugins/toastr/toastr.min.js')}}"></script>
-        <script src="{{asset('assets/plugins/data-tables/jquery.datatables.min.js')}}"></script>
-        <script src="{{asset('assets/plugins/data-tables/datatables.bootstrap4.min.js')}}"></script>
-        <script src="{{asset('assets/js/sleek.js')}}"></script>
-        <link href="{{asset('assets/options/optionswitch.css')}}" rel="stylesheet">
-        <script src="{{asset('assets/options/optionswitcher.js')}}"></script>
-        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
 </html>
